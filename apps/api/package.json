@@ -6,6 +6,7 @@
     "build": "tsx src/index.ts"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.78.0",
     "@hono/node-server": "^1.13.0",
     "@skill-builder/shared": "workspace:*",
     "dotenv": "^16.4.0",
