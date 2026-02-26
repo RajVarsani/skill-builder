@@ -4,6 +4,72 @@
   "count": 1000,
   "skills": [
     {
+      "source": "frontic/skills",
+      "skillId": "frontic-implementation",
+      "name": "frontic-implementation",
+      "installs": 35
+    },
+    {
+      "source": "igorwarzocha/opencode-workflows",
+      "skillId": "opencode-config",
+      "name": "opencode-config",
+      "installs": 35
+    },
+    {
+      "source": "mindrally/skills",
+      "skillId": "robocorp-cursor-rules",
+      "name": "robocorp-cursor-rules",
+      "installs": 35
+    },
+    {
+      "source": "ruvnet/claude-flow",
+      "skillId": "swarm-advanced",
+      "name": "swarm-advanced",
+      "installs": 35
+    },
+    {
+      "source": "jasonkneen/kiro",
+      "skillId": "design-documentation",
+      "name": "design-documentation",
+      "installs": 35
+    },
+    {
+      "source": "thisnick/agent-rdp",
+      "skillId": "agent-rdp",
+      "name": "agent-rdp",
+      "installs": 35
+    },
+    {
+      "source": "danielmiessler/personal_ai_infrastructure",
+      "skillId": "recon",
+      "name": "recon",
+      "installs": 35
+    },
+    {
+      "source": "mcp-use/skills",
+      "skillId": "chatgpt-app-builder",
+      "name": "chatgpt-app-builder",
+      "installs": 35
+    },
+    {
+      "source": "sickn33/antigravity-awesome-skills",
+      "skillId": "wrike-automation",
+      "name": "wrike-automation",
+      "installs": 35
+    },
+    {
+      "source": "pskoett/pskoett-ai-skills",
+      "skillId": "plan-interview",
+      "name": "plan-interview",
+      "installs": 35
+    },
+    {
+      "source": "nicepkg/ai-workflow",
+      "skillId": "institutional-flow-tracker",
+      "name": "institutional-flow-tracker",
+      "installs": 35
+    },
+    {
       "source": "daffy0208/ai-dev-standards",
       "skillId": "dark-matter-analyzer",
       "name": "dark matter analyzer",
@@ -16,15 +82,27 @@
       "installs": 35
     },
     {
-      "source": "wangyendt/wayne-skills",
-      "skillId": "send-email",
-      "name": "send-email",
+      "source": "huangwb8/chineseresearchlatex",
+      "skillId": "complete-example",
+      "name": "complete-example",
       "installs": 35
     },
     {
-      "source": "machina-sports/sports-skills",
-      "skillId": "nfl-data",
-      "name": "nfl-data",
+      "source": "nrwl/nx",
+      "skillId": "nx-plugins",
+      "name": "nx-plugins",
+      "installs": 35
+    },
+    {
+      "source": "ljagiello/ctf-skills",
+      "skillId": "ctf-crypto",
+      "name": "ctf-crypto",
+      "installs": 35
+    },
+    {
+      "source": "vamseeachanta/workspace-hub",
+      "skillId": "python-scientific-computing",
+      "name": "python-scientific-computing",
       "installs": 35
     },
     {
@@ -58,27 +136,15 @@
       "installs": 35
     },
     {
-      "source": "huangwb8/chineseresearchlatex",
-      "skillId": "complete-example",
-      "name": "complete-example",
+      "source": "wangyendt/wayne-skills",
+      "skillId": "send-email",
+      "name": "send-email",
       "installs": 35
     },
     {
-      "source": "nrwl/nx",
-      "skillId": "nx-plugins",
-      "name": "nx-plugins",
-      "installs": 35
-    },
-    {
-      "source": "ljagiello/ctf-skills",
-      "skillId": "ctf-crypto",
-      "name": "ctf-crypto",
-      "installs": 35
-    },
-    {
-      "source": "vamseeachanta/workspace-hub",
-      "skillId": "python-scientific-computing",
-      "name": "python-scientific-computing",
+      "source": "machina-sports/sports-skills",
+      "skillId": "nfl-data",
+      "name": "nfl-data",
       "installs": 35
     },
     {
@@ -115,12 +181,6 @@
       "source": "chujianyun/skills",
       "skillId": "prompt-optimizer",
       "name": "prompt-optimizer",
-      "installs": 35
-    },
-    {
-      "source": "block/agent-skills",
-      "skillId": "frontend-design",
-      "name": "frontend-design",
       "installs": 35
     },
     {
@@ -178,21 +238,9 @@
       "installs": 35
     },
     {
-      "source": "hyva-themes/hyva-ai-tools",
-      "skillId": "hyva-exec-shell-cmd",
-      "name": "hyva-exec-shell-cmd",
-      "installs": 35
-    },
-    {
       "source": "hoodini/ai-agents-skills",
       "skillId": "langchain",
       "name": "langchain",
-      "installs": 35
-    },
-    {
-      "source": "jezweb/claude-skills",
-      "skillId": "shopify-products",
-      "name": "shopify-products",
       "installs": 35
     },
     {
@@ -316,27 +364,9 @@
       "installs": 35
     },
     {
-      "source": "hyva-themes/hyva-ai-tools",
-      "skillId": "hyva-render-media-image",
-      "name": "hyva-render-media-image",
-      "installs": 35
-    },
-    {
-      "source": "hyva-themes/hyva-ai-tools",
-      "skillId": "hyva-theme-list",
-      "name": "hyva-theme-list",
-      "installs": 35
-    },
-    {
       "source": "rich5000/seedance-prompt-guide",
       "skillId": "seedance-prompt",
       "name": "seedance-prompt",
-      "installs": 35
-    },
-    {
-      "source": "hyva-themes/hyva-ai-tools",
-      "skillId": "hyva-compile-tailwind-css",
-      "name": "hyva-compile-tailwind-css",
       "installs": 35
     },
     {
@@ -520,9 +550,9 @@
       "installs": 35
     },
     {
-      "source": "aaronontheweb/dotnet-skills",
-      "skillId": "mjml-email-templates",
-      "name": "mjml-email-templates",
+      "source": "hyva-themes/hyva-ai-tools",
+      "skillId": "hyva-create-module",
+      "name": "hyva-create-module",
       "installs": 35
     },
     {
@@ -553,12 +583,6 @@
       "source": "rawveg/skillsforge-marketplace",
       "skillId": "midjourney-replicate-flux",
       "name": "midjourney-replicate-flux",
-      "installs": 35
-    },
-    {
-      "source": "get-convex/convex-agent-plugins",
-      "skillId": "function-creator",
-      "name": "function-creator",
       "installs": 35
     },
     {
@@ -721,6 +745,12 @@
       "source": "kangarooking/x-skills",
       "skillId": "x-collect",
       "name": "x-collect",
+      "installs": 34
+    },
+    {
+      "source": "get-convex/convex-agent-plugins",
+      "skillId": "migration-helper",
+      "name": "migration-helper",
       "installs": 34
     },
     {
@@ -934,6 +964,12 @@
       "installs": 34
     },
     {
+      "source": "hyva-themes/hyva-ai-tools",
+      "skillId": "hyva-ui-component",
+      "name": "hyva-ui-component",
+      "installs": 34
+    },
+    {
       "source": "vincentkoc/dotskills",
       "skillId": "opik-optimizer",
       "name": "opik-optimizer",
@@ -1030,18 +1066,6 @@
       "installs": 34
     },
     {
-      "source": "maxnorm/magento2-agent-skills",
-      "skillId": "magento-code-reviewer",
-      "name": "magento-code-reviewer",
-      "installs": 34
-    },
-    {
-      "source": "docyrus/agent-skills",
-      "skillId": "docyrus-api-dev",
-      "name": "docyrus-api-dev",
-      "installs": 34
-    },
-    {
       "source": "patricio0312rev/skills",
       "skillId": "table-builder",
       "name": "table-builder",
@@ -1081,12 +1105,6 @@
       "source": "wix/skills",
       "skillId": "wix-cli-extension-registration",
       "name": "wix-cli-extension-registration",
-      "installs": 34
-    },
-    {
-      "source": "frontic/skills",
-      "skillId": "frontic-implementation",
-      "name": "frontic-implementation",
       "installs": 34
     },
     {
@@ -1198,78 +1216,6 @@
       "installs": 34
     },
     {
-      "source": "codestackr/livekit-skills",
-      "skillId": "agents-py",
-      "name": "agents-py",
-      "installs": 34
-    },
-    {
-      "source": "yonatangross/orchestkit",
-      "skillId": "analytics",
-      "name": "analytics",
-      "installs": 34
-    },
-    {
-      "source": "shipshitdev/library",
-      "skillId": "workflow-automation",
-      "name": "workflow-automation",
-      "installs": 34
-    },
-    {
-      "source": "oimiragieo/agent-studio",
-      "skillId": "typescript-expert",
-      "name": "typescript-expert",
-      "installs": 34
-    },
-    {
-      "source": "supercent-io/skills-template",
-      "skillId": "genkit",
-      "name": "genkit",
-      "installs": 34
-    },
-    {
-      "source": "yeachan-heo/oh-my-claudecode",
-      "skillId": "research",
-      "name": "research",
-      "installs": 34
-    },
-    {
-      "source": "ampcode/amp-contrib",
-      "skillId": "ast-grep",
-      "name": "ast-grep",
-      "installs": 34
-    },
-    {
-      "source": "lihaoze123/my-skills",
-      "skillId": "nixos-best-practices",
-      "name": "nixos-best-practices",
-      "installs": 34
-    },
-    {
-      "source": "josiahsiegel/claude-plugin-marketplace",
-      "skillId": "windows-git-bash-paths",
-      "name": "windows-git-bash-paths",
-      "installs": 34
-    },
-    {
-      "source": "vm0-ai/vm0-skills",
-      "skillId": "deepseek",
-      "name": "deepseek",
-      "installs": 34
-    },
-    {
-      "source": "modelcontextprotocol/ext-apps",
-      "skillId": "convert-web-app",
-      "name": "convert-web-app",
-      "installs": 34
-    },
-    {
-      "source": "fluid-tools/claude-skills",
-      "skillId": "convex-components",
-      "name": "convex-components",
-      "installs": 34
-    },
-    {
       "source": "oldwinter/skills",
       "skillId": "kubectl",
       "name": "kubectl",
@@ -1309,6 +1255,78 @@
       "source": "dylanfeltus/skills",
       "skillId": "producthunt",
       "name": "producthunt",
+      "installs": 34
+    },
+    {
+      "source": "ampcode/amp-contrib",
+      "skillId": "ast-grep",
+      "name": "ast-grep",
+      "installs": 34
+    },
+    {
+      "source": "lihaoze123/my-skills",
+      "skillId": "nixos-best-practices",
+      "name": "nixos-best-practices",
+      "installs": 34
+    },
+    {
+      "source": "josiahsiegel/claude-plugin-marketplace",
+      "skillId": "windows-git-bash-paths",
+      "name": "windows-git-bash-paths",
+      "installs": 34
+    },
+    {
+      "source": "vm0-ai/vm0-skills",
+      "skillId": "deepseek",
+      "name": "deepseek",
+      "installs": 34
+    },
+    {
+      "source": "modelcontextprotocol/ext-apps",
+      "skillId": "convert-web-app",
+      "name": "convert-web-app",
+      "installs": 34
+    },
+    {
+      "source": "fluid-tools/claude-skills",
+      "skillId": "convex-components",
+      "name": "convex-components",
+      "installs": 34
+    },
+    {
+      "source": "codestackr/livekit-skills",
+      "skillId": "agents-py",
+      "name": "agents-py",
+      "installs": 34
+    },
+    {
+      "source": "yonatangross/orchestkit",
+      "skillId": "analytics",
+      "name": "analytics",
+      "installs": 34
+    },
+    {
+      "source": "shipshitdev/library",
+      "skillId": "workflow-automation",
+      "name": "workflow-automation",
+      "installs": 34
+    },
+    {
+      "source": "oimiragieo/agent-studio",
+      "skillId": "typescript-expert",
+      "name": "typescript-expert",
+      "installs": 34
+    },
+    {
+      "source": "supercent-io/skills-template",
+      "skillId": "genkit",
+      "name": "genkit",
+      "installs": 34
+    },
+    {
+      "source": "yeachan-heo/oh-my-claudecode",
+      "skillId": "research",
+      "name": "research",
       "installs": 34
     },
     {
@@ -1510,6 +1528,12 @@
       "installs": 34
     },
     {
+      "source": "bellopushon/whatsapp-cloud-api",
+      "skillId": "whatsapp-cloud-api",
+      "name": "whatsapp-cloud-api",
+      "installs": 34
+    },
+    {
       "source": "epicenterhq/epicenter",
       "skillId": "tauri",
       "name": "tauri",
@@ -1708,6 +1732,12 @@
       "installs": 34
     },
     {
+      "source": "manutej/luxor-claude-marketplace",
+      "skillId": "postgresql-database-administration",
+      "name": "postgresql database administration",
+      "installs": 34
+    },
+    {
       "source": "josiahsiegel/claude-plugin-marketplace",
       "skillId": "sprint-254-features",
       "name": "sprint-254-features",
@@ -1840,12 +1870,6 @@
       "installs": 34
     },
     {
-      "source": "hyva-themes/hyva-ai-tools",
-      "skillId": "hyva-create-module",
-      "name": "hyva-create-module",
-      "installs": 34
-    },
-    {
       "source": "shipshitdev/library",
       "skillId": "internal-comms",
       "name": "internal-comms",
@@ -1897,6 +1921,12 @@
       "source": "patricio0312rev/skills",
       "skillId": "queue-job-processor",
       "name": "queue-job-processor",
+      "installs": 34
+    },
+    {
+      "source": "lobbi-docs/claude",
+      "skillId": "kanban",
+      "name": "kanban",
       "installs": 34
     },
     {
@@ -2023,12 +2053,6 @@
       "source": "jst-well-dan/skill-box",
       "skillId": "advanced-video-downloader",
       "name": "advanced-video-downloader",
-      "installs": 33
-    },
-    {
-      "source": "get-convex/convex-agent-plugins",
-      "skillId": "migration-helper",
-      "name": "migration-helper",
       "installs": 33
     },
     {
@@ -2242,12 +2266,6 @@
       "installs": 33
     },
     {
-      "source": "hyva-themes/hyva-ai-tools",
-      "skillId": "hyva-ui-component",
-      "name": "hyva-ui-component",
-      "installs": 33
-    },
-    {
       "source": "ncklrs/startup-os-skills",
       "skillId": "growth-product-manager",
       "name": "growth-product-manager",
@@ -2281,6 +2299,12 @@
       "source": "openai/openai-agents-python",
       "skillId": "pr-draft-summary",
       "name": "pr-draft-summary",
+      "installs": 33
+    },
+    {
+      "source": "hyva-themes/hyva-ai-tools",
+      "skillId": "hyva-cms-components-dump",
+      "name": "hyva-cms-components-dump",
       "installs": 33
     },
     {
@@ -2404,6 +2428,12 @@
       "installs": 33
     },
     {
+      "source": "docyrus/agent-skills",
+      "skillId": "docyrus-app-dev",
+      "name": "docyrus-app-dev",
+      "installs": 33
+    },
+    {
       "source": "oaustegard/claude-skills",
       "skillId": "developing-preact",
       "name": "developing-preact",
@@ -2440,18 +2470,6 @@
       "installs": 33
     },
     {
-      "source": "odyssey4me/agent-skills",
-      "skillId": "github",
-      "name": "github",
-      "installs": 33
-    },
-    {
-      "source": "psiace/skills",
-      "skillId": "piglet",
-      "name": "piglet",
-      "installs": 33
-    },
-    {
       "source": "hughpyle/keep",
       "skillId": "keep",
       "name": "keep",
@@ -2464,6 +2482,12 @@
       "installs": 33
     },
     {
+      "source": "hyva-themes/hyva-ai-tools",
+      "skillId": "hyva-playwright-test",
+      "name": "hyva-playwright-test",
+      "installs": 33
+    },
+    {
       "source": "sickn33/antigravity-awesome-skills",
       "skillId": "cal-com-automation",
       "name": "cal-com-automation",
@@ -2473,6 +2497,18 @@
       "source": "altinity/skills",
       "skillId": "altinity-expert-clickhouse-part-log",
       "name": "altinity-expert-clickhouse-part-log",
+      "installs": 33
+    },
+    {
+      "source": "odyssey4me/agent-skills",
+      "skillId": "github",
+      "name": "github",
+      "installs": 33
+    },
+    {
+      "source": "psiace/skills",
+      "skillId": "piglet",
+      "name": "piglet",
       "installs": 33
     },
     {
@@ -2566,6 +2602,12 @@
       "installs": 33
     },
     {
+      "source": "tiangong-ai/skills",
+      "skillId": "ai-tech-rss-fetch",
+      "name": "ai-tech-rss-fetch",
+      "installs": 33
+    },
+    {
       "source": "personamanagmentlayer/pcl",
       "skillId": "retail-expert",
       "name": "retail-expert",
@@ -2587,6 +2629,12 @@
       "source": "hieutrtr/ai1-skills",
       "skillId": "react-frontend-expert",
       "name": "react-frontend-expert",
+      "installs": 33
+    },
+    {
+      "source": "n8n-io/n8n",
+      "skillId": "linear-issue",
+      "name": "linear-issue",
       "installs": 33
     },
     {
@@ -2752,6 +2800,12 @@
       "installs": 33
     },
     {
+      "source": "deanpeters/product-manager-skills",
+      "skillId": "customer-journey-map",
+      "name": "customer-journey-map",
+      "installs": 33
+    },
+    {
       "source": "proompteng/lab",
       "skillId": "gitops",
       "name": "gitops",
@@ -2767,12 +2821,6 @@
       "source": "microsoft/vscode-copilot-chat",
       "skillId": "agent-customization",
       "name": "agent-customization",
-      "installs": 33
-    },
-    {
-      "source": "bellopushon/whatsapp-cloud-api",
-      "skillId": "whatsapp-cloud-api",
-      "name": "whatsapp-cloud-api",
       "installs": 33
     },
     {
@@ -2803,6 +2851,12 @@
       "source": "dkyazzentwatwa/chatgpt-skills",
       "skillId": "financial-calculator",
       "name": "financial-calculator",
+      "installs": 33
+    },
+    {
+      "source": "hyva-themes/hyva-ai-tools",
+      "skillId": "hyva-cms-custom-field",
+      "name": "hyva-cms-custom-field",
       "installs": 33
     },
     {
@@ -2851,6 +2905,18 @@
       "source": "terramate-io/agent-skills",
       "skillId": "terramate-best-practices",
       "name": "terramate-best-practices",
+      "installs": 33
+    },
+    {
+      "source": "harlan-zw/vue-ecosystem-skills",
+      "skillId": "vue-i18n-skilld",
+      "name": "vue-i18n-skilld",
+      "installs": 33
+    },
+    {
+      "source": "apollographql/skills",
+      "skillId": "apollo-router-plugin-creator",
+      "name": "apollo-router-plugin-creator",
       "installs": 33
     },
     {
@@ -2965,12 +3031,6 @@
       "source": "groeimetai/snow-flow",
       "skillId": "knowledge-management",
       "name": "knowledge-management",
-      "installs": 33
-    },
-    {
-      "source": "manutej/luxor-claude-marketplace",
-      "skillId": "postgresql-database-administration",
-      "name": "postgresql database administration",
       "installs": 33
     },
     {
@@ -3118,12 +3178,6 @@
       "installs": 33
     },
     {
-      "source": "lobbi-docs/claude",
-      "skillId": "kanban",
-      "name": "kanban",
-      "installs": 33
-    },
-    {
       "source": "groeimetai/snow-flow",
       "skillId": "mcp-tool-discovery",
       "name": "mcp-tool-discovery",
@@ -3184,6 +3238,12 @@
       "installs": 33
     },
     {
+      "source": "yulong-me/skills",
+      "skillId": "daily-news-summarizer",
+      "name": "daily-news-summarizer",
+      "installs": 33
+    },
+    {
       "source": "terrylica/cc-skills",
       "skillId": "mlflow-python",
       "name": "mlflow-python",
@@ -3193,6 +3253,12 @@
       "source": "dennisonbertram/claude-media-skills",
       "skillId": "realistic-ugc-video",
       "name": "realistic-ugc-video",
+      "installs": 33
+    },
+    {
+      "source": "hyva-themes/hyva-ai-tools",
+      "skillId": "hyva-child-theme",
+      "name": "hyva-child-theme",
       "installs": 33
     },
     {
@@ -3244,6 +3310,12 @@
       "installs": 32
     },
     {
+      "source": "harlan-zw/vue-ecosystem-skills",
+      "skillId": "vueuse-components-skilld",
+      "name": "vueuse-components-skilld",
+      "installs": 32
+    },
+    {
       "source": "microsoft/vscode",
       "skillId": "tool-rename-deprecation",
       "name": "tool-rename-deprecation",
@@ -3277,6 +3349,12 @@
       "source": "personamanagmentlayer/pcl",
       "skillId": "spring-boot-expert",
       "name": "spring-boot-expert",
+      "installs": 32
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "josechifflet-shadcn-ui",
+      "name": "josechifflet-shadcn-ui",
       "installs": 32
     },
     {
@@ -3442,12 +3520,6 @@
       "installs": 32
     },
     {
-      "source": "hyva-themes/hyva-ai-tools",
-      "skillId": "hyva-cms-components-dump",
-      "name": "hyva-cms-components-dump",
-      "installs": 32
-    },
-    {
       "source": "borghei/claude-skills",
       "skillId": "coo-advisor",
       "name": "coo-advisor",
@@ -3568,6 +3640,12 @@
       "installs": 32
     },
     {
+      "source": "get-convex/convex-agent-plugins",
+      "skillId": "components-guide",
+      "name": "components-guide",
+      "installs": 32
+    },
+    {
       "source": "paid-tw/skills",
       "skillId": "ecpay",
       "name": "ecpay",
@@ -3652,9 +3730,9 @@
       "installs": 32
     },
     {
-      "source": "docyrus/agent-skills",
-      "skillId": "docyrus-app-dev",
-      "name": "docyrus-app-dev",
+      "source": "aaronontheweb/dotnet-skills",
+      "skillId": "aspire-service-defaults",
+      "name": "aspire-service-defaults",
       "installs": 32
     },
     {
@@ -3691,6 +3769,12 @@
       "source": "cloudai-x/claude-workflow-v2",
       "skillId": "designing-tests",
       "name": "designing-tests",
+      "installs": 32
+    },
+    {
+      "source": "secondsky/claude-skills",
+      "skillId": "api-error-handling",
+      "name": "api-error-handling",
       "installs": 32
     },
     {
@@ -3748,39 +3832,21 @@
       "installs": 32
     },
     {
-      "source": "massimodeluisa/recursive-decomposition-skill",
-      "skillId": "recursive-decomposition",
-      "name": "recursive-decomposition",
+      "source": "epicenterhq/epicenter",
+      "skillId": "yjs",
+      "name": "yjs",
       "installs": 32
     },
     {
-      "source": "fabioc-aloha/spotify-skill",
-      "skillId": "spotify-api",
-      "name": "spotify-api",
+      "source": "open-horizon-labs/skills",
+      "skillId": "problem-space",
+      "name": "problem-space",
       "installs": 32
     },
     {
-      "source": "cap-go/capacitor-skills",
-      "skillId": "capacitor-mcp",
-      "name": "capacitor-mcp",
-      "installs": 32
-    },
-    {
-      "source": "secondsky/claude-skills",
-      "skillId": "claude-code-bash-patterns",
-      "name": "claude-code-bash-patterns",
-      "installs": 32
-    },
-    {
-      "source": "linehaul-ai/linehaulai-claude-marketplace",
-      "skillId": "rbac-authorization-patterns",
-      "name": "rbac-authorization-patterns",
-      "installs": 32
-    },
-    {
-      "source": "letta-ai/skills",
-      "skillId": "financial-document-processor",
-      "name": "financial-document-processor",
+      "source": "dbt-labs/dbt-agent-skills",
+      "skillId": "configuring-dbt-mcp-server",
+      "name": "configuring-dbt-mcp-server",
       "installs": 32
     },
     {
@@ -3808,15 +3874,15 @@
       "installs": 32
     },
     {
-      "source": "hyva-themes/hyva-ai-tools",
-      "skillId": "hyva-playwright-test",
-      "name": "hyva-playwright-test",
-      "installs": 32
-    },
-    {
       "source": "casper-studios/casper-marketplace",
       "skillId": "commit",
       "name": "commit",
+      "installs": 32
+    },
+    {
+      "source": "davila7/claude-code-templates",
+      "skillId": "memory-search",
+      "name": "memory-search",
       "installs": 32
     },
     {
@@ -3850,21 +3916,39 @@
       "installs": 32
     },
     {
-      "source": "epicenterhq/epicenter",
-      "skillId": "yjs",
-      "name": "yjs",
+      "source": "massimodeluisa/recursive-decomposition-skill",
+      "skillId": "recursive-decomposition",
+      "name": "recursive-decomposition",
       "installs": 32
     },
     {
-      "source": "open-horizon-labs/skills",
-      "skillId": "problem-space",
-      "name": "problem-space",
+      "source": "fabioc-aloha/spotify-skill",
+      "skillId": "spotify-api",
+      "name": "spotify-api",
       "installs": 32
     },
     {
-      "source": "dbt-labs/dbt-agent-skills",
-      "skillId": "configuring-dbt-mcp-server",
-      "name": "configuring-dbt-mcp-server",
+      "source": "cap-go/capacitor-skills",
+      "skillId": "capacitor-mcp",
+      "name": "capacitor-mcp",
+      "installs": 32
+    },
+    {
+      "source": "secondsky/claude-skills",
+      "skillId": "claude-code-bash-patterns",
+      "name": "claude-code-bash-patterns",
+      "installs": 32
+    },
+    {
+      "source": "linehaul-ai/linehaulai-claude-marketplace",
+      "skillId": "rbac-authorization-patterns",
+      "name": "rbac-authorization-patterns",
+      "installs": 32
+    },
+    {
+      "source": "letta-ai/skills",
+      "skillId": "financial-document-processor",
+      "name": "financial-document-processor",
       "installs": 32
     },
     {
@@ -3982,15 +4066,15 @@
       "installs": 32
     },
     {
-      "source": "tiangong-ai/skills",
-      "skillId": "ai-tech-rss-fetch",
-      "name": "ai-tech-rss-fetch",
-      "installs": 32
-    },
-    {
       "source": "danielmiessler/personal_ai_infrastructure",
       "skillId": "fabric",
       "name": "fabric",
+      "installs": 32
+    },
+    {
+      "source": "deanpeters/product-manager-skills",
+      "skillId": "discovery-process",
+      "name": "discovery-process",
       "installs": 32
     },
     {
@@ -4084,15 +4168,15 @@
       "installs": 32
     },
     {
-      "source": "deanpeters/product-manager-skills",
-      "skillId": "customer-journey-map",
-      "name": "customer-journey-map",
-      "installs": 32
-    },
-    {
       "source": "borghei/claude-skills",
       "skillId": "cto-advisor",
       "name": "cto-advisor",
+      "installs": 32
+    },
+    {
+      "source": "deanpeters/product-manager-skills",
+      "skillId": "company-research",
+      "name": "company-research",
       "installs": 32
     },
     {
@@ -4120,6 +4204,12 @@
       "installs": 32
     },
     {
+      "source": "aaronontheweb/dotnet-skills",
+      "skillId": "akka-net-management",
+      "name": "akka-net-management",
+      "installs": 32
+    },
+    {
       "source": "erichowens/some_claude_skills",
       "skillId": "web-wave-designer",
       "name": "web-wave-designer",
@@ -4129,12 +4219,6 @@
       "source": "smithery/ai",
       "skillId": "agent-identifier",
       "name": "agent-identifier",
-      "installs": 32
-    },
-    {
-      "source": "hyva-themes/hyva-ai-tools",
-      "skillId": "hyva-cms-custom-field",
-      "name": "hyva-cms-custom-field",
       "installs": 32
     },
     {
@@ -4168,12 +4252,6 @@
       "installs": 32
     },
     {
-      "source": "harlan-zw/vue-ecosystem-skills",
-      "skillId": "vue-i18n-skilld",
-      "name": "vue-i18n-skilld",
-      "installs": 32
-    },
-    {
       "source": "dengineproblem/agents-monorepo",
       "skillId": "bug-bounty-program",
       "name": "bug-bounty-program",
@@ -4201,6 +4279,12 @@
       "source": "wix/skills",
       "skillId": "wix-cli-backend-event",
       "name": "wix-cli-backend-event",
+      "installs": 32
+    },
+    {
+      "source": "deanpeters/product-manager-skills",
+      "skillId": "saas-revenue-growth-metrics",
+      "name": "saas-revenue-growth-metrics",
       "installs": 32
     },
     {
@@ -4285,6 +4369,12 @@
       "source": "abelv22/project-foundation",
       "skillId": "offline-sync",
       "name": "offline-sync",
+      "installs": 32
+    },
+    {
+      "source": "kesslerio/technews-openclaw-skill",
+      "skillId": "technews",
+      "name": "technews",
       "installs": 32
     },
     {
@@ -4426,12 +4516,6 @@
       "installs": 32
     },
     {
-      "source": "yulong-me/skills",
-      "skillId": "daily-news-summarizer",
-      "name": "daily-news-summarizer",
-      "installs": 32
-    },
-    {
       "source": "getsentry/xcodebuildmcp",
       "skillId": "xcodebuildmcp",
       "name": "xcodebuildmcp",
@@ -4459,12 +4543,6 @@
       "source": "tryhuset/agent-skills",
       "skillId": "swift-composable-architecture",
       "name": "swift-composable-architecture",
-      "installs": 32
-    },
-    {
-      "source": "hyva-themes/hyva-ai-tools",
-      "skillId": "hyva-child-theme",
-      "name": "hyva-child-theme",
       "installs": 32
     },
     {
@@ -4666,12 +4744,6 @@
       "installs": 31
     },
     {
-      "source": "harlan-zw/vue-ecosystem-skills",
-      "skillId": "vueuse-components-skilld",
-      "name": "vueuse-components-skilld",
-      "installs": 31
-    },
-    {
       "source": "jdrhyne/agent-skills",
       "skillId": "ga4",
       "name": "ga4",
@@ -4699,12 +4771,6 @@
       "source": "sickn33/antigravity-awesome-skills",
       "skillId": "close-automation",
       "name": "close-automation",
-      "installs": 31
-    },
-    {
-      "source": "smithery/ai",
-      "skillId": "josechifflet-shadcn-ui",
-      "name": "josechifflet-shadcn-ui",
       "installs": 31
     },
     {
@@ -4900,6 +4966,12 @@
       "installs": 31
     },
     {
+      "source": "aaronontheweb/dotnet-skills",
+      "skillId": "akka-hosting-actor-patterns",
+      "name": "akka-hosting-actor-patterns",
+      "installs": 31
+    },
+    {
       "source": "cap-go/capacitor-skills",
       "skillId": "capgo-live-updates",
       "name": "capgo-live-updates",
@@ -4960,12 +5032,6 @@
       "installs": 31
     },
     {
-      "source": "get-convex/convex-agent-plugins",
-      "skillId": "components-guide",
-      "name": "components-guide",
-      "installs": 31
-    },
-    {
       "source": "delphine-l/claude_global",
       "skillId": "jupyter-notebook-analysis",
       "name": "jupyter-notebook-analysis",
@@ -4975,6 +5041,12 @@
       "source": "supercent-io/skills-template",
       "skillId": "vibe-kanban",
       "name": "vibe-kanban",
+      "installs": 31
+    },
+    {
+      "source": "robthepcguy/claude-patent-creator",
+      "skillId": "prior-art-search",
+      "name": "prior-art-search",
       "installs": 31
     },
     {
@@ -5032,12 +5104,6 @@
       "installs": 31
     },
     {
-      "source": "aaronontheweb/dotnet-skills",
-      "skillId": "aspire-service-defaults",
-      "name": "aspire-service-defaults",
-      "installs": 31
-    },
-    {
       "source": "umbraco/umbraco-cms-backoffice-skills",
       "skillId": "umbraco-property-editor-schema",
       "name": "umbraco-property-editor-schema",
@@ -5047,12 +5113,6 @@
       "source": "proompteng/lab",
       "skillId": "deployment",
       "name": "deployment",
-      "installs": 31
-    },
-    {
-      "source": "secondsky/claude-skills",
-      "skillId": "api-error-handling",
-      "name": "api-error-handling",
       "installs": 31
     },
     {
@@ -5104,39 +5164,21 @@
       "installs": 31
     },
     {
-      "source": "personamanagmentlayer/pcl",
-      "skillId": "research-expert",
-      "name": "research-expert",
+      "source": "teachingai/full-stack-skills",
+      "skillId": "ddd-event-driven",
+      "name": "ddd-event-driven",
       "installs": 31
     },
     {
-      "source": "appautomaton/document-skills",
-      "skillId": "docx",
-      "name": "docx",
+      "source": "neolabhq/context-engineering-kit",
+      "skillId": "reflexion:reflect",
+      "name": "reflexion:reflect",
       "installs": 31
     },
     {
-      "source": "erichowens/some_claude_skills",
-      "skillId": "skill-coach",
-      "name": "skill-coach",
-      "installs": 31
-    },
-    {
-      "source": "lyndonkl/claude",
-      "skillId": "communication-storytelling",
-      "name": "communication-storytelling",
-      "installs": 31
-    },
-    {
-      "source": "dengineproblem/agents-monorepo",
-      "skillId": "sales-operations",
-      "name": "sales-operations",
-      "installs": 31
-    },
-    {
-      "source": "thebushidocollective/han",
-      "skillId": "bdd-scenarios",
-      "name": "bdd-scenarios",
+      "source": "llama-farm/llamafarm",
+      "skillId": "cli-skills",
+      "name": "cli-skills",
       "installs": 31
     },
     {
@@ -5167,12 +5209,6 @@
       "source": "oimiragieo/agent-studio",
       "skillId": "styling-expert",
       "name": "styling-expert",
-      "installs": 31
-    },
-    {
-      "source": "davila7/claude-code-templates",
-      "skillId": "memory-search",
-      "name": "memory-search",
       "installs": 31
     },
     {
@@ -5230,21 +5266,39 @@
       "installs": 31
     },
     {
-      "source": "teachingai/full-stack-skills",
-      "skillId": "ddd-event-driven",
-      "name": "ddd-event-driven",
+      "source": "personamanagmentlayer/pcl",
+      "skillId": "research-expert",
+      "name": "research-expert",
       "installs": 31
     },
     {
-      "source": "neolabhq/context-engineering-kit",
-      "skillId": "reflexion:reflect",
-      "name": "reflexion:reflect",
+      "source": "appautomaton/document-skills",
+      "skillId": "docx",
+      "name": "docx",
       "installs": 31
     },
     {
-      "source": "llama-farm/llamafarm",
-      "skillId": "cli-skills",
-      "name": "cli-skills",
+      "source": "erichowens/some_claude_skills",
+      "skillId": "skill-coach",
+      "name": "skill-coach",
+      "installs": 31
+    },
+    {
+      "source": "lyndonkl/claude",
+      "skillId": "communication-storytelling",
+      "name": "communication-storytelling",
+      "installs": 31
+    },
+    {
+      "source": "dengineproblem/agents-monorepo",
+      "skillId": "sales-operations",
+      "name": "sales-operations",
+      "installs": 31
+    },
+    {
+      "source": "thebushidocollective/han",
+      "skillId": "bdd-scenarios",
+      "name": "bdd-scenarios",
       "installs": 31
     },
     {
@@ -5329,18 +5383,6 @@
       "source": "thebushidocollective/han",
       "skillId": "atomic-design-organisms",
       "name": "atomic-design-organisms",
-      "installs": 31
-    },
-    {
-      "source": "deanpeters/product-manager-skills",
-      "skillId": "discovery-process",
-      "name": "discovery-process",
-      "installs": 31
-    },
-    {
-      "source": "n8n-io/n8n",
-      "skillId": "linear-issue",
-      "name": "linear-issue",
       "installs": 31
     },
     {
@@ -5446,6 +5488,18 @@
       "installs": 31
     },
     {
+      "source": "aaronontheweb/dotnet-skills",
+      "skillId": "akka-net-testing-patterns",
+      "name": "akka-net-testing-patterns",
+      "installs": 31
+    },
+    {
+      "source": "abdullahbeam/nexus-design-abdullah",
+      "skillId": "mental-models",
+      "name": "mental-models",
+      "installs": 31
+    },
+    {
       "source": "jeremylongshore/claude-code-plugins-plus-skills",
       "skillId": "linux-commands-guide",
       "name": "linux-commands-guide",
@@ -5518,12 +5572,6 @@
       "installs": 31
     },
     {
-      "source": "deanpeters/product-manager-skills",
-      "skillId": "company-research",
-      "name": "company-research",
-      "installs": 31
-    },
-    {
       "source": "casper-studios/casper-marketplace",
       "skillId": "bump-deps",
       "name": "bump-deps",
@@ -5557,12 +5605,6 @@
       "source": "sickn33/antigravity-awesome-skills",
       "skillId": "posthog-automation",
       "name": "posthog-automation",
-      "installs": 31
-    },
-    {
-      "source": "aaronontheweb/dotnet-skills",
-      "skillId": "akka-net-management",
-      "name": "akka-net-management",
       "installs": 31
     },
     {
@@ -5662,12 +5704,6 @@
       "installs": 31
     },
     {
-      "source": "apollographql/skills",
-      "skillId": "apollo-router-plugin-creator",
-      "name": "apollo-router-plugin-creator",
-      "installs": 31
-    },
-    {
       "source": "masayuki-kono/agent-skills",
       "skillId": "implementation-plan",
       "name": "implementation-plan",
@@ -5701,12 +5737,6 @@
       "source": "bitwarden/android",
       "skillId": "reviewing-changes",
       "name": "reviewing-changes",
-      "installs": 31
-    },
-    {
-      "source": "deanpeters/product-manager-skills",
-      "skillId": "saas-revenue-growth-metrics",
-      "name": "saas-revenue-growth-metrics",
       "installs": 31
     },
     {
@@ -5854,12 +5884,6 @@
       "installs": 31
     },
     {
-      "source": "kesslerio/technews-openclaw-skill",
-      "skillId": "technews",
-      "name": "technews",
-      "installs": 31
-    },
-    {
       "source": "vibeflowing-inc/vibe_figma",
       "skillId": "vibefigma",
       "name": "vibefigma",
@@ -5977,30 +6001,6 @@
       "source": "dylantarre/animation-principles",
       "skillId": "gaming-entertainment",
       "name": "gaming-entertainment",
-      "installs": 31
-    },
-    {
-      "source": "nicepkg/ai-workflow",
-      "skillId": "email-subject-line-optimizer",
-      "name": "email-subject-line-optimizer",
-      "installs": 31
-    },
-    {
-      "source": "patricio0312rev/skills",
-      "skillId": "modal-drawer-system",
-      "name": "modal-drawer-system",
-      "installs": 31
-    },
-    {
-      "source": "secondsky/claude-skills",
-      "skillId": "nuxt-data",
-      "name": "nuxt-data",
-      "installs": 31
-    },
-    {
-      "source": "secondsky/claude-skills",
-      "skillId": "recommendation-engine",
-      "name": "recommendation-engine",
       "installs": 31
     }
   ]

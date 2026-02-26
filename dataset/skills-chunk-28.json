@@ -4,6 +4,126 @@
   "count": 1000,
   "skills": [
     {
+      "source": "jkense/agent-skills-wcag",
+      "skillId": "wcag-audit-perceivable-color-contrast",
+      "name": "wcag-audit-perceivable-color-contrast",
+      "installs": 10
+    },
+    {
+      "source": "openharmonyinsight/openharmony-skills",
+      "skillId": "build-error-analyzer",
+      "name": "build-error-analyzer",
+      "installs": 10
+    },
+    {
+      "source": "huifer/claude-code-interview",
+      "skillId": "jd-analyzer",
+      "name": "jd-analyzer",
+      "installs": 10
+    },
+    {
+      "source": "okikusan-public/stock_skills",
+      "skillId": "watchlist",
+      "name": "watchlist",
+      "installs": 10
+    },
+    {
+      "source": "pauljbernard/content",
+      "skillId": "learning-spaced-repetition",
+      "name": "learning-spaced-repetition",
+      "installs": 10
+    },
+    {
+      "source": "travisjneuman/.claude",
+      "skillId": "contract-redliner",
+      "name": "contract-redliner",
+      "installs": 10
+    },
+    {
+      "source": "omer-metin/skills-for-antigravity",
+      "skillId": "side-project-shipping",
+      "name": "side-project-shipping",
+      "installs": 10
+    },
+    {
+      "source": "anyoneanderson/agent-skills",
+      "skillId": "spec-workflow-init",
+      "name": "spec-workflow-init",
+      "installs": 10
+    },
+    {
+      "source": "inference-sh-4/skills",
+      "skillId": "book-cover-design",
+      "name": "book-cover-design",
+      "installs": 10
+    },
+    {
+      "source": "abdullahbeam/nexus-design-abdullah",
+      "skillId": "bulk-complete",
+      "name": "bulk-complete",
+      "installs": 10
+    },
+    {
+      "source": "ahgraber/skills",
+      "skillId": "python",
+      "name": "python",
+      "installs": 10
+    },
+    {
+      "source": "adaptationio/skrillz",
+      "skillId": "claude-cost-optimization",
+      "name": "claude-cost-optimization",
+      "installs": 10
+    },
+    {
+      "source": "neo552/tensorpm-releases",
+      "skillId": "tensorpm-agentic-pm",
+      "name": "tensorpm-agentic-pm",
+      "installs": 10
+    },
+    {
+      "source": "adeonir/agents-skills",
+      "skillId": "design-builder",
+      "name": "design-builder",
+      "installs": 10
+    },
+    {
+      "source": "oakoss/agent-skills",
+      "skillId": "python-uv",
+      "name": "python-uv",
+      "installs": 10
+    },
+    {
+      "source": "akin-ozer/cc-devops-skills",
+      "skillId": "github-actions-generator",
+      "name": "github-actions-generator",
+      "installs": 10
+    },
+    {
+      "source": "yennanliu/ai_experiment",
+      "skillId": "resume-writer",
+      "name": "resume-writer",
+      "installs": 10
+    },
+    {
+      "source": "hairyf/skills",
+      "skillId": "vue-router-best-practices",
+      "name": "vue-router-best-practices",
+      "installs": 10
+    },
+    {
+      "source": "mitsuhiko/agent-stuff",
+      "skillId": "google-workspace",
+      "name": "google-workspace",
+      "installs": 10
+    },
+    {
+      "source": "omer-metin/skills-for-antigravity",
+      "skillId": "tech-debt-manager",
+      "name": "tech-debt-manager",
+      "installs": 10
+    },
+    {
       "source": "github/awesome-copilot",
       "skillId": "update-implementation-plan",
       "name": "update-implementation-plan",
@@ -616,12 +736,6 @@
       "installs": 10
     },
     {
-      "source": "alavida-ai/skills",
-      "skillId": "visual-explainer",
-      "name": "visual-explainer",
-      "installs": 10
-    },
-    {
       "source": "bfly123/claude_code_bridge",
       "skillId": "all-plan",
       "name": "all-plan",
@@ -805,6 +919,12 @@
       "source": "jeremylongshore/claude-code-plugins-plus-skills",
       "skillId": "cloud-function-generator",
       "name": "cloud-function-generator",
+      "installs": 10
+    },
+    {
+      "source": "sachacoldiq/coldiq-s-gtm-skills",
+      "skillId": "clay-enrichment-9step",
+      "name": "clay-enrichment-9step",
       "installs": 10
     },
     {
@@ -1051,12 +1171,6 @@
       "source": "inference-sh-1/skills",
       "skillId": "agent-tools",
       "name": "agent-tools",
-      "installs": 10
-    },
-    {
-      "source": "sickn33/antigravity-awesome-skills",
-      "skillId": "postgresql-optimization",
-      "name": "postgresql-optimization",
       "installs": 10
     },
     {
@@ -2008,12 +2122,6 @@
       "installs": 9
     },
     {
-      "source": "guia-matthieu/clawfu-skills",
-      "skillId": "never-split-difference",
-      "name": "never-split-difference",
-      "installs": 9
-    },
-    {
       "source": "levnikolaevich/claude-code-skills",
       "skillId": "ln-510-quality-coordinator",
       "name": "ln-510-quality-coordinator",
@@ -2443,6 +2551,12 @@
       "source": "rsmdt/the-startup",
       "skillId": "coding-conventions",
       "name": "coding-conventions",
+      "installs": 9
+    },
+    {
+      "source": "riba2534/feishu-cli",
+      "skillId": "feishu-cli-sheet",
+      "name": "feishu-cli-sheet",
       "installs": 9
     },
     {
@@ -3004,12 +3118,6 @@
       "installs": 9
     },
     {
-      "source": "team-attention/workshop-upstage",
-      "skillId": "clarify:metamedium",
-      "name": "clarify:metamedium",
-      "installs": 9
-    },
-    {
       "source": "olehsvyrydov/ai-development-team",
       "skillId": "product-owner",
       "name": "product-owner",
@@ -3100,12 +3208,6 @@
       "installs": 9
     },
     {
-      "source": "riba2534/feishu-cli",
-      "skillId": "feishu-cli-media",
-      "name": "feishu-cli-media",
-      "installs": 9
-    },
-    {
       "source": "inf-sh/skills",
       "skillId": "ai-content-pipeline",
       "name": "ai-content-pipeline",
@@ -3145,12 +3247,6 @@
       "source": "jst-well-dan/skill-box",
       "skillId": "changelog-generator",
       "name": "changelog-generator",
-      "installs": 9
-    },
-    {
-      "source": "cartridge-gg/docs",
-      "skillId": "create-pr",
-      "name": "create-pr",
       "installs": 9
     },
     {
@@ -3391,12 +3487,6 @@
       "source": "tatat/agents-playground",
       "skillId": "research-assistant",
       "name": "research-assistant",
-      "installs": 9
-    },
-    {
-      "source": "polymarket/agent-skills",
-      "skillId": "web3-polymarket",
-      "name": "web3-polymarket",
       "installs": 9
     },
     {
@@ -3940,6 +4030,12 @@
       "installs": 9
     },
     {
+      "source": "guia-matthieu/clawfu-skills",
+      "skillId": "sales-letter-writer",
+      "name": "sales-letter-writer",
+      "installs": 9
+    },
+    {
       "source": "yoanbernabeu/producthunt-skills",
       "skillId": "ph-competitor-analysis",
       "name": "ph-competitor-analysis",
@@ -4354,6 +4450,12 @@
       "installs": 9
     },
     {
+      "source": "molezzz/openclaw-stock-skill",
+      "skillId": "akshare-stock",
+      "name": "akshare-stock",
+      "installs": 9
+    },
+    {
       "source": "omidzamani/dspy-skills",
       "skillId": "dspy-advanced-module-composition",
       "name": "dspy-advanced-module-composition",
@@ -4498,12 +4600,6 @@
       "installs": 9
     },
     {
-      "source": "riba2534/feishu-cli",
-      "skillId": "feishu-cli-wiki",
-      "name": "feishu-cli-wiki",
-      "installs": 9
-    },
-    {
       "source": "davepoon/buildwithclaude",
       "skillId": "tailored-resume-generator",
       "name": "tailored-resume-generator",
@@ -4597,12 +4693,6 @@
       "source": "jimmc414/kosmos",
       "skillId": "latex-posters",
       "name": "latex-posters",
-      "installs": 9
-    },
-    {
-      "source": "jst-well-dan/skill-box",
-      "skillId": "deep-reading",
-      "name": "deep-reading",
       "installs": 9
     },
     {
@@ -5911,96 +6001,6 @@
       "source": "inf-sh/skills",
       "skillId": "youtube-thumbnail-design",
       "name": "youtube-thumbnail-design",
-      "installs": 9
-    },
-    {
-      "source": "yuniorglez/gemini-elite-core",
-      "skillId": "nestjs-pro",
-      "name": "nestjs-pro",
-      "installs": 9
-    },
-    {
-      "source": "saschabrunnerch/arcgis-maps-sdk-js-ai-context",
-      "skillId": "arcgis-scene-effects",
-      "name": "arcgis-scene-effects",
-      "installs": 9
-    },
-    {
-      "source": "al1enjesus/human-browser",
-      "skillId": "human-browser",
-      "name": "human-browser",
-      "installs": 9
-    },
-    {
-      "source": "reactive/data-client",
-      "skillId": "data-client-rest",
-      "name": "data-client-rest",
-      "installs": 9
-    },
-    {
-      "source": "chrislemke/stoffy",
-      "skillId": "philosophy-of-mind",
-      "name": "philosophy-of-mind",
-      "installs": 9
-    },
-    {
-      "source": "ed1s0nz/cyberstrikeai",
-      "skillId": "csrf-testing",
-      "name": "csrf-testing",
-      "installs": 9
-    },
-    {
-      "source": "bankrbot/claude-plugins",
-      "skillId": "bankr-agent---token-deployment",
-      "name": "bankr agent - token deployment",
-      "installs": 9
-    },
-    {
-      "source": "sundial-org/awesome-openclaw-skills",
-      "skillId": "calendar",
-      "name": "calendar",
-      "installs": 9
-    },
-    {
-      "source": "nilecui/skillsbase",
-      "skillId": "documentation-generation",
-      "name": "documentation-generation",
-      "installs": 9
-    },
-    {
-      "source": "sandraschi/advanced-memory-mcp",
-      "skillId": "skill-creator",
-      "name": "skill-creator",
-      "installs": 9
-    },
-    {
-      "source": "1nfsh/s",
-      "skillId": "technical-blog-writing",
-      "name": "technical-blog-writing",
-      "installs": 9
-    },
-    {
-      "source": "jkense/agent-skills-wcag",
-      "skillId": "wcag-audit-operable-keyboard-focus",
-      "name": "wcag-audit-operable-keyboard-focus",
-      "installs": 9
-    },
-    {
-      "source": "leeovery/claude-technical-workflows",
-      "skillId": "view-plan",
-      "name": "view-plan",
-      "installs": 9
-    },
-    {
-      "source": "glittercowboy/plugin-freedom-system",
-      "skillId": "plugin-packaging",
-      "name": "plugin-packaging",
-      "installs": 9
-    },
-    {
-      "source": "adynato/skills",
-      "skillId": "adynato-github",
-      "name": "adynato-github",
       "installs": 9
     }
   ]

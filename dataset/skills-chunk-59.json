@@ -4,6 +4,54 @@
   "count": 1000,
   "skills": [
     {
+      "source": "gked2121/claude-skills",
+      "skillId": "internal-email-composer",
+      "name": "internal-email-composer",
+      "installs": 3
+    },
+    {
+      "source": "5dlabs/cto",
+      "skillId": "better-auth-electron",
+      "name": "better-auth-electron",
+      "installs": 3
+    },
+    {
+      "source": "tiangong-lca/skills",
+      "skillId": "flow-hybrid-search",
+      "name": "flow-hybrid-search",
+      "installs": 3
+    },
+    {
+      "source": "sarojpunde/shopify-dev-toolkit-claude-plugins",
+      "skillId": "polaris-compositions",
+      "name": "polaris-compositions",
+      "installs": 3
+    },
+    {
+      "source": "anthemflynn/ccmp",
+      "skillId": "openspec-brainstorming",
+      "name": "openspec-brainstorming",
+      "installs": 3
+    },
+    {
+      "source": "sgaabdu4/building-flutter-apps",
+      "skillId": "building-flutter-apps",
+      "name": "building-flutter-apps",
+      "installs": 3
+    },
+    {
+      "source": "bfmcneill/agi-marketplace",
+      "skillId": "agent-behavior",
+      "name": "agent-behavior",
+      "installs": 3
+    },
+    {
+      "source": "lgbarn/devops-skills",
+      "skillId": "writing-plans",
+      "name": "writing-plans",
+      "installs": 3
+    },
+    {
       "source": "liqiongyu/lenny_skills_plus",
       "skillId": "delegating-work",
       "name": "delegating-work",
@@ -490,15 +538,15 @@
       "installs": 2
     },
     {
-      "source": "smithery/ai",
-      "skillId": "0xbigboss-nix-best-practices",
-      "name": "0xbigboss-nix-best-practices",
-      "installs": 2
-    },
-    {
       "source": "swn94/claude-scientific-skills",
       "skillId": "scikit-learn",
       "name": "scikit-learn",
+      "installs": 2
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "0xbigboss-nix-best-practices",
+      "name": "0xbigboss-nix-best-practices",
       "installs": 2
     },
     {
@@ -532,15 +580,15 @@
       "installs": 2
     },
     {
-      "source": "smithery/ai",
-      "skillId": "hoangnguyen0403-laravel-testing",
-      "name": "hoangnguyen0403-laravel-testing",
-      "installs": 2
-    },
-    {
       "source": "zhaojj6458/bigscreen",
       "skillId": "xlsx",
       "name": "xlsx",
+      "installs": 2
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "hoangnguyen0403-laravel-testing",
+      "name": "hoangnguyen0403-laravel-testing",
       "installs": 2
     },
     {
@@ -562,15 +610,15 @@
       "installs": 2
     },
     {
-      "source": "adidacta/pmf-detective",
-      "skillId": "build-test-guide",
-      "name": "build-test-guide",
-      "installs": 2
-    },
-    {
       "source": "pluginagentmarketplace/custom-plugin-javascript",
       "skillId": "fundamentals",
       "name": "fundamentals",
+      "installs": 2
+    },
+    {
+      "source": "adidacta/pmf-detective",
+      "skillId": "build-test-guide",
+      "name": "build-test-guide",
       "installs": 2
     },
     {
@@ -634,9 +682,9 @@
       "installs": 2
     },
     {
-      "source": "ameen-alam/ai-400-class",
-      "skillId": "browser-use",
-      "name": "browser-use",
+      "source": "braselog/researchassistant",
+      "skillId": "statistical-analysis",
+      "name": "statistical-analysis",
       "installs": 2
     },
     {
@@ -646,9 +694,9 @@
       "installs": 2
     },
     {
-      "source": "braselog/researchassistant",
-      "skillId": "statistical-analysis",
-      "name": "statistical-analysis",
+      "source": "ameen-alam/ai-400-class",
+      "skillId": "browser-use",
+      "name": "browser-use",
       "installs": 2
     },
     {
@@ -1066,15 +1114,15 @@
       "installs": 2
     },
     {
-      "source": "gptomics/bioskills",
-      "skillId": "bio-clip-seq-clip-motif-analysis",
-      "name": "bio-clip-seq-clip-motif-analysis",
-      "installs": 2
-    },
-    {
       "source": "browserbase/skills-old",
       "skillId": "browse",
       "name": "browse",
+      "installs": 2
+    },
+    {
+      "source": "gptomics/bioskills",
+      "skillId": "bio-clip-seq-clip-motif-analysis",
+      "name": "bio-clip-seq-clip-motif-analysis",
       "installs": 2
     },
     {
@@ -1444,9 +1492,9 @@
       "installs": 2
     },
     {
-      "source": "grishaangelovgh/gemini-cli-agent-skills",
-      "skillId": "project-analyzer",
-      "name": "project-analyzer",
+      "source": "lifangda/claude-plugins",
+      "skillId": "gwas-database",
+      "name": "gwas-database",
       "installs": 2
     },
     {
@@ -1456,9 +1504,9 @@
       "installs": 2
     },
     {
-      "source": "lifangda/claude-plugins",
-      "skillId": "gwas-database",
-      "name": "gwas-database",
+      "source": "grishaangelovgh/gemini-cli-agent-skills",
+      "skillId": "project-analyzer",
+      "name": "project-analyzer",
       "installs": 2
     },
     {
@@ -1816,15 +1864,15 @@
       "installs": 2
     },
     {
-      "source": "jmsktm/claude-settings",
-      "skillId": "state-management",
-      "name": "state-management",
-      "installs": 2
-    },
-    {
       "source": "gqy20/cc_plugins",
       "skillId": "literature-explorer",
       "name": "literature-explorer",
+      "installs": 2
+    },
+    {
+      "source": "jmsktm/claude-settings",
+      "skillId": "state-management",
+      "name": "state-management",
       "installs": 2
     },
     {
@@ -1885,12 +1933,6 @@
       "source": "vchirrav/owasp-secure-coding-md",
       "skillId": "api-security-schemathesis",
       "name": "api-security-schemathesis",
-      "installs": 2
-    },
-    {
-      "source": "manastalukdar/claude-devstudio",
-      "skillId": "lighthouse",
-      "name": "lighthouse",
       "installs": 2
     },
     {
@@ -2044,15 +2086,15 @@
       "installs": 2
     },
     {
-      "source": "nguyendinhquocx/code-ai",
-      "skillId": "mermaid-tools",
-      "name": "mermaid-tools",
-      "installs": 2
-    },
-    {
       "source": "isjiamu/jiamu-skills",
       "skillId": "sales-ai-assistant",
       "name": "sales-ai-assistant",
+      "installs": 2
+    },
+    {
+      "source": "nguyendinhquocx/code-ai",
+      "skillId": "mermaid-tools",
+      "name": "mermaid-tools",
       "installs": 2
     },
     {
@@ -2158,15 +2200,15 @@
       "installs": 2
     },
     {
-      "source": "pluginagentmarketplace/custom-plugin-go",
-      "skillId": "go-performance",
-      "name": "go-performance",
-      "installs": 2
-    },
-    {
       "source": "lifangda/claude-plugins",
       "skillId": "clinvar-database",
       "name": "clinvar-database",
+      "installs": 2
+    },
+    {
+      "source": "pluginagentmarketplace/custom-plugin-go",
+      "skillId": "go-performance",
+      "name": "go-performance",
       "installs": 2
     },
     {
@@ -2368,6 +2410,12 @@
       "installs": 2
     },
     {
+      "source": "echohack/skill-builder",
+      "skillId": "skill-builder",
+      "name": "skill-builder",
+      "installs": 2
+    },
+    {
       "source": "composiohq/awesome-claude-skills",
       "skillId": "microsoft_clarity-automation",
       "name": "microsoft_clarity-automation",
@@ -2377,12 +2425,6 @@
       "source": "smithery/ai",
       "skillId": "sickn33-vector-database-engineer",
       "name": "sickn33-vector-database-engineer",
-      "installs": 2
-    },
-    {
-      "source": "echohack/skill-builder",
-      "skillId": "skill-builder",
-      "name": "skill-builder",
       "installs": 2
     },
     {
@@ -2524,15 +2566,15 @@
       "installs": 2
     },
     {
-      "source": "bluewaves-creations/bluewaves-skills",
-      "skillId": "pdf-factory",
-      "name": "pdf-factory",
-      "installs": 2
-    },
-    {
       "source": "hainamchung/agent-assistant",
       "skillId": "nextjs-best-practices",
       "name": "nextjs-best-practices",
+      "installs": 2
+    },
+    {
+      "source": "bluewaves-creations/bluewaves-skills",
+      "skillId": "pdf-factory",
+      "name": "pdf-factory",
       "installs": 2
     },
     {
@@ -2752,15 +2794,15 @@
       "installs": 2
     },
     {
-      "source": "quantumsolver/e-health-kit",
-      "skillId": "mcp-builder",
-      "name": "mcp-builder",
-      "installs": 2
-    },
-    {
       "source": "yet-another-ai-project/kiwi-skills",
       "skillId": "kiwi-go-agent",
       "name": "kiwi-go-agent",
+      "installs": 2
+    },
+    {
+      "source": "quantumsolver/e-health-kit",
+      "skillId": "mcp-builder",
+      "name": "mcp-builder",
       "installs": 2
     },
     {
@@ -3292,9 +3334,9 @@
       "installs": 2
     },
     {
-      "source": "oimiragieo/agent-studio",
-      "skillId": "codebase-integration",
-      "name": "codebase-integration",
+      "source": "frostant/awesome-claude-skills",
+      "skillId": "skill-creator",
+      "name": "skill-creator",
       "installs": 2
     },
     {
@@ -3304,9 +3346,9 @@
       "installs": 2
     },
     {
-      "source": "frostant/awesome-claude-skills",
-      "skillId": "skill-creator",
-      "name": "skill-creator",
+      "source": "oimiragieo/agent-studio",
+      "skillId": "codebase-integration",
+      "name": "codebase-integration",
       "installs": 2
     },
     {
@@ -3400,15 +3442,15 @@
       "installs": 2
     },
     {
-      "source": "markkr125/ollama-agents",
-      "skillId": "add-agent-tool",
-      "name": "add-agent-tool",
-      "installs": 2
-    },
-    {
       "source": "igbuend/grimbard",
       "skillId": "insecure-defaults-anti-pattern",
       "name": "insecure-defaults-anti-pattern",
+      "installs": 2
+    },
+    {
+      "source": "markkr125/ollama-agents",
+      "skillId": "add-agent-tool",
+      "name": "add-agent-tool",
       "installs": 2
     },
     {
@@ -3676,15 +3718,15 @@
       "installs": 2
     },
     {
-      "source": "digitalquokka/marketingskills",
-      "skillId": "email-sequence",
-      "name": "email-sequence",
-      "installs": 2
-    },
-    {
       "source": "rukkha1024/elderly-balance-assessment",
       "skillId": "playwright-excel",
       "name": "playwright-excel",
+      "installs": 2
+    },
+    {
+      "source": "digitalquokka/marketingskills",
+      "skillId": "email-sequence",
+      "name": "email-sequence",
       "installs": 2
     },
     {
@@ -4570,15 +4612,15 @@
       "installs": 2
     },
     {
-      "source": "treenod-idq/treenod-market",
-      "skillId": "sheet",
-      "name": "sheet",
-      "installs": 2
-    },
-    {
       "source": "smithery/ai",
       "skillId": "davila7-popup-cro",
       "name": "davila7-popup-cro",
+      "installs": 2
+    },
+    {
+      "source": "treenod-idq/treenod-market",
+      "skillId": "sheet",
+      "name": "sheet",
       "installs": 2
     },
     {
@@ -4822,15 +4864,15 @@
       "installs": 2
     },
     {
-      "source": "inferencesh/agent-skills",
-      "skillId": "book-cover-design",
-      "name": "book-cover-design",
-      "installs": 2
-    },
-    {
       "source": "skinnyandbald/fish-skills",
       "skillId": "analyze-plan-feedback",
       "name": "analyze-plan-feedback",
+      "installs": 2
+    },
+    {
+      "source": "inferencesh/agent-skills",
+      "skillId": "book-cover-design",
+      "name": "book-cover-design",
       "installs": 2
     },
     {
@@ -5482,15 +5524,15 @@
       "installs": 2
     },
     {
-      "source": "ynulihao/agentskillos",
-      "skillId": "analyzing-financial-statements",
-      "name": "analyzing-financial-statements",
-      "installs": 2
-    },
-    {
       "source": "sunnypatneedi/claude-starter-kit",
       "skillId": "ai-evaluation",
       "name": "ai-evaluation",
+      "installs": 2
+    },
+    {
+      "source": "ynulihao/agentskillos",
+      "skillId": "analyzing-financial-statements",
+      "name": "analyzing-financial-statements",
       "installs": 2
     },
     {
@@ -5668,15 +5710,15 @@
       "installs": 2
     },
     {
-      "source": "dmend3z/tribo-skills",
-      "skillId": "gaming-metaverse-advertising",
-      "name": "gaming-metaverse-advertising",
-      "installs": 2
-    },
-    {
       "source": "nikhilvallishayee/universal-pattern-space",
       "skillId": "vibe-calibration-protocol",
       "name": "vibe calibration protocol",
+      "installs": 2
+    },
+    {
+      "source": "dmend3z/tribo-skills",
+      "skillId": "gaming-metaverse-advertising",
+      "name": "gaming-metaverse-advertising",
       "installs": 2
     },
     {
@@ -5959,48 +6001,6 @@
       "source": "heyflouai/ikf-central-dashboard",
       "skillId": "planning-with-files",
       "name": "planning-with-files",
-      "installs": 2
-    },
-    {
-      "source": "curiositech/some_claude_skills",
-      "skillId": "hipaa-compliance",
-      "name": "hipaa-compliance",
-      "installs": 2
-    },
-    {
-      "source": "laurenceputra/agent-skills",
-      "skillId": "documentation",
-      "name": "documentation",
-      "installs": 2
-    },
-    {
-      "source": "kylesean/augo",
-      "skillId": "shared-space",
-      "name": "shared-space",
-      "installs": 2
-    },
-    {
-      "source": "doanchienthangdev/omgkit",
-      "skillId": "nextjs",
-      "name": "nextjs",
-      "installs": 2
-    },
-    {
-      "source": "jackiexiao/jackie-skills-cn-top50",
-      "skillId": "webapp-testing",
-      "name": "webapp-testing",
-      "installs": 2
-    },
-    {
-      "source": "vanman2024/ai-dev-marketplace",
-      "skillId": "embedding-models",
-      "name": "embedding-models",
-      "installs": 2
-    },
-    {
-      "source": "smithery/ai",
-      "skillId": "vercel-labs-web-design-guidelines",
-      "name": "vercel-labs-web-design-guidelines",
       "installs": 2
     }
   ]
