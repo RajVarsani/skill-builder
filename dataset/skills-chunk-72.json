@@ -1,0 +1,6007 @@
+{
+  "chunk": 72,
+  "totalChunks": 76,
+  "count": 1000,
+  "skills": [
+    {
+      "source": "wibaek/skills",
+      "skillId": "ts-starter",
+      "name": "ts-starter",
+      "installs": 2
+    },
+    {
+      "source": "theepan/ai-agent-skills",
+      "skillId": "domain-name-generator",
+      "name": "domain-name-generator",
+      "installs": 2
+    },
+    {
+      "source": "quantmind-br/skills",
+      "skillId": "olx-search",
+      "name": "olx-search",
+      "installs": 2
+    },
+    {
+      "source": "straydragon/my-claude-skills",
+      "skillId": "slint-gui-expert",
+      "name": "slint gui expert",
+      "installs": 2
+    },
+    {
+      "source": "marcjaner/codebase-explorer",
+      "skillId": "codebase-explorer",
+      "name": "codebase-explorer",
+      "installs": 2
+    },
+    {
+      "source": "traxito/vibe_coding_skills",
+      "skillId": "seo-best-practices",
+      "name": "seo best practices",
+      "installs": 2
+    },
+    {
+      "source": "g1joshi/agent-skills",
+      "skillId": "mongodb",
+      "name": "mongodb",
+      "installs": 2
+    },
+    {
+      "source": "hainamchung/agent-assistant",
+      "skillId": "agent-memory-systems",
+      "name": "agent-memory-systems",
+      "installs": 2
+    },
+    {
+      "source": "zanecole10/software-tailor-skills",
+      "skillId": "niche-research",
+      "name": "niche-research",
+      "installs": 2
+    },
+    {
+      "source": "s-hiraoku/skills-factory",
+      "skillId": "handover",
+      "name": "handover",
+      "installs": 2
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "sarojpunde-polaris-fundamentals",
+      "name": "sarojpunde-polaris-fundamentals",
+      "installs": 2
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "abdullah7041-mcp-toolbox",
+      "name": "abdullah7041-mcp-toolbox",
+      "installs": 2
+    },
+    {
+      "source": "hartreeworks/skill--save-conversation",
+      "skillId": "save-conversation",
+      "name": "save-conversation",
+      "installs": 2
+    },
+    {
+      "source": "hainamchung/agent-assistant",
+      "skillId": "test-driven-development",
+      "name": "test-driven-development",
+      "installs": 2
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "kienhaminh-blockchain-engineer",
+      "name": "kienhaminh-blockchain-engineer",
+      "installs": 2
+    },
+    {
+      "source": "dchuk/rails_ai_agents",
+      "skillId": "i18n-patterns",
+      "name": "i18n-patterns",
+      "installs": 2
+    },
+    {
+      "source": "ghosttypes/ff-5mp-api-py",
+      "skillId": "ruff-dev",
+      "name": "ruff-dev",
+      "installs": 2
+    },
+    {
+      "source": "congdon1207/agents.md",
+      "skillId": "docs-seeker",
+      "name": "docs-seeker",
+      "installs": 2
+    },
+    {
+      "source": "hainamchung/agent-assistant",
+      "skillId": "fullstack-guardian",
+      "name": "fullstack-guardian",
+      "installs": 2
+    },
+    {
+      "source": "composiohq/awesome-claude-skills",
+      "skillId": "gagelist-automation",
+      "name": "gagelist-automation",
+      "installs": 2
+    },
+    {
+      "source": "anasx7/skills",
+      "skillId": "systematic-debugging",
+      "name": "systematic-debugging",
+      "installs": 2
+    },
+    {
+      "source": "peixotorms/odinlayer-skills",
+      "skillId": "gdpr-compliance",
+      "name": "gdpr-compliance",
+      "installs": 2
+    },
+    {
+      "source": "team-telnyx/telnyx-ext-agent-skills",
+      "skillId": "telnyx-account-python",
+      "name": "telnyx-account-python",
+      "installs": 2
+    },
+    {
+      "source": "chauchakching/superpowers-cursor",
+      "skillId": "writing-skills",
+      "name": "writing-skills",
+      "installs": 2
+    },
+    {
+      "source": "dokhacgiakhoa/antigravity-ide",
+      "skillId": "code-documentation-code-explain",
+      "name": "code-documentation-code-explain",
+      "installs": 2
+    },
+    {
+      "source": "maxvaega/skillkit",
+      "skillId": "valid-basic",
+      "name": "valid-basic",
+      "installs": 2
+    },
+    {
+      "source": "fujohnwang/keenotes-skill",
+      "skillId": "keenotes-sender-skill",
+      "name": "keenotes-sender-skill",
+      "installs": 2
+    },
+    {
+      "source": "1nfsh-s0/skills",
+      "skillId": "twitter-thread-creation",
+      "name": "twitter-thread-creation",
+      "installs": 2
+    },
+    {
+      "source": "xieno-ai/marketingskills",
+      "skillId": "page-cro",
+      "name": "page-cro",
+      "installs": 2
+    },
+    {
+      "source": "lifangda/claude-plugins",
+      "skillId": "esm",
+      "name": "esm",
+      "installs": 2
+    },
+    {
+      "source": "harborgrid-justin/lexiflow-premium",
+      "skillId": "zero-bundle-size-rsc",
+      "name": "zero-bundle-size-rsc",
+      "installs": 2
+    },
+    {
+      "source": "jonathanbelolo/composable-svelte",
+      "skillId": "composable-svelte-forms",
+      "name": "composable-svelte-forms",
+      "installs": 2
+    },
+    {
+      "source": "gptomics/bioskills",
+      "skillId": "bio-workflows-cytometry-pipeline",
+      "name": "bio-workflows-cytometry-pipeline",
+      "installs": 2
+    },
+    {
+      "source": "cerico/macfair",
+      "skillId": "save",
+      "name": "save",
+      "installs": 2
+    },
+    {
+      "source": "ecto/muni",
+      "skillId": "mcu-embedded-review",
+      "name": "mcu-embedded-review",
+      "installs": 2
+    },
+    {
+      "source": "gitstua/stu-skills",
+      "skillId": "outbound-ip",
+      "name": "outbound-ip",
+      "installs": 2
+    },
+    {
+      "source": "mauromedda/agent-toolkit",
+      "skillId": "bash",
+      "name": "bash",
+      "installs": 2
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "error-detector",
+      "name": "error-detector",
+      "installs": 2
+    },
+    {
+      "source": "gptomics/bioskills",
+      "skillId": "bio-single-cell-markers-annotation",
+      "name": "bio-single-cell-markers-annotation",
+      "installs": 2
+    },
+    {
+      "source": "manastalukdar/claude-devstudio",
+      "skillId": "execute-plan",
+      "name": "execute-plan",
+      "installs": 2
+    },
+    {
+      "source": "gptomics/bioskills",
+      "skillId": "bio-single-cell-preprocessing",
+      "name": "bio-single-cell-preprocessing",
+      "installs": 2
+    },
+    {
+      "source": "ozten/skills",
+      "skillId": "creative-direction",
+      "name": "creative-direction",
+      "installs": 2
+    },
+    {
+      "source": "tolitius/salvador",
+      "skillId": "salvador",
+      "name": "salvador",
+      "installs": 2
+    },
+    {
+      "source": "inferencesh/agent-skills",
+      "skillId": "landing-page-design",
+      "name": "landing-page-design",
+      "installs": 2
+    },
+    {
+      "source": "gptomics/bioskills",
+      "skillId": "bio-crispr-screens-mageck-analysis",
+      "name": "bio-crispr-screens-mageck-analysis",
+      "installs": 2
+    },
+    {
+      "source": "joelborellis/agents-mocumentary",
+      "skillId": "mockumentary-revision",
+      "name": "mockumentary-revision",
+      "installs": 2
+    },
+    {
+      "source": "atalovesyou/claude-skills-pack",
+      "skillId": "systematic-debugging",
+      "name": "systematic-debugging",
+      "installs": 2
+    },
+    {
+      "source": "simplerick0/com.ackhax.configs",
+      "skillId": "software-architecture",
+      "name": "software-architecture",
+      "installs": 2
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "file-search",
+      "name": "file-search",
+      "installs": 2
+    },
+    {
+      "source": "curiositech/some_claude_skills",
+      "skillId": "dag-skill-registry",
+      "name": "dag-skill-registry",
+      "installs": 2
+    },
+    {
+      "source": "mearman/marketplace",
+      "skillId": "cve-lookup",
+      "name": "cve-lookup",
+      "installs": 2
+    },
+    {
+      "source": "lingengyuan/my-skills",
+      "skillId": "portpilot-assistant",
+      "name": "portpilot-assistant",
+      "installs": 2
+    },
+    {
+      "source": "barretstorck/gemini-superpowers",
+      "skillId": "test-driven-development",
+      "name": "test-driven-development",
+      "installs": 2
+    },
+    {
+      "source": "danielmiessler/paiplugin",
+      "skillId": "research",
+      "name": "research",
+      "installs": 2
+    },
+    {
+      "source": "tanstack-skills/tanstack-skills",
+      "skillId": "tanstack-query",
+      "name": "tanstack-query",
+      "installs": 2
+    },
+    {
+      "source": "composiohq/awesome-claude-skills",
+      "skillId": "habitica-automation",
+      "name": "habitica-automation",
+      "installs": 2
+    },
+    {
+      "source": "dralgorhythm/claude-agentic-framework",
+      "skillId": "brainstorming",
+      "name": "brainstorming",
+      "installs": 2
+    },
+    {
+      "source": "navanithans/agent-skill-kit",
+      "skillId": "ask-project-memory",
+      "name": "ask-project-memory",
+      "installs": 2
+    },
+    {
+      "source": "zhenxuanshi-ship-it/meatpiegua_skills",
+      "skillId": "geopolitical-driver",
+      "name": "geopolitical-driver",
+      "installs": 2
+    },
+    {
+      "source": "ahmadzakiy/skills",
+      "skillId": "frontend-design",
+      "name": "frontend-design",
+      "installs": 2
+    },
+    {
+      "source": "chang1o1/financial-deep-research",
+      "skillId": "financial-deep-research",
+      "name": "financial-deep-research",
+      "installs": 2
+    },
+    {
+      "source": "lahfir/agent-skills",
+      "skillId": "progress-report",
+      "name": "progress-report",
+      "installs": 2
+    },
+    {
+      "source": "taozhuo/game-dev-skills",
+      "skillId": "npc-ai",
+      "name": "npc-ai",
+      "installs": 2
+    },
+    {
+      "source": "plurigrid/asi",
+      "skillId": "gh-complete",
+      "name": "gh-complete",
+      "installs": 2
+    },
+    {
+      "source": "saifyxpro/agent-architect",
+      "skillId": "prompt-engineer-pro",
+      "name": "prompt-engineer-pro",
+      "installs": 2
+    },
+    {
+      "source": "djankies/claude-configs",
+      "skillId": "configuring-image-optimization",
+      "name": "configuring-image-optimization",
+      "installs": 2
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "sickn33-frontend-design",
+      "name": "sickn33-frontend-design",
+      "installs": 2
+    },
+    {
+      "source": "team-telnyx/telnyx-ext-agent-skills",
+      "skillId": "telnyx-iot-ruby",
+      "name": "telnyx-iot-ruby",
+      "installs": 2
+    },
+    {
+      "source": "zackkorman/skills",
+      "skillId": "audit-3",
+      "name": "audit-3",
+      "installs": 2
+    },
+    {
+      "source": "langbaseinc/agent-skills",
+      "skillId": "skill-share",
+      "name": "skill-share",
+      "installs": 2
+    },
+    {
+      "source": "hemsoft/public-skills",
+      "skillId": "github-issue",
+      "name": "github-issue",
+      "installs": 2
+    },
+    {
+      "source": "dokhacgiakhoa/antigravity-ide",
+      "skillId": "vulnerability-scanner",
+      "name": "vulnerability-scanner",
+      "installs": 2
+    },
+    {
+      "source": "composiohq/awesome-claude-skills",
+      "skillId": "epic-games-automation",
+      "name": "epic-games-automation",
+      "installs": 2
+    },
+    {
+      "source": "ravinani02/opencode-agent-skills",
+      "skillId": "terraform-module-library",
+      "name": "terraform-module-library",
+      "installs": 2
+    },
+    {
+      "source": "composiohq/awesome-claude-skills",
+      "skillId": "refiner-automation",
+      "name": "refiner-automation",
+      "installs": 2
+    },
+    {
+      "source": "1nfsh-s0/skills",
+      "skillId": "widgets-ui",
+      "name": "widgets-ui",
+      "installs": 2
+    },
+    {
+      "source": "frankxai/arcanea",
+      "skillId": "arcanea-luminor-rituals",
+      "name": "arcanea-luminor-rituals",
+      "installs": 2
+    },
+    {
+      "source": "composiohq/awesome-claude-skills",
+      "skillId": "mailerlite-automation",
+      "name": "mailerlite automation",
+      "installs": 2
+    },
+    {
+      "source": "bintzgavin/helios-skills",
+      "skillId": "guided-promo-video",
+      "name": "guided-promo-video",
+      "installs": 2
+    },
+    {
+      "source": "erikpr1994/jarvis-code",
+      "skillId": "crawl-cli",
+      "name": "crawl-cli",
+      "installs": 2
+    },
+    {
+      "source": "psylch/quark-search",
+      "skillId": "quark-search",
+      "name": "quark-search",
+      "installs": 2
+    },
+    {
+      "source": "ssiumha/dots",
+      "skillId": "isms",
+      "name": "isms",
+      "installs": 2
+    },
+    {
+      "source": "automindtechnologie-jpg/ultimate-skill.md",
+      "skillId": "browser-extension-builder",
+      "name": "browser-extension-builder",
+      "installs": 2
+    },
+    {
+      "source": "drasky-vanderhoff/ripple_skill",
+      "skillId": "ripple-bun",
+      "name": "ripple-bun",
+      "installs": 2
+    },
+    {
+      "source": "gptomics/bioskills",
+      "skillId": "bio-flow-cytometry-differential-analysis",
+      "name": "bio-flow-cytometry-differential-analysis",
+      "installs": 2
+    },
+    {
+      "source": "algorand-devrel/algorand-agent-skills",
+      "skillId": "create-python-x402-facilitator",
+      "name": "create-python-x402-facilitator",
+      "installs": 2
+    },
+    {
+      "source": "factory-ai/factory-plugins",
+      "skillId": "security-review",
+      "name": "security-review",
+      "installs": 2
+    },
+    {
+      "source": "dchuk/rails_ai_agents",
+      "skillId": "caching-strategies",
+      "name": "caching-strategies",
+      "installs": 2
+    },
+    {
+      "source": "aliceisjustplaying/claude-resources-monorepo",
+      "skillId": "axe",
+      "name": "axe",
+      "installs": 2
+    },
+    {
+      "source": "alexpeclub/ai-coding-starter-kit",
+      "skillId": "qa",
+      "name": "qa",
+      "installs": 2
+    },
+    {
+      "source": "0xrikt/crypto-skills",
+      "skillId": "crypto-trading-advisor",
+      "name": "crypto-trading-advisor",
+      "installs": 2
+    },
+    {
+      "source": "doanchienthangdev/omgkit",
+      "skillId": "postgresql",
+      "name": "postgresql",
+      "installs": 2
+    },
+    {
+      "source": "baxtercooper/nexus",
+      "skillId": "context-gathering",
+      "name": "context-gathering",
+      "installs": 2
+    },
+    {
+      "source": "zhanghandong/makepad-skills",
+      "skillId": "makepad-components",
+      "name": "makepad-components",
+      "installs": 2
+    },
+    {
+      "source": "whq25/agent-memory",
+      "skillId": "agent-memory",
+      "name": "agent-memory",
+      "installs": 2
+    },
+    {
+      "source": "samhvw8/dotfiles",
+      "skillId": "xlsx",
+      "name": "xlsx",
+      "installs": 2
+    },
+    {
+      "source": "zoand/skills",
+      "skillId": "planning-with-files",
+      "name": "planning-with-files",
+      "installs": 2
+    },
+    {
+      "source": "ryanlyn/readwise-skill",
+      "skillId": "readwise",
+      "name": "readwise",
+      "installs": 2
+    },
+    {
+      "source": "congdon1207/agents.md",
+      "skillId": "database-optimization",
+      "name": "database-optimization",
+      "installs": 2
+    },
+    {
+      "source": "northpeakdev/marketingskills",
+      "skillId": "product-marketing-context",
+      "name": "product-marketing-context",
+      "installs": 2
+    },
+    {
+      "source": "pluginagentmarketplace/custom-plugin-javascript",
+      "skillId": "ecosystem",
+      "name": "ecosystem",
+      "installs": 2
+    },
+    {
+      "source": "ihainan/claude-agent-skills",
+      "skillId": "fetching-github-user-data",
+      "name": "fetching-github-user-data",
+      "installs": 2
+    },
+    {
+      "source": "hainamchung/agent-assistant",
+      "skillId": "autonomous-agent-patterns",
+      "name": "autonomous-agent-patterns",
+      "installs": 2
+    },
+    {
+      "source": "fugazi/test-automation-skills-agents",
+      "skillId": "webapp-selenium-testing",
+      "name": "webapp-selenium-testing",
+      "installs": 2
+    },
+    {
+      "source": "composiohq/awesome-claude-skills",
+      "skillId": "needle-automation",
+      "name": "needle-automation",
+      "installs": 2
+    },
+    {
+      "source": "algorand-devrel/algorand-agent-skills",
+      "skillId": "algorand-ts-migration",
+      "name": "algorand-ts-migration",
+      "installs": 2
+    },
+    {
+      "source": "composiohq/awesome-claude-skills",
+      "skillId": "opencage-automation",
+      "name": "opencage-automation",
+      "installs": 2
+    },
+    {
+      "source": "madsnyl/t3-template",
+      "skillId": "query-service",
+      "name": "query-service",
+      "installs": 2
+    },
+    {
+      "source": "prof-ramos/.codex",
+      "skillId": "invoice-organizer",
+      "name": "invoice-organizer",
+      "installs": 2
+    },
+    {
+      "source": "rbarcante/claude-conductor",
+      "skillId": "testing-strategies",
+      "name": "testing-strategies",
+      "installs": 2
+    },
+    {
+      "source": "clous-ai/agents",
+      "skillId": "hreng-hire-intake",
+      "name": "hreng-hire-intake",
+      "installs": 2
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "openclaw-yt-dlp-downloader",
+      "name": "openclaw-yt-dlp-downloader",
+      "installs": 2
+    },
+    {
+      "source": "jackiexiao/jackie-skills-cn-top50",
+      "skillId": "vercel-react-best-practices",
+      "name": "vercel-react-best-practices",
+      "installs": 2
+    },
+    {
+      "source": "zhanghandong/makepad-skills",
+      "skillId": "makepad-evolution",
+      "name": "makepad-evolution",
+      "installs": 2
+    },
+    {
+      "source": "igbuend/grimbard",
+      "skillId": "authorisation-pattern",
+      "name": "authorisation-pattern",
+      "installs": 2
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "error-detective",
+      "name": "error-detective",
+      "installs": 2
+    },
+    {
+      "source": "subhankaladi/personal-ai-employee",
+      "skillId": "browsing-with-playwright",
+      "name": "browsing-with-playwright",
+      "installs": 2
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "yeachan-heo-omc-setup",
+      "name": "yeachan-heo-omc-setup",
+      "installs": 2
+    },
+    {
+      "source": "harborgrid-justin/lexiflow-premium",
+      "skillId": "state-reconciliation-semantics",
+      "name": "state-reconciliation-semantics",
+      "installs": 2
+    },
+    {
+      "source": "schoi80/antigravity-awesome-skills",
+      "skillId": "temporal-python-testing",
+      "name": "temporal-python-testing",
+      "installs": 2
+    },
+    {
+      "source": "alexanderguy/skills",
+      "skillId": "linear-issue-workflow",
+      "name": "linear-issue-workflow",
+      "installs": 2
+    },
+    {
+      "source": "2898117012/agent-skills",
+      "skillId": "pdf",
+      "name": "pdf",
+      "installs": 2
+    },
+    {
+      "source": "chauchakching/superpowers-cursor",
+      "skillId": "executing-plans",
+      "name": "executing-plans",
+      "installs": 2
+    },
+    {
+      "source": "kaiboo404/agent-skills-with-project-template",
+      "skillId": "context-sync",
+      "name": "context-sync",
+      "installs": 2
+    },
+    {
+      "source": "firecrawl/firecrawl-claude-plugin",
+      "skillId": "firecrawl",
+      "name": "firecrawl",
+      "installs": 2
+    },
+    {
+      "source": "lct1407/sidcorp-skills",
+      "skillId": "code-review",
+      "name": "code-review",
+      "installs": 2
+    },
+    {
+      "source": "quantumsolver/e-health-kit",
+      "skillId": "architecture",
+      "name": "architecture",
+      "installs": 2
+    },
+    {
+      "source": "automindtechnologie-jpg/ultimate-skill.md",
+      "skillId": "rag-engineer",
+      "name": "rag-engineer",
+      "installs": 2
+    },
+    {
+      "source": "glennguilloux/context-engineering-kit",
+      "skillId": "setup-arxiv-mcp",
+      "name": "setup-arxiv-mcp",
+      "installs": 2
+    },
+    {
+      "source": "jiatastic/open-python-skills",
+      "skillId": "formatting",
+      "name": "formatting",
+      "installs": 2
+    },
+    {
+      "source": "sundial-org/awesome-openclaw-skills",
+      "skillId": "apple-contacts",
+      "name": "apple-contacts",
+      "installs": 2
+    },
+    {
+      "source": "weegigs/claude-kitbash",
+      "skillId": "triage",
+      "name": "triage",
+      "installs": 2
+    },
+    {
+      "source": "imgoodbai/goodable",
+      "skillId": "xlsx",
+      "name": "xlsx",
+      "installs": 2
+    },
+    {
+      "source": "jackiexiao/jackie-skills-dev",
+      "skillId": "react-doctor",
+      "name": "react-doctor",
+      "installs": 2
+    },
+    {
+      "source": "team-telnyx/telnyx-ext-agent-skills",
+      "skillId": "telnyx-messaging-profiles-go",
+      "name": "telnyx-messaging-profiles-go",
+      "installs": 2
+    },
+    {
+      "source": "l-yifan/skills",
+      "skillId": "pptx",
+      "name": "pptx",
+      "installs": 2
+    },
+    {
+      "source": "dralgorhythm/claude-agentic-framework",
+      "skillId": "writing-adrs",
+      "name": "writing-adrs",
+      "installs": 2
+    },
+    {
+      "source": "mbailey/sqldown",
+      "skillId": "sqldown",
+      "name": "sqldown",
+      "installs": 2
+    },
+    {
+      "source": "alonronin/mockingoose",
+      "skillId": "mongoose-mongodb",
+      "name": "mongoose-mongodb",
+      "installs": 2
+    },
+    {
+      "source": "hainamchung/agent-assistant",
+      "skillId": "docs-seeker",
+      "name": "docs-seeker",
+      "installs": 2
+    },
+    {
+      "source": "roymccrain/dotsfile",
+      "skillId": "line:liff",
+      "name": "line:liff",
+      "installs": 2
+    },
+    {
+      "source": "schoi80/antigravity-awesome-skills",
+      "skillId": "database-migration",
+      "name": "database-migration",
+      "installs": 2
+    },
+    {
+      "source": "worldflowai/everything-claude-code",
+      "skillId": "clickhouse-io",
+      "name": "clickhouse-io",
+      "installs": 2
+    },
+    {
+      "source": "plurigrid/asi",
+      "skillId": "human-writing",
+      "name": "human-writing",
+      "installs": 2
+    },
+    {
+      "source": "columbia-cloudworks-llc/equipqr",
+      "skillId": "brand-guidelines",
+      "name": "brand-guidelines",
+      "installs": 2
+    },
+    {
+      "source": "hainamchung/agent-assistant",
+      "skillId": "spec-miner",
+      "name": "spec-miner",
+      "installs": 2
+    },
+    {
+      "source": "sunnypatneedi/claude-starter-kit",
+      "skillId": "goal-setting",
+      "name": "goal-setting",
+      "installs": 2
+    },
+    {
+      "source": "oimiragieo/agent-studio",
+      "skillId": "root-level-project-instructions",
+      "name": "root-level-project-instructions",
+      "installs": 2
+    },
+    {
+      "source": "feedforward-ai/lesson-1-repo",
+      "skillId": "analyze-documents",
+      "name": "analyze-documents",
+      "installs": 2
+    },
+    {
+      "source": "navanithans/agent-skill-kit",
+      "skillId": "ask-skill-capture",
+      "name": "ask-skill-capture",
+      "installs": 2
+    },
+    {
+      "source": "developersdigest/test-agent-skill-fc-5",
+      "skillId": "firecrawl",
+      "name": "firecrawl",
+      "installs": 2
+    },
+    {
+      "source": "jibril4000/vibbbes-skill",
+      "skillId": "vibbbes",
+      "name": "vibbbes",
+      "installs": 2
+    },
+    {
+      "source": "lifangda/claude-plugins",
+      "skillId": "pytdc",
+      "name": "pytdc",
+      "installs": 2
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "openclaw-jira-ai",
+      "name": "openclaw-jira-ai",
+      "installs": 2
+    },
+    {
+      "source": "thurbeen/rust-skills",
+      "skillId": "domain-web",
+      "name": "domain-web",
+      "installs": 2
+    },
+    {
+      "source": "whitespectre/ai-assistant-evals",
+      "skillId": "eval-conversation-flow",
+      "name": "eval-conversation-flow",
+      "installs": 2
+    },
+    {
+      "source": "secureskills-io/twitter-skill",
+      "skillId": "twitter",
+      "name": "twitter",
+      "installs": 2
+    },
+    {
+      "source": "hainamchung/agent-assistant",
+      "skillId": "internal-comms",
+      "name": "internal-comms",
+      "installs": 2
+    },
+    {
+      "source": "zircote/sigint",
+      "skillId": "trend-modeling",
+      "name": "trend modeling",
+      "installs": 2
+    },
+    {
+      "source": "daqi/daqi-skills",
+      "skillId": "xhs-md2img",
+      "name": "xhs-md2img",
+      "installs": 2
+    },
+    {
+      "source": "golfergeek/orchestrator-ai",
+      "skillId": "create-new-skills",
+      "name": "create new skills",
+      "installs": 2
+    },
+    {
+      "source": "mikkelkrogsholm/dev-skills",
+      "skillId": "coolify",
+      "name": "coolify",
+      "installs": 2
+    },
+    {
+      "source": "luisschmitzheadline/vc-skills.md",
+      "skillId": "strategic-planning",
+      "name": "strategic-planning",
+      "installs": 2
+    },
+    {
+      "source": "vladimirbrejcha/ios-ai-skills",
+      "skillId": "marketing-ideas",
+      "name": "marketing-ideas",
+      "installs": 2
+    },
+    {
+      "source": "project-n-e-k-o/n.e.k.o",
+      "skillId": "vrm-mtoon-outline",
+      "name": "vrm-mtoon-outline",
+      "installs": 2
+    },
+    {
+      "source": "automindtechnologie-jpg/ultimate-skill.md",
+      "skillId": "api-security-best-practices",
+      "name": "api-security-best-practices",
+      "installs": 2
+    },
+    {
+      "source": "gwenwindflower/.charmschool",
+      "skillId": "lsp-plugin",
+      "name": "lsp-plugin",
+      "installs": 2
+    },
+    {
+      "source": "navanithans/agent-skill-kit",
+      "skillId": "ask-docker-expert",
+      "name": "ask-docker-expert",
+      "installs": 2
+    },
+    {
+      "source": "chrysos/security-audit-skill",
+      "skillId": "security-audit",
+      "name": "security-audit",
+      "installs": 2
+    },
+    {
+      "source": "automindtechnologie-jpg/ultimate-skill.md",
+      "skillId": "clean-code",
+      "name": "clean-code",
+      "installs": 2
+    },
+    {
+      "source": "bintzgavin/helios-skills",
+      "skillId": "motion-design-rules",
+      "name": "motion-design-rules",
+      "installs": 2
+    },
+    {
+      "source": "kellyclaudeai/memory-system-v2",
+      "skillId": "memory-system-v2",
+      "name": "memory-system-v2",
+      "installs": 2
+    },
+    {
+      "source": "novotnyllc/dotnet-artisan",
+      "skillId": "dotnet-aspire-patterns",
+      "name": "dotnet-aspire-patterns",
+      "installs": 2
+    },
+    {
+      "source": "aia-11-hn-mib/mib-mockinterviewaibot",
+      "skillId": "ffmpeg",
+      "name": "ffmpeg",
+      "installs": 2
+    },
+    {
+      "source": "alexei-led/claude-code-config",
+      "skillId": "committing-code",
+      "name": "committing-code",
+      "installs": 2
+    },
+    {
+      "source": "greyhaven-ai/claude-code-config",
+      "skillId": "grey-haven-security-analysis",
+      "name": "grey-haven-security-analysis",
+      "installs": 2
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "technical-writer",
+      "name": "technical-writer",
+      "installs": 2
+    },
+    {
+      "source": "harborgrid-justin/lexiflow-premium",
+      "skillId": "concurrent-rendering-orchestration",
+      "name": "concurrent-rendering-orchestration",
+      "installs": 2
+    },
+    {
+      "source": "obra/superpowers-skills",
+      "skillId": "collision-zone-thinking",
+      "name": "collision-zone thinking",
+      "installs": 2
+    },
+    {
+      "source": "prof-ramos/.codex",
+      "skillId": "imagen",
+      "name": "imagen",
+      "installs": 2
+    },
+    {
+      "source": "tgautier/dotfiles",
+      "skillId": "web-security",
+      "name": "web-security",
+      "installs": 2
+    },
+    {
+      "source": "digitalquokka/marketingskills",
+      "skillId": "product-marketing-context",
+      "name": "product-marketing-context",
+      "installs": 2
+    },
+    {
+      "source": "italypaleale/skills",
+      "skillId": "go-package-skill-creator",
+      "name": "go-package-skill-creator",
+      "installs": 2
+    },
+    {
+      "source": "dokhacgiakhoa/antigravity-ide",
+      "skillId": "nextjs-best-practices",
+      "name": "nextjs-best-practices",
+      "installs": 2
+    },
+    {
+      "source": "coderfee/ai",
+      "skillId": "commit",
+      "name": "commit",
+      "installs": 2
+    },
+    {
+      "source": "mevans2120/design-suite-claude-skills",
+      "skillId": "design-qa",
+      "name": "design-qa",
+      "installs": 2
+    },
+    {
+      "source": "beshkenadze/claude-code-tauri-skills",
+      "skillId": "understanding-tauri-runtime-authority",
+      "name": "understanding-tauri-runtime-authority",
+      "installs": 2
+    },
+    {
+      "source": "team-telnyx/telnyx-ext-agent-skills",
+      "skillId": "telnyx-fax-python",
+      "name": "telnyx-fax-python",
+      "installs": 2
+    },
+    {
+      "source": "hainamchung/agent-assistant",
+      "skillId": "game-developer",
+      "name": "game-developer",
+      "installs": 2
+    },
+    {
+      "source": "khaledbashir/therag2thealmostapproved",
+      "skillId": "handoff-templates",
+      "name": "handoff-templates",
+      "installs": 2
+    },
+    {
+      "source": "novotnyllc/dotnet-artisan",
+      "skillId": "dotnet-cryptography",
+      "name": "dotnet-cryptography",
+      "installs": 2
+    },
+    {
+      "source": "hainamchung/agent-assistant",
+      "skillId": "wireshark-network-traffic-analysis",
+      "name": "wireshark network traffic analysis",
+      "installs": 2
+    },
+    {
+      "source": "borghei/claude-skills",
+      "skillId": "senior-secops",
+      "name": "senior-secops",
+      "installs": 2
+    },
+    {
+      "source": "zeeshan8281/eigen-skills",
+      "skillId": "eigen-compute",
+      "name": "eigen-compute",
+      "installs": 2
+    },
+    {
+      "source": "majiayu000/claude-skill-registry",
+      "skillId": "web-artifacts-builder",
+      "name": "web-artifacts-builder",
+      "installs": 2
+    },
+    {
+      "source": "tylerbryy/codewarden",
+      "skillId": "react-next-modern",
+      "name": "react-next-modern",
+      "installs": 2
+    },
+    {
+      "source": "team-telnyx/telnyx-ext-agent-skills",
+      "skillId": "telnyx-voice-streaming-java",
+      "name": "telnyx-voice-streaming-java",
+      "installs": 2
+    },
+    {
+      "source": "pluginagentmarketplace/custom-plugin-ai-agents",
+      "skillId": "agent-memory",
+      "name": "agent-memory",
+      "installs": 2
+    },
+    {
+      "source": "krosebrook/source-of-truth-monorepo",
+      "skillId": "research",
+      "name": "research",
+      "installs": 2
+    },
+    {
+      "source": "johnsonshi/worktree-repo-skills",
+      "skillId": "windows-worktree-repo-operations",
+      "name": "windows-worktree-repo-operations",
+      "installs": 2
+    },
+    {
+      "source": "pluginagentmarketplace/custom-plugin-ai-agents",
+      "skillId": "ai-agent-basics",
+      "name": "ai-agent-basics",
+      "installs": 2
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "skillcreatorai-backend-development",
+      "name": "skillcreatorai-backend-development",
+      "installs": 2
+    },
+    {
+      "source": "adam-tntgrowth/marketingskills",
+      "skillId": "copy-editing",
+      "name": "copy-editing",
+      "installs": 2
+    },
+    {
+      "source": "sayujks0071/antidhan",
+      "skillId": "trading-operations",
+      "name": "trading-operations",
+      "installs": 2
+    },
+    {
+      "source": "hainamchung/agent-assistant",
+      "skillId": "red-team-tactics",
+      "name": "red-team-tactics",
+      "installs": 2
+    },
+    {
+      "source": "janjaszczak/cursor",
+      "skillId": "repo-grounding",
+      "name": "repo-grounding",
+      "installs": 2
+    },
+    {
+      "source": "gihwan-dev/claude-code-gui",
+      "skillId": "milestone",
+      "name": "milestone",
+      "installs": 2
+    },
+    {
+      "source": "juanpiriv/x-og-image-generator",
+      "skillId": "og-image-generator",
+      "name": "og-image-generator",
+      "installs": 2
+    },
+    {
+      "source": "schwaller/tradery",
+      "skillId": "restart",
+      "name": "restart",
+      "installs": 2
+    },
+    {
+      "source": "pierreribeiro/myclaudemd",
+      "skillId": "debug-investigator",
+      "name": "debug-investigator",
+      "installs": 2
+    },
+    {
+      "source": "g1joshi/agent-skills",
+      "skillId": "android-sdk",
+      "name": "android-sdk",
+      "installs": 2
+    },
+    {
+      "source": "muharremtozan/unity-agent-skills",
+      "skillId": "unity-so-prefab-manager",
+      "name": "unity-so-prefab-manager",
+      "installs": 2
+    },
+    {
+      "source": "sraloff/gravityboots",
+      "skillId": "modern-css-vanilla",
+      "name": "modern-css-vanilla",
+      "installs": 2
+    },
+    {
+      "source": "lukenguyen-me/skills",
+      "skillId": "pastbuild-export",
+      "name": "pastbuild-export",
+      "installs": 2
+    },
+    {
+      "source": "ian-pascoe/dotfiles",
+      "skillId": "skill-writer",
+      "name": "skill-writer",
+      "installs": 2
+    },
+    {
+      "source": "tondevrel/scientific-agent-skills",
+      "skillId": "astropy",
+      "name": "astropy",
+      "installs": 2
+    },
+    {
+      "source": "prof-ramos/.codex",
+      "skillId": "brainstorming",
+      "name": "brainstorming",
+      "installs": 2
+    },
+    {
+      "source": "drivespark/ai-coding",
+      "skillId": "yt-dlp-skill",
+      "name": "yt-dlp-skill",
+      "installs": 2
+    },
+    {
+      "source": "jschulte/stackshift",
+      "skillId": "create-specs",
+      "name": "create-specs",
+      "installs": 2
+    },
+    {
+      "source": "paulrberg/dot-claude",
+      "skillId": "biome-js",
+      "name": "biome-js",
+      "installs": 2
+    },
+    {
+      "source": "iannuttall/skills",
+      "skillId": "chrome-webstore-release-blueprint",
+      "name": "chrome-webstore-release-blueprint",
+      "installs": 2
+    },
+    {
+      "source": "nealcaren/social-data-analysis",
+      "skillId": "interview-bookends",
+      "name": "interview-bookends",
+      "installs": 2
+    },
+    {
+      "source": "beshkenadze/claude-code-tauri-skills",
+      "skillId": "listening-to-tauri-events",
+      "name": "listening-to-tauri-events",
+      "installs": 2
+    },
+    {
+      "source": "fotescodev/portfolio",
+      "skillId": "gandalf-the-prompt",
+      "name": "gandalf-the-prompt",
+      "installs": 2
+    },
+    {
+      "source": "lifangda/claude-plugins",
+      "skillId": "chembl-database",
+      "name": "chembl-database",
+      "installs": 2
+    },
+    {
+      "source": "arcaneorion/alice-single",
+      "skillId": "template-skill",
+      "name": "template-skill",
+      "installs": 2
+    },
+    {
+      "source": "bluewaves-creations/bluewaves-skills",
+      "skillId": "photographer-lachapelle",
+      "name": "photographer-lachapelle",
+      "installs": 2
+    },
+    {
+      "source": "hafizfasih/aidd-todo-app",
+      "skillId": "neon-db-expert",
+      "name": "neon-db-expert",
+      "installs": 2
+    },
+    {
+      "source": "pluginagentmarketplace/custom-plugin-go",
+      "skillId": "go-concurrency",
+      "name": "go-concurrency",
+      "installs": 2
+    },
+    {
+      "source": "dieterwang7/huateamassistant-baoyu-skills",
+      "skillId": "baoyu-post-to-wechat",
+      "name": "baoyu-post-to-wechat",
+      "installs": 2
+    },
+    {
+      "source": "vidyfoo/antigravity-skill-engine",
+      "skillId": "pptx-creating",
+      "name": "pptx-creating",
+      "installs": 2
+    },
+    {
+      "source": "adam-tntgrowth/marketingskills",
+      "skillId": "schema-markup",
+      "name": "schema-markup",
+      "installs": 2
+    },
+    {
+      "source": "dimdasci/vps-setup",
+      "skillId": "zitadel-identity",
+      "name": "zitadel-identity",
+      "installs": 2
+    },
+    {
+      "source": "hr-ar/project-conductor",
+      "skillId": "scouting-code-patterns",
+      "name": "scouting code patterns",
+      "installs": 2
+    },
+    {
+      "source": "jackiexiao/jackie-skills-dev",
+      "skillId": "supabase-postgres-best-practices",
+      "name": "supabase-postgres-best-practices",
+      "installs": 2
+    },
+    {
+      "source": "l-yifan/skills",
+      "skillId": "internal-comms",
+      "name": "internal-comms",
+      "installs": 2
+    },
+    {
+      "source": "aleister1102/skills",
+      "skillId": "create-steering-documents",
+      "name": "create-steering-documents",
+      "installs": 2
+    },
+    {
+      "source": "fzozyurt/agentskills",
+      "skillId": "prompt-engineering-patterns",
+      "name": "prompt-engineering-patterns",
+      "installs": 2
+    },
+    {
+      "source": "swn94/claude-scientific-skills",
+      "skillId": "biorxiv-database",
+      "name": "biorxiv-database",
+      "installs": 2
+    },
+    {
+      "source": "lexwdex/my_lm_skills",
+      "skillId": "webapp-testing",
+      "name": "webapp-testing",
+      "installs": 2
+    },
+    {
+      "source": "wedsamuel1230/arduino-skills",
+      "skillId": "datasheet-interpreter",
+      "name": "datasheet-interpreter",
+      "installs": 2
+    },
+    {
+      "source": "pluginagentmarketplace/custom-plugin-vue",
+      "skillId": "vue-typescript",
+      "name": "vue-typescript",
+      "installs": 2
+    },
+    {
+      "source": "cosmix/loom",
+      "skillId": "dead-code-check",
+      "name": "dead-code-check",
+      "installs": 2
+    },
+    {
+      "source": "cdeistopened/content-os",
+      "skillId": "ghostwriter",
+      "name": "ghostwriter",
+      "installs": 2
+    },
+    {
+      "source": "novotnyllc/dotnet-artisan",
+      "skillId": "dotnet-project-structure",
+      "name": "dotnet-project-structure",
+      "installs": 2
+    },
+    {
+      "source": "andymarigoldlabs/continuous-funding",
+      "skillId": "tanstack-query",
+      "name": "tanstack-query",
+      "installs": 2
+    },
+    {
+      "source": "levnikolaevich/claude-code-skills",
+      "skillId": "ln-512-agent-reviewer",
+      "name": "ln-512-agent-reviewer",
+      "installs": 2
+    },
+    {
+      "source": "rarestg/rarestg-skills",
+      "skillId": "coding-agent",
+      "name": "coding-agent",
+      "installs": 2
+    },
+    {
+      "source": "swn94/claude-scientific-skills",
+      "skillId": "protocolsio-integration",
+      "name": "protocolsio-integration",
+      "installs": 2
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "data-engineer",
+      "name": "data-engineer",
+      "installs": 2
+    },
+    {
+      "source": "manastalukdar/claude-devstudio",
+      "skillId": "graphql-schema",
+      "name": "graphql-schema",
+      "installs": 2
+    },
+    {
+      "source": "swn94/claude-scientific-skills",
+      "skillId": "simpy",
+      "name": "simpy",
+      "installs": 2
+    },
+    {
+      "source": "caocuong2404/medusa-agent-skills",
+      "skillId": "building-storefronts",
+      "name": "building-storefronts",
+      "installs": 2
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "workflow-expert",
+      "name": "workflow-expert",
+      "installs": 2
+    },
+    {
+      "source": "igbuend/grimbard",
+      "skillId": "biblatex",
+      "name": "biblatex",
+      "installs": 2
+    },
+    {
+      "source": "quantmind-br/skills",
+      "skillId": "gemini-cli",
+      "name": "gemini-cli",
+      "installs": 2
+    },
+    {
+      "source": "kaakati/rails-enterprise-dev",
+      "skillId": "push-notifications",
+      "name": "push notifications",
+      "installs": 2
+    },
+    {
+      "source": "skezu/skills",
+      "skillId": "n8n-workflows-master",
+      "name": "n8n-workflows-master",
+      "installs": 2
+    },
+    {
+      "source": "scholarly360/contract-intelligence",
+      "skillId": "termination-general",
+      "name": "termination-general",
+      "installs": 2
+    },
+    {
+      "source": "djankies/claude-configs",
+      "skillId": "reviewing-hook-patterns",
+      "name": "reviewing-hook-patterns",
+      "installs": 2
+    },
+    {
+      "source": "proflead/codex-skills-library",
+      "skillId": "prompt-optimization",
+      "name": "prompt-optimization",
+      "installs": 2
+    },
+    {
+      "source": "schoi80/antigravity-awesome-skills",
+      "skillId": "database-optimizer",
+      "name": "database-optimizer",
+      "installs": 2
+    },
+    {
+      "source": "curiositech/some_claude_skills",
+      "skillId": "data-pipeline-engineer",
+      "name": "data-pipeline-engineer",
+      "installs": 2
+    },
+    {
+      "source": "basher83/lunar-claude",
+      "skillId": "ansible-error-handling",
+      "name": "ansible-error-handling",
+      "installs": 2
+    },
+    {
+      "source": "jancbeck/dotfiles",
+      "skillId": "cfg",
+      "name": "cfg",
+      "installs": 2
+    },
+    {
+      "source": "kjanat/skills",
+      "skillId": "build-skill",
+      "name": "build-skill",
+      "installs": 2
+    },
+    {
+      "source": "prof-ramos/.codex",
+      "skillId": "image-enhancer",
+      "name": "image-enhancer",
+      "installs": 2
+    },
+    {
+      "source": "herdiansah/antigravity-skills-master",
+      "skillId": "finishing-a-development-branch",
+      "name": "finishing-a-development-branch",
+      "installs": 2
+    },
+    {
+      "source": "manastalukdar/claude-devstudio",
+      "skillId": "test",
+      "name": "test",
+      "installs": 2
+    },
+    {
+      "source": "degrassiaaron/influencerai-monorepo",
+      "skillId": "web-design",
+      "name": "web-design",
+      "installs": 2
+    },
+    {
+      "source": "volces/com",
+      "skillId": "ai-sdk",
+      "name": "ai-sdk",
+      "installs": 2
+    },
+    {
+      "source": "hollandkevint/data-product-operator",
+      "skillId": "metrics-definition",
+      "name": "metrics-definition",
+      "installs": 2
+    },
+    {
+      "source": "chocholous/skill-checker",
+      "skillId": "apify-mcpc",
+      "name": "apify-mcpc",
+      "installs": 2
+    },
+    {
+      "source": "pietz/skills",
+      "skillId": "slides",
+      "name": "slides",
+      "installs": 2
+    },
+    {
+      "source": "ravinani02/opencode-agent-skills",
+      "skillId": "data-storytelling",
+      "name": "data-storytelling",
+      "installs": 2
+    },
+    {
+      "source": "ccostan/home-assistantconfig",
+      "skillId": "homeassistant-yaml-dry-verifier",
+      "name": "homeassistant-yaml-dry-verifier",
+      "installs": 2
+    },
+    {
+      "source": "imfa-solutions/skills",
+      "skillId": "convex-helpers",
+      "name": "convex-helpers",
+      "installs": 2
+    },
+    {
+      "source": "bradsjm/skills",
+      "skillId": "microsoft-docs",
+      "name": "microsoft-docs",
+      "installs": 2
+    },
+    {
+      "source": "diferansiyel1/qorsense_desktop",
+      "skillId": "software-hardening-licensing",
+      "name": "software-hardening-licensing",
+      "installs": 2
+    },
+    {
+      "source": "yangliu2060/smith--skills",
+      "skillId": "competitor-research",
+      "name": "competitor-research",
+      "installs": 2
+    },
+    {
+      "source": "swn94/superpowers",
+      "skillId": "writing-plans",
+      "name": "writing-plans",
+      "installs": 2
+    },
+    {
+      "source": "atalovesyou/claude-skills-pack",
+      "skillId": "paul-graham-wisdom",
+      "name": "paul-graham-wisdom",
+      "installs": 2
+    },
+    {
+      "source": "spanishflu-est1918/clawdbot-security",
+      "skillId": "clawdbot-security",
+      "name": "clawdbot-security",
+      "installs": 2
+    },
+    {
+      "source": "adam-tntgrowth/marketingskills",
+      "skillId": "popup-cro",
+      "name": "popup-cro",
+      "installs": 2
+    },
+    {
+      "source": "djankies/claude-configs",
+      "skillId": "refactoring-inline-types",
+      "name": "refactoring-inline-types",
+      "installs": 2
+    },
+    {
+      "source": "yldgio/anomalyco",
+      "skillId": "bicep",
+      "name": "bicep",
+      "installs": 2
+    },
+    {
+      "source": "congdon1207/agents.md",
+      "skillId": "payment-integration",
+      "name": "payment-integration",
+      "installs": 2
+    },
+    {
+      "source": "mauromedda/agent-toolkit",
+      "skillId": "scm",
+      "name": "scm",
+      "installs": 2
+    },
+    {
+      "source": "jacobporci/skills",
+      "skillId": "react-development",
+      "name": "react-development",
+      "installs": 2
+    },
+    {
+      "source": "zeeshan080/ezee-erp",
+      "skillId": "ui-testing",
+      "name": "ui-testing",
+      "installs": 2
+    },
+    {
+      "source": "gptomics/bioskills",
+      "skillId": "bio-single-cell-scatac-analysis",
+      "name": "bio-single-cell-scatac-analysis",
+      "installs": 2
+    },
+    {
+      "source": "handxr/bundle-import-auditor",
+      "skillId": "bundle-import-auditor",
+      "name": "bundle-import-auditor",
+      "installs": 2
+    },
+    {
+      "source": "vp-k/flutter-craft",
+      "skillId": "flutter-parallel-agents",
+      "name": "flutter-parallel-agents",
+      "installs": 2
+    },
+    {
+      "source": "swn94/claude-scientific-skills",
+      "skillId": "latex-posters",
+      "name": "latex-posters",
+      "installs": 2
+    },
+    {
+      "source": "ravinani02/opencode-agent-skills",
+      "skillId": "track-management",
+      "name": "track-management",
+      "installs": 2
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "x-article-publisher-skill",
+      "name": "x-article-publisher-skill",
+      "installs": 2
+    },
+    {
+      "source": "luisschmitzheadline/vc-skills.md",
+      "skillId": "design-business-model",
+      "name": "design-business-model",
+      "installs": 2
+    },
+    {
+      "source": "langbaseinc/agent-skills",
+      "skillId": "aws-cost-operations",
+      "name": "aws-cost-operations",
+      "installs": 2
+    },
+    {
+      "source": "stanah/dotagents",
+      "skillId": "docstore-status",
+      "name": "docstore-status",
+      "installs": 2
+    },
+    {
+      "source": "bjesuiter/skills",
+      "skillId": "bgproc",
+      "name": "bgproc",
+      "installs": 2
+    },
+    {
+      "source": "congdon1207/agents.md",
+      "skillId": "tasks-test-generation",
+      "name": "tasks-test-generation",
+      "installs": 2
+    },
+    {
+      "source": "dmend3z/tribo-skills",
+      "skillId": "search-engine-optimization-seo",
+      "name": "search-engine-optimization-seo",
+      "installs": 2
+    },
+    {
+      "source": "xfstudio/skills",
+      "skillId": "tailwind-design-system",
+      "name": "tailwind-design-system",
+      "installs": 2
+    },
+    {
+      "source": "useai-pro/openclaw-skills",
+      "skillId": "incident-responder",
+      "name": "incident-responder",
+      "installs": 2
+    },
+    {
+      "source": "graemerycyk/openpmkit",
+      "skillId": "meeting-prep",
+      "name": "meeting-prep",
+      "installs": 2
+    },
+    {
+      "source": "1nfsh-s0/skills",
+      "skillId": "logo-design-guide",
+      "name": "logo-design-guide",
+      "installs": 2
+    },
+    {
+      "source": "bradycassidy/marketingskills",
+      "skillId": "programmatic-seo",
+      "name": "programmatic-seo",
+      "installs": 2
+    },
+    {
+      "source": "yuji-hatakeyama/agent-skills",
+      "skillId": "vercel-composition-patterns",
+      "name": "vercel-composition-patterns",
+      "installs": 2
+    },
+    {
+      "source": "prof-ramos/.codex",
+      "skillId": "changelog-generator",
+      "name": "changelog-generator",
+      "installs": 2
+    },
+    {
+      "source": "junh0328/playground",
+      "skillId": "harness-diagnostics",
+      "name": "harness-diagnostics",
+      "installs": 2
+    },
+    {
+      "source": "next-friday/nextfriday-skills",
+      "skillId": "nextfriday-types",
+      "name": "nextfriday-types",
+      "installs": 2
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "database-optimizer",
+      "name": "database-optimizer",
+      "installs": 2
+    },
+    {
+      "source": "adolfoaranaes12/bmad-enhanced",
+      "skillId": "create-adr",
+      "name": "create-adr",
+      "installs": 2
+    },
+    {
+      "source": "gptomics/bioskills",
+      "skillId": "bio-multi-omics-similarity-network",
+      "name": "bio-multi-omics-similarity-network",
+      "installs": 2
+    },
+    {
+      "source": "skinnyandbald/fish-skills",
+      "skillId": "deepstack",
+      "name": "deepstack",
+      "installs": 2
+    },
+    {
+      "source": "gptomics/bioskills",
+      "skillId": "bio-atac-seq-atac-qc",
+      "name": "bio-atac-seq-atac-qc",
+      "installs": 2
+    },
+    {
+      "source": "bdambrosio/cognitive_workbench",
+      "skillId": "search-obsidian",
+      "name": "search-obsidian",
+      "installs": 2
+    },
+    {
+      "source": "vaayne/cc-plugins",
+      "skillId": "frontend-design",
+      "name": "frontend-design",
+      "installs": 2
+    },
+    {
+      "source": "lifangda/claude-plugins",
+      "skillId": "email-composer",
+      "name": "email composer",
+      "installs": 2
+    },
+    {
+      "source": "j0kz/mcp-agents",
+      "skillId": "webapp-testing",
+      "name": "webapp-testing",
+      "installs": 2
+    },
+    {
+      "source": "adrianbrowning/agent-skills",
+      "skillId": "deep-think",
+      "name": "deep-think",
+      "installs": 2
+    },
+    {
+      "source": "bfmcneill/agi-marketplace",
+      "skillId": "feedback-design",
+      "name": "feedback-design",
+      "installs": 2
+    },
+    {
+      "source": "phar-dev/phardev.dot",
+      "skillId": "command-creator",
+      "name": "command-creator",
+      "installs": 2
+    },
+    {
+      "source": "ynulihao/agentskillos",
+      "skillId": "web-artifacts-builder",
+      "name": "web-artifacts-builder",
+      "installs": 2
+    },
+    {
+      "source": "nabole05/mytrip-guru",
+      "skillId": "blast-motion",
+      "name": "blast-motion",
+      "installs": 2
+    },
+    {
+      "source": "blockmatic/basilic",
+      "skillId": "motion",
+      "name": "motion",
+      "installs": 2
+    },
+    {
+      "source": "swn94/claude-scientific-skills",
+      "skillId": "torchdrug",
+      "name": "torchdrug",
+      "installs": 2
+    },
+    {
+      "source": "dseirz-rgb/worker",
+      "skillId": "database-migration",
+      "name": "database-migration",
+      "installs": 2
+    },
+    {
+      "source": "wizardofwozzz/bac-presentation-generator",
+      "skillId": "bac-presentation-generator",
+      "name": "bac-presentation-generator",
+      "installs": 2
+    },
+    {
+      "source": "lifangda/claude-plugins",
+      "skillId": "meeting-insights-analyzer",
+      "name": "meeting-insights-analyzer",
+      "installs": 2
+    },
+    {
+      "source": "novotnyllc/dotnet-artisan",
+      "skillId": "dotnet-uno-targets",
+      "name": "dotnet-uno-targets",
+      "installs": 2
+    },
+    {
+      "source": "yektas/skills",
+      "skillId": "tdd",
+      "name": "tdd",
+      "installs": 2
+    },
+    {
+      "source": "sxg/science",
+      "skillId": "writer",
+      "name": "writer",
+      "installs": 2
+    },
+    {
+      "source": "dobroslavradosavljevic/kuzenbo",
+      "skillId": "using-kuzenbo-in-apps",
+      "name": "using-kuzenbo-in-apps",
+      "installs": 2
+    },
+    {
+      "source": "ionfury/homelab",
+      "skillId": "deploy-app",
+      "name": "deploy-app",
+      "installs": 2
+    },
+    {
+      "source": "thearchitectit/awesome-opencode-skills",
+      "skillId": "artifacts-builder",
+      "name": "artifacts-builder",
+      "installs": 2
+    },
+    {
+      "source": "bjornmelin/dev-skills",
+      "skillId": "docker-architect",
+      "name": "docker-architect",
+      "installs": 2
+    },
+    {
+      "source": "leegonzales/aiskills",
+      "skillId": "playwright-browser-automation",
+      "name": "playwright-browser-automation",
+      "installs": 2
+    },
+    {
+      "source": "hlwjt/cszl",
+      "skillId": "lw-web-d2c",
+      "name": "lw-web-d2c",
+      "installs": 2
+    },
+    {
+      "source": "willsigmon/sigstack",
+      "skillId": "tca-removal-audit",
+      "name": "tca removal audit",
+      "installs": 2
+    },
+    {
+      "source": "oil-oil/agent-skills",
+      "skillId": "codex-dev-g",
+      "name": "codex-dev-g",
+      "installs": 2
+    },
+    {
+      "source": "squirrel289/pax",
+      "skillId": "collaborative",
+      "name": "collaborative",
+      "installs": 2
+    },
+    {
+      "source": "thechandanbhagat/claude-skills",
+      "skillId": "code-review",
+      "name": "code-review",
+      "installs": 2
+    },
+    {
+      "source": "k1lgor/virtual-company",
+      "skillId": "backend-architect",
+      "name": "backend-architect",
+      "installs": 2
+    },
+    {
+      "source": "sgaabdu4/building-flutter-apps",
+      "skillId": "building-flutter-apps",
+      "name": "building-flutter-apps",
+      "installs": 2
+    },
+    {
+      "source": "monichre/product-manager-skills",
+      "skillId": "user-story-mapping-workshop",
+      "name": "user-story-mapping-workshop",
+      "installs": 2
+    },
+    {
+      "source": "alchaincyf/huashu-skills",
+      "skillId": "huashu-video-check",
+      "name": "huashu-video-check",
+      "installs": 2
+    },
+    {
+      "source": "composiohq/awesome-claude-skills",
+      "skillId": "helloleads-automation",
+      "name": "helloleads-automation",
+      "installs": 2
+    },
+    {
+      "source": "g1joshi/agent-skills",
+      "skillId": "angular",
+      "name": "angular",
+      "installs": 2
+    },
+    {
+      "source": "kabishou11/claudeception",
+      "skillId": "claudeception",
+      "name": "claudeception",
+      "installs": 2
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "python-code-style",
+      "name": "python-code-style",
+      "installs": 2
+    },
+    {
+      "source": "1nferencesh/s",
+      "skillId": "competitor-teardown",
+      "name": "competitor-teardown",
+      "installs": 2
+    },
+    {
+      "source": "ahmed3elshaer/everything-claude-code-mobile",
+      "skillId": "swift-patterns",
+      "name": "swift-patterns",
+      "installs": 2
+    },
+    {
+      "source": "aojdevstudio/finance-guru",
+      "skillId": "fin-guru-strategize",
+      "name": "fin-guru-strategize",
+      "installs": 2
+    },
+    {
+      "source": "jackiexiao/jackie-skills-dev",
+      "skillId": "subagent-driven-development",
+      "name": "subagent-driven-development",
+      "installs": 2
+    },
+    {
+      "source": "hainamchung/agent-assistant",
+      "skillId": "file-path-traversal-testing",
+      "name": "file path traversal testing",
+      "installs": 2
+    },
+    {
+      "source": "chloezhu010/vibe-ship",
+      "skillId": "supabase-setup",
+      "name": "supabase-setup",
+      "installs": 2
+    },
+    {
+      "source": "ship-studio/saul-goodman-lawyer-template",
+      "skillId": "onboarding",
+      "name": "onboarding",
+      "installs": 2
+    },
+    {
+      "source": "manastalukdar/claude-devstudio",
+      "skillId": "e2e-generate",
+      "name": "e2e-generate",
+      "installs": 2
+    },
+    {
+      "source": "lyq-lin/ycode.cli",
+      "skillId": "pdf",
+      "name": "pdf",
+      "installs": 2
+    },
+    {
+      "source": "charleshahn/duivyagent",
+      "skillId": "forcefield_selection",
+      "name": "forcefield_selection",
+      "installs": 2
+    },
+    {
+      "source": "physics91/claude-vibe",
+      "skillId": "perf-analyzer",
+      "name": "perf-analyzer",
+      "installs": 2
+    },
+    {
+      "source": "nabole05/mytrip-guru",
+      "skillId": "blast-haptic",
+      "name": "blast-haptic",
+      "installs": 2
+    },
+    {
+      "source": "pluginagentmarketplace/custom-plugin-postgresql",
+      "skillId": "postgresql-scaling",
+      "name": "postgresql-scaling",
+      "installs": 2
+    },
+    {
+      "source": "jschulte/stackshift",
+      "skillId": "architect",
+      "name": "architect",
+      "installs": 2
+    },
+    {
+      "source": "ravinani02/opencode-agent-skills",
+      "skillId": "linkerd-patterns",
+      "name": "linkerd-patterns",
+      "installs": 2
+    },
+    {
+      "source": "lmnr-ai/laminar-skills",
+      "skillId": "laminar-instrument-codebase",
+      "name": "laminar-instrument-codebase",
+      "installs": 2
+    },
+    {
+      "source": "ofershap/drizzle-best-practices",
+      "skillId": "drizzle-best-practices",
+      "name": "drizzle-best-practices",
+      "installs": 2
+    },
+    {
+      "source": "1mangesh1/dev-skills-collection",
+      "skillId": "terraform",
+      "name": "terraform",
+      "installs": 2
+    },
+    {
+      "source": "hnabyz-bot/mcp-agent-server",
+      "skillId": "moai-workflow-spec",
+      "name": "moai-workflow-spec",
+      "installs": 2
+    },
+    {
+      "source": "swn94/claude-scientific-skills",
+      "skillId": "drugbank-database",
+      "name": "drugbank-database",
+      "installs": 2
+    },
+    {
+      "source": "lywa1998/self-host-claude-marketplace",
+      "skillId": "m02-resource",
+      "name": "m02-resource",
+      "installs": 2
+    },
+    {
+      "source": "novotnyllc/dotnet-artisan",
+      "skillId": "dotnet-messaging-patterns",
+      "name": "dotnet-messaging-patterns",
+      "installs": 2
+    },
+    {
+      "source": "tondevrel/scientific-agent-skills",
+      "skillId": "pysam",
+      "name": "pysam",
+      "installs": 2
+    },
+    {
+      "source": "maxoreric/sop-engine",
+      "skillId": "version-skill",
+      "name": "version-skill",
+      "installs": 2
+    },
+    {
+      "source": "aia-11-hn-mib/mib-mockinterviewaibot",
+      "skillId": "template-skill",
+      "name": "template-skill",
+      "installs": 2
+    },
+    {
+      "source": "perongh/mdtest",
+      "skillId": "mdtest",
+      "name": "mdtest",
+      "installs": 2
+    },
+    {
+      "source": "hainamchung/agent-assistant",
+      "skillId": "nodejs-best-practices",
+      "name": "nodejs-best-practices",
+      "installs": 2
+    },
+    {
+      "source": "hainamchung/agent-assistant",
+      "skillId": "plan-writing",
+      "name": "plan-writing",
+      "installs": 2
+    },
+    {
+      "source": "frankxai/arcanea",
+      "skillId": "arcanea-bestiary-nav",
+      "name": "arcanea-bestiary-nav",
+      "installs": 2
+    },
+    {
+      "source": "g1joshi/agent-skills",
+      "skillId": "jwt",
+      "name": "jwt",
+      "installs": 2
+    },
+    {
+      "source": "automindtechnologie-jpg/ultimate-skill.md",
+      "skillId": "broken-authentication-testing",
+      "name": "broken authentication testing",
+      "installs": 2
+    },
+    {
+      "source": "bluewaves-creations/bluewaves-skills",
+      "skillId": "openai-gpt-converter",
+      "name": "openai-gpt-converter",
+      "installs": 2
+    },
+    {
+      "source": "almeidamarcell/claude-code-skills",
+      "skillId": "breadboarding",
+      "name": "breadboarding",
+      "installs": 2
+    },
+    {
+      "source": "openmbti/core",
+      "skillId": "openjung-api",
+      "name": "openjung-api",
+      "installs": 2
+    },
+    {
+      "source": "ynulihao/agentskillos",
+      "skillId": "mcp-builder",
+      "name": "mcp-builder",
+      "installs": 2
+    },
+    {
+      "source": "krosebrook/source-of-truth-monorepo",
+      "skillId": "developing-claude-code-plugins",
+      "name": "developing-claude-code-plugins",
+      "installs": 2
+    },
+    {
+      "source": "ks6088ts-labs/skills",
+      "skillId": "skill-creator",
+      "name": "skill-creator",
+      "installs": 2
+    },
+    {
+      "source": "peterfile/my-common-skills",
+      "skillId": "canvas-design",
+      "name": "canvas-design",
+      "installs": 2
+    },
+    {
+      "source": "jovermier/claude-code-plugins-ip-labs",
+      "skillId": "coder-convex",
+      "name": "coder-convex",
+      "installs": 2
+    },
+    {
+      "source": "dokhacgiakhoa/antigravity-ide",
+      "skillId": "ai-wrapper-product",
+      "name": "ai-wrapper-product",
+      "installs": 2
+    },
+    {
+      "source": "ravinani02/opencode-agent-skills",
+      "skillId": "react-state-management",
+      "name": "react-state-management",
+      "installs": 2
+    },
+    {
+      "source": "buildkit-ai/betting-odds-tracker",
+      "skillId": "betting-odds-tracker",
+      "name": "betting-odds-tracker",
+      "installs": 2
+    },
+    {
+      "source": "xuziqiang98/my-skills",
+      "skillId": "pwn-exploit",
+      "name": "pwn-exploit",
+      "installs": 2
+    },
+    {
+      "source": "sarojpunde/shopify-dev-toolkit-claude-plugins",
+      "skillId": "database-best-practices",
+      "name": "database-best-practices",
+      "installs": 2
+    },
+    {
+      "source": "ilude/claude-code-config",
+      "skillId": "devcontainer-workflow",
+      "name": "devcontainer-workflow",
+      "installs": 2
+    },
+    {
+      "source": "djankies/claude-configs",
+      "skillId": "diagnosing-type-errors",
+      "name": "diagnosing-type-errors",
+      "installs": 2
+    },
+    {
+      "source": "herdiansah/antigravity-skills-master",
+      "skillId": "code-refactoring",
+      "name": "code-refactoring",
+      "installs": 2
+    },
+    {
+      "source": "fefogarcia/approved-skills",
+      "skillId": "startup-icp-definer",
+      "name": "startup-icp-definer",
+      "installs": 2
+    },
+    {
+      "source": "aia-11-hn-mib/mib-mockinterviewaibot",
+      "skillId": "gemini-image-gen",
+      "name": "gemini-image-gen",
+      "installs": 2
+    },
+    {
+      "source": "rebyteai-template/rebyte-skills",
+      "skillId": "langchain-agent",
+      "name": "langchain-agent",
+      "installs": 2
+    },
+    {
+      "source": "erkamyaman/ionic-skills",
+      "skillId": "ionic-skills",
+      "name": "ionic-skills",
+      "installs": 2
+    },
+    {
+      "source": "pentaxis93/aiandi",
+      "skillId": "editors-table",
+      "name": "editors-table",
+      "installs": 2
+    },
+    {
+      "source": "catlog22/claude-code-workflow",
+      "skillId": "codex-issue-plan-execute",
+      "name": "codex-issue-plan-execute",
+      "installs": 2
+    },
+    {
+      "source": "spjoshis/claude-code-plugins",
+      "skillId": "test-automation",
+      "name": "test-automation",
+      "installs": 2
+    },
+    {
+      "source": "securityronin/ronin-marketplace",
+      "skillId": "cloudflare-r2-d1",
+      "name": "cloudflare-r2-d1",
+      "installs": 2
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "research-context",
+      "name": "research-context",
+      "installs": 1
+    },
+    {
+      "source": "laurigates/claude-plugins",
+      "skillId": "sync-daily",
+      "name": "sync-daily",
+      "installs": 1
+    },
+    {
+      "source": "hoangnguyen0403/agent-skills-standard",
+      "skillId": "swift-memory-management",
+      "name": "swift memory management",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "tech-manga-explainer",
+      "name": "tech-manga-explainer",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "sickn33-risk-manager",
+      "name": "sickn33-risk-manager",
+      "installs": 1
+    },
+    {
+      "source": "oimiragieo/agent-studio",
+      "skillId": "progressive-disclosure",
+      "name": "progressive-disclosure",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "a5c-ai-vehicle-physics",
+      "name": "a5c-ai-vehicle-physics",
+      "installs": 1
+    },
+    {
+      "source": "k-kolomeitsev/data-structure-protocol",
+      "skillId": "data-structure-protocol",
+      "name": "data-structure-protocol",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "vevarunsharma-azure-resource-visualizer",
+      "name": "vevarunsharma-azure-resource-visualizer",
+      "installs": 1
+    },
+    {
+      "source": "chipagosfinest/claude-marketing-growth",
+      "skillId": "conversion-optimization",
+      "name": "conversion-optimization",
+      "installs": 1
+    },
+    {
+      "source": "proflead/codex-skills-library",
+      "skillId": "unit-test-starter",
+      "name": "unit-test-starter",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "openclaw-agentmail",
+      "name": "openclaw-agentmail",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "api-reference-documentation",
+      "name": "api-reference-documentation",
+      "installs": 1
+    },
+    {
+      "source": "congdon1207/agents.md",
+      "skillId": "typescript-expert",
+      "name": "typescript-expert",
+      "installs": 1
+    },
+    {
+      "source": "chipagosfinest/claude-monitoring-alerting",
+      "skillId": "domain-monitor",
+      "name": "domain-monitor",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "davila7-session-handoff",
+      "name": "davila7-session-handoff",
+      "installs": 1
+    },
+    {
+      "source": "helmab/ysl-skills",
+      "skillId": "ysl-seller",
+      "name": "ysl-seller",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "sickn33-python-testing-patterns",
+      "name": "sickn33-python-testing-patterns",
+      "installs": 1
+    },
+    {
+      "source": "edanstarfire/claudecode_webui",
+      "skillId": "git-commit-composer",
+      "name": "git-commit-composer",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "superspec-init",
+      "name": "superspec-init",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "mcp-chrome-devtools",
+      "name": "mcp-chrome-devtools",
+      "installs": 1
+    },
+    {
+      "source": "bdambrosio/cognitive_workbench",
+      "skillId": "mc-wait",
+      "name": "mc-wait",
+      "installs": 1
+    },
+    {
+      "source": "bdambrosio/cognitive_workbench",
+      "skillId": "fs-read",
+      "name": "fs-read",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "linux-commands-guide",
+      "name": "linux-commands-guide",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "nuxt-seo",
+      "name": "nuxt-seo",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "jeffallan-dotnet-core-expert",
+      "name": "jeffallan-dotnet-core-expert",
+      "installs": 1
+    },
+    {
+      "source": "dykyi-roman/awesome-claude-code",
+      "skillId": "acc-analyze-ci-config",
+      "name": "acc-analyze-ci-config",
+      "installs": 1
+    },
+    {
+      "source": "mochimochino-ki/shinkoku",
+      "skillId": "reading-deduction-cert",
+      "name": "reading-deduction-cert",
+      "installs": 1
+    },
+    {
+      "source": "api/git",
+      "skillId": "remotion-best-practices",
+      "name": "remotion-best-practices",
+      "installs": 1
+    },
+    {
+      "source": "factory-ai/factory-plugins",
+      "skillId": "tuistory",
+      "name": "tuistory",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "smallnest-crewai-developer",
+      "name": "smallnest-crewai-developer",
+      "installs": 1
+    },
+    {
+      "source": "sundial-org/awesome-openclaw-skills",
+      "skillId": "skills-search",
+      "name": "skills-search",
+      "installs": 1
+    },
+    {
+      "source": "namesreallyblank/clorch",
+      "skillId": "ralph",
+      "name": "ralph",
+      "installs": 1
+    },
+    {
+      "source": "octagonai/skills",
+      "skillId": "financial-metrics-master",
+      "name": "financial-metrics-master",
+      "installs": 1
+    },
+    {
+      "source": "alexpolonsky/agent-skills",
+      "skillId": "pharmacy-search",
+      "name": "pharmacy-search",
+      "installs": 1
+    },
+    {
+      "source": "thedivergentai/gd-agentic-skills",
+      "skillId": "ui-containers",
+      "name": "ui-containers",
+      "installs": 1
+    },
+    {
+      "source": "aiskillstore/marketplace",
+      "skillId": "subagent-driven-development",
+      "name": "subagent-driven-development",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "htlin222-architect",
+      "name": "htlin222-architect",
+      "installs": 1
+    },
+    {
+      "source": "majiayu000/claude-skill-registry",
+      "skillId": "code-refinement",
+      "name": "code-refinement",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "ux-evaluator",
+      "name": "ux-evaluator",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "synqing-esp-idf",
+      "name": "synqing-esp-idf",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "axiomantic-resolving-merge-conflicts",
+      "name": "axiomantic-resolving-merge-conflicts",
+      "installs": 1
+    },
+    {
+      "source": "kasperrt/testing",
+      "skillId": "testing-audit-3",
+      "name": "testing-audit-3",
+      "installs": 1
+    },
+    {
+      "source": "hoangnguyen0403/agent-skills-standard",
+      "skillId": "next.js-data-access-layer",
+      "name": "next.js data access layer",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "cexll-codex",
+      "name": "cexll-codex",
+      "installs": 1
+    },
+    {
+      "source": "payram/payram-helper-mcp-server",
+      "skillId": "setup-payram",
+      "name": "setup-payram",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "a5c-ai-unreal-nanite",
+      "name": "a5c-ai-unreal-nanite",
+      "installs": 1
+    },
+    {
+      "source": "astoeffer/plugin-marketplace",
+      "skillId": "cloodle-design-tokens",
+      "name": "cloodle-design-tokens",
+      "installs": 1
+    },
+    {
+      "source": "aegra/dev",
+      "skillId": "aegra",
+      "name": "aegra",
+      "installs": 1
+    },
+    {
+      "source": "bdambrosio/cognitive_workbench",
+      "skillId": "osworld-reset",
+      "name": "osworld-reset",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "canton-network-repos",
+      "name": "canton-network-repos",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "sdiamante13-ui-redesign",
+      "name": "sdiamante13-ui-redesign",
+      "installs": 1
+    },
+    {
+      "source": "wayne930242/merlin-my-pai",
+      "skillId": "google",
+      "name": "google",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "codethread-claude-code-knowledge",
+      "name": "codethread-claude-code-knowledge",
+      "installs": 1
+    },
+    {
+      "source": "cantagestudio/cosmicatlaspacker",
+      "skillId": "task-segmentation",
+      "name": "task-segmentation",
+      "installs": 1
+    },
+    {
+      "source": "dykyi-roman/awesome-claude-code",
+      "skillId": "acc-create-policy",
+      "name": "acc-create-policy",
+      "installs": 1
+    },
+    {
+      "source": "asiaostrich/universal-dev-standards",
+      "skillId": "reverse-engineer",
+      "name": "reverse-engineer",
+      "installs": 1
+    },
+    {
+      "source": "arman-kudaibergenov/1c-ai-development-kit",
+      "skillId": "openspec-archive",
+      "name": "openspec-archive",
+      "installs": 1
+    },
+    {
+      "source": "cullenmcdermott/nix-config",
+      "skillId": "home-assistant",
+      "name": "home-assistant",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "amazon-shopping",
+      "name": "amazon-shopping",
+      "installs": 1
+    },
+    {
+      "source": "mintlify/com",
+      "skillId": "isol8",
+      "name": "isol8",
+      "installs": 1
+    },
+    {
+      "source": "g1joshi/agent-skills",
+      "skillId": "esbuild",
+      "name": "esbuild",
+      "installs": 1
+    },
+    {
+      "source": "dasien/claudemultiagenttemplate",
+      "skillId": "web-ui-design",
+      "name": "web ui design",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "technical-specification",
+      "name": "technical-specification",
+      "installs": 1
+    },
+    {
+      "source": "picahq/skills",
+      "skillId": "skill-sanitizer",
+      "name": "skill-sanitizer",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills.sh_feed",
+      "skillId": "risk-management",
+      "name": "risk-management",
+      "installs": 1
+    },
+    {
+      "source": "remotion-dev/skills",
+      "skillId": "mediabunny",
+      "name": "mediabunny",
+      "installs": 1
+    },
+    {
+      "source": "catlog22/claude-code-workflow",
+      "skillId": "collaborative-plan-parallel",
+      "name": "collaborative-plan-parallel",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "databases",
+      "name": "databases",
+      "installs": 1
+    },
+    {
+      "source": "wenerme/ai",
+      "skillId": "skill-writer",
+      "name": "skill-writer",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "humanizer-zh-tw",
+      "name": "humanizer-zh-tw",
+      "installs": 1
+    },
+    {
+      "source": "filippofilip95/wizrd",
+      "skillId": "support",
+      "name": "support",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "sickn33-kubernetes-architect",
+      "name": "sickn33-kubernetes-architect",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "dnakov-radare2",
+      "name": "dnakov-radare2",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "agent-creator",
+      "name": "agent-creator",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "jest-react-testing",
+      "name": "jest-react-testing",
+      "installs": 1
+    },
+    {
+      "source": "lerianstudio/ring",
+      "skillId": "ops-migration-planning",
+      "name": "ops-migration-planning",
+      "installs": 1
+    },
+    {
+      "source": "seikaikyo/dash-skills",
+      "skillId": "web-design-guidelines",
+      "name": "web-design-guidelines",
+      "installs": 1
+    },
+    {
+      "source": "microsoft/agent-skills",
+      "skillId": "azure-security-keyvault-keys-java",
+      "name": "azure-security-keyvault-keys-java",
+      "installs": 1
+    },
+    {
+      "source": "g1joshi/agent-skills",
+      "skillId": "zed",
+      "name": "zed",
+      "installs": 1
+    },
+    {
+      "source": "euler-xyz/agent-skills",
+      "skillId": "euler-lens-data",
+      "name": "euler-lens-data",
+      "installs": 1
+    },
+    {
+      "source": "igbuend/grimbard",
+      "skillId": "authentication-security-pattern",
+      "name": "authentication-security-pattern",
+      "installs": 1
+    },
+    {
+      "source": "g1joshi/agent-skills",
+      "skillId": "cassandra",
+      "name": "cassandra",
+      "installs": 1
+    },
+    {
+      "source": "pipelex/skills",
+      "skillId": "edit",
+      "name": "edit",
+      "installs": 1
+    },
+    {
+      "source": "microsoft/skills",
+      "skillId": "azure-ai",
+      "name": "azure-ai",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "debugging",
+      "name": "debugging",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "a5c-ai-fastlanemobile-ci-cd",
+      "name": "a5c-ai-fastlanemobile-ci-cd",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "tabletop-rpg-design",
+      "name": "tabletop-rpg-design",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "openclaw-tmux-agents",
+      "name": "openclaw-tmux-agents",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "neversight-boss",
+      "name": "neversight-boss",
+      "installs": 1
+    },
+    {
+      "source": "vudovn/antigravity-kit",
+      "skillId": "game-design",
+      "name": "game-design",
+      "installs": 1
+    },
+    {
+      "source": "maartenlouis/elevenlabs-remotion-skill",
+      "skillId": "elevenlabs",
+      "name": "elevenlabs",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "pcesar22-esp32-firmware",
+      "name": "pcesar22-esp32-firmware",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "davila7-bioservices",
+      "name": "davila7-bioservices",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "gemma-domain-trainer-prototype",
+      "name": "gemma-domain-trainer-prototype",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "jimliu-baoyu-slide-deck",
+      "name": "jimliu-baoyu-slide-deck",
+      "installs": 1
+    },
+    {
+      "source": "majiayu000/claude-skill-registry",
+      "skillId": "8bit-docs-patterns",
+      "name": "8bit-docs-patterns",
+      "installs": 1
+    },
+    {
+      "source": "bdambrosio/cognitive_workbench",
+      "skillId": "mc-stop",
+      "name": "mc-stop",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "database-schema-documentation",
+      "name": "database-schema-documentation",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "textual",
+      "name": "textual",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "johnrogers-swift-style",
+      "name": "johnrogers-swift-style",
+      "installs": 1
+    },
+    {
+      "source": "mebusw/mebusw-marketplace",
+      "skillId": "trainer-write-wechat-article",
+      "name": "trainer-write-wechat-article",
+      "installs": 1
+    },
+    {
+      "source": "namesreallyblank/clorch",
+      "skillId": "search-router",
+      "name": "search-router",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "using-nautilus-trader",
+      "name": "using-nautilus-trader",
+      "installs": 1
+    },
+    {
+      "source": "microsoft/agent-skills",
+      "skillId": "azure-monitor-query-java",
+      "name": "azure-monitor-query-java",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "secondsky-sap-fiori-tools",
+      "name": "secondsky-sap-fiori-tools",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "dvdsgl-canvas",
+      "name": "dvdsgl-canvas",
+      "installs": 1
+    },
+    {
+      "source": "anentrypoint/plugforge",
+      "skillId": "dev",
+      "name": "dev",
+      "installs": 1
+    },
+    {
+      "source": "g1joshi/agent-skills",
+      "skillId": "linkerd",
+      "name": "linkerd",
+      "installs": 1
+    },
+    {
+      "source": "tbartel74/vigil-code",
+      "skillId": "browser-extension-developer",
+      "name": "browser-extension-developer",
+      "installs": 1
+    },
+    {
+      "source": "arco-design/arco-design-skill",
+      "skillId": "arco-design-skills",
+      "name": "arco-design-skills",
+      "installs": 1
+    },
+    {
+      "source": "arman-kudaibergenov/1c-ai-development-kit",
+      "skillId": "db-load-git",
+      "name": "db-load-git",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "windmill-labs-write-script-csharp",
+      "name": "windmill-labs-write-script-csharp",
+      "installs": 1
+    },
+    {
+      "source": "data-wise/claude-plugins",
+      "skillId": "sensitivity-analyst",
+      "name": "sensitivity-analyst",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "jotai-patterns",
+      "name": "jotai-patterns",
+      "installs": 1
+    },
+    {
+      "source": "congdon1207/agents.md",
+      "skillId": "nextjs-best-practices",
+      "name": "nextjs-best-practices",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "quran-frontend-design",
+      "name": "quran-frontend-design",
+      "installs": 1
+    },
+    {
+      "source": "g1joshi/agent-skills",
+      "skillId": "duckdb",
+      "name": "duckdb",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "openclaw-ai-slides",
+      "name": "openclaw-ai-slides",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "expo-architect",
+      "name": "expo-architect",
+      "installs": 1
+    },
+    {
+      "source": "vudovn/antigravity-kit",
+      "skillId": "3d-games",
+      "name": "3d-games",
+      "installs": 1
+    },
+    {
+      "source": "arustydev/ai",
+      "skillId": "using-superpowers",
+      "name": "using-superpowers",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "secondsky-motion",
+      "name": "secondsky-motion",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "davila7-exploratory-data-analysis",
+      "name": "davila7-exploratory-data-analysis",
+      "installs": 1
+    },
+    {
+      "source": "dasien/claudemultiagenttemplate",
+      "skillId": "data-quality",
+      "name": "data quality",
+      "installs": 1
+    },
+    {
+      "source": "freshworks-developers/marketplace",
+      "skillId": "freshworks-app-dev-skill",
+      "name": "freshworks-app-dev-skill",
+      "installs": 1
+    },
+    {
+      "source": "multicam/qara",
+      "skillId": "cc-pai-optimiser",
+      "name": "cc-pai-optimiser",
+      "installs": 1
+    },
+    {
+      "source": "quran/quran.com-frontend-next",
+      "skillId": "generate-verified-docs",
+      "name": "generate-verified-docs",
+      "installs": 1
+    },
+    {
+      "source": "bdambrosio/cognitive_workbench",
+      "skillId": "init",
+      "name": "init",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "julianromli-frontend-ui-animator",
+      "name": "julianromli-frontend-ui-animator",
+      "installs": 1
+    },
+    {
+      "source": "qiao-925/qiao-skills",
+      "skillId": "architecture-cognition",
+      "name": "architecture-cognition",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "redisearch-lint",
+      "name": "redisearch-lint",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "ralph-prompt-builder",
+      "name": "ralph-prompt-builder",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "openclaw-brave-images",
+      "name": "openclaw-brave-images",
+      "installs": 1
+    },
+    {
+      "source": "dykyi-roman/awesome-claude-code",
+      "skillId": "acc-check-leaky-abstractions",
+      "name": "acc-check-leaky-abstractions",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "red-team-tactics",
+      "name": "red-team-tactics",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "docusaurus-advanced",
+      "name": "docusaurus-advanced",
+      "installs": 1
+    },
+    {
+      "source": "dykyi-roman/awesome-claude-code",
+      "skillId": "acc-create-action",
+      "name": "acc-create-action",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "handlebars",
+      "name": "handlebars",
+      "installs": 1
+    },
+    {
+      "source": "proflead/codex-skills-library",
+      "skillId": "release-notes-drafter",
+      "name": "release-notes-drafter",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills.sh_feed",
+      "skillId": "testing-patterns",
+      "name": "testing-patterns",
+      "installs": 1
+    },
+    {
+      "source": "dangaogit/bun-server-skills",
+      "skillId": "bun-server-validation",
+      "name": "bun-server-validation",
+      "installs": 1
+    },
+    {
+      "source": "latestaiagents/agent-skills",
+      "skillId": "deployment-strategies",
+      "name": "deployment-strategies",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "superspec-plan",
+      "name": "superspec-plan",
+      "installs": 1
+    },
+    {
+      "source": "dykyi-roman/awesome-claude-code",
+      "skillId": "acc-create-visitor",
+      "name": "acc-create-visitor",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "java-maintenance",
+      "name": "java-maintenance",
+      "installs": 1
+    },
+    {
+      "source": "arman-kudaibergenov/1c-ai-development-kit",
+      "skillId": "img-grid",
+      "name": "img-grid",
+      "installs": 1
+    },
+    {
+      "source": "dykyi-roman/awesome-claude-code",
+      "skillId": "acc-code-examples-template",
+      "name": "acc-code-examples-template",
+      "installs": 1
+    },
+    {
+      "source": "dykyi-roman/awesome-claude-code",
+      "skillId": "acc-ddd-knowledge",
+      "name": "acc-ddd-knowledge",
+      "installs": 1
+    },
+    {
+      "source": "samhvw8/dotfiles",
+      "skillId": "better-auth",
+      "name": "better-auth",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "ts-library",
+      "name": "ts-library",
+      "installs": 1
+    },
+    {
+      "source": "anton-abyzov/specweave",
+      "skillId": "sw:umbrella-repo-detector",
+      "name": "sw:umbrella-repo-detector",
+      "installs": 1
+    },
+    {
+      "source": "heyflouai/ikf-central-dashboard",
+      "skillId": "ikf-forecast-ingest-validator",
+      "name": "ikf-forecast-ingest-validator",
+      "installs": 1
+    },
+    {
+      "source": "wenerme/ai",
+      "skillId": "chrome-devtools",
+      "name": "chrome-devtools",
+      "installs": 1
+    },
+    {
+      "source": "g1joshi/agent-skills",
+      "skillId": "babel",
+      "name": "babel",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "storytelling-synthesizer",
+      "name": "storytelling-synthesizer",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "react-19",
+      "name": "react-19",
+      "installs": 1
+    },
+    {
+      "source": "mochimochino-ki/shinkoku",
+      "skillId": "settlement",
+      "name": "settlement",
+      "installs": 1
+    },
+    {
+      "source": "jmagly/ai-writing-guide",
+      "skillId": "test-sync",
+      "name": "test-sync",
+      "installs": 1
+    },
+    {
+      "source": "g1joshi/agent-skills",
+      "skillId": "cosmosdb",
+      "name": "cosmosdb",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "rapidinsights-kimbal-modeling",
+      "name": "rapidinsights-kimbal-modeling",
+      "installs": 1
+    },
+    {
+      "source": "armand7951/everything-claude-code",
+      "skillId": "coding-standards",
+      "name": "coding-standards",
+      "installs": 1
+    },
+    {
+      "source": "metjm/planning-agent",
+      "skillId": "implementation-review",
+      "name": "implementation-review",
+      "installs": 1
+    },
+    {
+      "source": "dangaogit/bun-server-skills",
+      "skillId": "bun-server-middleware",
+      "name": "bun-server-middleware",
+      "installs": 1
+    },
+    {
+      "source": "api/git",
+      "skillId": "sql-generator",
+      "name": "sql-generator",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "plan-writing",
+      "name": "plan-writing",
+      "installs": 1
+    },
+    {
+      "source": "astoreyai/ai_scientist",
+      "skillId": "results-interpretation",
+      "name": "results-interpretation",
+      "installs": 1
+    },
+    {
+      "source": "chipagosfinest/claude-integration-tools",
+      "skillId": "connect",
+      "name": "connect",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "davila7-prompt-caching",
+      "name": "davila7-prompt-caching",
+      "installs": 1
+    },
+    {
+      "source": "vaayne/cc-plugins",
+      "skillId": "web-search",
+      "name": "web-search",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "threejs-skills",
+      "name": "threejs-skills",
+      "installs": 1
+    },
+    {
+      "source": "g1joshi/agent-skills",
+      "skillId": "ocaml",
+      "name": "ocaml",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "api-error-handling",
+      "name": "api-error-handling",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "python-development",
+      "name": "python-development",
+      "installs": 1
+    },
+    {
+      "source": "pinecone-io/skills",
+      "skillId": "quickstart",
+      "name": "quickstart",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "unix-macos-engineer",
+      "name": "unix-macos-engineer",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "openclaw-jo4",
+      "name": "openclaw-jo4",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "deep-research",
+      "name": "deep-research",
+      "installs": 1
+    },
+    {
+      "source": "majiayu000/claude-skill-registry",
+      "skillId": "odoo-18",
+      "name": "odoo-18",
+      "installs": 1
+    },
+    {
+      "source": "hoangnguyen0403/agent-skills-standard",
+      "skillId": "swift-language",
+      "name": "swift language",
+      "installs": 1
+    },
+    {
+      "source": "thedivergentai/gd-agentic-skills",
+      "skillId": "shaders-basics",
+      "name": "shaders-basics",
+      "installs": 1
+    },
+    {
+      "source": "lambdatest/agent-skills",
+      "skillId": "appium-skill",
+      "name": "appium-skill",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "jeremylongshore-conducting-browser-compatibility-tests",
+      "name": "jeremylongshore-conducting-browser-compatibility-tests",
+      "installs": 1
+    },
+    {
+      "source": "edanstarfire/claudecode_webui",
+      "skillId": "github-authenticator",
+      "name": "github-authenticator",
+      "installs": 1
+    },
+    {
+      "source": "lbds137/tzurot",
+      "skillId": "tzurot-tooling",
+      "name": "tzurot-tooling",
+      "installs": 1
+    },
+    {
+      "source": "dasien/claudemultiagenttemplate",
+      "skillId": "work-breakdown",
+      "name": "work breakdown",
+      "installs": 1
+    },
+    {
+      "source": "sattva2020/skills",
+      "skillId": "dokploy-deploy",
+      "name": "dokploy-deploy",
+      "installs": 1
+    },
+    {
+      "source": "arman-kudaibergenov/1c-ai-development-kit",
+      "skillId": "template-add",
+      "name": "template-add",
+      "installs": 1
+    },
+    {
+      "source": "xxidbr9/xxidbr9-agents-skills-set",
+      "skillId": "axum-web-framework",
+      "name": "axum-web-framework",
+      "installs": 1
+    },
+    {
+      "source": "verekia/r3f-gamedev",
+      "skillId": "miniplex-ecs",
+      "name": "miniplex ecs",
+      "installs": 1
+    },
+    {
+      "source": "devops/ai",
+      "skillId": "check-coin-listing",
+      "name": "check-coin-listing",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "markdown-converter",
+      "name": "markdown-converter",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "davila7-frontend-dev-guidelines",
+      "name": "davila7-frontend-dev-guidelines",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "ralph-prompt-multi-task",
+      "name": "ralph-prompt-multi-task",
+      "installs": 1
+    },
+    {
+      "source": "oakencore/skillvet",
+      "skillId": "trigger-chain-analysis",
+      "name": "trigger-chain-analysis",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "quick-view",
+      "name": "quick-view",
+      "installs": 1
+    },
+    {
+      "source": "aiskillstore/marketplace",
+      "skillId": "monorepo-management",
+      "name": "monorepo-management",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "prose-generation",
+      "name": "prose-generation",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "openclaw-yahoo-finance",
+      "name": "openclaw-yahoo-finance",
+      "installs": 1
+    },
+    {
+      "source": "joshp123/ai-stack",
+      "skillId": "summarize-youtube",
+      "name": "summarize-youtube",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "erpnext-errors-hooks",
+      "name": "erpnext-errors-hooks",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "neversight-mattermost-cli",
+      "name": "neversight-mattermost-cli",
+      "installs": 1
+    },
+    {
+      "source": "paulrberg/dot-agents",
+      "skillId": "just-cli",
+      "name": "just-cli",
+      "installs": 1
+    },
+    {
+      "source": "valetdotdev/skills",
+      "skillId": "valet",
+      "name": "valet",
+      "installs": 1
+    },
+    {
+      "source": "dykyi-roman/awesome-claude-code",
+      "skillId": "acc-create-dto",
+      "name": "acc-create-dto",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "r3f-best-practices",
+      "name": "r3f-best-practices",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "leavesfly-api-design",
+      "name": "leavesfly-api-design",
+      "installs": 1
+    },
+    {
+      "source": "anton-abyzov/specweave",
+      "skillId": "sw:lsp",
+      "name": "sw:lsp",
+      "installs": 1
+    },
+    {
+      "source": "avibe-bot/askill",
+      "skillId": "use-askill",
+      "name": "use-askill",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "prisma",
+      "name": "prisma",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "openclaw-attio",
+      "name": "openclaw-attio",
+      "installs": 1
+    },
+    {
+      "source": "aaaaqwq/claude-code-skills",
+      "skillId": "playwright-cli",
+      "name": "playwright-cli",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "behavioral-modes",
+      "name": "behavioral-modes",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "golang-backend-development",
+      "name": "golang-backend-development",
+      "installs": 1
+    },
+    {
+      "source": "majiayu000/claude-skill-registry",
+      "skillId": "add-new-skills-to-workflow",
+      "name": "add-new-skills-to-workflow",
+      "installs": 1
+    },
+    {
+      "source": "dejanvasic85/williamstownsc",
+      "skillId": "dribl-crawling",
+      "name": "dribl-crawling",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "daymade-skills-search",
+      "name": "daymade-skills-search",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "proffesor-for-testing-test-automation-strategy",
+      "name": "proffesor-for-testing-test-automation-strategy",
+      "installs": 1
+    },
+    {
+      "source": "dykyi-roman/awesome-claude-code",
+      "skillId": "acc-check-logging-failures",
+      "name": "acc-check-logging-failures",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "bitwarden-angular-modernization",
+      "name": "bitwarden-angular-modernization",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "gar-ai-rust-gpu-scheduling",
+      "name": "gar-ai-rust-gpu-scheduling",
+      "installs": 1
+    },
+    {
+      "source": "4shub/agent-review",
+      "skillId": "code-review",
+      "name": "code-review",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "nikiforovall-dotnet-dependency",
+      "name": "nikiforovall-dotnet-dependency",
+      "installs": 1
+    },
+    {
+      "source": "dykyi-roman/awesome-claude-code",
+      "skillId": "acc-create-specification",
+      "name": "acc-create-specification",
+      "installs": 1
+    },
+    {
+      "source": "tkersey/dotfiles",
+      "skillId": "clarification-expert",
+      "name": "clarification-expert",
+      "installs": 1
+    },
+    {
+      "source": "aleister1102/skills-rce",
+      "skillId": "trust",
+      "name": "trust",
+      "installs": 1
+    },
+    {
+      "source": "meitu-int/com",
+      "skillId": "juanleme",
+      "name": "juanleme",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "specification-writing-skill",
+      "name": "specification-writing-skill",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills.sh_feed",
+      "skillId": "python-observability-patterns",
+      "name": "python-observability-patterns",
+      "installs": 1
+    },
+    {
+      "source": "trancong12102/ccc",
+      "skillId": "conventional-commit",
+      "name": "conventional-commit",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "travisjneuman-grant-proposal-builder",
+      "name": "travisjneuman-grant-proposal-builder",
+      "installs": 1
+    },
+    {
+      "source": "aaaaqwq/claude-code-skills",
+      "skillId": "git-sync",
+      "name": "git-sync",
+      "installs": 1
+    },
+    {
+      "source": "mebusw/awesome-jackyshen-skills",
+      "skillId": "trainer-write-wechat-article",
+      "name": "trainer-write-wechat-article",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "conda-skills",
+      "name": "conda-skills",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "ctf-pwn",
+      "name": "ctf-pwn",
+      "installs": 1
+    },
+    {
+      "source": "atman-33/skills",
+      "skillId": "react-router-file-routes",
+      "name": "react-router-file-routes",
+      "installs": 1
+    },
+    {
+      "source": "hoangnguyen0403/agent-skills-standard",
+      "skillId": "nestjs-configuration",
+      "name": "nestjs configuration",
+      "installs": 1
+    },
+    {
+      "source": "proflead/codex-skills-library",
+      "skillId": "readme-polish",
+      "name": "readme-polish",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "machine-learning-engineer",
+      "name": "machine-learning-engineer",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "html-style",
+      "name": "html-style",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "memory-systems",
+      "name": "memory-systems",
+      "installs": 1
+    },
+    {
+      "source": "microsoft/agent-skills",
+      "skillId": "azure-communication-common-java",
+      "name": "azure-communication-common-java",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "event-driven-architect",
+      "name": "event-driven-architect",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "leonardomso-fact-check",
+      "name": "leonardomso-fact-check",
+      "installs": 1
+    },
+    {
+      "source": "chipagosfinest/claude-engineering-team",
+      "skillId": "docs-writer",
+      "name": "docs-writer",
+      "installs": 1
+    },
+    {
+      "source": "cantagestudio/cosmicatlaspacker",
+      "skillId": "history-logger",
+      "name": "history-logger",
+      "installs": 1
+    },
+    {
+      "source": "martinffx/claude-code-atelier",
+      "skillId": "dynamodb-toolbox",
+      "name": "dynamodb-toolbox",
+      "installs": 1
+    },
+    {
+      "source": "zanwei/human-interface-guidelines-skill",
+      "skillId": "human-interface-guidelines",
+      "name": "human-interface-guidelines",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills.sh_feed",
+      "skillId": "binary-re",
+      "name": "binary-re",
+      "installs": 1
+    },
+    {
+      "source": "bdambrosio/cognitive_workbench",
+      "skillId": "mc-map-query",
+      "name": "mc-map-query",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "aojdevstudio-portfoliosyncing",
+      "name": "aojdevstudio-portfoliosyncing",
+      "installs": 1
+    },
+    {
+      "source": "run-llama/vibe-llama",
+      "skillId": "docx...)",
+      "name": "docx...)",
+      "installs": 1
+    },
+    {
+      "source": "zekidikmen/stratarts",
+      "skillId": "business-model-designer",
+      "name": "business-model-designer",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "imsg",
+      "name": "imsg",
+      "installs": 1
+    },
+    {
+      "source": "atman-33/skills",
+      "skillId": "supabase-migration-prep",
+      "name": "supabase-migration-prep",
+      "installs": 1
+    },
+    {
+      "source": "lerianstudio/ring",
+      "skillId": "ring:dev-integration-testing",
+      "name": "ring:dev-integration-testing",
+      "installs": 1
+    },
+    {
+      "source": "dmdorta1111/jac-v1",
+      "skillId": "claude-code",
+      "name": "claude-code",
+      "installs": 1
+    },
+    {
+      "source": "dykyi-roman/awesome-claude-code",
+      "skillId": "acc-create-rector-config",
+      "name": "acc-create-rector-config",
+      "installs": 1
+    },
+    {
+      "source": "vercel-labs/agent-skills",
+      "skillId": "react-composition-patterns",
+      "name": "react-composition-patterns",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "skill-master",
+      "name": "skill-master",
+      "installs": 1
+    },
+    {
+      "source": "ttmouse/skills",
+      "skillId": "compress-latest-desktop-video",
+      "name": "compress-latest-desktop-video",
+      "installs": 1
+    },
+    {
+      "source": "hoangnguyen0403/agent-skills-standard",
+      "skillId": "next-upgrade",
+      "name": "next-upgrade",
+      "installs": 1
+    },
+    {
+      "source": "levnikolaevich/claude-code-skills",
+      "skillId": "ln-502-agent-reviewer",
+      "name": "ln-502-agent-reviewer",
+      "installs": 1
+    },
+    {
+      "source": "dykyi-roman/awesome-claude-code",
+      "skillId": "acc-create-test-builder",
+      "name": "acc-create-test-builder",
+      "installs": 1
+    },
+    {
+      "source": "namesreallyblank/clorch",
+      "skillId": "skill-development",
+      "name": "skill-development",
+      "installs": 1
+    },
+    {
+      "source": "alirezarezvani/claude-cto-team",
+      "skillId": "delegation-prompt-crafter",
+      "name": "delegation-prompt-crafter",
+      "installs": 1
+    },
+    {
+      "source": "alexadark/darko-kalany",
+      "skillId": "doc-search",
+      "name": "doc-search",
+      "installs": 1
+    },
+    {
+      "source": "dykyi-roman/awesome-claude-code",
+      "skillId": "acc-create-mediator",
+      "name": "acc-create-mediator",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "dredd-us-markdown-formatter",
+      "name": "dredd-us-markdown-formatter",
+      "installs": 1
+    },
+    {
+      "source": "pinecone-io/skills",
+      "skillId": "query",
+      "name": "query",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "automating-mobile-app-testing",
+      "name": "automating-mobile-app-testing",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "c4-architecture",
+      "name": "c4-architecture",
+      "installs": 1
+    },
+    {
+      "source": "ace-step/ace-step-1.5",
+      "skillId": "acestep",
+      "name": "acestep",
+      "installs": 1
+    },
+    {
+      "source": "manastalukdar/claude-devstudio",
+      "skillId": "create-todos",
+      "name": "create-todos",
+      "installs": 1
+    },
+    {
+      "source": "dangaogit/bun-server-skills",
+      "skillId": "bun-server-session",
+      "name": "bun-server-session",
+      "installs": 1
+    },
+    {
+      "source": "majiayu000/claude-skill-registry",
+      "skillId": "security-specialist",
+      "name": "security specialist",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "davila7-templates",
+      "name": "davila7-templates",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "authentication-logic",
+      "name": "authentication-logic",
+      "installs": 1
+    },
+    {
+      "source": "chiperman/agent-skills",
+      "skillId": "fixing-accessibility",
+      "name": "fixing-accessibility",
+      "installs": 1
+    },
+    {
+      "source": "chipagosfinest/claude-clawdbot-life-os",
+      "skillId": "contact-importer",
+      "name": "contact-importer",
+      "installs": 1
+    },
+    {
+      "source": "lightdash/lightdash",
+      "skillId": "debug",
+      "name": "debug",
+      "installs": 1
+    },
+    {
+      "source": "microsoft/agent-skills",
+      "skillId": "azure-appconfiguration-py",
+      "name": "azure-appconfiguration-py",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "davila7-command-creator",
+      "name": "davila7-command-creator",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "anthropics-user-research-synthesis",
+      "name": "anthropics-user-research-synthesis",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "mindfold-ai-brainstorm",
+      "name": "mindfold-ai-brainstorm",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "md-docs",
+      "name": "md-docs",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "typescript-pro",
+      "name": "typescript-pro",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "sweetylht-godot-4x-dev",
+      "name": "sweetylht-godot-4x-dev",
+      "installs": 1
+    },
+    {
+      "source": "dykyi-roman/awesome-claude-code",
+      "skillId": "acc-check-mass-assignment",
+      "name": "acc-check-mass-assignment",
+      "installs": 1
+    },
+    {
+      "source": "ken-cavanagh-glean/fieldkit",
+      "skillId": "context-optimization",
+      "name": "context-optimization",
+      "installs": 1
+    },
+    {
+      "source": "dykyi-roman/awesome-claude-code",
+      "skillId": "acc-check-deserialization",
+      "name": "acc-check-deserialization",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "davila7-qdrant-vector-search",
+      "name": "davila7-qdrant-vector-search",
+      "installs": 1
+    },
+    {
+      "source": "philoserf/claude-code-setup",
+      "skillId": "test-runner",
+      "name": "test-runner",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "og-image-design",
+      "name": "og-image-design",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "pedrohcgs-lit-review",
+      "name": "pedrohcgs-lit-review",
+      "installs": 1
+    },
+    {
+      "source": "quantmind-br/skills",
+      "skillId": "walker",
+      "name": "walker",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "oyjt-vite",
+      "name": "oyjt-vite",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "seo-competitor-pages",
+      "name": "seo-competitor-pages",
+      "installs": 1
+    },
+    {
+      "source": "petekp/agent-skills",
+      "skillId": "orchestrating-swarms",
+      "name": "orchestrating-swarms",
+      "installs": 1
+    },
+    {
+      "source": "lawvable/awesome-legal-skills",
+      "skillId": "politique-lanceur-alerte-malik-taiar",
+      "name": "politique-lanceur-alerte-malik-taiar",
+      "installs": 1
+    },
+    {
+      "source": "tech-leads-club/agent-skills",
+      "skillId": "jira-assistant",
+      "name": "jira assistant",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "sickn33-last30days",
+      "name": "sickn33-last30days",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "willsigmon-api-testing-expert",
+      "name": "willsigmon-api-testing-expert",
+      "installs": 1
+    },
+    {
+      "source": "charlieclark/markdesk",
+      "skillId": "markdesk-setup",
+      "name": "markdesk-setup",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "dependency-management",
+      "name": "dependency-management",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "nuget-manager",
+      "name": "nuget-manager",
+      "installs": 1
+    },
+    {
+      "source": "arman-kudaibergenov/1c-ai-development-kit",
+      "skillId": "help-add",
+      "name": "help-add",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "claude-mobile-ios-testing",
+      "name": "claude-mobile-ios-testing",
+      "installs": 1
+    },
+    {
+      "source": "profsynapse/pact-plugin",
+      "skillId": "n8n-validation-expert",
+      "name": "n8n-validation-expert",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "create-content",
+      "name": "create-content",
+      "installs": 1
+    },
+    {
+      "source": "profsynapse/pact-plugin",
+      "skillId": "pact-coding-standards",
+      "name": "pact-coding-standards",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "sopaco-deepwiki-rs",
+      "name": "sopaco-deepwiki-rs",
+      "installs": 1
+    },
+    {
+      "source": "dangaogit/bun-server-skills",
+      "skillId": "bun-server-di",
+      "name": "bun-server-di",
+      "installs": 1
+    },
+    {
+      "source": "quantmind-br/skills",
+      "skillId": "bubbletea",
+      "name": "bubbletea",
+      "installs": 1
+    },
+    {
+      "source": "nembie/claude-code-skills",
+      "skillId": "nextjs-route-generator",
+      "name": "nextjs-route-generator",
+      "installs": 1
+    },
+    {
+      "source": "1nfsh-s0/skills",
+      "skillId": "ai-music-generation",
+      "name": "ai-music-generation",
+      "installs": 1
+    },
+    {
+      "source": "anton-abyzov/specweave",
+      "skillId": "sw:reflect-check",
+      "name": "sw:reflect-check",
+      "installs": 1
+    },
+    {
+      "source": "dsantiagomj/dsmj-ai-toolkit",
+      "skillId": "testing-frameworks",
+      "name": "testing-frameworks",
+      "installs": 1
+    },
+    {
+      "source": "vorbei/fal-skill",
+      "skillId": "fal-ai",
+      "name": "fal-ai",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "taylorhuston-improve-processes",
+      "name": "taylorhuston-improve-processes",
+      "installs": 1
+    },
+    {
+      "source": "chipagosfinest/claude-marketing-growth",
+      "skillId": "competitive-ads-extractor",
+      "name": "competitive-ads-extractor",
+      "installs": 1
+    },
+    {
+      "source": "xenitv1/claude-code-maestro",
+      "skillId": "ralph-wiggum",
+      "name": "ralph-wiggum",
+      "installs": 1
+    },
+    {
+      "source": "evolv3-ai/vibe-skills",
+      "skillId": "admin-app-coolify",
+      "name": "admin-app-coolify",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "jamesrochabrun-llm-router",
+      "name": "jamesrochabrun-llm-router",
+      "installs": 1
+    },
+    {
+      "source": "vercel/nextjs-skills",
+      "skillId": "directives",
+      "name": "directives",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "seo-geo",
+      "name": "seo-geo",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "octocode-research",
+      "name": "octocode-research",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "generate",
+      "name": "generate",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "desktop-apps",
+      "name": "desktop-apps",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "sickn33-angular-ui-patterns",
+      "name": "sickn33-angular-ui-patterns",
+      "installs": 1
+    },
+    {
+      "source": "derklinke/codex-config",
+      "skillId": "swiftui-26-ref",
+      "name": "swiftui-26-ref",
+      "installs": 1
+    },
+    {
+      "source": "pondorasti/pondorasti",
+      "skillId": "swift-concurrency-expert",
+      "name": "swift-concurrency-expert",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "database-query-optimization",
+      "name": "database-query-optimization",
+      "installs": 1
+    },
+    {
+      "source": "dmdorta1111/jac-v1",
+      "skillId": "shopify",
+      "name": "shopify",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "ios-device-screenshot",
+      "name": "ios-device-screenshot",
+      "installs": 1
+    },
+    {
+      "source": "lerianstudio/ring",
+      "skillId": "ring:dev-property-testing",
+      "name": "ring:dev-property-testing",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "heyitsnoah-obsidian-bases",
+      "name": "heyitsnoah-obsidian-bases",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "sqlite-inspector",
+      "name": "sqlite-inspector",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "game-vision-designer",
+      "name": "game-vision-designer",
+      "installs": 1
+    },
+    {
+      "source": "wad/pdd",
+      "skillId": "feishu-docs",
+      "name": "feishu-docs",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "redisearch-rust-docs-guidelines",
+      "name": "redisearch-rust-docs-guidelines",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "jeremylongshore-validating-performance-budgets",
+      "name": "jeremylongshore-validating-performance-budgets",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "docker-deployment",
+      "name": "docker-deployment",
+      "installs": 1
+    },
+    {
+      "source": "tifandotme/skills",
+      "skillId": "actualbudget-api",
+      "name": "actualbudget-api",
+      "installs": 1
+    },
+    {
+      "source": "hoangnguyen0403/agent-skills-standard",
+      "skillId": "next.js-internationalization-(i18n)",
+      "name": "next.js internationalization (i18n)",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "tweet-crafter",
+      "name": "tweet-crafter",
+      "installs": 1
+    },
+    {
+      "source": "ntcoding/claude-skillz",
+      "skillId": "separation-of-concerns",
+      "name": "separation-of-concerns",
+      "installs": 1
+    },
+    {
+      "source": "bdambrosio/cognitive_workbench",
+      "skillId": "fetch-text",
+      "name": "fetch-text",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "apconw-ui-ux-pro-max",
+      "name": "apconw-ui-ux-pro-max",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "ck991357-tavily-search",
+      "name": "ck991357-tavily-search",
+      "installs": 1
+    },
+    {
+      "source": "henkisdabro/wookstar-claude-code-plugins",
+      "skillId": "ga4",
+      "name": "ga4",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "aws-penetration-testing",
+      "name": "aws-penetration-testing",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "oimiragieo-cellxgene-census",
+      "name": "oimiragieo-cellxgene-census",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills.sh_feed",
+      "skillId": "api-documenter",
+      "name": "api-documenter",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "tauri-v2",
+      "name": "tauri-v2",
+      "installs": 1
+    },
+    {
+      "source": "aahl/skills",
+      "skillId": "edge-tts-uvx",
+      "name": "edge-tts-uvx",
+      "installs": 1
+    },
+    {
+      "source": "anton-abyzov/specweave",
+      "skillId": "sw:security",
+      "name": "sw:security",
+      "installs": 1
+    },
+    {
+      "source": "naohainezha/skill",
+      "skillId": "xiaohongshu-ai-workflow",
+      "name": "xiaohongshu-ai-workflow",
+      "installs": 1
+    },
+    {
+      "source": "g1joshi/agent-skills",
+      "skillId": "webpack",
+      "name": "webpack",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "write-unit-tests",
+      "name": "write-unit-tests",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "openclaw-github",
+      "name": "openclaw-github",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "database-monitoring",
+      "name": "database-monitoring",
+      "installs": 1
+    },
+    {
+      "source": "vercel-labs/next-skills",
+      "skillId": "next-parallel-routes",
+      "name": "next-parallel-routes",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "feishu-automation",
+      "name": "feishu-automation",
+      "installs": 1
+    },
+    {
+      "source": "rstackjs/agent-skills",
+      "skillId": "migrate-to-rstest",
+      "name": "migrate-to-rstest",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "openclaw-typescript-lsp",
+      "name": "openclaw-typescript-lsp",
+      "installs": 1
+    },
+    {
+      "source": "qbt-labs/openmm-ai",
+      "skillId": "openmm-exchange-setup",
+      "name": "openmm-exchange-setup",
+      "installs": 1
+    },
+    {
+      "source": "majiayu000/claude-skill-registry",
+      "skillId": "auditing-accessibility-wcag",
+      "name": "auditing-accessibility-wcag",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "performance-expert",
+      "name": "performance-expert",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "yuniorglez-filament-pro",
+      "name": "yuniorglez-filament-pro",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "davila7-launch-strategy",
+      "name": "davila7-launch-strategy",
+      "installs": 1
+    },
+    {
+      "source": "alexanderop/dotfiles",
+      "skillId": "conversation-search",
+      "name": "conversation-search",
+      "installs": 1
+    },
+    {
+      "source": "atman-33/skills",
+      "skillId": "oh-my-opencode-model-switcher",
+      "name": "oh-my-opencode-model-switcher",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "bun-runtime",
+      "name": "bun-runtime",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "spec-builder",
+      "name": "spec-builder",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "exceptionless-tanstack-form",
+      "name": "exceptionless-tanstack-form",
+      "installs": 1
+    },
+    {
+      "source": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "skillId": "ui-ux-pro-max-skill",
+      "name": "ui-ux-pro-max-skill",
+      "installs": 1
+    },
+    {
+      "source": "ericshang98/perfect-web-clone-skill",
+      "skillId": "perfect-web-clone",
+      "name": "perfect-web-clone",
+      "installs": 1
+    },
+    {
+      "source": "zekidikmen/stratarts",
+      "skillId": "investor-brief-writer",
+      "name": "investor-brief-writer",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "packet-capture",
+      "name": "packet-capture",
+      "installs": 1
+    },
+    {
+      "source": "jtapias92672/onedrive_1_1-19-2026-2",
+      "skillId": "arcfoundry-skill-library",
+      "name": "arcfoundry-skill-library",
+      "installs": 1
+    },
+    {
+      "source": "potatoman03/runbook",
+      "skillId": "grill",
+      "name": "grill",
+      "installs": 1
+    },
+    {
+      "source": "tsaol/awesome-claude",
+      "skillId": "word",
+      "name": "word",
+      "installs": 1
+    },
+    {
+      "source": "dykyi-roman/awesome-claude-code",
+      "skillId": "acc-find-resource-leaks",
+      "name": "acc-find-resource-leaks",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "threejs-best-practices",
+      "name": "threejs-best-practices",
+      "installs": 1
+    },
+    {
+      "source": "taozhuo/game-dev-skills",
+      "skillId": "gemini-to-roblox-pipeline",
+      "name": "gemini-to-roblox-pipeline",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "hugohe3-ocr-image-to-markdown",
+      "name": "hugohe3-ocr-image-to-markdown",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "session-documenter",
+      "name": "session-documenter",
+      "installs": 1
+    },
+    {
+      "source": "hoangnguyen0403/agent-skills-standard",
+      "skillId": "nestjs-observability",
+      "name": "nestjs observability",
+      "installs": 1
+    },
+    {
+      "source": "martinffx/claude-code-atelier",
+      "skillId": "fastify",
+      "name": "fastify",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "jeremylongshore-coverage-report-analyzer",
+      "name": "jeremylongshore-coverage-report-analyzer",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "nwp-review-suno-song",
+      "name": "nwp-review-suno-song",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "iannuttall-prd",
+      "name": "iannuttall-prd",
+      "installs": 1
+    },
+    {
+      "source": "aaaaqwq/claude-code-skills",
+      "skillId": "firecrawl-cli",
+      "name": "firecrawl-cli",
+      "installs": 1
+    },
+    {
+      "source": "daleseo/bun-skills",
+      "skillId": "bun-migrate",
+      "name": "bun-migrate",
+      "installs": 1
+    },
+    {
+      "source": "agentbay-ai/agentbay-skills",
+      "skillId": "agentbay-monitor-skill",
+      "name": "agentbay-monitor-skill",
+      "installs": 1
+    },
+    {
+      "source": "api/git",
+      "skillId": "vercel-react-best-practices",
+      "name": "vercel-react-best-practices",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "omer-metin-content-strategy",
+      "name": "omer-metin-content-strategy",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "davila7-sympy",
+      "name": "davila7-sympy",
+      "installs": 1
+    },
+    {
+      "source": "tombensim/claude-for-dummies",
+      "skillId": "cc4d-00-getting-started",
+      "name": "cc4d-00-getting-started",
+      "installs": 1
+    },
+    {
+      "source": "namesreallyblank/clorch",
+      "skillId": "opc-architecture",
+      "name": "opc-architecture",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "next-best-practices",
+      "name": "next-best-practices",
+      "installs": 1
+    },
+    {
+      "source": "jsstechio/pencil-design-system",
+      "skillId": "pencil-design-system",
+      "name": "pencil-design-system",
+      "installs": 1
+    },
+    {
+      "source": "namesreallyblank/clorch",
+      "skillId": "help",
+      "name": "help",
+      "installs": 1
+    },
+    {
+      "source": "majiayu000/claude-skill-registry",
+      "skillId": "account-delete",
+      "name": "account-delete",
+      "installs": 1
+    },
+    {
+      "source": "chipagosfinest/claude-design-system",
+      "skillId": "design-and-refine",
+      "name": "design-and-refine",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "design-patterns",
+      "name": "design-patterns",
+      "installs": 1
+    },
+    {
+      "source": "filippofilip95/wizrd",
+      "skillId": "skill-name",
+      "name": "skill-name",
+      "installs": 1
+    },
+    {
+      "source": "fex/ai",
+      "skillId": "skill-cdn-portal",
+      "name": "skill-cdn-portal",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "python-executor",
+      "name": "python-executor",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "jimliu-baoyu-infographic",
+      "name": "jimliu-baoyu-infographic",
+      "installs": 1
+    },
+    {
+      "source": "madappgang/claude-code",
+      "skillId": "core-principles",
+      "name": "core-principles",
+      "installs": 1
+    },
+    {
+      "source": "dmdorta1111/jac-v1",
+      "skillId": "creo-master-engineer",
+      "name": "creo-master-engineer",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "base-ui",
+      "name": "base-ui",
+      "installs": 1
+    },
+    {
+      "source": "naohainezha/skill",
+      "skillId": "skill-creator",
+      "name": "skill-creator",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "iot-developer",
+      "name": "iot-developer",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "package-architect",
+      "name": "package-architect",
+      "installs": 1
+    },
+    {
+      "source": "charlieclark/skill-kanban",
+      "skillId": "kanban-view",
+      "name": "kanban-view",
+      "installs": 1
+    },
+    {
+      "source": "xenitv1/claude-code-maestro",
+      "skillId": "backend-design",
+      "name": "backend-design",
+      "installs": 1
+    },
+    {
+      "source": "derklinke/codex-config",
+      "skillId": "uikit-animation-debugging",
+      "name": "uikit-animation-debugging",
+      "installs": 1
+    },
+    {
+      "source": "2389-research/claude-plugins",
+      "skillId": "firebase-development",
+      "name": "firebase-development",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "basedhardware-agent-modes",
+      "name": "basedhardware-agent-modes",
+      "installs": 1
+    },
+    {
+      "source": "igbuend/grimbard",
+      "skillId": "cryptographic-action",
+      "name": "cryptographic-action",
+      "installs": 1
+    },
+    {
+      "source": "mochimochino-ki/shinkoku",
+      "skillId": "gather",
+      "name": "gather",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "neversight-aeo-core",
+      "name": "neversight-aeo-core",
+      "installs": 1
+    },
+    {
+      "source": "verekia/r3f-gamedev",
+      "skillId": "smooth-interpolation",
+      "name": "smooth interpolation",
+      "installs": 1
+    },
+    {
+      "source": "majiayu000/claude-skill-registry",
+      "skillId": "admin-panel-builder",
+      "name": "admin-panel-builder",
+      "installs": 1
+    },
+    {
+      "source": "arustydev/ai",
+      "skillId": "verification-before-completion",
+      "name": "verification-before-completion",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "remotion",
+      "name": "remotion",
+      "installs": 1
+    },
+    {
+      "source": "majiayu000/claude-skill-registry",
+      "skillId": "running-coach-index",
+      "name": "running-coach-index",
+      "installs": 1
+    },
+    {
+      "source": "edanstarfire/claudecode_webui",
+      "skillId": "git-state-validator",
+      "name": "git-state-validator",
+      "installs": 1
+    },
+    {
+      "source": "majiayu000/claude-skill-registry",
+      "skillId": "slack-gif-creator",
+      "name": "slack-gif-creator",
+      "installs": 1
+    },
+    {
+      "source": "metjm/planning-agent",
+      "skillId": "methodical-debugging",
+      "name": "methodical-debugging",
+      "installs": 1
+    },
+    {
+      "source": "algiras/memory-palace",
+      "skillId": "memory-palace",
+      "name": "memory-palace",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "openspec-bulk-archive-change",
+      "name": "openspec-bulk-archive-change",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "landing-page-vercel",
+      "name": "landing-page-vercel",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "svelte-ui-design",
+      "name": "svelte-ui-design",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "sooom1627-expo-tailwind-setup",
+      "name": "sooom1627-expo-tailwind-setup",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "funsloth-upload",
+      "name": "funsloth-upload",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "mcp-repomix",
+      "name": "mcp-repomix",
+      "installs": 1
+    },
+    {
+      "source": "derklinke/codex-config",
+      "skillId": "testing-async",
+      "name": "testing-async",
+      "installs": 1
+    },
+    {
+      "source": "yoanbernabeu/supabase-pentest-skills",
+      "skillId": "supabase",
+      "name": "supabase",
+      "installs": 1
+    },
+    {
+      "source": "egebese/suparank",
+      "skillId": "suparank/session",
+      "name": "suparank/session",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "jarredkenny-skill-creator",
+      "name": "jarredkenny-skill-creator",
+      "installs": 1
+    },
+    {
+      "source": "dejanvasic85/williamstownsc",
+      "skillId": "sanity-cms",
+      "name": "sanity-cms",
+      "installs": 1
+    },
+    {
+      "source": "vamseeachanta/workspace-hub",
+      "skillId": "session-start",
+      "name": "session-start",
+      "installs": 1
+    },
+    {
+      "source": "a5c-ai/babysitter",
+      "skillId": "memory-interfaces",
+      "name": "memory-interfaces",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "badri-handoff",
+      "name": "badri-handoff",
+      "installs": 1
+    },
+    {
+      "source": "garner-health/base",
+      "skillId": "d2-architecture-design",
+      "name": "d2-architecture-design",
+      "installs": 1
+    },
+    {
+      "source": "gptomics/bioskills",
+      "skillId": "bio-alignment-statistics",
+      "name": "bio-alignment-statistics",
+      "installs": 1
+    },
+    {
+      "source": "mintlify/app",
+      "skillId": "praxis",
+      "name": "praxis",
+      "installs": 1
+    },
+    {
+      "source": "arman-kudaibergenov/1c-ai-development-kit",
+      "skillId": "epf-add-form",
+      "name": "epf-add-form",
+      "installs": 1
+    },
+    {
+      "source": "2389-research/claude-plugins",
+      "skillId": "product-launcher",
+      "name": "product-launcher",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "hono-routing",
+      "name": "hono-routing",
+      "installs": 1
+    },
+    {
+      "source": "boxabirds/cloudflare-basic-infra-starter-skill",
+      "skillId": "cf-starter",
+      "name": "cf-starter",
+      "installs": 1
+    },
+    {
+      "source": "dykyi-roman/awesome-claude-code",
+      "skillId": "acc-trace-data-transformation",
+      "name": "acc-trace-data-transformation",
+      "installs": 1
+    },
+    {
+      "source": "xenitv1/claude-code-maestro",
+      "skillId": "verification-mastery",
+      "name": "verification-mastery",
+      "installs": 1
+    },
+    {
+      "source": "pproenca/dot-skills",
+      "skillId": "ruby-optimise-best-practices",
+      "name": "ruby-optimise-best-practices",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills.sh_feed",
+      "skillId": "introspect",
+      "name": "introspect",
+      "installs": 1
+    },
+    {
+      "source": "bdambrosio/cognitive_workbench",
+      "skillId": "mc-observe-entities",
+      "name": "mc-observe-entities",
+      "installs": 1
+    },
+    {
+      "source": "storybookjs/react-native",
+      "skillId": "writing-stories",
+      "name": "writing-stories",
+      "installs": 1
+    },
+    {
+      "source": "g1joshi/agent-skills",
+      "skillId": "notion",
+      "name": "notion",
+      "installs": 1
+    },
+    {
+      "source": "gilbertopsantosjr/fullstacknextjs",
+      "skillId": "feature-module-evaluator-(next.js-+-dynamodb)",
+      "name": "feature module evaluator (next.js + dynamodb)",
+      "installs": 1
+    },
+    {
+      "source": "majiayu000/claude-skill-registry",
+      "skillId": "automotivemanufacturing",
+      "name": "automotivemanufacturing",
+      "installs": 1
+    },
+    {
+      "source": "microsoft/agent-skills",
+      "skillId": "azure-ai-voicelive-java",
+      "name": "azure-ai-voicelive-java",
+      "installs": 1
+    },
+    {
+      "source": "g1joshi/agent-skills",
+      "skillId": "haskell",
+      "name": "haskell",
+      "installs": 1
+    },
+    {
+      "source": "hoangnguyen0403/agent-skills-standard",
+      "skillId": "nestjs-error-handling",
+      "name": "nestjs error handling",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "theorcdev-component-wrapper-architecture",
+      "name": "theorcdev-component-wrapper-architecture",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills.sh_feed",
+      "skillId": "mcp-patterns",
+      "name": "mcp-patterns",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "llama-farm-rag-skills",
+      "name": "llama-farm-rag-skills",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills.sh_feed",
+      "skillId": "extract-transcripts",
+      "name": "extract-transcripts",
+      "installs": 1
+    },
+    {
+      "source": "lerianstudio/ring",
+      "skillId": "ops-cost-optimization",
+      "name": "ops-cost-optimization",
+      "installs": 1
+    },
+    {
+      "source": "anton-abyzov/specweave",
+      "skillId": "sw:external-sync-wizard",
+      "name": "sw:external-sync-wizard",
+      "installs": 1
+    },
+    {
+      "source": "touricks/fanshi_personal_skills",
+      "skillId": "pptx",
+      "name": "pptx",
+      "installs": 1
+    },
+    {
+      "source": "aiskillstore/marketplace",
+      "skillId": "project-planner",
+      "name": "project-planner",
+      "installs": 1
+    },
+    {
+      "source": "dykyi-roman/awesome-claude-code",
+      "skillId": "acc-resolve-entry-point",
+      "name": "acc-resolve-entry-point",
+      "installs": 1
+    },
+    {
+      "source": "microsoft/agent-skills",
+      "skillId": "azure-storage-blob-py",
+      "name": "azure-storage-blob-py",
+      "installs": 1
+    },
+    {
+      "source": "martinffx/claude-code-atelier",
+      "skillId": "atelier-thinkdeep",
+      "name": "atelier-thinkdeep",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "bramato-database-design",
+      "name": "bramato-database-design",
+      "installs": 1
+    },
+    {
+      "source": "chipagosfinest/claude-marketing-growth",
+      "skillId": "content-research-writer",
+      "name": "content-research-writer",
+      "installs": 1
+    },
+    {
+      "source": "helderberto/skills",
+      "skillId": "amend-push",
+      "name": "amend-push",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "llm-models",
+      "name": "llm-models",
+      "installs": 1
+    },
+    {
+      "source": "dasien/claudemultiagenttemplate",
+      "skillId": "wcag-compliance",
+      "name": "wcag compliance",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "transforming-data",
+      "name": "transforming-data",
+      "installs": 1
+    },
+    {
+      "source": "sundial-org/awesome-openclaw-skills",
+      "skillId": "watch-my-money",
+      "name": "watch-my-money",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "turborepo-caching",
+      "name": "turborepo-caching",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "a5c-ai-unreal-niagara",
+      "name": "a5c-ai-unreal-niagara",
+      "installs": 1
+    },
+    {
+      "source": "ballred/obsidian-claude-pkm",
+      "skillId": "search",
+      "name": "search",
+      "installs": 1
+    },
+    {
+      "source": "dykyi-roman/awesome-claude-code",
+      "skillId": "acc-check-dependency-vulnerabilities",
+      "name": "acc-check-dependency-vulnerabilities",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "datadrivenconstruction-erp-integration-analysis",
+      "name": "datadrivenconstruction-erp-integration-analysis",
+      "installs": 1
+    },
+    {
+      "source": "truchot/claude-skills-test",
+      "skillId": "customer-success",
+      "name": "customer-success",
+      "installs": 1
+    },
+    {
+      "source": "ragnarula/cc-plugins",
+      "skillId": "distributed-systems",
+      "name": "distributed-systems",
+      "installs": 1
+    },
+    {
+      "source": "dasien/claudemultiagenttemplate",
+      "skillId": "vulnerability-scanning",
+      "name": "vulnerability scanning",
+      "installs": 1
+    },
+    {
+      "source": "g1joshi/agent-skills",
+      "skillId": "solidity",
+      "name": "solidity",
+      "installs": 1
+    },
+    {
+      "source": "chipagosfinest/claude-marketing-growth",
+      "skillId": "competitor-alternatives",
+      "name": "competitor-alternatives",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "creative-direction-council",
+      "name": "creative-direction-council",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "building-frontend-dashboards",
+      "name": "building-frontend-dashboards",
+      "installs": 1
+    },
+    {
+      "source": "tylerburleigh/claude-foundry",
+      "skillId": "foundry-test",
+      "name": "foundry-test",
+      "installs": 1
+    },
+    {
+      "source": "howells/fiction",
+      "skillId": "character",
+      "name": "character",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "research-skill",
+      "name": "research-skill",
+      "installs": 1
+    },
+    {
+      "source": "arustydev/ai",
+      "skillId": "patterns-metaprogramming-dev",
+      "name": "patterns-metaprogramming-dev",
+      "installs": 1
+    },
+    {
+      "source": "g1joshi/agent-skills",
+      "skillId": "fortran",
+      "name": "fortran",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills.sh_feed",
+      "skillId": "build-engineer",
+      "name": "build-engineer",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "creative-ideas-council",
+      "name": "creative-ideas-council",
+      "installs": 1
+    },
+    {
+      "source": "hoangnguyen0403/agent-skills-standard",
+      "skillId": "next.js-server-actions",
+      "name": "next.js server actions",
+      "installs": 1
+    },
+    {
+      "source": "dcl-regenesislabs/opendcl",
+      "skillId": "deploy-scene",
+      "name": "deploy-scene",
+      "installs": 1
+    },
+    {
+      "source": "plurigrid/asi",
+      "skillId": "agent-protocol-interleave",
+      "name": "agent-protocol-interleave",
+      "installs": 1
+    },
+    {
+      "source": "austinlparker/dotfiles",
+      "skillId": "vercel-react-best-practices",
+      "name": "vercel-react-best-practices",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "comment-mode",
+      "name": "comment-mode",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "error-handling",
+      "name": "error-handling",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "supabase-postgres-best-practices",
+      "name": "supabase-postgres-best-practices",
+      "installs": 1
+    },
+    {
+      "source": "justaddcoffee/open-science-skills",
+      "skillId": "genomics",
+      "name": "genomics",
+      "installs": 1
+    },
+    {
+      "source": "egebese/suparank",
+      "skillId": "suparank/create",
+      "name": "suparank/create",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "davila7-datacommons-client",
+      "name": "davila7-datacommons-client",
+      "installs": 1
+    },
+    {
+      "source": "g1joshi/agent-skills",
+      "skillId": "openid-connect",
+      "name": "openid-connect",
+      "installs": 1
+    },
+    {
+      "source": "github_trending/su",
+      "skillId": "brainstorming",
+      "name": "brainstorming",
+      "installs": 1
+    },
+    {
+      "source": "hungv47/biz",
+      "skillId": "prod-initiative-planner",
+      "name": "prod-initiative-planner",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "playwright-skill",
+      "name": "playwright-skill",
+      "installs": 1
+    },
+    {
+      "source": "xfstudio/skills",
+      "skillId": "sql-optimization-patterns",
+      "name": "sql-optimization-patterns",
+      "installs": 1
+    },
+    {
+      "source": "nembie/claude-code-skills",
+      "skillId": "nextjs-middleware-generator",
+      "name": "nextjs-middleware-generator",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "microsoft-fastapi-router-py",
+      "name": "microsoft-fastapi-router-py",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "python-sdk",
+      "name": "python-sdk",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "task-runner",
+      "name": "task-runner",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "outscal-asset-creator",
+      "name": "outscal-asset-creator",
+      "installs": 1
+    },
+    {
+      "source": "pulumi/agent-skills",
+      "skillId": "esc",
+      "name": "esc",
+      "installs": 1
+    },
+    {
+      "source": "arustydev/ai",
+      "skillId": "lang-dotnet-library-dev",
+      "name": "lang-dotnet-library-dev",
+      "installs": 1
+    },
+    {
+      "source": "jmagly/ai-writing-guide",
+      "skillId": "flaky-detect",
+      "name": "flaky-detect",
+      "installs": 1
+    },
+    {
+      "source": "aaaaqwq/claude-code-skills",
+      "skillId": "clawdbot-backup",
+      "name": "clawdbot-backup",
+      "installs": 1
+    },
+    {
+      "source": "zhailei31665431/i18n-sync-skill",
+      "skillId": "i18n-sync",
+      "name": "i18n-sync",
+      "installs": 1
+    },
+    {
+      "source": "lerianstudio/ring",
+      "skillId": "budget-creation",
+      "name": "budget-creation",
+      "installs": 1
+    },
+    {
+      "source": "majiayu000/claude-skill-registry",
+      "skillId": "accessibility-games",
+      "name": "accessibility-games",
+      "installs": 1
+    },
+    {
+      "source": "scm/dedo",
+      "skillId": "python-patterns",
+      "name": "python-patterns",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills.sh_feed",
+      "skillId": "documentation-audit",
+      "name": "documentation-audit",
+      "installs": 1
+    },
+    {
+      "source": "garner-health/base",
+      "skillId": "golang-engineering",
+      "name": "golang-engineering",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "404kidwiz-embedded-systems",
+      "name": "404kidwiz-embedded-systems",
+      "installs": 1
+    },
+    {
+      "source": "yeachan-heo/oh-my-codex",
+      "skillId": "configure-openclaw",
+      "name": "configure-openclaw",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "fabric-patterns",
+      "name": "fabric-patterns",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "smith6jt-cop-colab-notebook-development",
+      "name": "smith6jt-cop-colab-notebook-development",
+      "installs": 1
+    },
+    {
+      "source": "1nfsh-s0/skills",
+      "skillId": "chat-ui",
+      "name": "chat-ui",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "ralph-skill-review-loop",
+      "name": "ralph-skill-review-loop",
+      "installs": 1
+    },
+    {
+      "source": "swiftzilla/skills",
+      "skillId": "swift-deep-insight",
+      "name": "swift-deep-insight",
+      "installs": 1
+    },
+    {
+      "source": "proflead/codex-skills-library",
+      "skillId": "pr-reviewer",
+      "name": "pr-reviewer",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "davila7-prisma-expert",
+      "name": "davila7-prisma-expert",
+      "installs": 1
+    },
+    {
+      "source": "dykyi-roman/awesome-claude-code",
+      "skillId": "acc-find-logic-errors",
+      "name": "acc-find-logic-errors",
+      "installs": 1
+    },
+    {
+      "source": "yunshu0909/yunshu_skillshub",
+      "skillId": "priority-judge",
+      "name": "priority-judge",
+      "installs": 1
+    },
+    {
+      "source": "dykyi-roman/awesome-claude-code",
+      "skillId": "acc-bug-root-cause-finder",
+      "name": "acc-bug-root-cause-finder",
+      "installs": 1
+    },
+    {
+      "source": "annals-ai/agent-bridge",
+      "skillId": "cli-guide",
+      "name": "cli-guide",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "gmickel-worktree-kit",
+      "name": "gmickel-worktree-kit",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "tdd-workflow",
+      "name": "tdd-workflow",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "jaeyeom-ansible-dev-setup",
+      "name": "jaeyeom-ansible-dev-setup",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "openclaw-clawdhub",
+      "name": "openclaw-clawdhub",
+      "installs": 1
+    },
+    {
+      "source": "zpankz/mcp-skillset",
+      "skillId": "cognitive-variability",
+      "name": "cognitive-variability",
+      "installs": 1
+    },
+    {
+      "source": "proflead/codex-skills-library",
+      "skillId": "dependency-risk-audit",
+      "name": "dependency-risk-audit",
+      "installs": 1
+    },
+    {
+      "source": "franalgaba/grimoire",
+      "skillId": "grimoire-yellow",
+      "name": "grimoire-yellow",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "openclaw-ai-boss-assistant",
+      "name": "openclaw-ai-boss-assistant",
+      "installs": 1
+    },
+    {
+      "source": "astoreyai/ai_scientist",
+      "skillId": "meta-analysis",
+      "name": "meta-analysis",
+      "installs": 1
+    },
+    {
+      "source": "dmdorta1111/jac-v1",
+      "skillId": "mobile-development",
+      "name": "mobile-development",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "sovrium-code-duplication-detector",
+      "name": "sovrium-code-duplication-detector",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "senior-ml-engineer",
+      "name": "senior-ml-engineer",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "davila7-marketing-demand-acquisition",
+      "name": "davila7-marketing-demand-acquisition",
+      "installs": 1
+    },
+    {
+      "source": "silvanicus/agent-toolkit",
+      "skillId": "skills/english-editor",
+      "name": "skills/english-editor",
+      "installs": 1
+    },
+    {
+      "source": "latestaiagents/agent-skills",
+      "skillId": "kubernetes-troubleshooting",
+      "name": "kubernetes-troubleshooting",
+      "installs": 1
+    },
+    {
+      "source": "microsoft/agent-skills",
+      "skillId": "azure-communication-chat-java",
+      "name": "azure-communication-chat-java",
+      "installs": 1
+    },
+    {
+      "source": "g1joshi/agent-skills",
+      "skillId": "linear",
+      "name": "linear",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "cuioss-python-best-practices",
+      "name": "cuioss-python-best-practices",
+      "installs": 1
+    },
+    {
+      "source": "jtapias92672/onedrive_1_1-19-2026-2",
+      "skillId": "agentation",
+      "name": "agentation",
+      "installs": 1
+    },
+    {
+      "source": "neversight/skills_feed",
+      "skillId": "offer-architect",
+      "name": "offer-architect",
+      "installs": 1
+    },
+    {
+      "source": "volces/com",
+      "skillId": "vitest",
+      "name": "vitest",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "pluginagentmarketplace-game-design-theory",
+      "name": "pluginagentmarketplace-game-design-theory",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "jeremylongshore-obsidian-data-handling",
+      "name": "jeremylongshore-obsidian-data-handling",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "backend-java",
+      "name": "backend-java",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "flutter-expert",
+      "name": "flutter-expert",
+      "installs": 1
+    },
+    {
+      "source": "oakencore/skillvet",
+      "skillId": "false-positive-prompt-injection",
+      "name": "false-positive-prompt-injection",
+      "installs": 1
+    },
+    {
+      "source": "backboard/io",
+      "skillId": "backboard-api",
+      "name": "backboard-api",
+      "installs": 1
+    },
+    {
+      "source": "apple/com",
+      "skillId": "react-styled",
+      "name": "react-styled",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "xterm-js",
+      "name": "xterm-js",
+      "installs": 1
+    },
+    {
+      "source": "garner-health/base",
+      "skillId": "implementing-python-logging",
+      "name": "implementing-python-logging",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "cro-methodology",
+      "name": "cro-methodology",
+      "installs": 1
+    },
+    {
+      "source": "jmagly/ai-writing-guide",
+      "skillId": "template-engine",
+      "name": "template-engine",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "rust-best-practices",
+      "name": "rust-best-practices",
+      "installs": 1
+    },
+    {
+      "source": "workos/skills",
+      "skillId": "workos-router",
+      "name": "workos-router",
+      "installs": 1
+    },
+    {
+      "source": "dykyi-roman/awesome-claude-code",
+      "skillId": "acc-check-fallback-strategy",
+      "name": "acc-check-fallback-strategy",
+      "installs": 1
+    },
+    {
+      "source": "namesreallyblank/clorch",
+      "skillId": "explicit-identity",
+      "name": "explicit-identity",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "frontend-rive",
+      "name": "frontend-rive",
+      "installs": 1
+    },
+    {
+      "source": "dykyi-roman/awesome-claude-code",
+      "skillId": "acc-cqrs-knowledge",
+      "name": "acc-cqrs-knowledge",
+      "installs": 1
+    },
+    {
+      "source": "chipagosfinest/claude-finance-trading",
+      "skillId": "just-fucking-cancel",
+      "name": "just-fucking-cancel",
+      "installs": 1
+    },
+    {
+      "source": "g1joshi/agent-skills",
+      "skillId": "mistral",
+      "name": "mistral",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "stacklok-pr-inline-review",
+      "name": "stacklok-pr-inline-review",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "docker-containerization",
+      "name": "docker-containerization",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "vercel-deployment",
+      "name": "vercel-deployment",
+      "installs": 1
+    },
+    {
+      "source": "vudovn/antigravity-kit",
+      "skillId": "typescript-expert",
+      "name": "typescript-expert",
+      "installs": 1
+    },
+    {
+      "source": "arman-kudaibergenov/1c-ai-development-kit",
+      "skillId": "epf-init",
+      "name": "epf-init",
+      "installs": 1
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "plurigrid-python-development",
+      "name": "plurigrid-python-development",
+      "installs": 1
+    },
+    {
+      "source": "paulrberg/dot-agents",
+      "skillId": "template-ts-node",
+      "name": "template-ts-node",
+      "installs": 1
+    }
+  ]
+}
