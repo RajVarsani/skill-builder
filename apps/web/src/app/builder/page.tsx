@@ -6,11 +6,12 @@ import { useConversation } from '@/lib/use-conversation'
 import { ChatPanel } from '@/components/builder/chat-panel'
 import { IdentityCard } from '@/components/builder/identity-card'
 import { PublishView } from '@/components/builder/publish-view'
+import { GoogleSignIn } from '@/components/auth/google-sign-in'
 import { apiFetch } from '@/lib/api'
 import { User } from '@phosphor-icons/react'
 
 export default function BuilderPage() {
-  const { user } = useAuth()
+  const { user, loading } = useAuth()
   const {
     conversationId,
     messages,
@@ -28,10 +29,10 @@ export default function BuilderPage() {
   } | null>(null)
 
   useEffect(() => {
-    startConversation().catch(() => {
-      // Auth may not be ready yet -- expected without login
-    })
-  }, [startConversation])
+    if (user) {
+      startConversation().catch(() => {})
+    }
+  }, [user, startConversation])
 
   function handleSelectDomains(domains: string[]) {
     sendMessage(`I work in: ${domains.join(', ')}`)
@@ -53,6 +54,32 @@ export default function BuilderPage() {
     }
   }
 
+  // Loading state
+  if (loading) {
+    return (
+      <div className="min-h-[100dvh] bg-canvas flex items-center justify-center">
+        <div className="h-6 w-6 rounded-full border-2 border-text-muted border-t-text-primary animate-spin" />
+      </div>
+    )
+  }
+
+  // Not logged in — show sign-in
+  if (!user) {
+    return (
+      <div className="min-h-[100dvh] bg-canvas flex flex-col items-center justify-center px-6">
+        <h1 className="text-3xl md:text-4xl font-light tracking-tighter text-text-primary text-center">
+          Sign in to build your skill
+        </h1>
+        <p className="mt-4 text-base text-text-secondary text-center max-w-[45ch]">
+          An AI will interview you about your expertise and generate a personalized, installable skill.
+        </p>
+        <div className="mt-8">
+          <GoogleSignIn />
+        </div>
+      </div>
+    )
+  }
+
   // Show celebration view after publishing
   if (publishedSkill && identity) {
     return (
@@ -72,11 +99,9 @@ export default function BuilderPage() {
           Skill Builder
         </span>
         <div className="flex items-center gap-3">
-          {user && (
-            <span className="text-sm text-text-secondary">{user.name}</span>
-          )}
+          <span className="text-sm text-text-secondary">{user.name}</span>
           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-surface-muted">
-            {user?.avatarUrl ? (
+            {user.avatarUrl ? (
               <img
                 src={user.avatarUrl}
                 alt={user.name}
