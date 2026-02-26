@@ -4,6 +4,30 @@
   "count": 1000,
   "skills": [
     {
+      "source": "null-shot/cloudflare-skills",
+      "skillId": "static-assets",
+      "name": "static-assets",
+      "installs": 3
+    },
+    {
+      "source": "ardasevinc/agent-devtools",
+      "skillId": "interview",
+      "name": "interview",
+      "installs": 3
+    },
+    {
+      "source": "testany-io/testany-agent-skills",
+      "skillId": "pipeline",
+      "name": "pipeline",
+      "installs": 3
+    },
+    {
+      "source": "poletron/custom-rules",
+      "skillId": "behavioral-modes",
+      "name": "behavioral-modes",
+      "installs": 3
+    },
+    {
       "source": "y-ymmt/cc-manim-video-creator-plugin",
       "skillId": "manim-video-creator",
       "name": "manim-video-creator",
@@ -1975,12 +1999,6 @@
       "source": "zinohome/cozyengine",
       "skillId": "architect-expert",
       "name": "architect-expert",
-      "installs": 3
-    },
-    {
-      "source": "api/git",
-      "skillId": "ma167-crossplatform-native-interface-helper",
-      "name": "ma167-crossplatform-native-interface-helper",
       "installs": 3
     },
     {
@@ -4786,6 +4804,42 @@
       "installs": 3
     },
     {
+      "source": "noahjs/marketingskills",
+      "skillId": "popup-cro",
+      "name": "popup-cro",
+      "installs": 3
+    },
+    {
+      "source": "b-open-io/bsv-skills",
+      "skillId": "review-script-template",
+      "name": "review-script-template",
+      "installs": 3
+    },
+    {
+      "source": "takzobye/smartpvms-northbound-api-skills",
+      "skillId": "smartpvms-api",
+      "name": "smartpvms-api",
+      "installs": 3
+    },
+    {
+      "source": "igbuend/grimbard",
+      "skillId": "attack-surface-xss",
+      "name": "attack-surface-xss",
+      "installs": 3
+    },
+    {
+      "source": "gethandlebar/agent-skills",
+      "skillId": "handlebar-setup",
+      "name": "handlebar-setup",
+      "installs": 3
+    },
+    {
+      "source": "pluginagentmarketplace/custom-plugin-ai-red-teaming",
+      "skillId": "adversarial-training",
+      "name": "adversarial-training",
+      "installs": 3
+    },
+    {
       "source": "monkey1sai/openai-cli",
       "skillId": "unit-test-generator",
       "name": "unit-test-generator",
@@ -4900,12 +4954,6 @@
       "installs": 3
     },
     {
-      "source": "sien75/graphicode-skills",
-      "skillId": "graphicode-junior-engineer-ts-algorithm",
-      "name": "graphicode-junior-engineer-ts-algorithm",
-      "installs": 3
-    },
-    {
       "source": "proffesor-for-testing/sentinel-api-testing",
       "skillId": "localization-testing",
       "name": "localization-testing",
@@ -4984,12 +5032,6 @@
       "installs": 3
     },
     {
-      "source": "daaain/skills",
-      "skillId": "devcontainer-security",
-      "name": "devcontainer-security",
-      "installs": 3
-    },
-    {
       "source": "proffesor-for-testing/sentinel-api-testing",
       "skillId": "test-data-management",
       "name": "test-data-management",
@@ -5017,12 +5059,6 @@
       "source": "composiohq/awesome-claude-skills",
       "skillId": "turbot-pipes-automation",
       "name": "turbot-pipes-automation",
-      "installs": 3
-    },
-    {
-      "source": "sakumyz/skills",
-      "skillId": "test-generator",
-      "name": "test-generator",
       "installs": 3
     },
     {
@@ -5170,12 +5206,6 @@
       "installs": 3
     },
     {
-      "source": "wottpal/skills",
-      "skillId": "deep-research-firecrawl",
-      "name": "deep-research-firecrawl",
-      "installs": 3
-    },
-    {
       "source": "famaoai-creator/gemini-skills",
       "skillId": "code-lang-detector",
       "name": "code-lang-detector",
@@ -5287,12 +5317,6 @@
       "source": "gentleman-programming/engram",
       "skillId": "gentleman-bubbletea",
       "name": "gentleman-bubbletea",
-      "installs": 3
-    },
-    {
-      "source": "stonehah/qunz-skills",
-      "skillId": "baoyu-comic",
-      "name": "baoyu-comic",
       "installs": 3
     },
     {
@@ -5443,12 +5467,6 @@
       "source": "jwynia/the-kepler-testimonies",
       "skillId": "book-marketing",
       "name": "book-marketing",
-      "installs": 3
-    },
-    {
-      "source": "sakumyz/skills",
-      "skillId": "add-form-validation-rule",
-      "name": "add-form-validation-rule",
       "installs": 3
     },
     {
@@ -5983,24 +6001,6 @@
       "source": "airclear/skills",
       "skillId": "conductor-newtrack",
       "name": "conductor-newtrack",
-      "installs": 3
-    },
-    {
-      "source": "masayan1126/masayan-uni-code-plugins",
-      "skillId": "optimize-post",
-      "name": "optimize-post",
-      "installs": 3
-    },
-    {
-      "source": "mikefilsaime-groove/clickcampaigns-for-claude-code-in-cursor",
-      "skillId": "post-purchase-reviews",
-      "name": "post-purchase-reviews",
-      "installs": 3
-    },
-    {
-      "source": "sohilpandya/skills",
-      "skillId": "snap-context",
-      "name": "snap-context",
       "installs": 3
     }
   ]
