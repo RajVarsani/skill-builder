@@ -4,6 +4,30 @@
   "count": 1000,
   "skills": [
     {
+      "source": "monkey1sai/openai-cli",
+      "skillId": "rag-pipeline-builder",
+      "name": "rag-pipeline-builder",
+      "installs": 3
+    },
+    {
+      "source": "vladm3105/aidoc-flow-framework",
+      "skillId": "doc-spec-autopilot",
+      "name": "doc-spec-autopilot",
+      "installs": 3
+    },
+    {
+      "source": "arcanexis/alice-single",
+      "skillId": "xlsx",
+      "name": "xlsx",
+      "installs": 3
+    },
+    {
+      "source": "benzema216/dreamina-claude-skills",
+      "skillId": "creative-think",
+      "name": "creative-think",
+      "installs": 3
+    },
+    {
       "source": "pengelbrecht/chrome-debug-skill",
       "skillId": "chrome-debug",
       "name": "chrome-debug",
@@ -403,12 +427,6 @@
       "source": "sebas-aikon-intelligence/antigravity-awesome-skills",
       "skillId": "parallel-agents",
       "name": "parallel-agents",
-      "installs": 3
-    },
-    {
-      "source": "baagad-ai/content-wand",
-      "skillId": "content-wand",
-      "name": "content-wand",
       "installs": 3
     },
     {
@@ -3952,12 +3970,6 @@
       "installs": 3
     },
     {
-      "source": "tclawde/xiaohongshu-mcp-skill",
-      "skillId": "xiaohongshu-mcp",
-      "name": "xiaohongshu-mcp",
-      "installs": 3
-    },
-    {
       "source": "sherifeldeeb/agentskills",
       "skillId": "malware-forensics",
       "name": "malware-forensics",
@@ -4792,15 +4804,15 @@
       "installs": 3
     },
     {
-      "source": "chrislemke/stoffy",
-      "skillId": "agentdb-learning-plugins",
-      "name": "agentdb learning plugins",
+      "source": "prof-ramos/.codex",
+      "skillId": "telegram-bot-performance-engineer",
+      "name": "telegram-bot-performance-engineer",
       "installs": 3
     },
     {
-      "source": "manojbajaj95/gtm-skills",
-      "skillId": "market-research-reports",
-      "name": "market-research-reports",
+      "source": "evanbacon/apple-health",
+      "skillId": "device-testing",
+      "name": "device-testing",
       "installs": 3
     },
     {
@@ -5989,18 +6001,6 @@
       "source": "marius-townhouse/effective-typescript-skills",
       "skillId": "template-literal-types",
       "name": "template-literal-types",
-      "installs": 3
-    },
-    {
-      "source": "vanman2024/ai-dev-marketplace",
-      "skillId": "mobile-navigation",
-      "name": "mobile-navigation",
-      "installs": 3
-    },
-    {
-      "source": "smithery/ai",
-      "skillId": "gentleman-programming-react-19",
-      "name": "gentleman-programming-react-19",
       "installs": 3
     }
   ]

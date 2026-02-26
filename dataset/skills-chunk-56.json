@@ -4,6 +4,60 @@
   "count": 1000,
   "skills": [
     {
+      "source": "unix2dos/skills",
+      "skillId": "value-judge",
+      "name": "value-judge",
+      "installs": 3
+    },
+    {
+      "source": "k-dense-ai/claude-scientific-skills",
+      "skillId": "xlsx",
+      "name": "xlsx",
+      "installs": 3
+    },
+    {
+      "source": "dawiddutoit/custom-claude",
+      "skillId": "textual-test-patterns",
+      "name": "textual-test-patterns",
+      "installs": 3
+    },
+    {
+      "source": "willsigmon/sigstack",
+      "skillId": "modcaster-expert",
+      "name": "modcaster expert",
+      "installs": 3
+    },
+    {
+      "source": "dodatech/approved-skills",
+      "skillId": "copywriting",
+      "name": "copywriting",
+      "installs": 3
+    },
+    {
+      "source": "kunhai-88/skills",
+      "skillId": "slack-gif-creator",
+      "name": "slack-gif-creator",
+      "installs": 3
+    },
+    {
+      "source": "hairyf/blockchain-skills",
+      "skillId": "ton-http",
+      "name": "ton-http",
+      "installs": 3
+    },
+    {
+      "source": "sundial-org/awesome-openclaw-skills",
+      "skillId": "n8n",
+      "name": "n8n",
+      "installs": 3
+    },
+    {
+      "source": "monkey1sai/openai-cli",
+      "skillId": "performance-budget-setter",
+      "name": "performance-budget-setter",
+      "installs": 3
+    },
+    {
       "source": "leefeee/video-downloader",
       "skillId": "video-downloader",
       "name": "video-downloader",
@@ -4750,12 +4804,6 @@
       "installs": 3
     },
     {
-      "source": "smithery/ai",
-      "skillId": "agentgill-salesforce-admin",
-      "name": "agentgill-salesforce-admin",
-      "installs": 3
-    },
-    {
       "source": "ocrbase-hq/ocrbase",
       "skillId": "vercel-react-best-practices",
       "name": "vercel-react-best-practices",
@@ -4765,12 +4813,6 @@
       "source": "montagao/skills",
       "skillId": "translate-mom-tweets",
       "name": "translate-mom-tweets",
-      "installs": 3
-    },
-    {
-      "source": "davila7/claude-code-templates",
-      "skillId": "agirails-agent-payments",
-      "name": "agirails-agent-payments",
       "installs": 3
     },
     {
@@ -4795,36 +4837,6 @@
       "source": "quantumsolver/e-health-kit",
       "skillId": "frappe-development",
       "name": "frappe-development",
-      "installs": 3
-    },
-    {
-      "source": "jackjin1997/clawforge",
-      "skillId": "language-learning",
-      "name": "language-learning",
-      "installs": 3
-    },
-    {
-      "source": "dongbeixiaohuo/writing-agent",
-      "skillId": "topic-generator",
-      "name": "topic-generator",
-      "installs": 3
-    },
-    {
-      "source": "standardhuman/deep-research-skill",
-      "skillId": "deep-research",
-      "name": "deep-research",
-      "installs": 3
-    },
-    {
-      "source": "quantumsolver/e-health-kit",
-      "skillId": "frappe-development",
-      "name": "frappe-development",
-      "installs": 3
-    },
-    {
-      "source": "jackjin1997/clawforge",
-      "skillId": "language-learning",
-      "name": "language-learning",
       "installs": 3
     },
     {
@@ -5989,18 +6001,6 @@
       "source": "poletron/custom-rules",
       "skillId": "web-artifacts-builder",
       "name": "web-artifacts-builder",
-      "installs": 3
-    },
-    {
-      "source": "piperubio/ai-agents",
-      "skillId": "commercial-prospecting",
-      "name": "commercial-prospecting",
-      "installs": 3
-    },
-    {
-      "source": "engineerwithai/engineerwith-agents",
-      "skillId": "nextjs-app-router-patterns",
-      "name": "nextjs-app-router-patterns",
       "installs": 3
     }
   ]

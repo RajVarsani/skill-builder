@@ -4,6 +4,48 @@
   "count": 1000,
   "skills": [
     {
+      "source": "github/awesome-copilot",
+      "skillId": "python-mcp-server-generator",
+      "name": "python-mcp-server-generator",
+      "installs": 9
+    },
+    {
+      "source": "cat-xierluo/legal-skills",
+      "skillId": "fetch-wechat-article",
+      "name": "fetch-wechat-article",
+      "installs": 9
+    },
+    {
+      "source": "aaaaqwq/claude-code-skills",
+      "skillId": "model-fallback",
+      "name": "model-fallback",
+      "installs": 9
+    },
+    {
+      "source": "story-has-you/skills",
+      "skillId": "react-dev",
+      "name": "react-dev",
+      "installs": 9
+    },
+    {
+      "source": "d-o-hub/rust-self-learning-memory",
+      "skillId": "parallel-execution",
+      "name": "parallel-execution",
+      "installs": 9
+    },
+    {
+      "source": "davepoon/buildwithclaude",
+      "skillId": "jira-automation",
+      "name": "jira-automation",
+      "installs": 9
+    },
+    {
+      "source": "1nfsh-s3/skills",
+      "skillId": "ai-content-pipeline",
+      "name": "ai-content-pipeline",
+      "installs": 9
+    },
+    {
       "source": "oaustegard/claude-skills",
       "skillId": "creating-skill",
       "name": "creating-skill",
@@ -550,12 +592,6 @@
       "installs": 9
     },
     {
-      "source": "team-attention/workshop-upstage",
-      "skillId": "clarify:vague",
-      "name": "clarify:vague",
-      "installs": 9
-    },
-    {
       "source": "xenitv1/claude-code-maestro",
       "skillId": "seo-fundamentals",
       "name": "seo-fundamentals",
@@ -727,6 +763,12 @@
       "source": "the1studio/theone-training-skills",
       "skillId": "problem-solving-techniques",
       "name": "problem-solving techniques",
+      "installs": 9
+    },
+    {
+      "source": "dnakode/roslynskills",
+      "skillId": "roslynskills-research",
+      "name": "roslynskills-research",
       "installs": 9
     },
     {
@@ -1702,12 +1744,6 @@
       "installs": 9
     },
     {
-      "source": "sachacoldiq/coldiq-s-gtm-skills",
-      "skillId": "clay-enrichment-9step",
-      "name": "clay-enrichment-9step",
-      "installs": 9
-    },
-    {
       "source": "oakoss/agent-skills",
       "skillId": "content-humanizer",
       "name": "content-humanizer",
@@ -2602,6 +2638,12 @@
       "installs": 8
     },
     {
+      "source": "riba2534/feishu-cli",
+      "skillId": "feishu-cli-msg",
+      "name": "feishu-cli-msg",
+      "installs": 8
+    },
+    {
       "source": "jeremylongshore/claude-code-plugins-plus-skills",
       "skillId": "mutation-test-runner",
       "name": "mutation-test-runner",
@@ -2815,6 +2857,12 @@
       "source": "jpropato/siba",
       "skillId": "backend-dev-guidelines",
       "name": "backend-dev-guidelines",
+      "installs": 8
+    },
+    {
+      "source": "guia-matthieu/clawfu-skills",
+      "skillId": "report-generator",
+      "name": "report-generator",
       "installs": 8
     },
     {
@@ -3727,12 +3775,6 @@
       "source": "omer-metin/skills-for-antigravity",
       "skillId": "tech-debt-negotiation",
       "name": "tech-debt-negotiation",
-      "installs": 8
-    },
-    {
-      "source": "riba2534/feishu-cli",
-      "skillId": "feishu-cli-sheet",
-      "name": "feishu-cli-sheet",
       "installs": 8
     },
     {
@@ -4936,6 +4978,12 @@
       "installs": 8
     },
     {
+      "source": "saaspegasus/django-skills",
+      "skillId": "fix-types",
+      "name": "fix-types",
+      "installs": 8
+    },
+    {
       "source": "jeremylongshore/claude-code-plugins-plus-skills",
       "skillId": "connection-pooling-config",
       "name": "connection-pooling-config",
@@ -5560,12 +5608,6 @@
       "installs": 8
     },
     {
-      "source": "guia-matthieu/clawfu-skills",
-      "skillId": "sales-letter-writer",
-      "name": "sales-letter-writer",
-      "installs": 8
-    },
-    {
       "source": "arjenschwarz/agentic-coding",
       "skillId": "permission-analyzer",
       "name": "permission-analyzer",
@@ -5959,48 +6001,6 @@
       "source": "aleister1102/skills",
       "skillId": "vuln-analysis-expert",
       "name": "vuln-analysis-expert",
-      "installs": 8
-    },
-    {
-      "source": "liyecom/liye-ai",
-      "skillId": "csv-summarizer",
-      "name": "csv-summarizer",
-      "installs": 8
-    },
-    {
-      "source": "jst-well-dan/skill-box",
-      "skillId": "algorithmic-art",
-      "name": "algorithmic-art",
-      "installs": 8
-    },
-    {
-      "source": "solatis/claude-config",
-      "skillId": "incoherence",
-      "name": "incoherence",
-      "installs": 8
-    },
-    {
-      "source": "simhacker/moollm",
-      "skillId": "party",
-      "name": "party",
-      "installs": 8
-    },
-    {
-      "source": "bitsoex/bitso-java",
-      "skillId": "mcp-configuration",
-      "name": "mcp-configuration",
-      "installs": 8
-    },
-    {
-      "source": "pluggyai/agent-skills",
-      "skillId": "pluggy-open-finance",
-      "name": "pluggy-open-finance",
-      "installs": 8
-    },
-    {
-      "source": "thesethrose/agent-browser-cli",
-      "skillId": "agent-browser",
-      "name": "agent browser",
       "installs": 8
     }
   ]

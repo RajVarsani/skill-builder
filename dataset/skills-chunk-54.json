@@ -4,6 +4,30 @@
   "count": 1000,
   "skills": [
     {
+      "source": "null-shot/cloudflare-skills",
+      "skillId": "static-assets",
+      "name": "static-assets",
+      "installs": 3
+    },
+    {
+      "source": "ardasevinc/agent-devtools",
+      "skillId": "interview",
+      "name": "interview",
+      "installs": 3
+    },
+    {
+      "source": "testany-io/testany-agent-skills",
+      "skillId": "pipeline",
+      "name": "pipeline",
+      "installs": 3
+    },
+    {
+      "source": "poletron/custom-rules",
+      "skillId": "behavioral-modes",
+      "name": "behavioral-modes",
+      "installs": 3
+    },
+    {
       "source": "y-ymmt/cc-manim-video-creator-plugin",
       "skillId": "manim-video-creator",
       "name": "manim-video-creator",
@@ -1975,12 +1999,6 @@
       "source": "zinohome/cozyengine",
       "skillId": "architect-expert",
       "name": "architect-expert",
-      "installs": 3
-    },
-    {
-      "source": "api/git",
-      "skillId": "ma167-crossplatform-native-interface-helper",
-      "name": "ma167-crossplatform-native-interface-helper",
       "installs": 3
     },
     {
@@ -4984,12 +5002,6 @@
       "installs": 3
     },
     {
-      "source": "daaain/skills",
-      "skillId": "devcontainer-security",
-      "name": "devcontainer-security",
-      "installs": 3
-    },
-    {
       "source": "proffesor-for-testing/sentinel-api-testing",
       "skillId": "test-data-management",
       "name": "test-data-management",
@@ -5989,18 +6001,6 @@
       "source": "masayan1126/masayan-uni-code-plugins",
       "skillId": "optimize-post",
       "name": "optimize-post",
-      "installs": 3
-    },
-    {
-      "source": "mikefilsaime-groove/clickcampaigns-for-claude-code-in-cursor",
-      "skillId": "post-purchase-reviews",
-      "name": "post-purchase-reviews",
-      "installs": 3
-    },
-    {
-      "source": "sohilpandya/skills",
-      "skillId": "snap-context",
-      "name": "snap-context",
       "installs": 3
     }
   ]

@@ -4,6 +4,42 @@
   "count": 1000,
   "skills": [
     {
+      "source": "xenitv1/antigravity-workflows",
+      "skillId": "vulnerability-scanner",
+      "name": "vulnerability-scanner",
+      "installs": 2
+    },
+    {
+      "source": "proyecto26/projectx",
+      "skillId": "nestjs",
+      "name": "nestjs",
+      "installs": 2
+    },
+    {
+      "source": "ravinani02/opencode-agent-skills",
+      "skillId": "prometheus-configuration",
+      "name": "prometheus-configuration",
+      "installs": 2
+    },
+    {
+      "source": "jovermier/claude-code-plugins-ip-labs",
+      "skillId": "context7-skill-generator",
+      "name": "context7-skill-generator",
+      "installs": 2
+    },
+    {
+      "source": "hr-ar/project-conductor",
+      "skillId": "deployment-validator",
+      "name": "deployment-validator",
+      "installs": 2
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "wshobson-python-performance-optimization",
+      "name": "wshobson-python-performance-optimization",
+      "installs": 2
+    },
+    {
       "source": "alfredang/skills",
       "skillId": "skill-creator",
       "name": "skill-creator",
@@ -706,15 +742,15 @@
       "installs": 2
     },
     {
-      "source": "adhikjoshi/macpilot-skills",
-      "skillId": "macpilot-ui-inspector",
-      "name": "macpilot-ui-inspector",
-      "installs": 2
-    },
-    {
       "source": "1mangesh1/dev-skills-collection",
       "skillId": "kubernetes",
       "name": "kubernetes",
+      "installs": 2
+    },
+    {
+      "source": "adhikjoshi/macpilot-skills",
+      "skillId": "macpilot-ui-inspector",
+      "name": "macpilot-ui-inspector",
       "installs": 2
     },
     {
@@ -844,15 +880,15 @@
       "installs": 2
     },
     {
-      "source": "g1joshi/agent-skills",
-      "skillId": "detox",
-      "name": "detox",
-      "installs": 2
-    },
-    {
       "source": "alchemyplatform/skills",
       "skillId": "alchemy-api",
       "name": "alchemy-api",
+      "installs": 2
+    },
+    {
+      "source": "g1joshi/agent-skills",
+      "skillId": "detox",
+      "name": "detox",
       "installs": 2
     },
     {
@@ -868,15 +904,15 @@
       "installs": 2
     },
     {
-      "source": "kart-io/picture-skills",
-      "skillId": "picture-book-wizard",
-      "name": "picture-book-wizard",
-      "installs": 2
-    },
-    {
       "source": "smithery/ai",
       "skillId": "a5c-ai-roadmap-visualization",
       "name": "a5c-ai-roadmap-visualization",
+      "installs": 2
+    },
+    {
+      "source": "kart-io/picture-skills",
+      "skillId": "picture-book-wizard",
+      "name": "picture-book-wizard",
       "installs": 2
     },
     {
@@ -1840,15 +1876,15 @@
       "installs": 2
     },
     {
-      "source": "1nfsh-s0/skills",
-      "skillId": "ai-rag-pipeline",
-      "name": "ai-rag-pipeline",
-      "installs": 2
-    },
-    {
       "source": "sandman-ren/skills",
       "skillId": "create-workspace",
       "name": "create-workspace",
+      "installs": 2
+    },
+    {
+      "source": "1nfsh-s0/skills",
+      "skillId": "ai-rag-pipeline",
+      "name": "ai-rag-pipeline",
       "installs": 2
     },
     {
@@ -1870,15 +1906,15 @@
       "installs": 2
     },
     {
-      "source": "jonathanbelolo/composable-svelte",
-      "skillId": "composable-svelte-i18n",
-      "name": "composable-svelte-i18n",
-      "installs": 2
-    },
-    {
       "source": "smithery/ai",
       "skillId": "agent-memory",
       "name": "agent-memory",
+      "installs": 2
+    },
+    {
+      "source": "jonathanbelolo/composable-svelte",
+      "skillId": "composable-svelte-i18n",
+      "name": "composable-svelte-i18n",
       "installs": 2
     },
     {
@@ -2512,6 +2548,12 @@
       "installs": 2
     },
     {
+      "source": "hainamchung/agent-assistant",
+      "skillId": "monitoring-expert",
+      "name": "monitoring-expert",
+      "installs": 2
+    },
+    {
       "source": "smithery/ai",
       "skillId": "1password",
       "name": "1password",
@@ -2521,12 +2563,6 @@
       "source": "heyflouai/ikf-central-dashboard",
       "skillId": "xlsx",
       "name": "xlsx",
-      "installs": 2
-    },
-    {
-      "source": "hainamchung/agent-assistant",
-      "skillId": "monitoring-expert",
-      "name": "monitoring-expert",
       "installs": 2
     },
     {
@@ -2872,6 +2908,12 @@
       "installs": 2
     },
     {
+      "source": "api/git",
+      "skillId": "ma167-project-constraint",
+      "name": "ma167-project-constraint",
+      "installs": 2
+    },
+    {
       "source": "hainamchung/agent-assistant",
       "skillId": "java-architect",
       "name": "java-architect",
@@ -3100,15 +3142,15 @@
       "installs": 2
     },
     {
-      "source": "davidvkimball/obsidian-dev-skills",
-      "skillId": "obsidian-ref",
-      "name": "obsidian-ref",
-      "installs": 2
-    },
-    {
       "source": "heyitsiveen/skills",
       "skillId": "project-setup-guide",
       "name": "project-setup-guide",
+      "installs": 2
+    },
+    {
+      "source": "davidvkimball/obsidian-dev-skills",
+      "skillId": "obsidian-ref",
+      "name": "obsidian-ref",
       "installs": 2
     },
     {
@@ -3502,15 +3544,15 @@
       "installs": 2
     },
     {
-      "source": "iemong/claude-code",
-      "skillId": "notion-db",
-      "name": "notion-db",
-      "installs": 2
-    },
-    {
       "source": "salavender/antigravity-compound-engineering-plugin",
       "skillId": "react-hooks",
       "name": "react-hooks",
+      "installs": 2
+    },
+    {
+      "source": "iemong/claude-code",
+      "skillId": "notion-db",
+      "name": "notion-db",
       "installs": 2
     },
     {
@@ -3892,15 +3934,15 @@
       "installs": 2
     },
     {
-      "source": "soyio-id/skills",
-      "skillId": "using-git-worktrees",
-      "name": "using-git-worktrees",
-      "installs": 2
-    },
-    {
       "source": "martinffx/claude-code-atelier",
       "skillId": "python:sqlalchemy",
       "name": "python:sqlalchemy",
+      "installs": 2
+    },
+    {
+      "source": "soyio-id/skills",
+      "skillId": "using-git-worktrees",
+      "name": "using-git-worktrees",
       "installs": 2
     },
     {
@@ -4018,15 +4060,15 @@
       "installs": 2
     },
     {
-      "source": "kromer-group/claude-legal",
-      "skillId": "nda-triage",
-      "name": "nda-triage",
-      "installs": 2
-    },
-    {
       "source": "aia-11-hn-mib/mib-mockinterviewaibot",
       "skillId": "gcloud",
       "name": "gcloud",
+      "installs": 2
+    },
+    {
+      "source": "kromer-group/claude-legal",
+      "skillId": "nda-triage",
+      "name": "nda-triage",
       "installs": 2
     },
     {
@@ -4090,15 +4132,15 @@
       "installs": 2
     },
     {
-      "source": "rebyteai-template/rebyte-skills",
-      "skillId": "express-mcp",
-      "name": "express-mcp",
-      "installs": 2
-    },
-    {
       "source": "djankies/claude-configs",
       "skillId": "testing-hooks",
       "name": "testing-hooks",
+      "installs": 2
+    },
+    {
+      "source": "rebyteai-template/rebyte-skills",
+      "skillId": "express-mcp",
+      "name": "express-mcp",
       "installs": 2
     },
     {
@@ -4553,14 +4595,14 @@
     },
     {
       "source": "lifangda/claude-plugins",
-      "skillId": "aeon",
-      "name": "aeon",
+      "skillId": "algorithmic-art",
+      "name": "algorithmic-art",
       "installs": 2
     },
     {
       "source": "lifangda/claude-plugins",
-      "skillId": "algorithmic-art",
-      "name": "algorithmic-art",
+      "skillId": "aeon",
+      "name": "aeon",
       "installs": 2
     },
     {
@@ -4672,15 +4714,15 @@
       "installs": 2
     },
     {
-      "source": "curiositech/some_claude_skills",
-      "skillId": "skill-coach",
-      "name": "skill-coach",
-      "installs": 2
-    },
-    {
       "source": "manastalukdar/claude-devstudio",
       "skillId": "session-start",
       "name": "session-start",
+      "installs": 2
+    },
+    {
+      "source": "curiositech/some_claude_skills",
+      "skillId": "skill-coach",
+      "name": "skill-coach",
       "installs": 2
     },
     {
@@ -4744,15 +4786,27 @@
       "installs": 2
     },
     {
+      "source": "tencentcloudbase/awesome-cloudbase-examples",
+      "skillId": "cloudbase-platform",
+      "name": "cloudbase-platform",
+      "installs": 2
+    },
+    {
       "source": "davincidreams/agent-team-plugins",
       "skillId": "engine-patterns",
       "name": "engine-patterns",
       "installs": 2
     },
     {
-      "source": "tencentcloudbase/awesome-cloudbase-examples",
-      "skillId": "cloudbase-platform",
-      "name": "cloudbase-platform",
+      "source": "rimblehelm/.net-maui-skills",
+      "skillId": "maui-deployment",
+      "name": "maui-deployment",
+      "installs": 2
+    },
+    {
+      "source": "davincidreams/agent-team-plugins",
+      "skillId": "engine-patterns",
+      "name": "engine-patterns",
       "installs": 2
     },
     {
@@ -4795,12 +4849,6 @@
       "source": "naohainezha/skill",
       "skillId": "notebook",
       "name": "notebook",
-      "installs": 2
-    },
-    {
-      "source": "schoi80/antigravity-awesome-skills",
-      "skillId": "react-flow-node-ts",
-      "name": "react-flow-node-ts",
       "installs": 2
     },
     {
@@ -4972,15 +5020,15 @@
       "installs": 2
     },
     {
-      "source": "jackiexiao/jackie-skills-cn-top50",
-      "skillId": "remotion-best-practices",
-      "name": "remotion-best-practices",
-      "installs": 2
-    },
-    {
       "source": "peterfile/my-common-skills",
       "skillId": "vercel-react-best-practices",
       "name": "vercel-react-best-practices",
+      "installs": 2
+    },
+    {
+      "source": "jackiexiao/jackie-skills-cn-top50",
+      "skillId": "remotion-best-practices",
+      "name": "remotion-best-practices",
       "installs": 2
     },
     {
@@ -5134,15 +5182,15 @@
       "installs": 2
     },
     {
-      "source": "smithery/ai",
-      "skillId": "lucasolopes-npm-solution-scout",
-      "name": "lucasolopes-npm-solution-scout",
-      "installs": 2
-    },
-    {
       "source": "composiohq/awesome-claude-skills",
       "skillId": "insighto-ai-automation",
       "name": "insighto-ai-automation",
+      "installs": 2
+    },
+    {
+      "source": "smithery/ai",
+      "skillId": "lucasolopes-npm-solution-scout",
+      "name": "lucasolopes-npm-solution-scout",
       "installs": 2
     },
     {
@@ -5194,15 +5242,15 @@
       "installs": 2
     },
     {
-      "source": "tondevrel/scientific-agent-skills",
-      "skillId": "pennylane",
-      "name": "pennylane",
-      "installs": 2
-    },
-    {
       "source": "monichre/product-manager-skills",
       "skillId": "roadmap-planning",
       "name": "roadmap-planning",
+      "installs": 2
+    },
+    {
+      "source": "tondevrel/scientific-agent-skills",
+      "skillId": "pennylane",
+      "name": "pennylane",
       "installs": 2
     },
     {
@@ -5338,15 +5386,15 @@
       "installs": 2
     },
     {
-      "source": "quantumsolver/e-health-kit",
-      "skillId": "web-design-guidelines",
-      "name": "web-design-guidelines",
-      "installs": 2
-    },
-    {
       "source": "herdiansah/antigravity-skills-master",
       "skillId": "cloud-architect",
       "name": "cloud-architect",
+      "installs": 2
+    },
+    {
+      "source": "quantumsolver/e-health-kit",
+      "skillId": "web-design-guidelines",
+      "name": "web-design-guidelines",
       "installs": 2
     },
     {
@@ -5758,15 +5806,15 @@
       "installs": 2
     },
     {
-      "source": "nimeshgurung/artifact-hub-collections",
-      "skillId": "mcp-builder",
-      "name": "mcp-builder",
-      "installs": 2
-    },
-    {
       "source": "open-wisdom/views",
       "skillId": "pearl",
       "name": "pearl",
+      "installs": 2
+    },
+    {
+      "source": "nimeshgurung/artifact-hub-collections",
+      "skillId": "mcp-builder",
+      "name": "mcp-builder",
       "installs": 2
     },
     {
@@ -5878,15 +5926,15 @@
       "installs": 2
     },
     {
-      "source": "gptomics/bioskills",
-      "skillId": "bio-reference-operations",
-      "name": "bio-reference-operations",
-      "installs": 2
-    },
-    {
       "source": "bluewaves-creations/bluewaves-skills",
       "skillId": "video-from-image",
       "name": "video-from-image",
+      "installs": 2
+    },
+    {
+      "source": "gptomics/bioskills",
+      "skillId": "bio-reference-operations",
+      "name": "bio-reference-operations",
       "installs": 2
     },
     {
@@ -5953,54 +6001,6 @@
       "source": "curiositech/some_claude_skills",
       "skillId": "vitest-testing-patterns",
       "name": "vitest-testing-patterns",
-      "installs": 2
-    },
-    {
-      "source": "dojocodinglabs/claude-code-waypoint",
-      "skillId": "backend-dev-guidelines",
-      "name": "backend-dev-guidelines",
-      "installs": 2
-    },
-    {
-      "source": "composiohq/awesome-claude-skills",
-      "skillId": "servicem8-automation",
-      "name": "servicem8-automation",
-      "installs": 2
-    },
-    {
-      "source": "chrislemke/stoffy",
-      "skillId": "flow-nexus-platform",
-      "name": "flow-nexus-platform",
-      "installs": 2
-    },
-    {
-      "source": "ameistad/agent-skills",
-      "skillId": "adversarial-debate",
-      "name": "adversarial-debate",
-      "installs": 2
-    },
-    {
-      "source": "ssiumha/dots",
-      "skillId": "qmd",
-      "name": "qmd",
-      "installs": 2
-    },
-    {
-      "source": "smithery/ai",
-      "skillId": "sickn33-stitch-ui-design",
-      "name": "sickn33-stitch-ui-design",
-      "installs": 2
-    },
-    {
-      "source": "chrysaliscat/designgraduation",
-      "skillId": "database-expert",
-      "name": "database expert",
-      "installs": 2
-    },
-    {
-      "source": "neversight/skills_feed",
-      "skillId": "agent-tools",
-      "name": "agent-tools",
       "installs": 2
     }
   ]

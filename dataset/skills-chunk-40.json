@@ -4,6 +4,66 @@
   "count": 1000,
   "skills": [
     {
+      "source": "alsk1992/cloddsbot",
+      "skillId": "bankr",
+      "name": "bankr",
+      "installs": 5
+    },
+    {
+      "source": "aiming-lab/simplemem",
+      "skillId": "simplemem-skill",
+      "name": "simplemem-skill",
+      "installs": 5
+    },
+    {
+      "source": "plurigrid/asi",
+      "skillId": "abductive-repl",
+      "name": "abductive-repl",
+      "installs": 5
+    },
+    {
+      "source": "agentbay-ai/agentbay-skills",
+      "skillId": "wuying-browser-use",
+      "name": "wuying-browser-use",
+      "installs": 5
+    },
+    {
+      "source": "troykelly/codex-skills",
+      "skillId": "code-simplifier",
+      "name": "code-simplifier",
+      "installs": 5
+    },
+    {
+      "source": "huifer/claude-ally-health",
+      "skillId": "family-health-analyzer",
+      "name": "family-health-analyzer",
+      "installs": 5
+    },
+    {
+      "source": "vamseeachanta/workspace-hub",
+      "skillId": "cloud-workflow",
+      "name": "cloud-workflow",
+      "installs": 5
+    },
+    {
+      "source": "alsk1992/cloddsbot",
+      "skillId": "orca",
+      "name": "orca",
+      "installs": 5
+    },
+    {
+      "source": "ntaksh42/agents",
+      "skillId": "docx-processor",
+      "name": "docx-processor",
+      "installs": 5
+    },
+    {
+      "source": "adaptationio/skrillz",
+      "skillId": "codex-chat",
+      "name": "codex-chat",
+      "installs": 5
+    },
+    {
       "source": "yousufjoyian/claude-skills",
       "skillId": "git-commit",
       "name": "git-commit",
@@ -403,12 +463,6 @@
       "source": "asiaostrich/universal-dev-standards",
       "skillId": "coverage",
       "name": "coverage",
-      "installs": 5
-    },
-    {
-      "source": "baz-scm/awesome-reviewers",
-      "skillId": "code-refactoring",
-      "name": "code-refactoring",
       "installs": 5
     },
     {
@@ -1108,6 +1162,12 @@
       "installs": 5
     },
     {
+      "source": "jamditis/claude-skills-journalism",
+      "skillId": "visual-explainer",
+      "name": "visual-explainer",
+      "installs": 5
+    },
+    {
       "source": "cdeistopened/skill-stack",
       "skillId": "podcast-blog-post-creator",
       "name": "podcast-blog-post-creator",
@@ -1372,6 +1432,12 @@
       "installs": 5
     },
     {
+      "source": "peixotorms/odinlayer-skills",
+      "skillId": "flyonui",
+      "name": "flyonui",
+      "installs": 5
+    },
+    {
       "source": "axim-one/rest-framework",
       "skillId": "axim-rest-framework",
       "name": "axim-rest-framework",
@@ -1567,6 +1633,12 @@
       "source": "teachingai/agent-skills",
       "skillId": "dart-sass",
       "name": "dart-sass",
+      "installs": 5
+    },
+    {
+      "source": "lichens-innovation/skills",
+      "skillId": "react-single-responsibility",
+      "name": "react-single-responsibility",
       "installs": 5
     },
     {
@@ -2830,12 +2902,6 @@
       "installs": 5
     },
     {
-      "source": "akiselev/qt-llm-template",
-      "skillId": "pyside6-reviewer",
-      "name": "pyside6-reviewer",
-      "installs": 5
-    },
-    {
       "source": "tara-shopos/shopos-prototype",
       "skillId": "product-analysis-styling",
       "name": "product-analysis-styling",
@@ -3994,6 +4060,12 @@
       "installs": 5
     },
     {
+      "source": "yunshu0909/yunshu_skillshub",
+      "skillId": "backlog-manager",
+      "name": "backlog-manager",
+      "installs": 5
+    },
+    {
       "source": "amoeba/dbc-skills",
       "skillId": "dbc",
       "name": "dbc",
@@ -4285,6 +4357,12 @@
       "source": "ntaksh42/agents",
       "skillId": "azure-variable-groups",
       "name": "azure-variable-groups",
+      "installs": 5
+    },
+    {
+      "source": "beeltec/skills",
+      "skillId": "glab",
+      "name": "glab",
       "installs": 5
     },
     {
@@ -5923,84 +6001,6 @@
       "source": "microck/ordinary-claude-skills",
       "skillId": "github-code-review",
       "name": "github-code-review",
-      "installs": 5
-    },
-    {
-      "source": "founderjourney/claude-skills",
-      "skillId": "pdf",
-      "name": "pdf",
-      "installs": 5
-    },
-    {
-      "source": "javidmardanov/paper-banana-skill",
-      "skillId": "paper-banana",
-      "name": "paper-banana",
-      "installs": 5
-    },
-    {
-      "source": "fl-sean03/agentic-science-worker",
-      "skillId": "lammps-simulation",
-      "name": "lammps-simulation",
-      "installs": 5
-    },
-    {
-      "source": "questnova502/claude-skills-sync",
-      "skillId": "brand-guidelines",
-      "name": "brand-guidelines",
-      "installs": 5
-    },
-    {
-      "source": "masanao-ohba/claude-manifests",
-      "skillId": "workflow-patterns",
-      "name": "workflow-patterns",
-      "installs": 5
-    },
-    {
-      "source": "ibutters/claudecodeplugins",
-      "skillId": "storybook",
-      "name": "storybook",
-      "installs": 5
-    },
-    {
-      "source": "ampcode/amp-contrib",
-      "skillId": "tmux",
-      "name": "tmux",
-      "installs": 5
-    },
-    {
-      "source": "beshkenadze/claude-skills-marketplace",
-      "skillId": "markdown-formatter",
-      "name": "markdown-formatter",
-      "installs": 5
-    },
-    {
-      "source": "teachingai/agent-skills",
-      "skillId": "avue-form",
-      "name": "avue-form",
-      "installs": 5
-    },
-    {
-      "source": "smithery/ai",
-      "skillId": "davila7-web-games",
-      "name": "davila7-web-games",
-      "installs": 5
-    },
-    {
-      "source": "adaptationio/skrillz",
-      "skillId": "terra-connections",
-      "name": "terra-connections",
-      "installs": 5
-    },
-    {
-      "source": "bybren-llc/story-systems-template",
-      "skillId": "power-analysis",
-      "name": "power-analysis",
-      "installs": 5
-    },
-    {
-      "source": "jeremylongshore/claude-code-plugins-plus-skills",
-      "skillId": "generating-smart-commits",
-      "name": "generating-smart-commits",
       "installs": 5
     }
   ]
