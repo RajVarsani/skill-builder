@@ -1,52 +1,52 @@
-# Skill Builder — Technical Design Document
+# Skill Builder — Technical Design
 
-**Date:** 2026-02-22
-**Status:** Draft v2 — Web-first
+**Date:** 2026-02-22 | **Updated:** 2026-02-27
+**Status:** v3 — Building Blocks Architecture
 **Author:** Raj Varsani + Claude
 
 ---
 
 ## Overview
 
-A web platform with an agentic backend that orchestrates a conversation to generate personal identity skills. Users chat through a browser, their professional identity materializes in real-time on screen, and the output is an installable Agent Skills package published to GitHub and available via `npx skills add`.
+A web platform with a tool-use-driven agentic backend that orchestrates a 3-4 minute conversation to generate personal identity skills. The AI emits structured "identity blocks" via Claude's native tool_use alongside conversational text. Blocks animate into a gamified identity card in real-time. The output is an installable Agent Skills package.
 
 ---
 
 ## System Architecture
 
 ```
-┌──────────────────────────────────────────────────────────┐
-│                        Frontend                          │
-│                    (Next.js App)                          │
-│                                                          │
-│  ┌─────────────┐  ┌──────────────┐  ┌────────────────┐  │
-│  │ Chat Panel   │  │ Identity Card │  │ Publish Flow   │  │
-│  │ (streaming)  │  │ (real-time)   │  │ (GitHub API)   │  │
-│  └──────┬───────┘  └──────┬───────┘  └───────┬────────┘  │
-│         │                 │                   │           │
-└─────────┼─────────────────┼───────────────────┼───────────┘
-          │                 │                   │
-          ▼                 ▼                   ▼
-┌──────────────────────────────────────────────────────────┐
-│                     API Layer                            │
-│              (Node.js Backend)                           │
-│                                                          │
-│  ┌─────────────┐  ┌──────────────┐  ┌────────────────┐  │
-│  │ Conversation │  │ Artifact     │  │ Skill          │  │
-│  │ Agent        │  │ Analyzer     │  │ Generator      │  │
-│  └──────┬───────┘  └──────┬───────┘  └───────┬────────┘  │
-│         │                 │                   │           │
-└─────────┼─────────────────┼───────────────────┼───────────┘
-          │                 │                   │
-          ▼                 ▼                   ▼
-┌──────────────────────────────────────────────────────────┐
-│                   External Services                      │
-│                                                          │
-│  ┌──────────┐  ┌──────────┐  ┌────────┐  ┌───────────┐  │
-│  │ Claude   │  │ GitHub   │  │ Auth   │  │ Database  │  │
-│  │ API      │  │ API      │  │ (OAuth)│  │ (state)   │  │
-│  └──────────┘  └──────────┘  └────────┘  └───────────┘  │
-└──────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────┐
+│                     Frontend                          │
+│                  (Next.js App)                         │
+│                                                        │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐ │
+│  │ Chat Panel    │  │ Identity Card │  │ Publish View │ │
+│  │ + Quick Chips │  │ + Block Queue │  │              │ │
+│  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘ │
+│         │ SSE              │ SSE             │          │
+└─────────┼──────────────────┼────────────────┼──────────┘
+          │                  │                │
+          ▼                  ▼                ▼
+┌──────────────────────────────────────────────────────┐
+│                    API Layer                           │
+│                 (Hono Backend)                          │
+│                                                        │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐ │
+│  │ Conversation  │  │ Block State  │  │ Skill        │ │
+│  │ Agent         │  │ Machine      │  │ Generator    │ │
+│  │ (tool_use)    │  │              │  │              │ │
+│  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘ │
+│         │                  │                 │          │
+└─────────┼──────────────────┼─────────────────┼──────────┘
+          │                  │                 │
+          ▼                  ▼                 ▼
+┌──────────────────────────────────────────────────────┐
+│                 External Services                      │
+│  ┌──────────┐  ┌──────────┐  ┌────────┐  ┌─────────┐ │
+│  │ Claude   │  │ GitHub   │  │ Auth   │  │ Postgres│ │
+│  │ API      │  │ API      │  │ (OAuth)│  │ (state) │ │
+│  └──────────┘  └──────────┘  └────────┘  └─────────┘ │
+└──────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -54,249 +54,532 @@ A web platform with an agentic backend that orchestrates a conversation to gener
 ## Tech Stack
 
 ### Frontend
-- **Next.js** (React) — app router, server components where useful
+- **Next.js 15** — App Router, server components where useful
 - **TypeScript** — throughout
-- **Tailwind CSS** — styling
-- **Framer Motion** — identity card animations, phase transitions
-- Streaming chat UI (SSE from backend)
+- **Tailwind CSS v4** — styling with design system tokens
+- **Framer Motion** — block animations, card transitions
+- **Geist** — sans + mono fonts
 
-### Backend (Separate Node.js Service)
-- **Node.js** with **Express** or **Hono**
+### Backend
+- **Hono** — lightweight, fast HTTP framework
 - **TypeScript** — throughout
-- **Anthropic SDK** — Claude API for the agentic conversation
-- Custom agent orchestration layer (not a thin wrapper — manages phases, state, domain hints)
+- **Anthropic SDK** — Claude API with streaming tool_use
+- **Drizzle ORM** — type-safe PostgreSQL access
 
 ### Database
-- **PostgreSQL** — conversation state, user profiles, published skills
-- Tables: users, conversations, conversation_messages, published_skills
+- **PostgreSQL** — conversation state, user profiles, block state, published skills
 
 ### Auth
 - **Google OAuth** — primary sign-in
 - **GitHub OAuth** — optional, for personal repo publishing
-- Session management via JWT or server-side sessions
+- **JWT** — session management via `jose`
 
 ### Infrastructure
-- Frontend: Vercel (natural fit for Next.js)
-- Backend: Railway / Fly.io / AWS (separate service)
-- Database: Managed Postgres (Supabase / Neon / Railway)
-- File storage: GitHub repos (for published skills)
+- **Vercel** — frontend hosting
+- **Railway / Fly.io** — backend service
+- **Managed Postgres** — Neon / Supabase / Railway
 
 ---
 
-## Agentic Backend Design
+## Core Architecture: Tool-Use Building Blocks
 
-The backend is the brain. It's not a passthrough to Claude — it's an **agent orchestrator** that manages conversation state, loads context dynamically, and drives the 4-phase flow.
+### The Key Insight
 
-### Agent Architecture
+Instead of parsing regex from Claude's text responses, we use **Claude's native `tool_use`** to emit structured identity blocks. Each tool call = one visual block on the card. The streaming order is architecturally perfect:
 
-```
-ConversationAgent
-├── PhaseManager         — tracks current phase, handles transitions
-├── DomainHintLoader     — loads relevant hints based on selected domains
-├── IdentityModelBuilder — maintains the evolving identity model
-├── ArtifactAnalyzer     — analyzes GitHub repos, URLs, uploaded content
-├── SkillGenerator       — generates the final skill package
-└── PublishManager       — handles GitHub repo creation + publishing
-```
+1. **Text content blocks** stream first → chat UI updates
+2. **Tool_use content blocks** follow → identity card blocks animate in
 
-### Phase Management
+This creates the "discover then visualize" flow naturally.
 
-The agent tracks which phase the conversation is in and adjusts its behavior:
+### The 4 Tools
 
-```typescript
-type Phase =
-  | { type: 'domain_discovery' }
-  | { type: 'deep_discovery'; domains: string[]; questionCount: number }
-  | { type: 'artifact_collection'; pendingArtifacts: string[] }
-  | { type: 'skill_assembly'; subStep: 'proposal' | 'roleplay' | 'publish' }
-```
+Claude has exactly 4 tools available. Each has a distinct purpose:
 
-Phase transitions are determined by the AI based on conversation completeness — not hardcoded message counts. The system prompt includes transition criteria:
+#### 1. `add_identity_block` — The primary discovery tool
 
-- **Domain Discovery → Deep Discovery:** User has selected at least one domain
-- **Deep Discovery → Artifact Collection:** AI has explored all selected domains with sufficient depth (typically 15-25 questions) and the user has confirmed at least one summary
-- **Artifact Collection → Skill Assembly:** AI has analyzed submitted artifacts OR user indicates no artifacts to share
-- **Skill Assembly (proposal → roleplay):** User has confirmed the sub-skill list
-- **Skill Assembly (roleplay → publish):** User confirms the roleplay feels accurate
-
-### Identity Model
-
-The backend maintains a structured identity model that updates as the conversation progresses. This model drives the identity card on the frontend.
+Called every time Claude learns something concrete. Emits one visual block.
 
 ```typescript
-interface IdentityModel {
-  // Basic info (from auth)
-  name: string
-  avatar?: string
-
-  // Phase 1
-  domains: string[]
-
-  // Phase 2 (evolves during conversation)
-  personality: {
-    traits: Array<{ label: string; confidence: 'low' | 'medium' | 'high'; source: 'inferred' | 'confirmed' }>
-    values: Array<{ label: string; priority: number }>
-    riskTolerance?: string
-    conflictStyle?: string
-  }
-  communication: {
-    tone?: string
-    formality?: string
-    feedbackStyle?: string
-    vocabularyPatterns?: string[]
-  }
-  decisionPatterns: {
-    defaultHeuristic?: string
-    consistentlyRejects?: string[]
-    consistentlyPrioritizes?: string[]
-  }
-
-  // Phase 2-3 (domains filled progressively)
-  expertise: Array<{
-    domain: string
-    depth: 'beginner' | 'proficient' | 'advanced' | 'expert'
-    subSkills: string[]
-    tools: string[]
-    opinions: string[]
-  }>
-
-  // Phase 3
-  artifacts: Array<{
-    type: 'github_repo' | 'github_pr' | 'url' | 'upload' | 'text'
-    source: string
-    insights: string[]
-  }>
-
-  // Phase 4
-  subSkills: {
-    overrides: Array<{ baseSkilName: string; customizations: string[] }>
-    custom: Array<{ name: string; description: string; content?: string }>
+{
+  name: "add_identity_block",
+  description: "Record a newly discovered aspect of the user's professional identity. Call this EVERY time you learn something concrete. Each call adds one visual block to their identity card.",
+  input_schema: {
+    type: "object",
+    properties: {
+      category: {
+        type: "string",
+        enum: [
+          "personality_trait", "core_value", "domain_expertise",
+          "communication_style", "decision_pattern", "tool_preference",
+          "opinion", "anti_pattern", "working_style"
+        ]
+      },
+      label: {
+        type: "string",
+        description: "Short display label (2-4 words). E.g. 'Pragmatic', 'TypeScript Advocate'"
+      },
+      detail: {
+        type: "string",
+        description: "WHY this is true, in one sentence. The causal reasoning."
+      },
+      confidence: {
+        type: "string",
+        enum: ["low", "medium", "high"]
+      },
+      source_type: {
+        type: "string",
+        enum: ["inferred", "stated", "confirmed"]
+      },
+      related_domain: { type: "string" },
+      display_priority: {
+        type: "number",
+        description: "1-10. 10 = hero-level defining trait."
+      }
+    },
+    required: ["category", "label", "detail", "confidence", "source_type"]
   }
 }
 ```
 
-The identity model is:
-1. Stored in the database (persisted across sessions)
-2. Sent to the frontend via SSE for real-time identity card updates
-3. Included in the AI's system prompt context so it knows what it's already learned
-4. Used as input for skill generation
+#### 2. `confirm_identity_block` — Lock in a tentative block
 
-### How the AI Conversation Works
+Called when user confirms a summary. Triggers solidification animation.
 
-Each user message triggers:
+```typescript
+{
+  name: "confirm_identity_block",
+  description: "Upgrade an existing block's confidence after the user confirms. Triggers visual solidification.",
+  input_schema: {
+    type: "object",
+    properties: {
+      label: { type: "string", description: "Label of the block to confirm" },
+      new_confidence: { type: "string", enum: ["medium", "high"] }
+    },
+    required: ["label", "new_confidence"]
+  }
+}
+```
 
-1. **Load context:** Current identity model + conversation history + phase-appropriate system prompt + domain hints
-2. **Call Claude API** with streaming enabled
-3. **Parse AI response** for:
-   - Text reply (streamed to frontend chat)
-   - Identity model updates (structured data extracted from the AI's response)
-   - Phase transition signals
-4. **Update identity model** in database
-5. **Push identity card update** to frontend via SSE
+#### 3. `offer_quick_replies` — Present tappable chips
 
-The system prompt is **dynamically assembled** based on the current phase:
+Called with every question. Provides chips the user can tap instead of typing.
+
+```typescript
+{
+  name: "offer_quick_replies",
+  description: "Present tappable quick-reply chips alongside your message.",
+  input_schema: {
+    type: "object",
+    properties: {
+      chips: {
+        type: "array",
+        items: {
+          type: "object",
+          properties: {
+            label: { type: "string" },
+            value: { type: "string" },
+            emoji: { type: "string" }
+          },
+          required: ["label", "value"]
+        }
+      },
+      allow_custom: { type: "boolean" },
+      multi_select: { type: "boolean" }
+    },
+    required: ["chips"]
+  }
+}
+```
+
+#### 4. `signal_phase_transition` — Move to next phase
+
+Called once when a phase's objectives are met.
+
+```typescript
+{
+  name: "signal_phase_transition",
+  description: "Signal that the conversation should move to the next phase.",
+  input_schema: {
+    type: "object",
+    properties: {
+      completed_phase: {
+        type: "string",
+        enum: ["domain_discovery", "rapid_profiling", "review"]
+      },
+      next_phase: {
+        type: "string",
+        enum: ["rapid_profiling", "review", "publish"]
+      },
+      summary: { type: "string" }
+    },
+    required: ["completed_phase", "next_phase"]
+  }
+}
+```
+
+### Why 4 Tools, Not More
+
+Anthropic's guidance: "Consolidate related operations into fewer tools rather than creating a separate tool for every action." The `add_identity_block` tool handles 9 categories through its `category` enum. Fewer tools = less selection ambiguity for Claude = more reliable behavior.
+
+### Tool Result Handling: Fire-and-Forget
+
+These tools are **side-effect-only** — they update the UI, not the conversation. After each tool call:
+
+1. The backend intercepts the tool_use block from the stream
+2. Emits the block data to the frontend via SSE
+3. Auto-responds with `{ success: true }` as the tool result
+4. The conversation continues without waiting for actual tool execution
+
+Claude is instructed in the system prompt: "Your tool calls are observational side-effects that update the identity card. Emit them alongside your conversational text."
+
+---
+
+## Block State Machine
+
+Rather than freeform conversation, we define a finite set of **blocks to fill** per domain. Claude picks the next unfilled block based on context, but the system ensures complete coverage.
+
+### Block Definition
+
+```typescript
+interface BlockDefinition {
+  id: string
+  category: string                // Maps to tool's category enum
+  label: string                   // Human-readable
+  phase: 'discovery' | 'deep' | 'review'
+  required: boolean
+  dependsOn?: string[]            // Other block IDs that must be filled first
+  questionHint: string            // Guidance for Claude on how to ask
+  chipOptions?: string[]          // Pre-built quick-reply options
+}
+
+interface BlockState {
+  blockId: string
+  status: 'empty' | 'tentative' | 'confirmed'
+  value?: string
+  confidence: 'low' | 'medium' | 'high'
+}
+```
+
+### Universal Blocks (all domains)
+
+| Block ID | Category | Required | Chip Options |
+|----------|----------|----------|-------------|
+| `seniority` | working_style | Yes | Junior, Mid, Senior, Lead/Staff, Principal |
+| `core_value` | core_value | Yes | Speed, Quality, Simplicity, Learning, Impact |
+| `communication_style` | communication_style | Yes | Direct & concise, Diplomatic & detailed, Casual & warm, Formal & precise |
+| `risk_tolerance` | personality_trait | Yes | — (scenario-based) |
+| `decision_heuristic` | decision_pattern | Yes | — (inferred from scenarios) |
+| `anti_pattern` | anti_pattern | Yes | — (free text: "what do most people do wrong?") |
+| `hot_take` | opinion | Yes | — (free text: strongest opinion) |
+| `superpower` | personality_trait | No | — (free text: "what's your superpower?") |
+| `conflict_style` | personality_trait | No | — (inferred) |
+
+### Engineering Blocks (when domain selected)
+
+| Block ID | Category | Required | Depends On | Chip Options |
+|----------|----------|----------|-----------|-------------|
+| `eng_approach` | working_style | Yes | — | Plan first, Prototype fast, Research deep, Jump in |
+| `eng_primary_stack` | tool_preference | Yes | — | — (free text) |
+| `eng_architecture` | opinion | Yes | eng_approach | Monolith, Microservices, Start mono split later, Depends |
+| `eng_testing` | opinion | No | — | TDD zealot, Integration-first, Test critical path, Tests slow me down |
+| `eng_review_style` | communication_style | Yes | communication_style | Approve with notes, Request changes, Pair on it, Rewrite it |
+
+### Design / Product / Data / Marketing / Operations Blocks
+
+Similar domain-specific blocks defined per domain. Typically 3-5 per domain, mostly chip-answerable.
+
+### State Machine Logic
+
+Each conversation turn:
+
+1. **Get next targets** — `getNextTargets(3)` returns the 3 highest-priority unfilled blocks whose dependencies are met
+2. **Inject into system prompt** — Claude sees: filled blocks (don't re-ask), next targets with question hints and chip options
+3. **Claude asks about the top target** — naturally worded, using the hint as guidance
+4. **Parse tool calls** — `add_identity_block` calls map back to block IDs by matching category + label
+5. **Update state** — mark blocks as tentative or confirmed
+
+The state machine ensures **coverage without rigidity** — Claude writes questions in its own voice, guided by hints.
+
+### Completion Percentage
 
 ```
-[Base system prompt — personality, tone, constraints]
+completion = (filledBlocks / totalBlocks) * 100
+```
+
+Starts at 15% (endowed progress). Domain selection immediately fills 1-3 blocks, jumping to ~25%.
+
+---
+
+## Conversation Flow: System Prompts
+
+### Dynamic System Prompt Assembly
+
+Each turn, the system prompt is assembled from:
+
+```
+[Base persona — warm, perceptive, SHORT messages]
 +
-[Phase-specific instructions — what to explore, when to transition]
+[Phase-specific instructions — what to explore, question budget, pacing]
++
+[Block state context — filled blocks, next targets with hints/chips]
 +
 [Domain hints — loaded for selected domains]
-+
-[Current identity model — what's been learned so far]
-+
-[Conversation history — recent messages for continuity]
 ```
 
-### Domain Hint System
+### Base Persona (always included)
 
-Domain hints are stored as structured data (not markdown files, since this is a backend, not a Claude Code skill). They tell the AI what to explore for each domain.
+```
+You are the Skill Builder — a warm, perceptive interviewer who discovers
+professional identities through quick, engaging questions.
+
+CRITICAL RULES:
+1. Ask ONE question at a time. Never stack multiple questions.
+2. Keep messages SHORT — 1-3 sentences max.
+3. Use offer_quick_replies for EVERY question that can be answered with a tap.
+4. Call add_identity_block EVERY time you learn something concrete (1-3 per turn).
+5. Infer aggressively from short answers. One "PM at a startup" answer should
+   generate 3 blocks: role, company_stage, likely_skills.
+6. After emitting a block, briefly acknowledge the discovery before the next question.
+
+TOOL USAGE:
+- add_identity_block: Call aggressively. 1-3 blocks per turn is normal.
+- offer_quick_replies: Use for every answerable-by-tap question.
+- confirm_identity_block: Use when user agrees with your summary.
+- signal_phase_transition: Call ONCE when phase objectives are met.
+
+Your tool calls are fire-and-forget side effects. They update the identity card.
+Emit them alongside your conversational text.
+```
+
+### Phase: Domain Discovery (budget: 1 question)
+
+```
+Welcome them warmly in 1 sentence. Ask them to select domains.
+Use offer_quick_replies with multi_select: true.
+Domains: Engineering, Design, Product, Data / Analytics, Marketing, Operations.
+
+When they select, immediately infer 2-3 initial blocks from domains alone
+(the "quick roll"). Emit them as low-confidence inferred blocks.
+Then call signal_phase_transition to move to rapid_profiling.
+```
+
+### Phase: Rapid Profiling (budget: 8-12 questions)
+
+```
+Ask focused questions to fill remaining blocks. Alternate between:
+- Quick-tap chips (every 2 out of 3 questions) for speed
+- Short free-text (every 3rd question) for depth
+- Summary + confirmation after every 4-5 blocks
+
+QUESTION TYPES:
+1. "Pick the one that resonates" — forced choice reveals values
+2. "Quick scenario: [situation]. You would..." — reveals decision patterns
+3. "What's your hot take on [topic]?" — extracts opinions (free text)
+4. Confirmation: "I'm seeing [traits]. Ring true?" — locks in blocks
+
+After [target - 2] blocks are filled, transition to review.
+```
+
+### Phase: Review (budget: 1-2 questions)
+
+```
+Present a 2-3 sentence summary of the user's complete identity.
+Use offer_quick_replies: ["Spot on!", "Close, but...", "Let me adjust"].
+If confirmed, call confirm_identity_block for all tentative blocks.
+Then call signal_phase_transition to publish.
+If adjustments needed, ask ONE question, update, then confirm.
+```
+
+### Domain Hints
+
+Loaded into the system prompt when the user selects domains. Each provides:
+- **Areas to explore** — directional, not prescriptive questions
+- **Signals to extract** — what to infer from answers
+- **Personality inference points** — how answers reveal traits
+
+Pre-defined for: Engineering, Design, Product, Data/Analytics, Marketing, Operations. For custom domains, AI improvises using general hints as a base.
+
+---
+
+## Streaming Architecture
+
+### SSE Event Protocol
 
 ```typescript
-interface DomainHint {
-  domain: string
-  areasToExplore: string[]
-  signalToExtract: string[]
-  artifactsToRequest: string[]
-  personalityInferencePoints: string[]
+type SSEEvent =
+  // Text streaming
+  | { event: 'text_chunk'; data: string }
+
+  // Block discovered — animate it in
+  | { event: 'block_added'; data: {
+      id: string
+      category: string
+      label: string
+      detail: string
+      confidence: 'low' | 'medium' | 'high'
+      sourceType: 'inferred' | 'stated' | 'confirmed'
+      relatedDomain?: string
+      displayPriority?: number
+    }}
+
+  // Block confirmed — solidify animation
+  | { event: 'block_confirmed'; data: {
+      label: string
+      newConfidence: 'medium' | 'high'
+    }}
+
+  // Quick-reply chips to render
+  | { event: 'quick_replies'; data: {
+      chips: Array<{ label: string; value: string; emoji?: string }>
+      allowCustom: boolean
+      multiSelect: boolean
+    }}
+
+  // Phase transition
+  | { event: 'phase_change'; data: {
+      from: string
+      to: string
+      summary: string
+    }}
+
+  // Completion update
+  | { event: 'completion_update'; data: {
+      percent: number
+      totalBlocks: number
+      filledBlocks: number
+    }}
+
+  // Stream complete
+  | { event: 'done'; data: {} }
+```
+
+### Streaming Flow (per user message)
+
+```
+Claude API stream begins
+  │
+  ├─ content_block_start (type: "text")
+  │    └─ content_block_delta (text_delta) → emit SSE text_chunk events
+  │    └─ content_block_stop
+  │
+  ├─ content_block_start (type: "tool_use", name: "add_identity_block")
+  │    └─ content_block_delta (input_json_delta) → accumulate JSON
+  │    └─ content_block_stop → parse JSON, emit SSE block_added
+  │
+  ├─ content_block_start (type: "tool_use", name: "offer_quick_replies")
+  │    └─ content_block_delta (input_json_delta) → accumulate JSON
+  │    └─ content_block_stop → parse JSON, emit SSE quick_replies
+  │
+  └─ message_stop → emit SSE done, update DB
+```
+
+### Conversation Agent (AsyncGenerator)
+
+```typescript
+async function* runConversationTurn(
+  messages: Array<{ role: 'user' | 'assistant'; content: string }>,
+  phase: Phase,
+  blockState: BlockStateMachine,
+  selectedDomains: string[],
+): AsyncGenerator<ConversationEvent> {
+  const systemPrompt = buildSystemPrompt(phase, blockState, selectedDomains)
+
+  const stream = anthropic.messages.stream({
+    model: 'claude-sonnet-4-5-20250929',
+    max_tokens: 2048,
+    system: systemPrompt,
+    messages,
+    tools: identityTools,
+    // tool_choice: "auto" (default) — Claude decides when to emit blocks
+  })
+
+  let currentToolName: string | null = null
+  let currentToolInput = ''
+
+  for await (const event of stream) {
+    if (event.type === 'content_block_delta' && event.delta.type === 'text_delta') {
+      yield { type: 'text', data: event.delta.text }
+    }
+
+    if (event.type === 'content_block_start' && event.content_block.type === 'tool_use') {
+      currentToolName = event.content_block.name
+      currentToolInput = ''
+    }
+
+    if (event.type === 'content_block_delta' && event.delta.type === 'input_json_delta') {
+      currentToolInput += event.delta.partial_json
+    }
+
+    if (event.type === 'content_block_stop' && currentToolName) {
+      const input = JSON.parse(currentToolInput)
+      // Dispatch to appropriate SSE event based on tool name
+      yield mapToolCallToEvent(currentToolName, input)
+      currentToolName = null
+    }
+  }
+
+  yield { type: 'done' }
 }
 ```
 
-Hints for common domains (engineering, design, product, data, general) are pre-defined. For custom/niche domains, the AI improvises using the general hints as a base.
+### Frontend SSE Consumption
 
-The hints are **directional, not prescriptive** — they tell the AI "explore architecture philosophy" not "ask: do you prefer monolith or microservice?"
-
-### Artifact Analysis
-
-When a user shares an artifact, the backend:
-
-**GitHub repos:**
-1. Uses GitHub API to fetch repo structure, README, package.json/config files, sample source files
-2. Sends relevant file contents to Claude for analysis
-3. Extracts: language/framework choices, project structure patterns, naming conventions, dependency choices, architecture patterns
-4. Cross-references with existing identity model
-
-**GitHub PRs / code reviews:**
-1. Uses GitHub API to fetch PR descriptions, review comments
-2. Analyzes feedback tone, focus areas, approval patterns
-3. Extracts communication style signal
-
-**URLs (blog posts, portfolios, docs):**
-1. Fetches page content
-2. Sends to Claude for analysis
-3. Extracts: voice, opinion strength, teaching style, expertise depth
-
-**Uploaded files:**
-1. Stores temporarily
-2. Sends content to Claude for analysis
-3. Extracts domain-specific signal
-
-### Skill Generation
-
-When the user confirms sub-skills and passes roleplay validation:
-
-1. **Assemble the SKILL.md** from the identity model using the persona template
-2. **Generate override files** for each existing skill with user preferences
-3. **Generate custom skill files** for each novel sub-skill
-4. **Generate example files** from conversation excerpts and roleplay responses
-5. **Package** into the Agent Skills directory structure
-
-The generated structure:
-
-```
-acting-as-{username}/
-├── SKILL.md                          # Identity core
-├── references/
-│   ├── overrides/
-│   │   ├── {existing-skill-1}.md     # Existing skill + user preferences
-│   │   └── ...
-│   ├── custom/
-│   │   ├── {custom-skill-1}.md       # Novel skill from conversation
-│   │   └── ...
-│   └── examples/
-│       ├── decisions.md              # Decision-making traces
-│       ├── communication.md          # Voice/tone examples
-│       └── reviews.md               # Feedback examples
+```typescript
+// useConversation hook consumes SSE events:
+// - text_chunk → append to current message
+// - block_added → enqueue in block render queue (staggered)
+// - block_confirmed → update block visual state
+// - quick_replies → display chips below current message
+// - completion_update → update card percentage
+// - phase_change → update phase state
+// - done → finalize message, enable input
 ```
 
-### Publishing Flow
+### Block Render Queue (Stagger)
 
-**Option A: Platform org (default)**
-1. Backend creates repo in platform's GitHub org via GitHub App/Bot
-2. Commits all skill files
-3. Returns install command: `npx skills add skillbuilder-community/acting-as-{username}`
+When multiple blocks arrive in one turn, they're queued and rendered with 400ms delay between each:
 
-**Option B: Personal repo**
-1. User's GitHub OAuth token used to create repo in their account
-2. Commits all skill files
-3. Returns install command: `npx skills add {username}/acting-as-{username}`
+```typescript
+const BLOCK_STAGGER_MS = 400
+
+function useBlockQueue(onRender: (block) => void) {
+  const queue = useRef([])
+
+  function enqueue(block) {
+    queue.current.push(block)
+    if (!processing) processQueue()
+  }
+
+  async function processQueue() {
+    while (queue.current.length > 0) {
+      onRender(queue.current.shift())
+      if (queue.current.length > 0) {
+        await sleep(BLOCK_STAGGER_MS)
+      }
+    }
+  }
+}
+```
+
+### Animation Timing (per turn)
+
+```
+t=0ms      text_chunk events start streaming
+t=200ms    First text appears in chat
+t=800ms    Text streaming complete
+t=900ms    First block_added → Block 1 materializes (300ms spring)
+t=1300ms   Block 2 materializes (staggered)
+t=1700ms   Block 3 materializes
+t=2100ms   completion_update → percentage ticks up
+t=2200ms   quick_replies → chips slide in from bottom
+```
 
 ---
 
 ## Database Schema
 
 ```sql
--- Users
 CREATE TABLE users (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   email TEXT UNIQUE NOT NULL,
@@ -304,58 +587,47 @@ CREATE TABLE users (
   avatar_url TEXT,
   google_id TEXT UNIQUE,
   github_id TEXT UNIQUE,
-  github_access_token TEXT, -- encrypted, nullable
+  github_access_token TEXT,
   created_at TIMESTAMPTZ DEFAULT now(),
   updated_at TIMESTAMPTZ DEFAULT now()
 );
 
--- Conversations (one active per user, persisted for resume)
 CREATE TABLE conversations (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  user_id UUID REFERENCES users(id),
+  user_id UUID REFERENCES users(id) NOT NULL,
   phase TEXT NOT NULL DEFAULT 'domain_discovery',
-  identity_model JSONB NOT NULL DEFAULT '{}',
-  domain_hints JSONB, -- loaded hints for selected domains
-  status TEXT NOT NULL DEFAULT 'active', -- active, completed, abandoned
+  block_states JSONB NOT NULL DEFAULT '[]',
+  selected_domains JSONB NOT NULL DEFAULT '[]',
+  status TEXT NOT NULL DEFAULT 'active',
   created_at TIMESTAMPTZ DEFAULT now(),
   updated_at TIMESTAMPTZ DEFAULT now()
 );
 
--- Conversation Messages
 CREATE TABLE conversation_messages (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  conversation_id UUID REFERENCES conversations(id),
-  role TEXT NOT NULL, -- 'user' | 'assistant'
+  conversation_id UUID REFERENCES conversations(id) NOT NULL,
+  role TEXT NOT NULL,
   content TEXT NOT NULL,
-  identity_model_delta JSONB, -- what changed in the identity model after this message
-  phase TEXT NOT NULL, -- which phase this message was in
+  tool_calls JSONB,
+  phase TEXT NOT NULL,
   created_at TIMESTAMPTZ DEFAULT now()
 );
 
--- Published Skills
 CREATE TABLE published_skills (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  user_id UUID REFERENCES users(id),
-  conversation_id UUID REFERENCES conversations(id),
-  skill_name TEXT NOT NULL, -- acting-as-{username}
+  user_id UUID REFERENCES users(id) NOT NULL,
+  conversation_id UUID REFERENCES conversations(id) NOT NULL,
+  skill_name TEXT NOT NULL,
   github_repo_url TEXT NOT NULL,
-  github_repo_owner TEXT NOT NULL, -- platform org or personal
+  github_repo_owner TEXT NOT NULL,
   install_command TEXT NOT NULL,
-  identity_model JSONB NOT NULL, -- snapshot at publish time
-  skill_files JSONB NOT NULL, -- generated file contents
+  block_states JSONB NOT NULL,
+  skill_files JSONB NOT NULL,
   published_at TIMESTAMPTZ DEFAULT now()
 );
-
--- Artifacts
-CREATE TABLE artifacts (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  conversation_id UUID REFERENCES conversations(id),
-  type TEXT NOT NULL, -- 'github_repo' | 'github_pr' | 'url' | 'upload' | 'text'
-  source TEXT NOT NULL, -- URL or file reference
-  analysis JSONB, -- extracted insights
-  created_at TIMESTAMPTZ DEFAULT now()
-);
 ```
+
+Key change from v2: `identity_model JSONB` → `block_states JSONB` — the block state machine IS the identity model.
 
 ---
 
@@ -365,7 +637,7 @@ CREATE TABLE artifacts (
 ```
 POST /auth/google          — Google OAuth callback
 POST /auth/github          — GitHub OAuth callback
-POST /auth/github/connect  — Connect GitHub to existing account (for publishing)
+POST /auth/github/connect  — Connect GitHub to existing account
 GET  /auth/me              — Get current user
 POST /auth/logout          — Logout
 ```
@@ -375,243 +647,90 @@ POST /auth/logout          — Logout
 POST /conversations                — Start new conversation
 GET  /conversations/active         — Get active conversation (resume)
 POST /conversations/:id/messages   — Send message (returns SSE stream)
-GET  /conversations/:id/identity   — Get current identity model
+GET  /conversations/:id/blocks     — Get current block states
 GET  /conversations/:id/messages   — Get conversation history
-```
-
-### Artifacts
-```
-POST /conversations/:id/artifacts       — Submit artifact (URL or upload)
-GET  /conversations/:id/artifacts       — List artifacts
-GET  /conversations/:id/artifacts/:aid  — Get artifact analysis
 ```
 
 ### Skills
 ```
 POST /conversations/:id/publish   — Generate and publish skill
 GET  /skills/:id                  — Get published skill details
-GET  /skills/:id/files            — Get generated skill files
 GET  /users/:username/skill       — Public profile / skill page
 ```
 
-### SSE Stream (on POST /conversations/:id/messages)
-```
-event: message_chunk    — streaming AI text response
-event: identity_update  — identity model changed (update the card)
-event: phase_change     — conversation moved to a new phase
-event: artifact_request — AI is requesting a specific artifact type
-event: done             — response complete
-```
-
 ---
 
-## Real-Time Identity Card Updates
+## Skill Generation Pipeline
 
-The identity card on the frontend receives structured updates via SSE. Each update targets a specific section of the card:
+When the user confirms their identity in the review phase:
 
-```typescript
-type IdentityUpdate =
-  | { type: 'personality_trait_added'; trait: { label: string; confidence: string } }
-  | { type: 'personality_trait_confirmed'; traitLabel: string }
-  | { type: 'domain_added'; domain: { name: string; depth: string } }
-  | { type: 'communication_updated'; field: string; value: string }
-  | { type: 'decision_pattern_added'; pattern: { type: string; value: string } }
-  | { type: 'sub_skill_proposed'; skill: { name: string; type: 'override' | 'custom' } }
-  | { type: 'sub_skill_confirmed'; skillName: string }
-  | { type: 'artifact_insight'; insight: string }
-  | { type: 'full_model_sync'; model: IdentityModel }
+1. **Assemble SKILL.md** — From confirmed blocks. Short, opinionated, every preference has a "because" attached. Under 200 lines.
+
+2. **Match existing skills** — Search 75k+ skills.sh dataset for skills matching user's domains/expertise. Match by domain + block labels.
+
+3. **Generate overrides** — For each matched skill, generate a lightweight override with user's preferences.
+
+4. **Generate custom skills** — For expertise with no match, generate custom skill following Anthropic patterns (YAML frontmatter, progressive disclosure, CSO-optimized description).
+
+5. **Extract examples** — Pull decision traces and communication examples from conversation transcript.
+
+### Output Structure
+
+```
+acting-as-{username}/
+├── SKILL.md                          # Identity core
+├── references/
+│   ├── overrides/
+│   │   ├── {existing-skill-1}.md     # skills.sh skill + user prefs
+│   │   └── ...
+│   ├── custom/
+│   │   ├── {custom-skill-1}.md       # Novel skill from conversation
+│   │   └── ...
+│   └── examples/
+│       ├── decisions.md              # Decision-making traces
+│       └── communication.md          # Voice/tone examples
 ```
 
-Frontend handles each update type with appropriate animation:
-- `personality_trait_added` → new chip fades + slides in
-- `personality_trait_confirmed` → chip goes from dashed/transparent to solid
-- `domain_added` → new badge appears with depth bar
-- `artifact_insight` → "verified" indicator appears on related items
+### SKILL.md Template
 
----
-
-## Domain Hints (Backend Data)
-
-Pre-defined for common domains. These are loaded into the AI's system prompt when the user selects domains.
-
-### Engineering Hints
-```
-Areas to explore:
-- Primary language(s) and why they prefer them
-- Framework opinions (not just what — WHY)
-- Architecture philosophy: monolith vs microservice, modular vs flat
-- Testing philosophy: TDD? Integration-first? What they skip and why
-- Code review style: what they look for, what they ignore, how they give feedback
-- DevOps opinions: CI/CD, deployment, monitoring
-- Technical debt tolerance: when they accept it, when they refuse
-- Naming conventions and code organization patterns
-
-Signal to extract:
-- Decision heuristics ("I always X because Y")
-- Strong opinions ("I think X is harmful because...")
-- Tradeoff patterns ("I'd choose X over Y when...")
-- Anti-patterns they reject ("I never do X because...")
-
-Artifacts to request:
-- GitHub repos they're proud of (architecture signal)
-- Code reviews they've written (feedback style)
-- Technical blog posts or docs (communication signal)
-```
-
-### Design Hints
-```
-Areas to explore:
-- Primary discipline: UI, UX, motion, brand, product design
-- Tools: Figma, Sketch, Framer, prototyping tools
-- Process: wireframe-first, prototype-first, code-first
-- Design system opinions: atomic design, tokens, component libraries
-- Accessibility stance: compliance-driven or values-driven
-- Handoff process: how they work with engineers
-- Visual style: minimalist, bold, playful, corporate
-- Typography and spacing sensibilities
-
-Signal to extract:
-- Aesthetic judgment patterns ("Good design is...")
-- Process preferences ("I always start with...")
-- Collaboration style with engineers
-- What they consider non-negotiable
-
-Artifacts to request:
-- Portfolio pieces or case studies
-- Figma files showing component organization
-- Before/after redesigns they led
-```
-
-### Product Hints
-```
-Areas to explore:
-- Prioritization framework: RICE, ICE, gut, data-driven
-- How they write specs/PRDs: structure, depth, audience
-- Stakeholder management style
-- Metrics philosophy: north star, leading/lagging indicators
-- Feature scoping: how they say no, how they cut scope
-- User research approach: qualitative vs quantitative lean
-- Roadmap philosophy: fixed vs flexible, time-based vs outcome-based
-
-Signal to extract:
-- Prioritization heuristics
-- Communication style with engineers vs leadership
-- How they handle competing priorities
-- What makes a "good" product decision in their view
-
-Artifacts to request:
-- PRDs or specs they've written
-- Roadmap examples
-- Strategy documents
-```
-
-### General Hints (always loaded)
-```
-Personality & communication:
-- Communication style: direct vs diplomatic, concise vs detailed
-- How they handle disagreements or pushback
-- Decision-making speed: deliberate vs fast
-- Risk tolerance: conservative vs experimental
-- Values hierarchy: quality vs speed vs learning vs impact
-
-Working style:
-- How they approach new problems
-- Collaboration preferences: async vs sync, solo vs pair
-- How they handle being wrong or making mistakes
-
-Meta-observation (infer from HOW they answer):
-- Sentence structure and length (thinking style)
-- Vocabulary complexity (communication preference)
-- Use of qualifiers ("maybe", "probably" vs definitive)
-- Whether they think in systems, narratives, or data
-```
-
----
-
-## Skill Output Format
-
-Identical to the original design — the output is a standard Agent Skills package:
-
-### Generated SKILL.md
 ```markdown
 ---
 name: acting-as-{username}
-description: >
-  Embodies {name}'s professional identity as a {role}.
-  Captures their {domains} expertise, {communication_style}
-  communication style, and {decision_style} decision-making.
-  Use when you want responses reflecting {name}'s perspective.
+description: Use when you want responses reflecting {name}'s perspective
+  as a {role}. Activates on {domain} tasks, code reviews, architecture
+  decisions, and communication involving {domains}.
 ---
 
-# Identity: {name}
+# {Name}
 
-## Role & Context
-{2-3 sentences about who they are professionally}
+## Who I Am
+{2-3 sentences — opinionated, not resume-like}
 
-## Personality Profile
-- **Core values**: {ordered values}
-- **Risk tolerance**: {description}
-- **Conflict style**: {description}
+## How I Think
+- **Core values**: {ordered, with WHY each matters}
+- **Default heuristic**: {go-to when uncertain, with reasoning}
+- **Risk tolerance**: {description + when they flex}
 
-## Communication Style
+## How I Communicate
 - **Tone**: {description}
-- **Formality**: {spectrum position}
-- **Feedback style**: {description}
-- **Vocabulary patterns**: {phrases, jargon}
+- **Feedback style**: {description + priorities}
+- **Vocabulary**: {characteristic phrases}
 
-## Decision-Making Patterns
-- **Default heuristic**: {go-to when uncertain}
-- **Consistently rejects**: {patterns}
-- **Consistently prioritizes**: {patterns}
+## What I Reject
+{Anti-patterns with causal reasoning — "I reject X because Y"}
 
-## Sub-Skills
+## Skills
+### From skills.sh (with my preferences)
+- `{skill-name}` — {customization summary}
+  → See references/overrides/{skill-name}.md
 
-### Existing Skills (with preferences)
-{overrides with pointers to reference files}
-
-### Custom Skills
-{custom skills with pointers to reference files}
+### Custom
+- `{custom-skill}` — {description}
+  → See references/custom/{custom-skill}.md
 
 ## Guardrails
-- Covers: {scope}
-- Does NOT cover: {boundaries}
-```
-
-### Override files (references/overrides/)
-```markdown
-# {Skill Name} — {username}'s Style
-
-## Base Skill
-Builds on the `{base-skill}` skill with these preferences.
-
-## Preferences
-{specific customizations}
-
-## Examples
-{characteristic examples}
-```
-
-### Custom skill files (references/custom/)
-```markdown
-# {Skill Name}
-
-## What This Covers
-{scope}
-
-## Core Principles
-- {principle with causal rationale}
-
-## Preferred Patterns
-{patterns with reasoning}
-
-## Anti-Patterns
-{what to avoid and why}
-
-## Decision Heuristics
-{if-then rules}
-
-## Examples
-{input/output examples}
+- **Covers**: {scope}
+- **Does NOT cover**: {boundaries}
 ```
 
 ---
@@ -620,63 +739,30 @@ Builds on the `{base-skill}` skill with these preferences.
 
 | Scenario | Handling |
 |----------|----------|
-| User closes browser mid-conversation | Conversation persisted in DB, resumes on return |
-| User gives very short answers | AI adapts to ask more specific/multiple-choice questions |
-| GitHub API rate limit during artifact analysis | Queue analysis, retry with backoff, inform user |
-| User has no artifacts to share | Skip Phase 3, work from conversation signal only |
-| Roleplay test reveals major gaps | Agent loops back to Phase 2 for targeted questions |
-| User disagrees with inferred personality | Identity model updated immediately, AI asks clarifying questions |
-| Custom domain with no predefined hints | Use general hints + AI improvises based on domain name |
-| Claude API error during conversation | Retry with exponential backoff, show error state in UI |
+| User closes browser mid-conversation | Block states persisted in DB, resumes on return |
+| User gives very short answers | AI infers aggressively, presents confirmations |
+| Claude API error during conversation | Retry with exponential backoff, show error in chat |
+| Very fast user (all chip taps) | AI may complete in under 3 minutes — that's fine |
+| User wants to change a confirmed block | Tap the block on the card → edit mode |
+| Custom domain with no predefined hints | AI improvises using general hints |
 | GitHub publish fails | Retry, or offer file download as fallback |
-| Very long conversation (context limits) | Summarize older messages, keep recent + identity model in context |
 
 ---
 
-## Implementation Plan
+## Key Files
 
-### Phase 1: Foundation
-1. Project setup: Next.js frontend + Node.js backend monorepo
-2. Database schema + migrations (Postgres)
-3. Auth: Google OAuth + GitHub OAuth
-4. Basic chat UI with streaming (no identity card yet)
-5. Basic Claude API integration — conversation works end-to-end
-
-### Phase 2: Agent Core
-6. Phase management system in backend
-7. Domain hint loader
-8. Identity model builder (structured extraction from AI responses)
-9. SSE streaming for identity updates
-10. Identity card component (frontend) with animations
-
-### Phase 3: Artifacts & Skills
-11. Artifact submission (URL, upload, text)
-12. GitHub API integration for repo/PR analysis
-13. Skill generation from identity model + templates
-14. Sub-skill proposal UI
-
-### Phase 4: Validation & Publishing
-15. Roleplay mode (distinct UI + agent behavior)
-16. GitHub publishing (platform org + personal)
-17. Install command generation
-18. Public profile page
-
-### Phase 5: Polish
-19. Landing page
-20. Animations and transitions (Framer Motion)
-21. Error handling and edge cases
-22. Mobile responsiveness
-23. Performance optimization
-
----
-
-## Dependencies
-
-| Dependency | Purpose | Required? |
-|------------|---------|-----------|
-| Claude API (Anthropic SDK) | Powers all AI conversation | Yes |
-| GitHub API / Octokit | Repo analysis + publishing | Yes |
-| Google OAuth | Primary authentication | Yes |
-| PostgreSQL | Conversation + user state | Yes |
-| Vercel | Frontend hosting | Recommended |
-| Node.js runtime | Backend service | Yes |
+| File | Purpose |
+|------|---------|
+| `apps/api/src/agent/tools.ts` | Tool definitions (the 4 tools) |
+| `apps/api/src/agent/block-state-machine.ts` | Block registry + state machine |
+| `apps/api/src/agent/conversation-agent.ts` | AsyncGenerator streaming agent with tool_use |
+| `apps/api/src/agent/system-prompts.ts` | Dynamic system prompt assembly |
+| `apps/api/src/agent/domain-hints.ts` | Per-domain exploration hints |
+| `apps/api/src/agent/skill-generator.ts` | SKILL.md + reference generation |
+| `apps/api/src/routes/conversations.ts` | SSE streaming routes |
+| `packages/shared/src/types.ts` | SSE events, block types, phase types |
+| `apps/web/src/lib/use-conversation.ts` | SSE consumer + state management |
+| `apps/web/src/lib/use-block-queue.ts` | Staggered block render queue |
+| `apps/web/src/components/builder/identity-card.tsx` | Animated card with block lifecycle |
+| `apps/web/src/components/builder/chat-panel.tsx` | Chat with quick-reply chips |
+| `apps/web/src/components/builder/quick-reply-chips.tsx` | Tappable chip component |
