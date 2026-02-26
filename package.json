@@ -1,15 +1,13 @@
 {
-  "name": "skills-builder",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "skill-builder",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "pnpm -r --parallel dev",
+    "dev:web": "pnpm --filter web dev",
+    "dev:api": "pnpm --filter api dev",
+    "build": "pnpm -r build",
     "scrape-skills": "node scripts/scrape-skills.mjs"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "packageManager": "pnpm@10.11.0",
   "dependencies": {
     "axios": "^1.13.5"
