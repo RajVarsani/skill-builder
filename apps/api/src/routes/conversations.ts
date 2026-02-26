@@ -7,12 +7,13 @@ import { runConversationTurn, cleanResponseText } from '../agent/conversation-ag
 import { createEmptyIdentityModel, applyUpdate } from '../agent/identity-builder'
 import { getNextPhase, getPhaseLabel } from '../agent/phase-manager'
 import type { Phase, IdentityModel } from '@skill-builder/shared'
+import type { AuthEnv } from '../middleware/auth'
 
-const conv = new Hono()
+const conv = new Hono<AuthEnv>()
 
 // Start new conversation (or return active one)
 conv.post('/', async (c) => {
-  const userId = c.get('userId' as never) as string
+  const userId = c.get('userId')
 
   // Check for existing active conversation
   const [existing] = await db
@@ -43,7 +44,7 @@ conv.post('/', async (c) => {
 
 // Get active conversation
 conv.get('/active', async (c) => {
-  const userId = c.get('userId' as never) as string
+  const userId = c.get('userId')
   const [conversation] = await db
     .select()
     .from(conversations)

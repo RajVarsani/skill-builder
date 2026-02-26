@@ -1,7 +1,7 @@
 import { createMiddleware } from 'hono/factory'
 import { verifyToken } from '../lib/jwt'
 
-type AuthEnv = {
+export type AuthEnv = {
   Variables: {
     userId: string
     email: string

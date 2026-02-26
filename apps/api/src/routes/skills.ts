@@ -4,13 +4,17 @@ import { conversations, publishedSkills, users } from '../db/schema'
 import { eq } from 'drizzle-orm'
 import { generateSkillPackage } from '../agent/skill-generator'
 import type { IdentityModel } from '@skill-builder/shared'
+import { authMiddleware, type AuthEnv } from '../middleware/auth'
 
 const skills = new Hono()
 
-// Generate and publish skill
-skills.post('/conversations/:id/publish', async (c) => {
+// Protected publish endpoint
+const protectedSkills = new Hono<AuthEnv>()
+protectedSkills.use('*', authMiddleware)
+
+protectedSkills.post('/conversations/:id/publish', async (c) => {
   const convId = c.req.param('id')
-  const userId = c.get('userId' as never) as string
+  const userId = c.get('userId')
   const { destination } = await c.req.json() // 'platform' | 'personal'
 
   const [conversation] = await db.select().from(conversations).where(eq(conversations.id, convId)).limit(1)
@@ -70,7 +74,9 @@ skills.post('/conversations/:id/publish', async (c) => {
   })
 })
 
-// Get published skill
+skills.route('/', protectedSkills)
+
+// Public endpoints — no auth required
 skills.get('/skills/:id', async (c) => {
   const id = c.req.param('id')
   const [skill] = await db.select().from(publishedSkills).where(eq(publishedSkills.id, id)).limit(1)

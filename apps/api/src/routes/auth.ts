@@ -3,6 +3,7 @@ import { db } from '../db'
 import { users } from '../db/schema'
 import { signToken } from '../lib/jwt'
 import { eq } from 'drizzle-orm'
+import { authMiddleware, type AuthEnv } from '../middleware/auth'
 
 const auth = new Hono()
 
@@ -88,9 +89,13 @@ auth.post('/github', async (c) => {
   return c.json({ token, user: { id: user.id, name: user.name, email: user.email, avatarUrl: user.avatarUrl } })
 })
 
+// Protected routes below — require auth
+const protectedAuth = new Hono<AuthEnv>()
+protectedAuth.use('*', authMiddleware)
+
 // Connect GitHub to existing Google-auth account
-auth.post('/github/connect', async (c) => {
-  const userId = c.get('userId' as never) as string
+protectedAuth.post('/github/connect', async (c) => {
+  const userId = c.get('userId')
   const { code } = await c.req.json()
 
   const tokenRes = await fetch('https://github.com/login/oauth/access_token', {
@@ -109,11 +114,13 @@ auth.post('/github/connect', async (c) => {
 })
 
 // Get current user
-auth.get('/me', async (c) => {
-  const userId = c.get('userId' as never) as string
+protectedAuth.get('/me', async (c) => {
+  const userId = c.get('userId')
   const [user] = await db.select().from(users).where(eq(users.id, userId)).limit(1)
   if (!user) return c.json({ error: 'Not found' }, 404)
   return c.json({ id: user.id, name: user.name, email: user.email, avatarUrl: user.avatarUrl })
 })
+
+auth.route('/', protectedAuth)
 
 export default auth

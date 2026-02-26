@@ -1,6 +1,9 @@
 import { SignJWT, jwtVerify } from 'jose'
 
-const secret = new TextEncoder().encode(process.env.JWT_SECRET || 'dev-secret-key')
+if (!process.env.JWT_SECRET) {
+  throw new Error('JWT_SECRET environment variable is required')
+}
+const secret = new TextEncoder().encode(process.env.JWT_SECRET)
 
 export async function signToken(payload: { userId: string; email: string }) {
   return new SignJWT(payload)

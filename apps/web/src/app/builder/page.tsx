@@ -1,15 +1,18 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useAuth } from '@/lib/auth-context'
 import { useConversation } from '@/lib/use-conversation'
 import { ChatPanel } from '@/components/builder/chat-panel'
 import { IdentityCard } from '@/components/builder/identity-card'
+import { PublishView } from '@/components/builder/publish-view'
+import { apiFetch } from '@/lib/api'
 import { User } from '@phosphor-icons/react'
 
 export default function BuilderPage() {
   const { user } = useAuth()
   const {
+    conversationId,
     messages,
     identity,
     phase,
@@ -19,6 +22,11 @@ export default function BuilderPage() {
     sendMessage,
   } = useConversation()
 
+  const [publishedSkill, setPublishedSkill] = useState<{
+    installCommand: string
+    skillPreview: string
+  } | null>(null)
+
   useEffect(() => {
     startConversation().catch(() => {
       // Auth may not be ready yet -- expected without login
@@ -27,6 +35,33 @@ export default function BuilderPage() {
 
   function handleSelectDomains(domains: string[]) {
     sendMessage(`I work in: ${domains.join(', ')}`)
+  }
+
+  async function handlePublish() {
+    if (!conversationId) return
+    try {
+      const result = await apiFetch(`/conversations/${conversationId}/publish`, {
+        method: 'POST',
+        body: JSON.stringify({ destination: 'platform' }),
+      })
+      setPublishedSkill({
+        installCommand: result.installCommand,
+        skillPreview: result.files?.['SKILL.md'] || '',
+      })
+    } catch {
+      // publish failed — stay on builder
+    }
+  }
+
+  // Show celebration view after publishing
+  if (publishedSkill && identity) {
+    return (
+      <PublishView
+        identity={identity}
+        installCommand={publishedSkill.installCommand}
+        skillPreview={publishedSkill.skillPreview}
+      />
+    )
   }
 
   return (
@@ -66,6 +101,7 @@ export default function BuilderPage() {
               phase={phase}
               onSendMessage={sendMessage}
               onSelectDomains={handleSelectDomains}
+              onPublish={phase.startsWith('skill_assembly_publish') ? handlePublish : undefined}
             />
 
             {/* Right: Identity Card */}

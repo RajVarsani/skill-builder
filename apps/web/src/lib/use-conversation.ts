@@ -65,6 +65,7 @@ export function useConversation() {
               } else if (update.type === 'full_model_sync') {
                 return update.model
               } else if (update.type === 'domain_added') {
+                next.domains.push(update.domain.name)
                 next.expertise.push({
                   domain: update.domain.name,
                   depth: update.domain.depth as any,

@@ -14,6 +14,7 @@ interface ChatPanelProps {
   phase: string
   onSendMessage: (content: string) => void
   onSelectDomains: (domains: string[]) => void
+  onPublish?: () => void
 }
 
 export function ChatPanel({
@@ -23,6 +24,7 @@ export function ChatPanel({
   phase,
   onSendMessage,
   onSelectDomains,
+  onPublish,
 }: ChatPanelProps) {
   const scrollRef = useRef<HTMLDivElement>(null)
 
@@ -75,6 +77,18 @@ export function ChatPanel({
         <div className="mx-5 mb-2 flex items-center gap-2 rounded-xl bg-surface-muted px-3 py-2 text-xs text-text-secondary">
           <Lightning size={14} weight="fill" className="text-amber-500" />
           <span>Roleplay mode -- respond as you naturally would</span>
+        </div>
+      )}
+
+      {/* Publish button */}
+      {onPublish && (
+        <div className="mx-5 mb-2">
+          <button
+            onClick={onPublish}
+            className="w-full rounded-button bg-zinc-900 px-6 py-3 text-sm font-medium text-white transition-transform active:scale-[0.98]"
+          >
+            Publish My Skill
+          </button>
         </div>
       )}
 

@@ -24,8 +24,9 @@ export function apiSSE(
   body: object,
   onEvent: (event: string, data: string) => void,
   onError?: (error: Error) => void,
-) {
+): AbortController {
   const token = getToken()
+  const controller = new AbortController()
 
   fetch(`${API_URL}${path}`, {
     method: 'POST',
@@ -34,6 +35,7 @@ export function apiSSE(
       ...(token ? { Authorization: `Bearer ${token}` } : {}),
     },
     body: JSON.stringify(body),
+    signal: controller.signal,
   }).then(async (res) => {
     const reader = res.body?.getReader()
     const decoder = new TextDecoder()
@@ -58,6 +60,10 @@ export function apiSSE(
       }
     }
   }).catch((err) => {
-    onError?.(err)
+    if (err.name !== 'AbortError') {
+      onError?.(err)
+    }
   })
+
+  return controller
 }

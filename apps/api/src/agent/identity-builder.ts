@@ -28,6 +28,7 @@ export function applyUpdate(model: IdentityModel, update: IdentityUpdate): Ident
       break
     }
     case 'domain_added':
+      next.domains.push(update.domain.name)
       next.expertise.push({
         domain: update.domain.name,
         depth: update.domain.depth as 'beginner' | 'proficient' | 'advanced' | 'expert',
