@@ -1,7 +1,7 @@
 # Skill Builder — Execution Log
 
-## Current Phase: Phase 2.1 — NOT STARTED
-**Status:** Auth system complete. Moving to Conversation Engine.
+## Current Phase: Phase 2.2 — NOT STARTED
+**Status:** BE conversation engine complete. Moving to FE chat panel.
 
 ---
 
@@ -45,14 +45,14 @@
 
 ### Iteration 2: Conversation Engine
 
-#### Phase 2.1: BE — Claude Conversation Agent — NOT STARTED
-- [ ] 5 tool definitions
-- [ ] System prompt assembly (use /brainstorming first)
-- [ ] Conversation agent (AsyncGenerator with tool_use loop)
-- [ ] Block state machine
-- [ ] Domain hints (6 domains)
-- [ ] Conversation routes (SSE streaming)
-- [ ] Conversation CRUD + resume
+#### Phase 2.1: BE — Claude Conversation Agent — COMPLETE
+- [x] 5 tool definitions
+- [x] System prompt assembly
+- [x] Conversation agent (AsyncGenerator with tool_use loop)
+- [x] Block state machine
+- [x] Domain hints (6 domains)
+- [x] Conversation routes (SSE streaming)
+- [x] Conversation CRUD + resume
 
 #### Phase 2.2: FE — Chat Panel + Quick-Reply Chips — NOT STARTED
 - [ ] SSE client helper

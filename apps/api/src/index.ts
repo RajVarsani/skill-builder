@@ -2,10 +2,16 @@ import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 import { connectDB } from './db/connection'
 import { auth } from './routes/auth'
+import { conversations } from './routes/conversations'
+import { skillEngine } from './agent/skill-matching-engine'
+import path from 'path'
 
 const app = new Hono()
 
 connectDB()
+
+const datasetDir = path.resolve(import.meta.dir, '../../../dataset')
+skillEngine.loadDataset(datasetDir)
 
 app.use(
   '*',
@@ -20,6 +26,7 @@ app.get('/health', (c) => {
 })
 
 app.route('/auth', auth)
+app.route('/conversations', conversations)
 
 const port = Number(process.env.PORT) || 3000
 console.log(`API server running on http://localhost:${port}`)
