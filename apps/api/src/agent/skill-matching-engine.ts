@@ -31,11 +31,12 @@ export class SkillMatchingEngine {
       const meta = JSON.parse(fs.readFileSync(metaPath, 'utf-8'))
       const chunkCount = meta.totalChunks || 76
 
-      for (let i = 0; i < chunkCount; i++) {
+      for (let i = 1; i <= chunkCount; i++) {
         const chunkPath = path.join(dir, `skills-chunk-${i}.json`)
         if (!fs.existsSync(chunkPath)) continue
-        const chunk: SkillEntry[] = JSON.parse(fs.readFileSync(chunkPath, 'utf-8'))
-        this.skills.push(...chunk)
+        const chunkData = JSON.parse(fs.readFileSync(chunkPath, 'utf-8'))
+        const skills: SkillEntry[] = chunkData.skills || chunkData
+        this.skills.push(...skills)
       }
 
       this.buildIndices()
