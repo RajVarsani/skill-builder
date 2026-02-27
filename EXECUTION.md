@@ -1,7 +1,7 @@
 # Skill Builder — Execution Log
 
-## Current Phase: Phase 1.1 — NOT STARTED
-**Status:** Iteration 0 complete. Moving to Auth System.
+## Current Phase: Phase 1.2 — NOT STARTED
+**Status:** BE auth complete. Moving to FE sign-in.
 
 ---
 
@@ -28,13 +28,13 @@
 
 ### Iteration 1: Auth System
 
-#### Phase 1.1: BE — Auth Routes + JWT — NOT STARTED
-- [ ] JWT utilities (create/verify)
-- [ ] Google OAuth flow
-- [ ] GitHub OAuth flow
-- [ ] Auth middleware
-- [ ] Auth routes
-- [ ] Environment variable setup
+#### Phase 1.1: BE — Auth Routes + JWT — COMPLETE
+- [x] JWT utilities (create/verify)
+- [x] Google OAuth flow
+- [x] GitHub OAuth flow
+- [x] Auth middleware
+- [x] Auth routes
+- [x] Environment variable setup
 
 #### Phase 1.2: FE — Sign-In Screen + Auth Flow — NOT STARTED
 - [ ] Auth context + hooks
