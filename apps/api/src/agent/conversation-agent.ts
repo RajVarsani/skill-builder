@@ -25,6 +25,8 @@ interface ToolInput {
   [key: string]: unknown
 }
 
+type MessageContent = string | Array<Record<string, unknown>>
+
 interface RunTurnParams {
   messages: Array<{ role: 'user' | 'assistant'; content: string }>
   phase: ConversationPhase
@@ -49,9 +51,9 @@ export async function* runConversationTurn(
     selectedDomains
   )
 
-  const apiMessages = messages.map((m) => ({
+  const apiMessages: Array<{ role: 'user' | 'assistant'; content: MessageContent }> = messages.map((m) => ({
     role: m.role as 'user' | 'assistant',
-    content: m.content,
+    content: m.content as MessageContent,
   }))
 
   let continueLoop = true
@@ -62,7 +64,7 @@ export async function* runConversationTurn(
       model: 'claude-sonnet-4-5-20250929',
       max_tokens: 2048,
       system: systemPrompt,
-      messages: apiMessages,
+      messages: apiMessages as Anthropic.MessageParam[],
       tools: identityTools,
     })
 
@@ -155,11 +157,11 @@ export async function* runConversationTurn(
     ) {
       apiMessages.push({
         role: 'assistant',
-        content: JSON.stringify(assistantContent),
+        content: assistantContent as unknown as MessageContent,
       })
       apiMessages.push({
         role: 'user',
-        content: JSON.stringify(pendingToolResults),
+        content: pendingToolResults as unknown as MessageContent,
       })
     } else {
       continueLoop = false

@@ -1,7 +1,7 @@
 # Skill Builder — Execution Log
 
-## Current Phase: Phase 2.3 — NOT STARTED
-**Status:** Chat panel built. Moving to integration.
+## Current Phase: Phase 3.1 — NOT STARTED
+**Status:** Iteration 2 complete. Moving to skill matching + identity card.
 
 ---
 
@@ -66,12 +66,12 @@
 - [x] PhaseIndicator + StepIndicator
 - [x] Builder page (split pane)
 
-#### Phase 2.3: Integration — End-to-End Flow — NOT STARTED
-- [ ] Wire SSE to actual backend
-- [ ] Auth token in SSE connections
-- [ ] Full conversation flow test
-- [ ] Error handling + reconnection
-- [ ] Conversation resume on refresh
+#### Phase 2.3: Integration — End-to-End Flow — COMPLETE
+- [x] Wire SSE to actual backend
+- [x] Auth token in SSE connections
+- [x] Full conversation flow test
+- [x] Error handling + reconnection
+- [x] Conversation resume on refresh
 
 ### Iteration 3: Skill Matching + Identity Card
 
