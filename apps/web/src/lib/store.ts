@@ -1,0 +1,95 @@
+import { create } from 'zustand'
+import type {
+  ConversationPhase,
+  IdentityBlock,
+  MatchedSkill,
+  ConversationMessage,
+} from '@skill-builder/shared/src/types'
+
+interface ConversationStore {
+  conversationId: string | null
+  phase: ConversationPhase
+  messages: ConversationMessage[]
+  blocks: IdentityBlock[]
+  matchedSkills: MatchedSkill[]
+  chips: string[]
+  chipsMultiSelect: boolean
+  isStreaming: boolean
+  streamingText: string
+  completion: { percentage: number; blocksDiscovered: number; skillsMatched: number }
+
+  setConversationId: (id: string) => void
+  setPhase: (phase: ConversationPhase) => void
+  addMessage: (msg: ConversationMessage) => void
+  addBlock: (block: IdentityBlock) => void
+  confirmBlock: (blockId: string) => void
+  addMatchedSkill: (skill: MatchedSkill) => void
+  setChips: (chips: string[], multiSelect: boolean) => void
+  clearChips: () => void
+  setStreaming: (streaming: boolean) => void
+  appendStreamingText: (text: string) => void
+  clearStreamingText: () => void
+  updateCompletion: (data: { percentage: number; blocksDiscovered: number; skillsMatched: number }) => void
+  reset: () => void
+  loadState: (state: {
+    phase: ConversationPhase
+    messages: ConversationMessage[]
+    blocks: IdentityBlock[]
+    matchedSkills: MatchedSkill[]
+  }) => void
+}
+
+export const useConversationStore = create<ConversationStore>((set) => ({
+  conversationId: null,
+  phase: 'domain_discovery',
+  messages: [],
+  blocks: [],
+  matchedSkills: [],
+  chips: [],
+  chipsMultiSelect: false,
+  isStreaming: false,
+  streamingText: '',
+  completion: { percentage: 15, blocksDiscovered: 0, skillsMatched: 0 },
+
+  setConversationId: (id) => set({ conversationId: id }),
+  setPhase: (phase) => set({ phase }),
+  addMessage: (msg) => set((s) => ({ messages: [...s.messages, msg] })),
+  addBlock: (block) => set((s) => ({ blocks: [...s.blocks, block] })),
+  confirmBlock: (blockId) =>
+    set((s) => ({
+      blocks: s.blocks.map((b) =>
+        b.blockId === blockId ? { ...b, status: 'confirmed' as const } : b
+      ),
+    })),
+  addMatchedSkill: (skill) =>
+    set((s) => {
+      if (s.matchedSkills.some((ms) => ms.skillId === skill.skillId)) return s
+      return { matchedSkills: [...s.matchedSkills, skill] }
+    }),
+  setChips: (chips, multiSelect) => set({ chips, chipsMultiSelect: multiSelect }),
+  clearChips: () => set({ chips: [], chipsMultiSelect: false }),
+  setStreaming: (isStreaming) => set({ isStreaming }),
+  appendStreamingText: (text) => set((s) => ({ streamingText: s.streamingText + text })),
+  clearStreamingText: () => set({ streamingText: '' }),
+  updateCompletion: (data) => set({ completion: data }),
+  reset: () =>
+    set({
+      conversationId: null,
+      phase: 'domain_discovery',
+      messages: [],
+      blocks: [],
+      matchedSkills: [],
+      chips: [],
+      chipsMultiSelect: false,
+      isStreaming: false,
+      streamingText: '',
+      completion: { percentage: 15, blocksDiscovered: 0, skillsMatched: 0 },
+    }),
+  loadState: (state) =>
+    set({
+      phase: state.phase,
+      messages: state.messages,
+      blocks: state.blocks,
+      matchedSkills: state.matchedSkills,
+    }),
+}))

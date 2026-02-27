@@ -1,7 +1,7 @@
 # Skill Builder — Execution Log
 
-## Current Phase: Phase 2.2 — NOT STARTED
-**Status:** BE conversation engine complete. Moving to FE chat panel.
+## Current Phase: Phase 2.3 — NOT STARTED
+**Status:** Chat panel built. Moving to integration.
 
 ---
 
@@ -54,17 +54,17 @@
 - [x] Conversation routes (SSE streaming)
 - [x] Conversation CRUD + resume
 
-#### Phase 2.2: FE — Chat Panel + Quick-Reply Chips — NOT STARTED
-- [ ] SSE client helper
-- [ ] Zustand conversation store
-- [ ] useConversation hook
-- [ ] ChatPanel component
-- [ ] MessageBubble component
-- [ ] QuickReplyChips component
-- [ ] ChatInput component
-- [ ] QuickRoll component
-- [ ] PhaseIndicator + StepIndicator
-- [ ] Builder page (split pane)
+#### Phase 2.2: FE — Chat Panel + Quick-Reply Chips — COMPLETE
+- [x] SSE client helper
+- [x] Zustand conversation store
+- [x] useConversation hook
+- [x] ChatPanel component
+- [x] MessageBubble component
+- [x] QuickReplyChips component
+- [x] ChatInput component
+- [x] StreamingMessage component (replaces QuickRoll)
+- [x] PhaseIndicator + StepIndicator
+- [x] Builder page (split pane)
 
 #### Phase 2.3: Integration — End-to-End Flow — NOT STARTED
 - [ ] Wire SSE to actual backend
