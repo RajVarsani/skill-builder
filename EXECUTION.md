@@ -1,7 +1,7 @@
 # Skill Builder — Execution Log
 
-## Current Phase: Phase 0.1 — NOT STARTED
-**Status:** Ready to begin. Project scaffold.
+## Current Phase: Phase 0.2 — NOT STARTED
+**Status:** Phase 0.1 complete. Moving to MongoDB + Models.
 
 ---
 
@@ -9,15 +9,15 @@
 
 ### Iteration 0: Foundation
 
-#### Phase 0.1: Project Scaffold — NOT STARTED
-- [ ] Root `package.json` with Bun workspaces
-- [ ] `bunfig.toml`
-- [ ] `apps/web/` — Vite + React 19 + Tailwind v4 + Radix UI
-- [ ] `apps/api/` — Hono + Bun server
-- [ ] `packages/shared/` — TypeScript types
-- [ ] `CLAUDE.md` project conventions
-- [ ] `.gitignore` updated
-- [ ] Verify: `bun run dev` starts both apps
+#### Phase 0.1: Project Scaffold — COMPLETE
+- [x] Root `package.json` with Bun workspaces
+- [x] `bunfig.toml`
+- [x] `apps/web/` — Vite + React 19 + Tailwind v4
+- [x] `apps/api/` — Hono + Bun server
+- [x] `packages/shared/` — TypeScript types
+- [x] `CLAUDE.md` project conventions
+- [x] `.gitignore` updated
+- [x] Verify: `bun run dev` starts both apps
 
 #### Phase 0.2: MongoDB + Models — NOT STARTED
 - [ ] MongoDB connection module

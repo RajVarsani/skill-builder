@@ -3,16 +3,12 @@
     "target": "ES2022",
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "esModuleInterop": true,
     "strict": true,
+    "esModuleInterop": true,
     "skipLibCheck": true,
     "outDir": "dist",
-    "rootDir": "src",
     "resolveJsonModule": true,
-    "declaration": true,
-    "paths": {
-      "@shared/*": ["../../packages/shared/src/*"]
-    }
+    "types": ["bun-types"]
   },
-  "include": ["src/**/*"]
+  "include": ["src"]
 }

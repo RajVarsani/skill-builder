@@ -1,8 +1,8 @@
 node_modules
 .env
 .env.local
-.next
 dist
-drizzle
 *.tsbuildinfo
 .vercel
+bun.lock
+.claude/ralph-loop.local.md

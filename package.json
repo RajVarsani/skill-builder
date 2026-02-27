@@ -1,15 +1,13 @@
 {
   "name": "skill-builder",
   "private": true,
+  "workspaces": ["apps/*", "packages/*"],
   "scripts": {
-    "dev": "pnpm -r --parallel dev",
-    "dev:web": "pnpm --filter web dev",
-    "dev:api": "pnpm --filter api dev",
-    "build": "pnpm -r build",
-    "scrape-skills": "node scripts/scrape-skills.mjs"
-  },
-  "packageManager": "pnpm@10.11.0",
-  "dependencies": {
-    "axios": "^1.13.5"
+    "dev": "bun run --filter '*' dev",
+    "dev:web": "bun run --filter web dev",
+    "dev:api": "bun run --filter api dev",
+    "build": "bun run --filter '*' build",
+    "typecheck": "bun run --filter '*' typecheck",
+    "lint": "bun run --filter '*' lint"
   }
 }
