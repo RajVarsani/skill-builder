@@ -49,8 +49,16 @@ export function Builder() {
     handlePublish()
   }
 
-  const handleRemoveSkill = (skillId: string) => {
+  const handleRemoveSkill = async (skillId: string) => {
+    if (!conversationId) return
     rejectSkill(skillId)
+    try {
+      const skill = useConversationStore.getState().matchedSkills.find((s) => s.skillId === skillId)
+      const endpoint = skill?.status === 'rejected' ? 'reject' : 'confirm'
+      await apiFetch(`/conversations/${conversationId}/skills/${skillId}/${endpoint}`, { method: 'POST' })
+    } catch (error) {
+      console.error('Skill status update error:', error)
+    }
   }
 
   const step = PHASE_STEP[phase]

@@ -1,7 +1,7 @@
 # Skill Builder — Execution Log
 
-## Current Phase: Phase 3.3 — NOT STARTED
-**Status:** Identity card built. Moving to live card integration.
+## Current Phase: Phase 4.3 — IN PROGRESS
+**Status:** Phase 4.2 complete. Review + publish UI built. Wiring integration.
 
 ---
 
@@ -92,28 +92,29 @@
 - [x] PlaceholderBlocks (??? dashed) + ScanningIndicator
 - [x] Pixel bar at top of card
 
-#### Phase 3.3: Integration — Live Card — NOT STARTED
-- [ ] Wire SSE events to card
-- [ ] Stagger queue with mixed block types
-- [ ] Gradient intensification from completion
-- [ ] Full flow: conversation → card updates
-- [ ] Page refresh resilience
+#### Phase 3.3: Integration — Live Card — COMPLETE
+- [x] Wire SSE events to card (via Zustand store)
+- [x] Stagger queue via Framer Motion delays
+- [x] Gradient intensification from completion percentage
+- [x] Full flow: conversation → store → card updates
+- [x] Page refresh resilience (conversation resume from DB)
 
 ### Iteration 4: Publish Flow
 
-#### Phase 4.1: BE — Skill Generation Pipeline — NOT STARTED
-- [ ] Skill generator (SKILL.md assembly)
-- [ ] Override generator (per matched skill)
-- [ ] Custom skill generator
-- [ ] GitHub publisher (platform + personal repo)
-- [ ] Publish + skill routes
+#### Phase 4.1: BE — Skill Generation Pipeline — COMPLETE
+- [x] Skill generator (SKILL.md assembly)
+- [x] Override generator (per matched skill)
+- [x] Custom skill generator
+- [x] GitHub publisher (platform + personal repo)
+- [x] Publish + skill routes
+- [x] Design token audit: fixed ALL fonts (KarmaticArcade, GeistPixel-Circle) and colors to match Paper exactly
 
-#### Phase 4.2: FE — Review + Publish UI — NOT STARTED
-- [ ] SkillReviewList + SkillReviewRow
-- [ ] Skill confirm/remove interaction
-- [ ] PublishButtons
-- [ ] Success page (install command, share)
-- [ ] InstallCommand + ShareButtons
+#### Phase 4.2: FE — Review + Publish UI — COMPLETE
+- [x] SkillReviewList + SkillReviewRow
+- [x] Skill confirm/remove interaction (toggle reject/propose)
+- [x] PublishButtons (platform + GitHub)
+- [x] Success page (install command, share, card at 100%)
+- [x] InstallCommand + ShareButtons
 
 #### Phase 4.3: Integration — End-to-End Publish — NOT STARTED
 - [ ] Wire review to BE endpoints
