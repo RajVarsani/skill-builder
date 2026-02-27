@@ -1,7 +1,7 @@
 # Skill Builder — Execution Log
 
-## Current Phase: Phase 1.2 — NOT STARTED
-**Status:** BE auth complete. Moving to FE sign-in.
+## Current Phase: Phase 2.1 — NOT STARTED
+**Status:** Auth system complete. Moving to Conversation Engine.
 
 ---
 
@@ -36,12 +36,12 @@
 - [x] Auth routes
 - [x] Environment variable setup
 
-#### Phase 1.2: FE — Sign-In Screen + Auth Flow — NOT STARTED
-- [ ] Auth context + hooks
-- [ ] API client with JWT
-- [ ] Sign-in page (matches Paper design)
-- [ ] Nav component with user avatar
-- [ ] React Router setup with protected routes
+#### Phase 1.2: FE — Sign-In Screen + Auth Flow — COMPLETE
+- [x] Auth context + hooks
+- [x] API client with JWT
+- [x] Sign-in page (matches Paper design)
+- [x] Nav component with user avatar
+- [x] React Router setup with protected routes
 
 ### Iteration 2: Conversation Engine
 
