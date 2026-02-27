@@ -169,6 +169,28 @@ conversations.post('/:id/messages', async (c) => {
   })
 })
 
+conversations.post('/active/reset', async (c) => {
+  const userId = c.get('userId')
+  const conversation = await Conversation.findOne({ userId, status: 'active' })
+
+  if (conversation) {
+    conversation.status = 'abandoned'
+    await conversation.save()
+  }
+
+  const newConversation = await Conversation.create({
+    userId,
+    phase: 'domain_discovery',
+    selectedDomains: [],
+    blockStates: [],
+    matchedSkills: [],
+    messages: [],
+    status: 'active',
+  })
+
+  return c.json({ id: newConversation._id.toString() })
+})
+
 conversations.get('/:id/blocks', async (c) => {
   const userId = c.get('userId')
   const conversationId = c.req.param('id')

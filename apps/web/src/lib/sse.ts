@@ -29,7 +29,26 @@ export function connectSSE(
 
       while (true) {
         const { done, value } = await reader.read()
-        if (done) break
+        if (done) {
+          // Flush any remaining buffered event
+          if (buffer.trim()) {
+            const lines = (buffer + '\n\n').split('\n')
+            let currentEvent = ''
+            let currentData = ''
+            for (const line of lines) {
+              if (line.startsWith('event: ')) {
+                currentEvent = line.slice(7).trim()
+              } else if (line.startsWith('data: ')) {
+                currentData = line.slice(6)
+              } else if (line === '' && currentEvent && currentData) {
+                onEvent(currentEvent, currentData)
+                currentEvent = ''
+                currentData = ''
+              }
+            }
+          }
+          break
+        }
 
         buffer += decoder.decode(value, { stream: true })
         const lines = buffer.split('\n')
@@ -40,7 +59,11 @@ export function connectSSE(
 
         for (const line of lines) {
           if (line.startsWith('event: ')) {
+            if (currentEvent && currentData) {
+              onEvent(currentEvent, currentData)
+            }
             currentEvent = line.slice(7).trim()
+            currentData = ''
           } else if (line.startsWith('data: ')) {
             currentData = line.slice(6)
           } else if (line === '' && currentEvent && currentData) {
@@ -48,6 +71,15 @@ export function connectSSE(
             currentEvent = ''
             currentData = ''
           }
+        }
+
+        // Carry over unpaired event/data to next chunk
+        if (currentEvent && currentData) {
+          onEvent(currentEvent, currentData)
+        } else if (currentEvent || currentData) {
+          buffer = (currentEvent ? `event: ${currentEvent}\n` : '') +
+                   (currentData ? `data: ${currentData}\n` : '') +
+                   buffer
         }
       }
 

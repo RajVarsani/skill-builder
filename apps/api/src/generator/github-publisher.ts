@@ -22,7 +22,7 @@ export async function publishToGitHub(options: PublishOptions): Promise<PublishR
   return {
     repoUrl: `https://github.com/skill-builder-platform/${repoName}`,
     repoOwner: 'skill-builder-platform',
-    installCommand: `skills install ${slug}`,
+    installCommand: `npx skills install ${slug}`,
   }
 }
 
@@ -86,6 +86,6 @@ async function publishToPersonalRepo(
   return {
     repoUrl: `https://github.com/${owner}/${repoName}`,
     repoOwner: owner,
-    installCommand: `skills install ${owner}/${repoName}`,
+    installCommand: `npx skills install ${owner}/${repoName}`,
   }
 }

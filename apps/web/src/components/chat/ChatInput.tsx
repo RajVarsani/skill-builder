@@ -23,7 +23,7 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
   }
 
   return (
-    <div className="flex items-center gap-3 px-5 py-[14px] bg-cream border-2 border-surface">
+    <div className="flex items-center gap-3 mx-4 mb-4 px-5 py-[14px] bg-cream border-2 border-surface">
       <input
         type="text"
         value={value}

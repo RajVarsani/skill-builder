@@ -1,3 +1,5 @@
+import Markdown from 'react-markdown'
+
 interface MessageBubbleProps {
   role: 'user' | 'assistant'
   content: string
@@ -21,7 +23,9 @@ export function MessageBubble({ role, content }: MessageBubbleProps) {
           Skill Builder
         </span>
         <div className="bg-cream border-2 border-surface px-[18px] py-[14px]">
-          <p className="text-[14px] font-body leading-[21px] text-surface-secondary">{content}</p>
+          <div className="text-[14px] font-body leading-[21px] text-surface-secondary prose-msg">
+            <Markdown>{content}</Markdown>
+          </div>
         </div>
       </div>
     </div>

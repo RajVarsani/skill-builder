@@ -5,10 +5,10 @@ import { apiFetch } from '../lib/api'
 import type { ConversationPhase } from '@skill-builder/shared/src/types'
 
 export function useConversation() {
-  const store = useConversationStore()
   const abortRef = useRef<AbortController | null>(null)
 
   const initConversation = useCallback(async () => {
+    const store = useConversationStore.getState()
     const existing = await apiFetch<{
       conversation: {
         id: string
@@ -58,10 +58,11 @@ export function useConversation() {
     })
     store.setConversationId(id)
     return id
-  }, [store])
+  }, [])
 
   const sendMessage = useCallback(
     async (content: string) => {
+      const store = useConversationStore.getState()
       if (!store.conversationId || store.isStreaming) return
 
       store.clearChips()
@@ -78,64 +79,68 @@ export function useConversation() {
         store.conversationId,
         content,
         (event, rawData) => {
+          const s = useConversationStore.getState()
           const data = JSON.parse(rawData)
 
           switch (event) {
             case 'text_chunk':
-              store.appendStreamingText(data.text)
+              s.appendStreamingText(data.text)
+              break
+            case 'tool_activity':
+              s.setToolActivity(data.label)
               break
             case 'block_added':
-              store.addBlock(data.block)
+              s.addBlock(data.block)
               break
             case 'block_confirmed':
-              store.confirmBlock(data.blockId)
+              s.confirmBlock(data.blockId)
               break
             case 'skill_matched':
-              store.addMatchedSkill(data.skill)
+              s.addMatchedSkill(data.skill)
               break
             case 'quick_replies':
-              store.setChips(data.chips, data.multiSelect)
+              s.setChips(data.chips, data.multiSelect)
               break
             case 'phase_change':
-              store.setPhase(data.phase)
+              s.setPhase(data.phase)
               break
             case 'completion_update':
-              store.updateCompletion(data)
+              s.updateCompletion(data)
               break
             case 'done':
               if (data.assistantMessage) {
-                store.addMessage({
+                s.addMessage({
                   role: 'assistant',
                   content: data.assistantMessage,
-                  phase: store.phase,
+                  phase: s.phase,
                   createdAt: new Date().toISOString(),
                 })
               }
-              store.clearStreamingText()
-              store.setStreaming(false)
+              s.clearStreamingText()
+              s.setStreaming(false)
               break
             case 'error':
               console.error('SSE error:', data.message)
-              store.setStreaming(false)
+              s.setStreaming(false)
               break
           }
         },
         () => {
-          store.setStreaming(false)
+          useConversationStore.getState().setStreaming(false)
         },
         (error) => {
           console.error('SSE connection error:', error)
-          store.setStreaming(false)
+          useConversationStore.getState().setStreaming(false)
         }
       )
     },
-    [store]
+    []
   )
 
   const cancelStream = useCallback(() => {
     abortRef.current?.abort()
-    store.setStreaming(false)
-  }, [store])
+    useConversationStore.getState().setStreaming(false)
+  }, [])
 
   return { initConversation, sendMessage, cancelStream }
 }

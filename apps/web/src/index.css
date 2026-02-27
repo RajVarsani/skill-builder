@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: "KarmaticArcade";
-  src: url("/fonts/KarmaticArcade.ttf") format("truetype");
+  font-family: "JapanRamen";
+  src: url("/fonts/JapanRamen.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -17,7 +17,7 @@
 }
 
 @theme {
-  --font-display: "KarmaticArcade", "Karmatic Arcade", system-ui, sans-serif;
+  --font-display: "JapanRamen", "Japan Ramen", system-ui, sans-serif;
   --font-body: "GeistPixel-Circle", "Geist Pixel", system-ui, sans-serif;
   --font-mono: "GeistPixel-Circle", "Geist Pixel", monospace;
 
@@ -35,4 +35,79 @@ body {
   background-color: var(--color-page);
   color: var(--color-dark);
   margin: 0;
+}
+
+button,
+a,
+[role="button"] {
+  cursor: pointer;
+}
+
+@keyframes pixelBounce {
+  0%, 100% {
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-4px);
+  }
+}
+
+.prose-msg p {
+  margin: 0;
+}
+.prose-msg p + p {
+  margin-top: 0.5em;
+}
+.prose-msg strong {
+  font-weight: 700;
+  color: var(--color-surface);
+}
+.prose-msg em {
+  font-style: italic;
+}
+.prose-msg ul, .prose-msg ol {
+  margin: 0.4em 0;
+  padding-left: 1.25em;
+}
+.prose-msg li {
+  margin: 0.15em 0;
+}
+.prose-msg code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: #1A100810;
+  padding: 0.1em 0.35em;
+  border-radius: 2px;
+}
+.prose-msg pre {
+  margin: 0.5em 0;
+  padding: 0.75em;
+  background: var(--color-surface);
+  color: var(--color-cream);
+  overflow-x: auto;
+  font-size: 0.85em;
+}
+.prose-msg pre code {
+  background: none;
+  padding: 0;
+}
+.prose-msg a {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #A8988040;
+  border-radius: 2px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: #A8988080;
 }

@@ -1,17 +1,41 @@
+import { useState, useRef, useEffect } from 'react'
 import { useAuth } from '../../lib/auth'
+import { useNavigate } from 'react-router'
 
 interface NavProps {
   step?: number
+  onStartFresh?: () => void
 }
 
-export function Nav({ step }: NavProps) {
-  const { user, isAuthenticated } = useAuth()
+export function Nav({ step, onStartFresh }: NavProps) {
+  const { user, isAuthenticated, signOut } = useAuth()
+  const [menuOpen, setMenuOpen] = useState(false)
+  const menuRef = useRef<HTMLDivElement>(null)
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setMenuOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClick)
+    return () => document.removeEventListener('mousedown', handleClick)
+  }, [])
+
+  const handleSignOut = () => {
+    signOut()
+    navigate('/')
+  }
 
   return (
     <nav className="flex items-center justify-between px-[60px] py-5 border-b-[3px] border-surface">
-      <span className="font-display text-[16px] uppercase tracking-[0.05em] text-surface">
+      <button
+        onClick={() => navigate('/')}
+        className="font-display text-[16px] uppercase tracking-[0.05em] text-surface hover:text-accent transition-colors"
+      >
         Skill Builder
-      </span>
+      </button>
 
       <div className="flex items-center gap-4">
         {step && (
@@ -32,9 +56,39 @@ export function Nav({ step }: NavProps) {
           </div>
         )}
 
+        {onStartFresh && (
+          <button
+            onClick={onStartFresh}
+            className="px-4 py-2 border-2 border-muted font-display text-[10px] uppercase tracking-[0.04em] text-muted hover:border-surface hover:text-surface transition-colors"
+          >
+            Start Fresh
+          </button>
+        )}
+
         {isAuthenticated && user && (
-          <div className="w-10 h-10 bg-accent flex items-center justify-center text-cream text-xs font-display uppercase">
-            {user.name.charAt(0)}
+          <div className="relative" ref={menuRef}>
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="w-10 h-10 bg-accent flex items-center justify-center text-cream text-xs font-display uppercase"
+            >
+              {user.name.charAt(0)}
+            </button>
+
+            {menuOpen && (
+              <div className="absolute right-0 top-12 bg-cream border-2 border-surface py-1 z-50 min-w-[140px]">
+                <div className="px-4 py-2 border-b border-muted/20">
+                  <span className="font-body text-[11px] text-surface-secondary truncate block">
+                    {user.name}
+                  </span>
+                </div>
+                <button
+                  onClick={handleSignOut}
+                  className="w-full text-left px-4 py-2.5 font-display text-[10px] uppercase tracking-[0.04em] text-surface hover:bg-surface/5 transition-colors"
+                >
+                  Sign Out
+                </button>
+              </div>
+            )}
           </div>
         )}
       </div>

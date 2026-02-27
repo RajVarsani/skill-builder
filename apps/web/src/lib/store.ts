@@ -16,6 +16,7 @@ interface ConversationStore {
   chipsMultiSelect: boolean
   isStreaming: boolean
   streamingText: string
+  toolActivity: string | null
   completion: { percentage: number; blocksDiscovered: number; skillsMatched: number }
 
   setConversationId: (id: string) => void
@@ -29,6 +30,7 @@ interface ConversationStore {
   setStreaming: (streaming: boolean) => void
   appendStreamingText: (text: string) => void
   clearStreamingText: () => void
+  setToolActivity: (label: string | null) => void
   updateCompletion: (data: { percentage: number; blocksDiscovered: number; skillsMatched: number }) => void
   setBlocks: (blocks: IdentityBlock[]) => void
   setMatchedSkills: (skills: MatchedSkill[]) => void
@@ -52,6 +54,7 @@ export const useConversationStore = create<ConversationStore>((set) => ({
   chipsMultiSelect: false,
   isStreaming: false,
   streamingText: '',
+  toolActivity: null,
   completion: { percentage: 15, blocksDiscovered: 0, skillsMatched: 0 },
 
   setConversationId: (id) => set({ conversationId: id }),
@@ -71,9 +74,10 @@ export const useConversationStore = create<ConversationStore>((set) => ({
     }),
   setChips: (chips, multiSelect) => set({ chips, chipsMultiSelect: multiSelect }),
   clearChips: () => set({ chips: [], chipsMultiSelect: false }),
-  setStreaming: (isStreaming) => set({ isStreaming }),
-  appendStreamingText: (text) => set((s) => ({ streamingText: s.streamingText + text })),
+  setStreaming: (isStreaming) => set({ isStreaming, ...(isStreaming ? {} : { toolActivity: null }) }),
+  appendStreamingText: (text) => set((s) => ({ streamingText: s.streamingText + text, toolActivity: null })),
   clearStreamingText: () => set({ streamingText: '' }),
+  setToolActivity: (label) => set({ toolActivity: label }),
   updateCompletion: (data) => set({ completion: data }),
   setBlocks: (blocks) => set({ blocks }),
   setMatchedSkills: (matchedSkills) => set({ matchedSkills }),
@@ -96,6 +100,7 @@ export const useConversationStore = create<ConversationStore>((set) => ({
       chipsMultiSelect: false,
       isStreaming: false,
       streamingText: '',
+      toolActivity: null,
       completion: { percentage: 15, blocksDiscovered: 0, skillsMatched: 0 },
     }),
   loadState: (state) =>

@@ -14,8 +14,10 @@ function formatInstalls(n: number): string {
 export function MatchedSkillBlock({ skill, index }: MatchedSkillBlockProps) {
   return (
     <motion.div
+      layout
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -20 }}
       transition={{
         type: 'spring',
         stiffness: 260,

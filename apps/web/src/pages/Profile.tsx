@@ -33,11 +33,16 @@ function formatInstalls(n: number): string {
   return String(n)
 }
 
+const IDENTITY_LIMIT = 5
+const SKILLS_LIMIT = 4
+
 export function Profile() {
   const { username } = useParams<{ username: string }>()
   const [data, setData] = useState<ProfileData | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
+  const [identityExpanded, setIdentityExpanded] = useState(false)
+  const [skillsExpanded, setSkillsExpanded] = useState(false)
 
   useEffect(() => {
     if (!username) return
@@ -64,7 +69,7 @@ export function Profile() {
       <div className="min-h-screen bg-page flex flex-col items-center justify-center gap-4">
         <h1 className="font-display text-[24px] text-surface uppercase">Skill Not Found</h1>
         <p className="font-body text-[14px] text-muted">
-          No published skill found for "{username}"
+          No published skill found for &quot;{username}&quot;
         </p>
         <a
           href="/"
@@ -83,6 +88,11 @@ export function Profile() {
   const confirmedBlocks = skill.blockStates.filter((b) => b.status === 'confirmed')
   const activeSkills = skill.matchedSkills.filter((s) => s.status !== 'rejected')
   const profileUrl = `${window.location.origin}/profile/${username}`
+
+  const visibleBlocks = identityExpanded ? confirmedBlocks : confirmedBlocks.slice(0, IDENTITY_LIMIT)
+  const hiddenBlockCount = confirmedBlocks.length - IDENTITY_LIMIT
+  const visibleSkills = skillsExpanded ? activeSkills : activeSkills.slice(0, SKILLS_LIMIT)
+  const hiddenSkillCount = activeSkills.length - SKILLS_LIMIT
 
   return (
     <div className="min-h-screen bg-page">
@@ -169,7 +179,7 @@ export function Profile() {
                   <div className="flex-1 h-0.5 bg-cream/10" />
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {confirmedBlocks.map((block) => (
+                  {visibleBlocks.map((block) => (
                     <span
                       key={block.blockId}
                       className="px-3.5 py-1.5 text-[10px] font-display uppercase bg-[#E04A2F26] text-accent border-2 border-accent"
@@ -178,6 +188,14 @@ export function Profile() {
                     </span>
                   ))}
                 </div>
+                {hiddenBlockCount > 0 && (
+                  <button
+                    onClick={() => setIdentityExpanded(!identityExpanded)}
+                    className="mt-2 text-[9px] font-body uppercase tracking-[0.08em] text-accent hover:text-accent/80 transition-colors"
+                  >
+                    {identityExpanded ? 'Show less' : `+${hiddenBlockCount} more`}
+                  </button>
+                )}
               </div>
 
               {/* Matched Skills */}
@@ -188,7 +206,7 @@ export function Profile() {
                   <div className="flex-1 h-0.5 bg-cream/10" />
                 </div>
                 <div className="space-y-2">
-                  {activeSkills.map((skill) => (
+                  {visibleSkills.map((skill) => (
                     <div
                       key={skill.skillId}
                       className="flex items-center justify-between bg-surface-secondary border-2 border-surface-secondary px-3.5 py-2"
@@ -201,6 +219,14 @@ export function Profile() {
                     </div>
                   ))}
                 </div>
+                {hiddenSkillCount > 0 && (
+                  <button
+                    onClick={() => setSkillsExpanded(!skillsExpanded)}
+                    className="mt-2 text-[9px] font-body uppercase tracking-[0.08em] text-accent hover:text-accent/80 transition-colors"
+                  >
+                    {skillsExpanded ? 'Show less' : `+${hiddenSkillCount} more skills`}
+                  </button>
+                )}
               </div>
 
               {/* Footer */}

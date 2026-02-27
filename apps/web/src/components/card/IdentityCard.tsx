@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { useConversationStore } from '../../lib/store'
 import { GradientBorder } from './GradientBorder'
 import { CardHeader } from './CardHeader'
@@ -10,7 +11,11 @@ export function IdentityCard() {
 
   return (
     <GradientBorder completion={completion.percentage}>
-      <div className="bg-surface overflow-hidden">
+      <motion.div
+        layout
+        className="bg-surface overflow-hidden"
+        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+      >
         {/* Pixel bar */}
         <div className="flex h-2">
           {Array.from({ length: 8 }).map((_, i) => (
@@ -31,7 +36,7 @@ export function IdentityCard() {
         <IdentitySection />
         <MatchedSkillsSection />
         <CardFooter />
-      </div>
+      </motion.div>
     </GradientBorder>
   )
 }

@@ -13,6 +13,7 @@ const anthropic = new Anthropic()
 
 export type ConversationEvent =
   | { type: 'text_chunk'; data: { text: string } }
+  | { type: 'tool_activity'; data: { tool: string; label: string } }
   | { type: 'block_added'; data: { block: IdentityBlock } }
   | { type: 'block_confirmed'; data: { blockId: string } }
   | { type: 'skill_matched'; data: { skill: MatchedSkill } }
@@ -56,12 +57,20 @@ export async function* runConversationTurn(
     content: m.content as MessageContent,
   }))
 
+  const TOOL_LABELS: Record<string, string> = {
+    add_identity_block: 'Discovering identity trait',
+    confirm_identity_block: 'Confirming trait',
+    match_skills: 'Searching skills registry',
+    offer_quick_replies: 'Preparing options',
+    signal_phase_transition: 'Moving to next phase',
+  }
+
   let continueLoop = true
   let fullAssistantText = ''
 
   while (continueLoop) {
     const stream = anthropic.messages.stream({
-      model: 'claude-sonnet-4-5-20250929',
+      model: 'claude-sonnet-4-6',
       max_tokens: 2048,
       system: systemPrompt,
       messages: apiMessages as Anthropic.MessageParam[],
@@ -85,8 +94,8 @@ export async function* runConversationTurn(
           currentToolName = event.content_block.name
           currentToolId = event.content_block.id
           currentToolInput = ''
-        } else if (event.content_block.type === 'text') {
-          // text block starting
+          const label = TOOL_LABELS[currentToolName] || currentToolName
+          yield { type: 'tool_activity', data: { tool: currentToolName, label } }
         }
       }
 

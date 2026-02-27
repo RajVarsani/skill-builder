@@ -11,8 +11,10 @@ export function IdentityBlock({ block, index }: IdentityBlockProps) {
 
   return (
     <motion.span
+      layout
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: isConfirmed ? 1 : 0.8, y: 0 }}
+      exit={{ opacity: 0, y: -8 }}
       transition={{
         type: 'spring',
         stiffness: 300,
