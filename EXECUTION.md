@@ -1,7 +1,7 @@
 # Skill Builder — Execution Log
 
-## Current Phase: Phase 0.2 — NOT STARTED
-**Status:** Phase 0.1 complete. Moving to MongoDB + Models.
+## Current Phase: Phase 1.1 — NOT STARTED
+**Status:** Iteration 0 complete. Moving to Auth System.
 
 ---
 
@@ -19,12 +19,12 @@
 - [x] `.gitignore` updated
 - [x] Verify: `bun run dev` starts both apps
 
-#### Phase 0.2: MongoDB + Models — NOT STARTED
-- [ ] MongoDB connection module
-- [ ] User model
-- [ ] Conversation model
-- [ ] Published skill model
-- [ ] Indexes on unique fields
+#### Phase 0.2: MongoDB + Models — COMPLETE
+- [x] MongoDB connection module
+- [x] User model
+- [x] Conversation model
+- [x] Published skill model
+- [x] Indexes on unique fields
 
 ### Iteration 1: Auth System
 

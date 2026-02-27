@@ -1,7 +1,10 @@
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
+import { connectDB } from './db/connection'
 
 const app = new Hono()
+
+connectDB()
 
 app.use(
   '*',
