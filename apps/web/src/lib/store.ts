@@ -30,6 +30,9 @@ interface ConversationStore {
   appendStreamingText: (text: string) => void
   clearStreamingText: () => void
   updateCompletion: (data: { percentage: number; blocksDiscovered: number; skillsMatched: number }) => void
+  setBlocks: (blocks: IdentityBlock[]) => void
+  setMatchedSkills: (skills: MatchedSkill[]) => void
+  rejectSkill: (skillId: string) => void
   reset: () => void
   loadState: (state: {
     phase: ConversationPhase
@@ -72,6 +75,16 @@ export const useConversationStore = create<ConversationStore>((set) => ({
   appendStreamingText: (text) => set((s) => ({ streamingText: s.streamingText + text })),
   clearStreamingText: () => set({ streamingText: '' }),
   updateCompletion: (data) => set({ completion: data }),
+  setBlocks: (blocks) => set({ blocks }),
+  setMatchedSkills: (matchedSkills) => set({ matchedSkills }),
+  rejectSkill: (skillId) =>
+    set((s) => ({
+      matchedSkills: s.matchedSkills.map((sk) =>
+        sk.skillId === skillId
+          ? { ...sk, status: (sk.status === 'rejected' ? 'proposed' : 'rejected') as MatchedSkill['status'] }
+          : sk
+      ),
+    })),
   reset: () =>
     set({
       conversationId: null,
