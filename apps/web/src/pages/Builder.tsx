@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Nav } from '../components/layout/Nav'
 import { ChatPanel } from '../components/chat/ChatPanel'
+import { IdentityCard } from '../components/card/IdentityCard'
 import { useConversation } from '../hooks/use-conversation'
 import { useConversationStore } from '../lib/store'
 import { PHASE_STEP } from '@skill-builder/shared/src/types'
@@ -32,11 +33,11 @@ export function Builder() {
           <ChatPanel onSend={sendMessage} />
         </div>
 
-        {/* Card panel — right side (placeholder until Phase 3.2) */}
-        <div className="w-[45%] flex items-center justify-center p-8">
-          <p className="font-mono text-xs text-muted uppercase tracking-wider">
-            Identity card — coming next
-          </p>
+        {/* Card panel — right side */}
+        <div className="w-[45%] flex items-center justify-center p-8 overflow-y-auto">
+          <div className="w-full max-w-sm">
+            <IdentityCard />
+          </div>
         </div>
       </div>
     </div>

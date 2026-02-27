@@ -1,7 +1,7 @@
 # Skill Builder — Execution Log
 
-## Current Phase: Phase 3.2 — NOT STARTED
-**Status:** Skill matching engine verified. Moving to identity card.
+## Current Phase: Phase 3.3 — NOT STARTED
+**Status:** Identity card built. Moving to live card integration.
 
 ---
 
@@ -82,17 +82,15 @@
 - [x] match_skills tool handler integration
 - [x] SSE skill_matched events
 
-#### Phase 3.2: FE — Identity Card — NOT STARTED
-- [ ] Block queue hook (staggered render)
-- [ ] IdentityCard component
-- [ ] CardHeader (avatar, name, progress)
-- [ ] IdentitySection + IdentityBlock (with animations)
-- [ ] MatchedSkillsSection + MatchedSkillBlock
-- [ ] CustomSkillsSection + CustomSkillBlock
-- [ ] CardFooter
-- [ ] GradientBorder (intensification)
-- [ ] PlaceholderBlocks + ScanningIndicator
-- [ ] Mobile collapsible card
+#### Phase 3.2: FE — Identity Card — COMPLETE
+- [x] IdentityCard component (matching Paper design)
+- [x] CardHeader (avatar with initials, name, domains, progress bar)
+- [x] IdentitySection + IdentityBlock (spring animations from below)
+- [x] MatchedSkillsSection + MatchedSkillBlock (slide from right, install counts, SKILLS.SH badge)
+- [x] CardFooter (blocks discovered / skills matched)
+- [x] GradientBorder (intensification from muted to glow)
+- [x] PlaceholderBlocks (??? dashed) + ScanningIndicator
+- [x] Pixel bar at top of card
 
 #### Phase 3.3: Integration — Live Card — NOT STARTED
 - [ ] Wire SSE events to card
