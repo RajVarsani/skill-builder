@@ -54,7 +54,7 @@ export function SignIn() {
 
   return (
     <div className="min-h-screen bg-page flex items-center justify-center p-4">
-      <div className="w-full max-w-md bg-cream border-2 border-surface rounded-sm shadow-[4px_4px_0_0_rgba(42,37,32,0.3)] p-8">
+      <div className="w-full max-w-md bg-cream border-2 border-surface p-8">
         {/* Decorative pixel bar */}
         <div className="flex gap-1 mb-8 justify-center">
           {Array.from({ length: 12 }).map((_, i) => (
@@ -68,7 +68,7 @@ export function SignIn() {
         </div>
 
         {/* Title */}
-        <h1 className="font-display text-3xl text-center uppercase tracking-wide text-surface">
+        <h1 className="font-display text-3xl text-center uppercase tracking-[0.05em] text-surface">
           Skill Builder
         </h1>
 
@@ -76,7 +76,7 @@ export function SignIn() {
         <div className="w-8 h-1 bg-accent mx-auto mt-4 mb-6" />
 
         {/* Subtitle */}
-        <p className="text-center text-muted text-sm leading-relaxed mb-8">
+        <p className="text-center text-muted text-[13px] font-body leading-[20px] mb-8">
           Build your professional identity. Let AI
           <br />
           discover who you are — block by block.
@@ -86,7 +86,7 @@ export function SignIn() {
         <div className="space-y-3">
           <a
             href={getGoogleAuthUrl()}
-            className="flex items-center justify-center gap-3 w-full py-4 bg-surface text-cream font-display text-sm uppercase tracking-wider rounded-sm hover:bg-surface/90 transition-colors"
+            className="flex items-center justify-center gap-3 w-full py-4 bg-surface text-cream font-display text-[11px] uppercase tracking-[0.05em] hover:bg-surface/90 transition-colors"
           >
             <GoogleIcon />
             Sign in with Google
@@ -94,7 +94,7 @@ export function SignIn() {
 
           <a
             href={getGitHubAuthUrl()}
-            className="flex items-center justify-center gap-3 w-full py-4 bg-transparent text-surface font-display text-sm uppercase tracking-wider rounded-sm border-2 border-surface hover:bg-surface/5 transition-colors"
+            className="flex items-center justify-center gap-3 w-full py-4 bg-transparent text-surface font-display text-[11px] uppercase tracking-[0.05em] border-2 border-surface hover:bg-surface/5 transition-colors"
           >
             <GitHubIcon />
             Sign in with GitHub
@@ -102,7 +102,7 @@ export function SignIn() {
         </div>
 
         {/* Footer text */}
-        <p className="text-center text-muted/60 text-xs mt-6">
+        <p className="text-center text-muted/60 text-[10px] font-body mt-6">
           No credit card. No setup. Just a 3-minute conversation.
         </p>
       </div>
@@ -113,7 +113,7 @@ export function SignIn() {
 function LoadingScreen() {
   return (
     <div className="min-h-screen bg-page flex items-center justify-center">
-      <p className="font-mono text-sm text-muted animate-pulse">Signing in...</p>
+      <p className="font-body text-[13px] text-muted animate-pulse">Signing in...</p>
     </div>
   )
 }

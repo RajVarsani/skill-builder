@@ -22,15 +22,17 @@ export function MatchedSkillBlock({ skill, index }: MatchedSkillBlockProps) {
         damping: 22,
         delay: index * 0.1,
       }}
-      className="flex items-center gap-2 bg-surface/60 rounded-sm px-3 py-2"
+      className="flex items-center justify-between bg-surface-secondary border-2 border-surface-secondary px-3.5 py-2"
     >
-      <span className="font-mono text-[11px] font-bold uppercase tracking-wide text-cream truncate flex-1">
-        {skill.name}
-      </span>
-      <span className="text-[10px] font-mono text-cream/40 shrink-0">
-        {formatInstalls(skill.installs)} INSTALLS
-      </span>
-      <span className="text-[9px] font-display uppercase tracking-wider text-accent shrink-0">
+      <div className="flex items-center gap-2.5 min-w-0">
+        <span className="font-display text-[10px] uppercase text-cream truncate">
+          {skill.name}
+        </span>
+        <span className="text-[9px] font-body text-muted shrink-0">
+          {formatInstalls(skill.installs)} INSTALLS
+        </span>
+      </div>
+      <span className="text-[9px] font-body uppercase text-accent shrink-0">
         SKILLS.SH
       </span>
     </motion.div>

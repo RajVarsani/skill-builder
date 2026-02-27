@@ -21,29 +21,29 @@ export function CardHeader() {
       : 'AWAITING DOMAINS...'
 
   return (
-    <div className="px-4 pt-4 pb-3">
-      <div className="flex items-center gap-3 mb-3">
-        <div className="w-10 h-10 bg-accent flex items-center justify-center rounded-sm shrink-0">
-          <span className="font-display text-sm text-cream">{initials}</span>
+    <div>
+      <div className="flex items-center gap-4 px-6 pt-6 pb-4">
+        <div className="w-12 h-12 bg-accent flex items-center justify-center shrink-0">
+          <span className="font-display text-[14px] text-cream">{initials}</span>
         </div>
         <div className="min-w-0">
-          <h2 className="font-display text-base uppercase tracking-wide text-cream truncate">
+          <h2 className="font-display text-[16px] uppercase text-cream truncate">
             {name}
           </h2>
-          <p className="text-[10px] font-mono uppercase tracking-widest text-cream/40">
+          <p className="text-[11px] font-body uppercase tracking-[0.1em] text-muted">
             {domainLabel}
           </p>
         </div>
       </div>
 
-      <div className="flex items-center gap-2">
-        <div className="flex-1 h-1.5 bg-cream/10 rounded-full overflow-hidden">
+      <div className="flex items-center gap-3 px-6 pb-5">
+        <div className="flex-1 h-1.5 bg-cream/10 overflow-hidden">
           <div
-            className="h-full bg-accent rounded-full transition-all duration-700"
+            className="h-full bg-accent transition-all duration-700"
             style={{ width: `${completion.percentage}%` }}
           />
         </div>
-        <span className="text-xs font-mono text-accent">{completion.percentage}%</span>
+        <span className="text-[12px] font-body text-accent">{completion.percentage}%</span>
       </div>
     </div>
   )

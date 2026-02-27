@@ -10,14 +10,14 @@ export function PhaseIndicator({ phase }: PhaseIndicatorProps) {
   const label = PHASE_LABELS[phase]
 
   return (
-    <div className="flex items-center gap-3 px-4 py-2">
-      <span className="bg-accent text-cream text-[10px] font-display uppercase tracking-wider px-2 py-0.5">
+    <div className="flex items-center gap-4 pt-6 pb-5">
+      <span className="bg-accent text-cream text-[10px] font-display uppercase px-3 py-1">
         Phase {step}
       </span>
-      <span className="text-xs font-mono uppercase tracking-widest text-muted">
+      <span className="text-[12px] font-display uppercase tracking-[0.05em] text-surface">
         {label}
       </span>
-      <div className="flex-1 h-px bg-muted/20" />
+      <div className="flex-1 h-0.5 bg-muted/20" />
     </div>
   )
 }

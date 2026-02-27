@@ -38,26 +38,31 @@ export function QuickReplyChips({ onSelect }: QuickReplyChipsProps) {
 
   return (
     <div className="flex flex-wrap gap-2 px-4 py-3">
-      {chips.map((chip) => (
-        <button
-          key={chip}
-          onClick={() => handleChipClick(chip)}
-          className={`px-3 py-1.5 text-xs font-mono uppercase tracking-wider border rounded-sm transition-colors ${
-            selected.has(chip)
-              ? 'bg-accent text-cream border-accent'
-              : 'bg-transparent text-surface border-surface/30 hover:border-surface'
-          }`}
-        >
-          {multiSelect && selected.has(chip) && '✓ '}
-          {chip}
-        </button>
-      ))}
+      {chips.map((chip) => {
+        const isOther = chip.toLowerCase().includes('other')
+        return (
+          <button
+            key={chip}
+            onClick={() => handleChipClick(chip)}
+            className={`px-5 py-2.5 text-[11px] font-display uppercase transition-colors ${
+              selected.has(chip)
+                ? 'bg-accent text-cream border-2 border-accent'
+                : isOther
+                  ? 'bg-transparent text-muted border-2 border-dashed border-muted'
+                  : 'bg-transparent text-surface border-2 border-surface hover:bg-surface/5'
+            }`}
+          >
+            {multiSelect && selected.has(chip) && '✓ '}
+            {chip}
+          </button>
+        )
+      })}
 
       {multiSelect && (
         <button
           onClick={handleContinue}
           disabled={selected.size === 0}
-          className="px-4 py-1.5 text-xs font-display uppercase tracking-wider bg-accent text-cream rounded-sm disabled:opacity-30 hover:bg-accent/90 transition-colors"
+          className="px-5 py-2.5 text-[11px] font-display uppercase bg-accent text-cream border-2 border-accent disabled:opacity-30 hover:bg-accent/90 transition-colors"
         >
           Continue
         </button>

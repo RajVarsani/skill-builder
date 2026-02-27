@@ -10,9 +10,9 @@ export function IdentityCard() {
 
   return (
     <GradientBorder completion={completion.percentage}>
-      <div className="bg-dark rounded-sm overflow-hidden">
+      <div className="bg-surface overflow-hidden">
         {/* Pixel bar */}
-        <div className="flex h-1.5">
+        <div className="flex h-2">
           {Array.from({ length: 8 }).map((_, i) => (
             <div
               key={i}
@@ -20,7 +20,7 @@ export function IdentityCard() {
                 [0, 1, 3, 4, 6, 7].includes(i)
                   ? i % 3 === 0
                     ? 'bg-accent'
-                    : 'bg-surface'
+                    : 'bg-surface-secondary'
                   : 'bg-cream/10'
               }`}
             />

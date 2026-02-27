@@ -19,10 +19,10 @@ export function IdentityBlock({ block, index }: IdentityBlockProps) {
         damping: 24,
         delay: index * 0.08,
       }}
-      className={`inline-flex px-2.5 py-1 text-[11px] font-display uppercase tracking-wider rounded-sm transition-all ${
+      className={`inline-flex px-3.5 py-1.5 text-[10px] font-display uppercase transition-all ${
         isConfirmed
-          ? 'bg-accent text-cream border border-accent'
-          : 'bg-accent/70 text-cream/90 border border-accent/50'
+          ? 'bg-[#E04A2F26] text-accent border-2 border-accent'
+          : 'bg-[#E04A2F15] text-accent/80 border-2 border-accent/50'
       }`}
     >
       {block.label}

@@ -23,7 +23,7 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
   }
 
   return (
-    <div className="flex items-center gap-2 p-3 border-t border-muted/20 bg-cream">
+    <div className="flex items-center gap-3 px-5 py-[14px] bg-cream border-2 border-surface">
       <input
         type="text"
         value={value}
@@ -31,12 +31,12 @@ export function ChatInput({ onSend, disabled }: ChatInputProps) {
         onKeyDown={handleKeyDown}
         placeholder="Or type your answer..."
         disabled={disabled}
-        className="flex-1 bg-transparent text-sm text-surface placeholder:text-muted/50 outline-none font-body"
+        className="flex-1 bg-transparent text-[13px] font-body text-surface-secondary placeholder:text-muted outline-none"
       />
       <button
         onClick={handleSend}
         disabled={disabled || !value.trim()}
-        className="w-8 h-8 flex items-center justify-center bg-accent text-cream rounded-sm disabled:opacity-30 hover:bg-accent/90 transition-colors"
+        className="w-9 h-9 flex items-center justify-center bg-accent text-cream shrink-0 disabled:opacity-30 hover:bg-accent/90 transition-colors"
       >
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-7-7 7 7-7 7" />

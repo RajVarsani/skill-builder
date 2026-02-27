@@ -1,16 +1,33 @@
 @import "tailwindcss";
 
-@theme {
-  --font-display: "Archivo Black", sans-serif;
-  --font-body: "Inter", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
+@font-face {
+  font-family: "KarmaticArcade";
+  src: url("/fonts/KarmaticArcade.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
-  --color-page: #D4C9B8;
-  --color-surface: #2A2520;
-  --color-accent: #E85D3A;
-  --color-cream: #F5F0E8;
-  --color-muted: #8A8070;
-  --color-dark: #1A1714;
+@font-face {
+  font-family: "GeistPixel-Circle";
+  src: url("/fonts/GeistPixel-Circle.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-display: "KarmaticArcade", "Karmatic Arcade", system-ui, sans-serif;
+  --font-body: "GeistPixel-Circle", "Geist Pixel", system-ui, sans-serif;
+  --font-mono: "GeistPixel-Circle", "Geist Pixel", monospace;
+
+  --color-page: #D4C8B0;
+  --color-surface: #1A1008;
+  --color-accent: #E04A2F;
+  --color-cream: #F0E6D4;
+  --color-muted: #A89880;
+  --color-dark: #1A1008;
+  --color-surface-secondary: #2D2318;
 }
 
 body {
