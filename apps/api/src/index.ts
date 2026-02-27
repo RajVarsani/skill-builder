@@ -3,6 +3,7 @@ import { cors } from 'hono/cors'
 import { connectDB } from './db/connection'
 import { auth } from './routes/auth'
 import { conversations } from './routes/conversations'
+import { skills } from './routes/skills'
 import { skillEngine } from './agent/skill-matching-engine'
 import path from 'path'
 
@@ -27,6 +28,7 @@ app.get('/health', (c) => {
 
 app.route('/auth', auth)
 app.route('/conversations', conversations)
+app.route('/', skills)
 
 const port = Number(process.env.PORT) || 3000
 console.log(`API server running on http://localhost:${port}`)
