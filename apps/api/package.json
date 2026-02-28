@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.78.0",
+    "@octokit/auth-app": "^8.2.0",
     "@skill-builder/shared": "workspace:*",
     "hono": "^4.7.0",
     "jose": "^6.1.3",
