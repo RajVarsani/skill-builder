@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import { useAuth } from '../lib/auth'
 import { apiFetch } from '../lib/api'
 import type { AuthResponse } from '@skill-builder/shared/src/types'
@@ -17,19 +18,27 @@ function getGoogleAuthUrl() {
   return `https://accounts.google.com/o/oauth2/v2/auth?${params}`
 }
 
-function getGitHubAuthUrl() {
+function getGitHubAuthUrl(state?: string) {
   const params = new URLSearchParams({
     client_id: GITHUB_CLIENT_ID,
     redirect_uri: `${window.location.origin}/auth/github/callback`,
-    scope: 'read:user user:email',
+    scope: 'read:user user:email repo',
   })
+  if (state) params.set('state', state)
   return `https://github.com/login/oauth/authorize?${params}`
+}
+
+export function getGitHubConnectUrl() {
+  return getGitHubAuthUrl('connect')
 }
 
 export function SignIn() {
   const { signIn } = useAuth()
+  const processingRef = useRef(false)
 
   const handleOAuthCallback = async (provider: 'google' | 'github', code: string) => {
+    if (processingRef.current) return
+    processingRef.current = true
     const result = await apiFetch<AuthResponse>(`/auth/${provider}`, {
       method: 'POST',
       body: JSON.stringify({ code }),
@@ -38,9 +47,21 @@ export function SignIn() {
     window.location.href = '/builder'
   }
 
+  const handleGitHubConnect = async (code: string) => {
+    if (processingRef.current) return
+    processingRef.current = true
+    const result = await apiFetch<{ user: AuthResponse['user'] }>('/auth/github/connect', {
+      method: 'POST',
+      body: JSON.stringify({ code }),
+    })
+    signIn(localStorage.getItem('token')!, result.user)
+    window.location.href = '/builder'
+  }
+
   // Check for OAuth callback
   const url = new URL(window.location.href)
   const code = url.searchParams.get('code')
+  const state = url.searchParams.get('state')
   const path = url.pathname
 
   if (code && path.includes('/auth/google/callback')) {
@@ -48,7 +69,11 @@ export function SignIn() {
     return <LoadingScreen />
   }
   if (code && path.includes('/auth/github/callback')) {
-    handleOAuthCallback('github', code)
+    if (state === 'connect') {
+      handleGitHubConnect(code)
+    } else {
+      handleOAuthCallback('github', code)
+    }
     return <LoadingScreen />
   }
 

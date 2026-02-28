@@ -18,6 +18,7 @@ interface ConversationStore {
   streamingText: string
   toolActivity: string | null
   completion: { percentage: number; blocksDiscovered: number; skillsMatched: number }
+  skillMarkdown: string | null
 
   setConversationId: (id: string) => void
   setPhase: (phase: ConversationPhase) => void
@@ -34,6 +35,7 @@ interface ConversationStore {
   updateCompletion: (data: { percentage: number; blocksDiscovered: number; skillsMatched: number }) => void
   setBlocks: (blocks: IdentityBlock[]) => void
   setMatchedSkills: (skills: MatchedSkill[]) => void
+  setSkillMarkdown: (md: string | null) => void
   rejectSkill: (skillId: string) => void
   reset: () => void
   loadState: (state: {
@@ -56,6 +58,7 @@ export const useConversationStore = create<ConversationStore>((set) => ({
   streamingText: '',
   toolActivity: null,
   completion: { percentage: 15, blocksDiscovered: 0, skillsMatched: 0 },
+  skillMarkdown: null,
 
   setConversationId: (id) => set({ conversationId: id }),
   setPhase: (phase) => set({ phase }),
@@ -81,6 +84,7 @@ export const useConversationStore = create<ConversationStore>((set) => ({
   updateCompletion: (data) => set({ completion: data }),
   setBlocks: (blocks) => set({ blocks }),
   setMatchedSkills: (matchedSkills) => set({ matchedSkills }),
+  setSkillMarkdown: (md) => set({ skillMarkdown: md }),
   rejectSkill: (skillId) =>
     set((s) => ({
       matchedSkills: s.matchedSkills.map((sk) =>
@@ -102,6 +106,7 @@ export const useConversationStore = create<ConversationStore>((set) => ({
       streamingText: '',
       toolActivity: null,
       completion: { percentage: 15, blocksDiscovered: 0, skillsMatched: 0 },
+      skillMarkdown: null,
     }),
   loadState: (state) =>
     set({

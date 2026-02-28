@@ -1,10 +1,21 @@
+import { getGitHubConnectUrl } from '../../pages/SignIn'
+
 interface PublishButtonsProps {
   onPublish: () => void
   onPublishGitHub: () => void
   isPublishing: boolean
+  hasGithub: boolean
 }
 
-export function PublishButtons({ onPublish, onPublishGitHub, isPublishing }: PublishButtonsProps) {
+export function PublishButtons({ onPublish, onPublishGitHub, isPublishing, hasGithub }: PublishButtonsProps) {
+  const handleGitHubClick = () => {
+    if (!hasGithub) {
+      window.location.href = getGitHubConnectUrl()
+      return
+    }
+    onPublishGitHub()
+  }
+
   return (
     <div className="space-y-3">
       <span className="text-[10px] font-display uppercase tracking-[0.08em] text-muted block">
@@ -21,11 +32,11 @@ export function PublishButtons({ onPublish, onPublishGitHub, isPublishing }: Pub
         </button>
 
         <button
-          onClick={onPublishGitHub}
+          onClick={handleGitHubClick}
           disabled={isPublishing}
           className="flex-1 flex items-center justify-center py-3.5 px-7 border-2 border-surface text-surface font-display text-[11px] uppercase tracking-[0.04em] disabled:opacity-50 hover:bg-surface/5 transition-colors"
         >
-          Publish to GitHub
+          {hasGithub ? 'Publish to GitHub' : 'Connect GitHub'}
         </button>
       </div>
     </div>

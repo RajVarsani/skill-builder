@@ -9,7 +9,7 @@ import type { AppEnv } from '../types'
 
 const skills = new Hono<AppEnv>()
 
-skills.post('/conversations/:id/publish', authMiddleware, async (c) => {
+skills.post('/conversations/:id/preview', authMiddleware, async (c) => {
   const userId = c.get('userId')
   const conversationId = c.req.param('id')
 
@@ -30,6 +30,44 @@ skills.post('/conversations/:id/publish', authMiddleware, async (c) => {
       conversation.matchedSkills,
       conversation.selectedDomains
     )
+    const skillMdFile = files.find((f) => f.path.endsWith('SKILL.md'))
+    return c.json({ markdown: skillMdFile?.content ?? '' })
+  } catch (error) {
+    console.error('Preview error:', error)
+    return c.json({ error: 'Failed to generate preview' }, 500)
+  }
+})
+
+skills.post('/conversations/:id/publish', authMiddleware, async (c) => {
+  const userId = c.get('userId')
+  const conversationId = c.req.param('id')
+
+  const conversation = await Conversation.findOne({
+    _id: conversationId,
+    userId,
+    status: 'active',
+  })
+  if (!conversation) return c.json({ error: 'Conversation not found' }, 404)
+
+  const user = await User.findById(userId)
+  if (!user) return c.json({ error: 'User not found' }, 404)
+
+  try {
+    const body = await c.req.json<{ skillMarkdown?: string }>().catch(() => ({} as { skillMarkdown?: string }))
+
+    const files = await generateSkillPackage(
+      user.name,
+      conversation.blockStates,
+      conversation.matchedSkills,
+      conversation.selectedDomains
+    )
+
+    if (body.skillMarkdown) {
+      const skillMdIndex = files.findIndex((f) => f.path.endsWith('SKILL.md'))
+      if (skillMdIndex !== -1) {
+        files[skillMdIndex].content = body.skillMarkdown
+      }
+    }
 
     const publishResult = await publishToGitHub({
       userName: user.name,
@@ -37,18 +75,23 @@ skills.post('/conversations/:id/publish', authMiddleware, async (c) => {
       githubAccessToken: user.githubAccessToken,
     })
 
-    const publishedSkill = await PublishedSkill.create({
-      userId: user._id,
-      conversationId: conversation._id,
-      skillName: `acting-as-${user.name.toLowerCase().replace(/\s+/g, '-')}`,
-      githubRepoUrl: publishResult.repoUrl,
-      githubRepoOwner: publishResult.repoOwner,
-      installCommand: publishResult.installCommand,
-      blockStates: conversation.blockStates,
-      matchedSkills: conversation.matchedSkills,
-      customSkills: [],
-      skillFiles: files,
-    })
+    const skillName = `acting-as-${user.name.toLowerCase().replace(/\s+/g, '-')}`
+    const publishedSkill = await PublishedSkill.findOneAndUpdate(
+      { skillName },
+      {
+        userId: user._id,
+        conversationId: conversation._id,
+        skillName,
+        githubRepoUrl: publishResult.repoUrl,
+        githubRepoOwner: publishResult.repoOwner,
+        installCommand: publishResult.installCommand,
+        blockStates: conversation.blockStates,
+        matchedSkills: conversation.matchedSkills,
+        customSkills: [],
+        skillFiles: files,
+      },
+      { upsert: true, new: true }
+    )
 
     conversation.phase = 'published'
     conversation.status = 'completed'

@@ -14,19 +14,15 @@ export async function generateSkillPackage(
   matchedSkills: IMatchedSkill[],
   selectedDomains: string[]
 ): Promise<GeneratedSkill[]> {
-  const confirmed = matchedSkills.filter((s) => s.status === 'confirmed')
+  const activeSkills = matchedSkills.filter((s) => s.status !== 'rejected')
   const files: GeneratedSkill[] = []
 
   const identityBlocks = blockStates.filter((b) => b.status === 'confirmed' || b.confidence !== 'low')
   const slug = userName.toLowerCase().replace(/\s+/g, '-')
 
-  const identitySummary = identityBlocks
-    .map((b) => `- **${b.label}** (${b.category}): ${b.detail}`)
-    .join('\n')
-
-  const skillList = confirmed
-    .map((s) => `- ${s.name} (${s.source}, ${s.installs} installs)`)
-    .join('\n')
+  const skillActivationRules = activeSkills.length > 0
+    ? await generateSkillActivationRules(activeSkills, identityBlocks, selectedDomains)
+    : ''
 
   const skillMd = `---
 name: acting-as-${slug}
@@ -50,7 +46,8 @@ ${generateWhatIReject(identityBlocks)}
 ## Skills
 
 ### From skills.sh (with my preferences)
-${confirmed.map((s) => `- **${s.name}** — ${s.source} (${s.installs} installs)`).join('\n')}
+
+${skillActivationRules || '_No skills matched — add skills during the review phase._'}
 
 ## Guardrails
 - This skill represents ${userName}'s professional perspective
@@ -63,7 +60,7 @@ ${confirmed.map((s) => `- **${s.name}** — ${s.source} (${s.installs} installs)
     content: skillMd,
   })
 
-  for (const skill of confirmed) {
+  for (const skill of activeSkills) {
     const override = await generateOverride(skill, identityBlocks)
     files.push({
       path: `acting-as-${slug}/references/matched/${skill.name}.md`,
@@ -72,6 +69,60 @@ ${confirmed.map((s) => `- **${s.name}** — ${s.source} (${s.installs} installs)
   }
 
   return files
+}
+
+async function generateSkillActivationRules(
+  skills: IMatchedSkill[],
+  blocks: IBlockState[],
+  domains: string[]
+): Promise<string> {
+  const skillList = skills
+    .map((s) => `- ${s.name} (source: ${s.source}, installs: ${s.installs})`)
+    .join('\n')
+
+  const identity = blocks
+    .map((b) => `- ${b.label} (${b.category}): ${b.detail}`)
+    .join('\n')
+
+  try {
+    const response = await anthropic.messages.create({
+      model: 'claude-sonnet-4-6',
+      max_tokens: 1024,
+      messages: [
+        {
+          role: 'user',
+          content: `You are generating a Skills section for a SKILL.md file. This file tells an AI assistant when to activate specific skills for a user.
+
+The user works in: ${domains.join(', ')}
+
+User identity:
+${identity}
+
+Matched skills:
+${skillList}
+
+For each skill, write ONE bullet point in this exact format:
+- **skill-name** (source, N installs) — Activate when: <a specific, concise trigger condition>
+
+The trigger condition should describe WHEN this skill should kick in during the user's workflow. Be specific and actionable — not generic. Consider the user's identity and domains to personalize the triggers.
+
+Examples of good triggers:
+- "writing React components with TypeScript, especially when creating reusable UI primitives"
+- "setting up or debugging CI/CD pipelines for Node.js monorepos"
+- "reviewing pull requests for code quality, testing gaps, or architectural concerns"
+
+Output ONLY the bullet points, no headers, no extra text.`,
+        },
+      ],
+    })
+
+    const text = response.content[0]
+    return text.type === 'text' ? text.text.trim() : ''
+  } catch {
+    return skills
+      .map((s) => `- **${s.name}** (${s.source}, ${s.installs} installs) — Activate when: working on ${s.name.replace(/[-_]/g, ' ')} tasks`)
+      .join('\n')
+  }
 }
 
 function generateWhoIAm(blocks: IBlockState[], domains: string[]): string {

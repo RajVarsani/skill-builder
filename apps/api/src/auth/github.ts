@@ -35,7 +35,8 @@ async function getGitHubUserInfo(code: string) {
     const emailRes = await fetch('https://api.github.com/user/emails', {
       headers: { Authorization: `Bearer ${accessToken}` },
     })
-    const emails: Array<{ email: string; primary: boolean }> = await emailRes.json()
+    const emailData = await emailRes.json()
+    const emails = Array.isArray(emailData) ? emailData as Array<{ email: string; primary: boolean }> : []
     email = emails.find((e) => e.primary)?.email ?? emails[0]?.email ?? null
   }
 

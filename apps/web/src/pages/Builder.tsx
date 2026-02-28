@@ -5,19 +5,29 @@ import { ChatPanel } from '../components/chat/ChatPanel'
 import { IdentityCard } from '../components/card/IdentityCard'
 import { SkillReviewList } from '../components/publish/SkillReviewList'
 import { PublishButtons } from '../components/publish/PublishButtons'
+import { SkillMarkdownEditor } from '../components/publish/SkillMarkdownEditor'
 import { useConversation } from '../hooks/use-conversation'
 import { useConversationStore } from '../lib/store'
+import { useAuth } from '../lib/auth'
 import { apiFetch } from '../lib/api'
 import { PHASE_STEP } from '@skill-builder/shared/src/types'
 
 export function Builder() {
   const { initConversation, sendMessage, cancelStream } = useConversation()
+  const { user } = useAuth()
   const phase = useConversationStore((s) => s.phase)
   const conversationId = useConversationStore((s) => s.conversationId)
   const rejectSkill = useConversationStore((s) => s.rejectSkill)
+  const setSkillMarkdown = useConversationStore((s) => s.setSkillMarkdown)
+  const skillMarkdown = useConversationStore((s) => s.skillMarkdown)
   const [isPublishing, setIsPublishing] = useState(false)
+  const [isPreviewLoading, setIsPreviewLoading] = useState(false)
   const navigate = useNavigate()
   const helloSentRef = useRef(false)
+  const previewFetchedRef = useRef(false)
+
+  const step = PHASE_STEP[phase]
+  const isReviewPhase = phase === 'review' || phase === 'published'
 
   useEffect(() => {
     let cancelled = false
@@ -38,12 +48,36 @@ export function Builder() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  const fetchPreview = useCallback(async () => {
+    if (!conversationId) return
+    setIsPreviewLoading(true)
+    try {
+      const { markdown } = await apiFetch<{ markdown: string }>(
+        `/conversations/${conversationId}/preview`,
+        { method: 'POST' }
+      )
+      setSkillMarkdown(markdown)
+    } catch (error) {
+      console.error('Preview fetch error:', error)
+    } finally {
+      setIsPreviewLoading(false)
+    }
+  }, [conversationId, setSkillMarkdown])
+
+  useEffect(() => {
+    if (isReviewPhase && conversationId && !previewFetchedRef.current && !skillMarkdown) {
+      previewFetchedRef.current = true
+      fetchPreview()
+    }
+  }, [isReviewPhase, conversationId, skillMarkdown, fetchPreview])
+
   const handleStartFresh = useCallback(async () => {
     try {
       cancelStream()
       const { id } = await apiFetch<{ id: string }>('/conversations/active/reset', {
         method: 'POST',
       })
+      previewFetchedRef.current = false
       useConversationStore.getState().reset()
       useConversationStore.getState().setConversationId(id)
       helloSentRef.current = true
@@ -57,9 +91,13 @@ export function Builder() {
     if (!conversationId || isPublishing) return
     setIsPublishing(true)
     try {
+      const currentMarkdown = useConversationStore.getState().skillMarkdown
       const result = await apiFetch<{ id: string; installCommand: string; repoUrl: string }>(
         `/conversations/${conversationId}/publish`,
-        { method: 'POST' }
+        {
+          method: 'POST',
+          body: JSON.stringify({ skillMarkdown: currentMarkdown }),
+        }
       )
       navigate(`/success/${result.id}`)
     } catch (error) {
@@ -84,9 +122,6 @@ export function Builder() {
     }
   }
 
-  const step = PHASE_STEP[phase]
-  const isReviewPhase = phase === 'review' || phase === 'published'
-
   return (
     <div className="h-screen flex flex-col bg-page">
       <Nav step={step} onStartFresh={handleStartFresh} />
@@ -105,10 +140,15 @@ export function Builder() {
               </div>
               <div className="flex-1 overflow-y-auto px-10 pb-8 space-y-8">
                 <SkillReviewList onRemove={handleRemoveSkill} />
+                <SkillMarkdownEditor
+                  onRegenerate={fetchPreview}
+                  isLoading={isPreviewLoading}
+                />
                 <PublishButtons
                   onPublish={handlePublish}
                   onPublishGitHub={handlePublishGitHub}
                   isPublishing={isPublishing}
+                  hasGithub={user?.hasGithub ?? false}
                 />
               </div>
             </div>
