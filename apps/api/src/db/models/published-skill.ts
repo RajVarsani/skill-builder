@@ -7,6 +7,7 @@ export interface IPublishedSkill extends Document {
   githubRepoUrl: string
   githubRepoOwner: string
   installCommand: string
+  publishMethod?: 'personal' | 'org'
   blockStates: unknown[]
   matchedSkills: unknown[]
   customSkills: unknown[]
@@ -23,6 +24,7 @@ const publishedSkillSchema = new Schema<IPublishedSkill>(
     githubRepoUrl: { type: String, required: true },
     githubRepoOwner: { type: String, required: true },
     installCommand: { type: String, required: true },
+    publishMethod: { type: String, enum: ['personal', 'org'] },
     blockStates: { type: Schema.Types.Mixed, default: [] },
     matchedSkills: { type: Schema.Types.Mixed, default: [] },
     customSkills: { type: Schema.Types.Mixed, default: [] },
