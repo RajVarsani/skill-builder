@@ -60,8 +60,9 @@ export function Landing() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   // Wake up backend on Render free tier (cold start)
+  const apiUrl = import.meta.env.VITE_API_URL || '/api'
   useEffect(() => {
-    fetch('/api/health').catch(() => {})
+    fetch(`${apiUrl}/health`).catch(() => {})
   }, [])
 
   const handleCTA = () => {

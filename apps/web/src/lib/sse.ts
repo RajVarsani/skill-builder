@@ -1,5 +1,8 @@
 type SSEHandler = (event: string, data: string) => void
 
+// Use direct backend URL for SSE to bypass Vercel's rewrite proxy (which buffers responses)
+const SSE_BASE = import.meta.env.VITE_API_URL || '/api'
+
 export function connectSSE(
   conversationId: string,
   message: string,
@@ -10,7 +13,7 @@ export function connectSSE(
   const controller = new AbortController()
   const token = localStorage.getItem('token')
 
-  fetch(`/api/conversations/${conversationId}/messages`, {
+  fetch(`${SSE_BASE}/conversations/${conversationId}/messages`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
