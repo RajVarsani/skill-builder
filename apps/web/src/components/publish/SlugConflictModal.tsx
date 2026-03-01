@@ -33,7 +33,7 @@ export function SlugConflictModal({ open, defaultSlug, onConfirm, onCancel }: Sl
   const [slug, setSlug] = useState(defaultSlug)
   const [checking, setChecking] = useState(false)
   const [available, setAvailable] = useState<boolean | null>(null)
-  const debounceRef = useRef<ReturnType<typeof setTimeout>>()
+  const debounceRef = useRef<ReturnType<typeof setTimeout>>(undefined)
   const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
