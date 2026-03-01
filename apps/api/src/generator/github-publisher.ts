@@ -1,5 +1,4 @@
 import { createAppAuth } from '@octokit/auth-app'
-import { readFileSync } from 'fs'
 
 interface PublishResult {
   repoUrl: string
@@ -15,14 +14,14 @@ interface PublishOptions {
 
 async function getInstallationToken(): Promise<string> {
   const appId = process.env.GITHUB_APP_ID
-  const privateKeyPath = process.env.GITHUB_APP_PRIVATE_KEY_PATH
+  const privateKeyBase64 = process.env.GITHUB_APP_PRIVATE_KEY
   const installationId = process.env.GITHUB_APP_INSTALLATION_ID
 
-  if (!appId || !privateKeyPath || !installationId) {
-    throw new Error('GitHub App env vars not configured: GITHUB_APP_ID, GITHUB_APP_PRIVATE_KEY_PATH, GITHUB_APP_INSTALLATION_ID')
+  if (!appId || !privateKeyBase64 || !installationId) {
+    throw new Error('GitHub App env vars not configured: GITHUB_APP_ID, GITHUB_APP_PRIVATE_KEY, GITHUB_APP_INSTALLATION_ID')
   }
 
-  const privateKey = readFileSync(privateKeyPath, 'utf-8')
+  const privateKey = Buffer.from(privateKeyBase64, 'base64').toString('utf-8')
 
   const auth = createAppAuth({
     appId: Number(appId),
