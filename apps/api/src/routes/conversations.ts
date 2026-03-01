@@ -6,6 +6,7 @@ import { PublishedSkill } from '../db/models/published-skill'
 import { runConversationTurn } from '../agent/conversation-agent'
 import { skillEngine } from '../agent/skill-matching-engine'
 import { BlockStateMachine } from '../agent/block-state-machine'
+import { checkSpendingLimit, recordUsage } from '../billing/usage-tracker'
 import type { AppEnv } from '../types'
 
 const conversations = new Hono<AppEnv>()
@@ -120,12 +121,25 @@ conversations.post('/:id/messages', async (c) => {
   })
   await conversation.save()
 
+  const spendCheck = await checkSpendingLimit()
+  if (!spendCheck.allowed) {
+    return c.json({
+      error: 'Spending limit exceeded',
+      totalSpent: spendCheck.totalSpent,
+      limit: spendCheck.limit,
+    }, 503)
+  }
+
   const messages = conversation.messages.map((m) => ({
     role: m.role as 'user' | 'assistant',
     content: m.content,
   }))
 
   return streamSSE(c, async (stream) => {
+    let totalInputTokens = 0
+    let totalOutputTokens = 0
+    let model = 'claude-haiku-4-5'
+
     try {
       const events = runConversationTurn({
         messages,
@@ -138,6 +152,13 @@ conversations.post('/:id/messages', async (c) => {
       })
 
       for await (const event of events) {
+        if (event.type === 'usage') {
+          totalInputTokens += event.data.inputTokens
+          totalOutputTokens += event.data.outputTokens
+          model = event.data.model
+          continue
+        }
+
         if (event.type === 'block_added') {
           conversation.blockStates.push({
             blockId: event.data.block.blockId,
@@ -198,6 +219,17 @@ conversations.post('/:id/messages', async (c) => {
         await stream.writeSSE({
           event: event.type,
           data: JSON.stringify(event.data),
+        })
+      }
+
+      if (totalInputTokens > 0 || totalOutputTokens > 0) {
+        await recordUsage({
+          conversationId: conversation._id,
+          userId,
+          source: 'conversation',
+          model,
+          inputTokens: totalInputTokens,
+          outputTokens: totalOutputTokens,
         })
       }
     } catch (error) {

@@ -5,6 +5,7 @@ import { PublishedSkill } from '../db/models/published-skill'
 import { User } from '../db/models/user'
 import { generateSkillPackage, generateSkillMarkdown, generateSkillOverrides } from '../generator/skill-generator'
 import { publishToGitHub, listAppInstallations } from '../generator/github-publisher'
+import { checkSpendingLimit, recordUsage, getUsageStats } from '../billing/usage-tracker'
 import type { AppEnv } from '../types'
 
 const skills = new Hono<AppEnv>()
@@ -23,15 +24,32 @@ skills.post('/conversations/:id/preview', authMiddleware, async (c) => {
   const user = await User.findById(userId)
   if (!user) return c.json({ error: 'User not found' }, 404)
 
+  const spendCheck = await checkSpendingLimit()
+  if (!spendCheck.allowed) {
+    return c.json({ error: 'Spending limit exceeded', totalSpent: spendCheck.totalSpent, limit: spendCheck.limit }, 503)
+  }
+
   try {
     console.log(`Preview: generating for ${user.name}, ${conversation.matchedSkills.length} skills, domains: ${conversation.selectedDomains}`)
-    const markdown = await generateSkillMarkdown(
+    const { markdown, usage } = await generateSkillMarkdown(
       user.name,
       conversation.blockStates,
       conversation.matchedSkills,
       conversation.selectedDomains
     )
     console.log(`Preview: generated ${markdown.length} chars`)
+
+    if (usage) {
+      await recordUsage({
+        conversationId: conversation._id,
+        userId,
+        source: 'skill_generation',
+        model: usage.model,
+        inputTokens: usage.inputTokens,
+        outputTokens: usage.outputTokens,
+      })
+    }
+
     conversation.skillMarkdown = markdown
     await conversation.save()
     return c.json({ markdown })
@@ -81,11 +99,17 @@ skills.post('/conversations/:id/publish', authMiddleware, async (c) => {
   const user = await User.findById(userId)
   if (!user) return c.json({ error: 'User not found' }, 404)
 
+  const spendCheck = await checkSpendingLimit()
+  if (!spendCheck.allowed) {
+    return c.json({ error: 'Spending limit exceeded', totalSpent: spendCheck.totalSpent, limit: spendCheck.limit }, 503)
+  }
+
   try {
     const body = await c.req.json<{ skillMarkdown?: string; target?: 'org' | 'personal'; ogImage?: string; customSlug?: string }>().catch(() => ({} as { skillMarkdown?: string; target?: 'org' | 'personal'; ogImage?: string; customSlug?: string }))
     const slug = body.customSlug?.toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '') || user.name.toLowerCase().replace(/\s+/g, '-')
 
     let files: Array<{ path: string; content: string; encoding?: 'base64' }>
+    let generationUsage: { inputTokens: number; outputTokens: number; model: string } | null = null
 
     if (body.skillMarkdown) {
       // User's edited SKILL.md + generate override files for references/matched/
@@ -100,12 +124,25 @@ skills.post('/conversations/:id/publish', authMiddleware, async (c) => {
         ...overrides,
       ]
     } else {
-      files = await generateSkillPackage(
+      const result = await generateSkillPackage(
         user.name,
         conversation.blockStates,
         conversation.matchedSkills,
         conversation.selectedDomains
       )
+      files = result.files
+      generationUsage = result.usage
+    }
+
+    if (generationUsage) {
+      await recordUsage({
+        conversationId: conversation._id,
+        userId,
+        source: 'skill_generation',
+        model: generationUsage.model,
+        inputTokens: generationUsage.inputTokens,
+        outputTokens: generationUsage.outputTokens,
+      })
     }
 
     if (body.ogImage) {
@@ -223,6 +260,11 @@ skills.get('/debug/github-installations', async (c) => {
       keyInfo: { length: pk.length, first10: pk.substring(0, 10), last10: pk.substring(pk.length - 10) },
     }, 500)
   }
+})
+
+skills.get('/usage/stats', async (c) => {
+  const stats = await getUsageStats()
+  return c.json(stats)
 })
 
 export { skills }
