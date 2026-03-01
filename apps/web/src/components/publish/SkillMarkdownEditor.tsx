@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 import { useConversationStore } from '../../lib/store'
+import { apiFetch } from '../../lib/api'
 
 interface SkillMarkdownEditorProps {
   onRegenerate: () => void
@@ -9,8 +10,9 @@ interface SkillMarkdownEditorProps {
 export function SkillMarkdownEditor({ onRegenerate, isLoading }: SkillMarkdownEditorProps) {
   const skillMarkdown = useConversationStore((s) => s.skillMarkdown)
   const setSkillMarkdown = useConversationStore((s) => s.setSkillMarkdown)
-  const [isCollapsed, setIsCollapsed] = useState(false)
+  const conversationId = useConversationStore((s) => s.conversationId)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
+  const debounceRef = useRef<ReturnType<typeof setTimeout>>(null)
 
   const autoResize = useCallback(() => {
     const el = textareaRef.current
@@ -20,8 +22,8 @@ export function SkillMarkdownEditor({ onRegenerate, isLoading }: SkillMarkdownEd
   }, [])
 
   useEffect(() => {
-    if (!isCollapsed && skillMarkdown) autoResize()
-  }, [skillMarkdown, isCollapsed, autoResize])
+    if (skillMarkdown) autoResize()
+  }, [skillMarkdown, autoResize])
 
   if (isLoading) {
     return (
@@ -97,28 +99,30 @@ export function SkillMarkdownEditor({ onRegenerate, isLoading }: SkillMarkdownEd
           >
             Regenerate
           </button>
-          <button
-            onClick={() => setIsCollapsed(!isCollapsed)}
-            className="text-[10px] font-display uppercase tracking-[0.08em] text-muted hover:text-surface transition-colors"
-          >
-            {isCollapsed ? 'Expand' : 'Collapse'}
-          </button>
         </div>
       </div>
 
-      {!isCollapsed && (
-        <textarea
-          ref={textareaRef}
-          value={skillMarkdown}
-          onChange={(e) => {
-            setSkillMarkdown(e.target.value)
-            autoResize()
-          }}
-          spellCheck={false}
-          className="w-full min-h-[200px] p-4 bg-[#1a1a1a] text-[#e0d6cc] font-mono text-[12px] leading-[1.6] border-2 border-muted/30 resize-none focus:outline-none focus:border-accent/50 selection:bg-accent/30 overflow-hidden"
-          style={{ tabSize: 2 }}
-        />
-      )}
+      <textarea
+        ref={textareaRef}
+        value={skillMarkdown}
+        onChange={(e) => {
+          const value = e.target.value
+          setSkillMarkdown(value)
+          autoResize()
+          if (conversationId) {
+            if (debounceRef.current) clearTimeout(debounceRef.current)
+            debounceRef.current = setTimeout(() => {
+              apiFetch(`/conversations/${conversationId}/skill-markdown`, {
+                method: 'PATCH',
+                body: JSON.stringify({ markdown: value }),
+              }).catch(console.error)
+            }, 1000)
+          }
+        }}
+        spellCheck={false}
+        className="w-full min-h-[200px] p-4 bg-[#1a1a1a] text-[#e0d6cc] font-mono text-[12px] leading-[1.6] border-2 border-muted/30 resize-none focus:outline-none focus:border-accent/50 selection:bg-accent/30 overflow-hidden"
+        style={{ tabSize: 2 }}
+      />
 
       <p className="text-[10px] font-body text-muted/60">
         Edit the markdown above to customize your published skill. Changes are saved when you publish.

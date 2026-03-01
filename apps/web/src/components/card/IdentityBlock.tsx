@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import type { IdentityBlock as IBlock } from '@skill-builder/shared/src/types'
+import type { IdentityBlock as IBlock } from '@actingas/shared/src/types'
 
 interface IdentityBlockProps {
   block: IBlock

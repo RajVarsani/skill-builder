@@ -4,7 +4,7 @@ import type {
   IdentityBlock,
   MatchedSkill,
   ConversationMessage,
-} from '@skill-builder/shared/src/types'
+} from '@actingas/shared/src/types'
 
 interface ConversationStore {
   conversationId: string | null
@@ -43,6 +43,8 @@ interface ConversationStore {
     messages: ConversationMessage[]
     blocks: IdentityBlock[]
     matchedSkills: MatchedSkill[]
+    skillMarkdown?: string | null
+    completion?: { percentage: number; blocksDiscovered: number; skillsMatched: number }
   }) => void
 }
 
@@ -114,5 +116,7 @@ export const useConversationStore = create<ConversationStore>((set) => ({
       messages: state.messages,
       blocks: state.blocks,
       matchedSkills: state.matchedSkills,
+      ...(state.skillMarkdown != null ? { skillMarkdown: state.skillMarkdown } : {}),
+      ...(state.completion ? { completion: state.completion } : {}),
     }),
 }))

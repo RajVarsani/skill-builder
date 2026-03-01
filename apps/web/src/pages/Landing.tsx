@@ -25,7 +25,7 @@ const STEPS = [
     num: '04',
     label: 'Publish',
     title: 'Publish & Install',
-    desc: 'Get a SKILL.md file. Anyone can run skills install you. Your persona is now part of every AI workflow.',
+    desc: 'Get a SKILL.md file. Anyone can run npx skills install you. Your persona is now part of every AI workflow.',
   },
 ]
 
@@ -67,7 +67,7 @@ export function Landing() {
       {/* Nav */}
       <nav className="flex items-center justify-between px-5 md:px-[60px] py-4 md:py-5 border-b-[3px] border-surface">
         <span className="font-display text-[14px] md:text-[16px] uppercase tracking-[0.05em] text-surface">
-          Skill Builder
+          actingas
         </span>
 
         {/* Desktop nav */}
@@ -284,7 +284,7 @@ export function Landing() {
       {/* Footer */}
       <footer className="flex flex-col sm:flex-row items-center justify-between gap-3 px-5 md:px-[60px] py-4 md:py-5 border-t-[3px] border-surface">
         <span className="font-body text-[11px] md:text-[12px] uppercase tracking-[0.08em] text-muted">
-          2026 Skill Builder
+          2026 actingas
         </span>
         <div className="flex items-center gap-4 md:gap-6">
           <a href="#" className="font-body text-[11px] md:text-[12px] uppercase tracking-[0.08em] text-muted hover:text-surface transition-colors">

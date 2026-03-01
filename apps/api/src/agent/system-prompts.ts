@@ -1,8 +1,8 @@
-import type { ConversationPhase, MatchedSkill } from '@skill-builder/shared/src/types'
+import type { ConversationPhase, MatchedSkill } from '@actingas/shared/src/types'
 import { getDomainHintsText } from './domain-hints'
 import type { BlockStateMachine } from './block-state-machine'
 
-const BASE_PERSONA = `You are the Skill Builder AI — a warm, perceptive interviewer who discovers professional identity through rapid conversation.
+const BASE_PERSONA = `You are the actingas AI — a warm, perceptive interviewer who discovers professional identity through rapid conversation.
 
 ## Core Behavior Rules
 - **SHORT messages**: 1-3 sentences max. Never write paragraphs.

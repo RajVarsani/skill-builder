@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router'
 import { connectSSE } from '../lib/sse'
 import { useConversationStore } from '../lib/store'
 import { apiFetch } from '../lib/api'
-import type { ConversationPhase } from '@skill-builder/shared/src/types'
+import type { ConversationPhase } from '@actingas/shared/src/types'
 
 export function useConversation() {
   const abortRef = useRef<AbortController | null>(null)
@@ -40,6 +40,8 @@ export function useConversation() {
           content: string
           phase: ConversationPhase
         }>
+        skillMarkdown?: string | null
+        completion?: { percentage: number; blocksDiscovered: number; skillsMatched: number }
       } | null
     }>('/conversations/active')
 
@@ -63,6 +65,8 @@ export function useConversation() {
         })),
         blocks: existing.conversation.blockStates,
         matchedSkills: existing.conversation.matchedSkills,
+        skillMarkdown: existing.conversation.skillMarkdown ?? null,
+        completion: existing.conversation.completion,
       })
       return existing.conversation.id
     }

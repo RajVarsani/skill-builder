@@ -4,7 +4,7 @@ import { Conversation } from '../db/models/conversation'
 import { PublishedSkill } from '../db/models/published-skill'
 import { User } from '../db/models/user'
 import { generateSkillPackage, generateSkillMarkdown, generateSkillOverrides } from '../generator/skill-generator'
-import { publishToGitHub } from '../generator/github-publisher'
+import { publishToGitHub, listAppInstallations } from '../generator/github-publisher'
 import type { AppEnv } from '../types'
 
 const skills = new Hono<AppEnv>()
@@ -32,12 +32,31 @@ skills.post('/conversations/:id/preview', authMiddleware, async (c) => {
       conversation.selectedDomains
     )
     console.log(`Preview: generated ${markdown.length} chars`)
+    conversation.skillMarkdown = markdown
+    await conversation.save()
     return c.json({ markdown })
   } catch (error) {
     console.error('Preview error details:', error instanceof Error ? error.message : error)
     console.error('Preview error stack:', error instanceof Error ? error.stack : 'no stack')
     return c.json({ error: 'Failed to generate preview' }, 500)
   }
+})
+
+skills.patch('/conversations/:id/skill-markdown', authMiddleware, async (c) => {
+  const userId = c.get('userId')
+  const conversationId = c.req.param('id')
+  const { markdown } = await c.req.json<{ markdown: string }>()
+
+  const conversation = await Conversation.findOne({
+    _id: conversationId,
+    userId,
+    status: { $in: ['active', 'completed'] },
+  })
+  if (!conversation) return c.json({ error: 'Conversation not found' }, 404)
+
+  conversation.skillMarkdown = markdown
+  await conversation.save()
+  return c.json({ ok: true })
 })
 
 skills.post('/conversations/:id/publish', authMiddleware, async (c) => {
@@ -119,8 +138,12 @@ skills.post('/conversations/:id/publish', authMiddleware, async (c) => {
       repoUrl: publishResult.repoUrl,
     })
   } catch (error) {
-    console.error('Publish error:', error)
-    return c.json({ error: 'Failed to publish skill' }, 500)
+    const msg = error instanceof Error ? error.message : String(error)
+    console.error(`[publish] Failed for user ${user.name}:`, msg)
+    if (error instanceof Error && error.stack) {
+      console.error('[publish] Stack:', error.stack)
+    }
+    return c.json({ error: `Failed to publish skill: ${msg}` }, 500)
   }
 })
 
@@ -162,6 +185,18 @@ skills.get('/users/:username/skill', async (c) => {
       ? { name: user.name, avatarUrl: user.avatarUrl }
       : null,
   })
+})
+
+skills.get('/debug/github-installations', async (c) => {
+  try {
+    const installations = await listAppInstallations()
+    return c.json({
+      currentInstallationId: process.env.GITHUB_APP_INSTALLATION_ID ?? '(not set)',
+      installations,
+    })
+  } catch (error) {
+    return c.json({ error: error instanceof Error ? error.message : String(error) }, 500)
+  }
 })
 
 export { skills }

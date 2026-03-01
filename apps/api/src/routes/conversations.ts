@@ -5,6 +5,7 @@ import { Conversation } from '../db/models/conversation'
 import { PublishedSkill } from '../db/models/published-skill'
 import { runConversationTurn } from '../agent/conversation-agent'
 import { skillEngine } from '../agent/skill-matching-engine'
+import { BlockStateMachine } from '../agent/block-state-machine'
 import type { AppEnv } from '../types'
 
 const conversations = new Hono<AppEnv>()
@@ -38,6 +39,9 @@ conversations.get('/active', async (c) => {
   // First check for an active conversation
   const active = await Conversation.findOne({ userId, status: 'active' })
   if (active) {
+    const bsm = new BlockStateMachine(active.selectedDomains, active.blockStates)
+    const comp = bsm.getCompletion()
+
     return c.json({
       conversation: {
         id: active._id.toString(),
@@ -51,6 +55,12 @@ conversations.get('/active', async (c) => {
           phase: m.phase,
         })),
         status: active.status,
+        skillMarkdown: active.skillMarkdown ?? null,
+        completion: {
+          percentage: comp.percentage,
+          blocksDiscovered: comp.filled,
+          skillsMatched: active.matchedSkills.length,
+        },
       },
     })
   }

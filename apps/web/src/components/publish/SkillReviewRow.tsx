@@ -1,4 +1,4 @@
-import type { MatchedSkill } from '@skill-builder/shared/src/types'
+import type { MatchedSkill } from '@actingas/shared/src/types'
 
 interface SkillReviewRowProps {
   skill: MatchedSkill

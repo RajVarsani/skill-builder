@@ -1,5 +1,5 @@
-import { PHASE_LABELS, PHASE_STEP } from '@skill-builder/shared/src/types'
-import type { ConversationPhase } from '@skill-builder/shared/src/types'
+import { PHASE_LABELS, PHASE_STEP } from '@actingas/shared/src/types'
+import type { ConversationPhase } from '@actingas/shared/src/types'
 
 interface PhaseIndicatorProps {
   phase: ConversationPhase

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import type { MatchedSkill } from '@skill-builder/shared/src/types'
+import type { MatchedSkill } from '@actingas/shared/src/types'
 
 interface MatchedSkillBlockProps {
   skill: MatchedSkill

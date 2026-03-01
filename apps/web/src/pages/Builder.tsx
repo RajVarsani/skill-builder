@@ -10,7 +10,7 @@ import { useConversation } from '../hooks/use-conversation'
 import { useConversationStore } from '../lib/store'
 import { useAuth } from '../lib/auth'
 import { apiFetch } from '../lib/api'
-import { PHASE_STEP } from '@skill-builder/shared/src/types'
+import { PHASE_STEP } from '@actingas/shared/src/types'
 
 export function Builder() {
   const { initConversation, sendMessage, cancelStream } = useConversation()

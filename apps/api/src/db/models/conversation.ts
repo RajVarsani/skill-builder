@@ -5,7 +5,7 @@ import type {
   BlockSourceType,
   BlockStatus,
   SkillStatus,
-} from '@skill-builder/shared/src/types'
+} from '@actingas/shared/src/types'
 
 export interface IBlockState {
   blockId: string
@@ -41,6 +41,7 @@ export interface IConversation extends Document {
   blockStates: IBlockState[]
   matchedSkills: IMatchedSkill[]
   messages: IMessage[]
+  skillMarkdown: string | null
   status: 'active' | 'completed' | 'abandoned'
   createdAt: Date
   updatedAt: Date
@@ -94,6 +95,7 @@ const conversationSchema = new Schema<IConversation>(
     blockStates: [blockStateSchema],
     matchedSkills: [matchedSkillSchema],
     messages: [messageSchema],
+    skillMarkdown: { type: String, default: null },
     status: {
       type: String,
       enum: ['active', 'completed', 'abandoned'],
