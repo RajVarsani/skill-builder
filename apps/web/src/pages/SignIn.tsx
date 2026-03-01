@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { useAuth } from '../lib/auth'
 import { apiFetch } from '../lib/api'
+import { GlitchLogo } from '../components/GlitchLogo'
 import type { AuthResponse } from '@actingas/shared/src/types'
 
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID
@@ -93,8 +94,8 @@ export function SignIn() {
         </div>
 
         {/* Title */}
-        <h1 className="font-display text-3xl text-center uppercase tracking-[0.05em] text-surface">
-          actingas
+        <h1 className="text-center">
+          <GlitchLogo size="md" />
         </h1>
 
         {/* Red divider */}

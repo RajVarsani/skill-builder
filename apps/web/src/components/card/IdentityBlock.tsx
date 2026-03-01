@@ -11,15 +11,12 @@ export function IdentityBlock({ block, index }: IdentityBlockProps) {
 
   return (
     <motion.span
-      layout
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: isConfirmed ? 1 : 0.8, y: 0 }}
-      exit={{ opacity: 0, y: -8 }}
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: isConfirmed ? 1 : 0.8, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9 }}
       transition={{
-        type: 'spring',
-        stiffness: 300,
-        damping: 24,
-        delay: index * 0.08,
+        duration: 0.2,
+        delay: index * 0.05,
       }}
       className={`inline-flex px-3.5 py-1.5 text-[10px] font-display uppercase transition-all ${
         isConfirmed

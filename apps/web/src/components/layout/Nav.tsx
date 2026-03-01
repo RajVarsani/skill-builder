@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { useAuth } from '../../lib/auth'
 import { useNavigate } from 'react-router'
+import { GlitchLogo } from '../GlitchLogo'
 
 interface NavProps {
   step?: number
@@ -30,11 +31,8 @@ export function Nav({ step, onStartFresh }: NavProps) {
 
   return (
     <nav className="flex items-center justify-between px-4 md:px-[60px] py-4 md:py-5 border-b-[3px] border-surface">
-      <button
-        onClick={() => navigate('/')}
-        className="font-display text-[14px] md:text-[16px] uppercase tracking-[0.05em] text-surface hover:text-accent transition-colors"
-      >
-        actingas
+      <button onClick={() => navigate('/')}>
+        <GlitchLogo size="sm" />
       </button>
 
       <div className="flex items-center gap-2 md:gap-4">

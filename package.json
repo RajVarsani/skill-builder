@@ -11,5 +11,8 @@
     "typecheck": "bun run --filter '*' typecheck",
     "lint": "bun run --filter '*' lint",
     "scrape-skills": "bun run scripts/scrape-skills.mjs"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2"
   }
 }

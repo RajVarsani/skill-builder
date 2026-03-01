@@ -1,4 +1,5 @@
 import Markdown from 'react-markdown'
+import { GlitchLogo } from '../GlitchLogo'
 
 interface MessageBubbleProps {
   role: 'user' | 'assistant'
@@ -19,8 +20,8 @@ export function MessageBubble({ role, content }: MessageBubbleProps) {
   return (
     <div className="flex justify-start">
       <div className="max-w-[80%]">
-        <span className="text-[9px] font-display uppercase tracking-[0.1em] text-muted mb-1 block">
-          actingas
+        <span className="mb-1 block">
+          <GlitchLogo size="xs" plain />
         </span>
         <div className="bg-cream border-2 border-surface px-[18px] py-[14px]">
           <div className="text-[14px] font-body leading-[21px] text-surface-secondary prose-msg">
