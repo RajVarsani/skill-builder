@@ -6,7 +6,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://api-production-ef5e.up.railway.app/:path*"
+      "destination": "https://api.actingas.me/:path*"
     },
     {
       "source": "/((?!api/).*)",
