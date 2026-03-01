@@ -1,8 +1,7 @@
 {
   "name": "actingas",
-  "private": true,
   "packageManager": "bun@1.2.14",
-  "workspaces": ["apps/*", "packages/*"],
+  "private": true,
   "scripts": {
     "dev": "bun run --filter '*' dev",
     "dev:web": "bun run --filter web dev",
@@ -12,7 +11,5 @@
     "lint": "bun run --filter '*' lint",
     "scrape-skills": "bun run scripts/scrape-skills.mjs"
   },
-  "devDependencies": {
-    "@resvg/resvg-js": "^2.6.2"
-  }
+  "workspaces": ["apps/*", "packages/*"]
 }
