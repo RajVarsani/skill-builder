@@ -26,7 +26,7 @@ export function ShareButtons({ skillUrl, skillName }: ShareButtonsProps) {
         Share Your Skill
       </span>
 
-      <div className="flex gap-2">
+      <div className="flex flex-wrap gap-2">
         <button
           onClick={handleShareX}
           className="flex items-center justify-center py-3 px-6 border-2 border-surface font-display text-[10px] uppercase tracking-[0.04em] text-surface hover:bg-surface/5 transition-colors"

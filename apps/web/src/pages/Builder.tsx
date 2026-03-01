@@ -127,27 +127,27 @@ export function Builder() {
   return (
     <div className="h-screen flex flex-col bg-page">
       <Nav step={step} onStartFresh={handleStartFresh} />
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex flex-col md:flex-row overflow-y-auto md:overflow-hidden">
         {/* Left side — chat or review */}
-        <div className="w-[55%] border-r border-muted/20 flex flex-col overflow-y-auto">
+        <div className="w-full md:w-[55%] md:border-r border-muted/20 flex flex-col shrink-0 h-[65vh] md:h-auto md:overflow-y-auto">
           {isReviewPhase ? (
             <div className="flex-1 flex flex-col min-h-0">
-              <div className="px-10 pt-10 pb-4">
-                <h2 className="font-display text-[24px] uppercase tracking-[0.02em] text-surface">
+              <div className="px-5 md:px-10 pt-6 md:pt-10 pb-4">
+                <h2 className="font-display text-[20px] md:text-[24px] uppercase tracking-[0.02em] text-surface">
                   Review Your Skills
                 </h2>
                 <p className="font-body text-[13px] text-muted mt-2">
                   Confirm or remove matched skills before publishing your identity.
                 </p>
               </div>
-              <div className="flex-1 overflow-y-auto px-10 pb-6 space-y-8">
+              <div className="flex-1 overflow-y-auto px-5 md:px-10 pb-6 space-y-8">
                 <SkillReviewList onRemove={handleRemoveSkill} />
                 <SkillMarkdownEditor
                   onRegenerate={fetchPreview}
                   isLoading={isPreviewLoading}
                 />
               </div>
-              <div className="shrink-0 px-10 py-4 border-t border-muted/20 bg-page">
+              <div className="shrink-0 px-5 md:px-10 py-4 border-t border-muted/20 bg-page">
                 <PublishButtons
                   onPublish={() => handlePublish('org')}
                   onPublishGitHub={handlePublishGitHub}
@@ -164,7 +164,7 @@ export function Builder() {
         </div>
 
         {/* Right side — card */}
-        <div className="w-[45%] flex items-center justify-center p-8 overflow-y-auto">
+        <div className="w-full md:w-[45%] flex items-center justify-center p-5 md:p-8 overflow-y-auto">
           <div className="w-full max-w-sm">
             <IdentityCard />
           </div>

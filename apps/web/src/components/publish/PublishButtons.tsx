@@ -42,11 +42,11 @@ export function PublishButtons({ onPublish, onPublishGitHub, isPublishing, isGen
         Publish Your Skill
       </span>
 
-      <div className="flex gap-2">
+      <div className="flex flex-col sm:flex-row gap-2">
         <button
           onClick={onPublish}
           disabled={isDisabled}
-          className="flex-1 flex items-center justify-center gap-2 py-3.5 px-7 bg-accent text-cream font-display text-[11px] uppercase tracking-[0.04em] disabled:opacity-40 disabled:cursor-not-allowed hover:bg-accent/90 transition-colors"
+          className="flex-1 flex items-center justify-center gap-2 py-3.5 px-5 md:px-7 bg-accent text-cream font-display text-[11px] uppercase tracking-[0.04em] disabled:opacity-40 disabled:cursor-not-allowed hover:bg-accent/90 transition-colors"
         >
           {isPublishingOrg ? (
             <>
@@ -62,7 +62,7 @@ export function PublishButtons({ onPublish, onPublishGitHub, isPublishing, isGen
         <button
           onClick={handleGitHubClick}
           disabled={isDisabled}
-          className="flex-1 flex items-center justify-center gap-2 py-3.5 px-7 border-2 border-surface text-surface font-display text-[11px] uppercase tracking-[0.04em] disabled:opacity-40 disabled:cursor-not-allowed hover:bg-surface/5 transition-colors"
+          className="flex-1 flex items-center justify-center gap-2 py-3.5 px-5 md:px-7 border-2 border-surface text-surface font-display text-[11px] uppercase tracking-[0.04em] disabled:opacity-40 disabled:cursor-not-allowed hover:bg-surface/5 transition-colors"
         >
           {isPublishingPersonal ? (
             <>

@@ -89,10 +89,10 @@ export function Success() {
       <Confetti />
       <Nav step={4} />
 
-      <div className="flex-1 flex items-center justify-center gap-20 px-16 overflow-hidden">
+      <div className="flex-1 flex flex-col md:flex-row items-center justify-center gap-10 md:gap-20 px-5 md:px-16 py-8 md:py-0 overflow-y-auto md:overflow-hidden">
         {/* Left — content */}
-        <div className="w-[440px] space-y-8">
-          <h1 className="font-display text-[32px] leading-[42px] tracking-[0.02em] text-surface uppercase">
+        <div className="w-full max-w-[440px] space-y-8">
+          <h1 className="font-display text-[24px] md:text-[32px] leading-[32px] md:leading-[42px] tracking-[0.02em] text-surface uppercase">
             You're Installable
           </h1>
 
@@ -108,7 +108,7 @@ export function Success() {
         </div>
 
         {/* Right — card */}
-        <div className="w-[380px] shrink-0">
+        <div className="w-full max-w-[380px] shrink-0">
           <IdentityCard />
         </div>
       </div>
