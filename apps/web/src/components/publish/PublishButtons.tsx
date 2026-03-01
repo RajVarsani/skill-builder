@@ -4,6 +4,8 @@ interface PublishButtonsProps {
   onPublish: () => void
   onPublishGitHub: () => void
   isPublishing: boolean
+  isGenerating: boolean
+  publishTarget?: 'org' | 'personal'
   hasGithub: boolean
 }
 
@@ -21,7 +23,11 @@ function PixelDots({ className = '' }: { className?: string }) {
   )
 }
 
-export function PublishButtons({ onPublish, onPublishGitHub, isPublishing, hasGithub }: PublishButtonsProps) {
+export function PublishButtons({ onPublish, onPublishGitHub, isPublishing, isGenerating, publishTarget, hasGithub }: PublishButtonsProps) {
+  const isDisabled = isPublishing || isGenerating
+  const isPublishingOrg = isPublishing && publishTarget === 'org'
+  const isPublishingPersonal = isPublishing && publishTarget === 'personal'
+
   const handleGitHubClick = () => {
     if (!hasGithub) {
       window.location.href = getGitHubConnectUrl()
@@ -39,10 +45,10 @@ export function PublishButtons({ onPublish, onPublishGitHub, isPublishing, hasGi
       <div className="flex gap-2">
         <button
           onClick={onPublish}
-          disabled={isPublishing}
-          className="flex-1 flex items-center justify-center gap-2 py-3.5 px-7 bg-accent text-cream font-display text-[11px] uppercase tracking-[0.04em] disabled:opacity-80 hover:bg-accent/90 transition-colors"
+          disabled={isDisabled}
+          className="flex-1 flex items-center justify-center gap-2 py-3.5 px-7 bg-accent text-cream font-display text-[11px] uppercase tracking-[0.04em] disabled:opacity-40 disabled:cursor-not-allowed hover:bg-accent/90 transition-colors"
         >
-          {isPublishing ? (
+          {isPublishingOrg ? (
             <>
               <PixelDots />
               <span>Publishing</span>
@@ -55,10 +61,10 @@ export function PublishButtons({ onPublish, onPublishGitHub, isPublishing, hasGi
 
         <button
           onClick={handleGitHubClick}
-          disabled={isPublishing}
-          className="flex-1 flex items-center justify-center gap-2 py-3.5 px-7 border-2 border-surface text-surface font-display text-[11px] uppercase tracking-[0.04em] disabled:opacity-80 hover:bg-surface/5 transition-colors"
+          disabled={isDisabled}
+          className="flex-1 flex items-center justify-center gap-2 py-3.5 px-7 border-2 border-surface text-surface font-display text-[11px] uppercase tracking-[0.04em] disabled:opacity-40 disabled:cursor-not-allowed hover:bg-surface/5 transition-colors"
         >
-          {isPublishing ? (
+          {isPublishingPersonal ? (
             <>
               <PixelDots />
               <span>Publishing</span>

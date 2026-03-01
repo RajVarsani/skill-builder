@@ -21,6 +21,7 @@ export function Builder() {
   const setSkillMarkdown = useConversationStore((s) => s.setSkillMarkdown)
   const skillMarkdown = useConversationStore((s) => s.skillMarkdown)
   const [isPublishing, setIsPublishing] = useState(false)
+  const [publishTarget, setPublishTarget] = useState<'org' | 'personal'>('org')
   const [isPreviewLoading, setIsPreviewLoading] = useState(false)
   const navigate = useNavigate()
   const helloSentRef = useRef(false)
@@ -89,6 +90,7 @@ export function Builder() {
 
   const handlePublish = async (target: 'org' | 'personal' = 'org') => {
     if (!conversationId || isPublishing) return
+    setPublishTarget(target)
     setIsPublishing(true)
     try {
       const currentMarkdown = useConversationStore.getState().skillMarkdown
@@ -150,6 +152,8 @@ export function Builder() {
                   onPublish={() => handlePublish('org')}
                   onPublishGitHub={handlePublishGitHub}
                   isPublishing={isPublishing}
+                  isGenerating={isPreviewLoading || !skillMarkdown}
+                  publishTarget={publishTarget}
                   hasGithub={user?.hasGithub ?? false}
                 />
               </div>
