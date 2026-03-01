@@ -10,12 +10,18 @@ interface GeneratedSkill {
   content: string
 }
 
+export interface SkillGenerationUsage {
+  inputTokens: number
+  outputTokens: number
+  model: string
+}
+
 export async function generateSkillMarkdown(
   userName: string,
   blockStates: IBlockState[],
   matchedSkills: IMatchedSkill[],
   selectedDomains: string[]
-): Promise<string> {
+): Promise<{ markdown: string; usage: SkillGenerationUsage | null }> {
   const activeSkills = matchedSkills.filter((s) => s.status !== 'rejected')
   const identityBlocks = blockStates.filter((b) => b.status === 'confirmed' || b.confidence !== 'low')
   const slug = userName.toLowerCase().replace(/\s+/g, '-')
@@ -30,6 +36,12 @@ export async function generateSkillMarkdown(
       ],
     })
 
+    const usage: SkillGenerationUsage = {
+      inputTokens: response.usage.input_tokens,
+      outputTokens: response.usage.output_tokens,
+      model: 'claude-sonnet-4-6',
+    }
+
     const text = response.content[0]
     if (text.type === 'text') {
       const content = text.text.trim()
@@ -38,14 +50,14 @@ export async function generateSkillMarkdown(
         const lines = content.split('\n')
         const start = lines[0].startsWith('```') ? 1 : 0
         const end = lines[lines.length - 1] === '```' ? lines.length - 1 : lines.length
-        return lines.slice(start, end).join('\n').trim()
+        return { markdown: lines.slice(start, end).join('\n').trim(), usage }
       }
-      return content
+      return { markdown: content, usage }
     }
     throw new Error('Unexpected response type')
   } catch (error) {
     console.error('SKILL.md generation failed:', error instanceof Error ? error.message : error)
-    return buildFallback(userName, slug, identityBlocks, activeSkills, selectedDomains)
+    return { markdown: buildFallback(userName, slug, identityBlocks, activeSkills, selectedDomains), usage: null }
   }
 }
 
@@ -67,18 +79,21 @@ export async function generateSkillPackage(
   blockStates: IBlockState[],
   matchedSkills: IMatchedSkill[],
   selectedDomains: string[]
-): Promise<GeneratedSkill[]> {
+): Promise<{ files: GeneratedSkill[]; usage: SkillGenerationUsage | null }> {
   const slug = userName.toLowerCase().replace(/\s+/g, '-')
 
-  const [skillMd, overrides] = await Promise.all([
+  const [skillResult, overrides] = await Promise.all([
     generateSkillMarkdown(userName, blockStates, matchedSkills, selectedDomains),
     generateSkillOverrides(userName, blockStates, matchedSkills, selectedDomains),
   ])
 
-  return [
-    { path: `acting-as-${slug}/SKILL.md`, content: skillMd },
-    ...overrides,
-  ]
+  return {
+    files: [
+      { path: `acting-as-${slug}/SKILL.md`, content: skillResult.markdown },
+      ...overrides,
+    ],
+    usage: skillResult.usage,
+  }
 }
 
 function buildFallback(

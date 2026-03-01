@@ -20,6 +20,7 @@ export type ConversationEvent =
   | { type: 'quick_replies'; data: { chips: string[]; multiSelect: boolean } }
   | { type: 'phase_change'; data: { phase: ConversationPhase } }
   | { type: 'completion_update'; data: { percentage: number; blocksDiscovered: number; skillsMatched: number } }
+  | { type: 'usage'; data: { inputTokens: number; outputTokens: number; model: string } }
   | { type: 'done'; data: { assistantMessage: string } }
 
 interface ToolInput {
@@ -159,6 +160,15 @@ export async function* runConversationTurn(
     fullAssistantText += turnText
 
     const finalMessage = await stream.finalMessage()
+
+    yield {
+      type: 'usage' as const,
+      data: {
+        inputTokens: finalMessage.usage.input_tokens,
+        outputTokens: finalMessage.usage.output_tokens,
+        model: 'claude-sonnet-4-6',
+      },
+    }
 
     if (
       finalMessage.stop_reason === 'tool_use' &&
