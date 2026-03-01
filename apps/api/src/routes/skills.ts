@@ -30,9 +30,11 @@ skills.post('/conversations/:id/preview', authMiddleware, async (c) => {
   }
 
   try {
+    const previewSlug = user.name.toLowerCase().replace(/\s+/g, '-')
     console.log(`Preview: generating for ${user.name}, ${conversation.matchedSkills.length} skills, domains: ${conversation.selectedDomains}`)
     const { markdown, usage } = await generateSkillMarkdown(
       user.name,
+      previewSlug,
       conversation.blockStates,
       conversation.matchedSkills,
       conversation.selectedDomains
@@ -113,12 +115,7 @@ skills.post('/conversations/:id/publish', authMiddleware, async (c) => {
 
     if (body.skillMarkdown) {
       // User's edited SKILL.md + generate override files for references/matched/
-      const overrides = await generateSkillOverrides(
-        user.name,
-        conversation.blockStates,
-        conversation.matchedSkills,
-        conversation.selectedDomains
-      )
+      const overrides = await generateSkillOverrides(slug, conversation.matchedSkills)
       files = [
         { path: `acting-as-${slug}/SKILL.md`, content: body.skillMarkdown },
         ...overrides,
@@ -126,6 +123,7 @@ skills.post('/conversations/:id/publish', authMiddleware, async (c) => {
     } else {
       const result = await generateSkillPackage(
         user.name,
+        slug,
         conversation.blockStates,
         conversation.matchedSkills,
         conversation.selectedDomains

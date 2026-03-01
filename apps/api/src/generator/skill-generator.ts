@@ -18,13 +18,13 @@ export interface SkillGenerationUsage {
 
 export async function generateSkillMarkdown(
   userName: string,
+  slug: string,
   blockStates: IBlockState[],
   matchedSkills: IMatchedSkill[],
   selectedDomains: string[]
 ): Promise<{ markdown: string; usage: SkillGenerationUsage | null }> {
   const activeSkills = matchedSkills.filter((s) => s.status !== 'rejected')
   const identityBlocks = blockStates.filter((b) => b.status === 'confirmed' || b.confidence !== 'low')
-  const slug = userName.toLowerCase().replace(/\s+/g, '-')
 
   try {
     const response = await anthropic.messages.create({
@@ -62,29 +62,25 @@ export async function generateSkillMarkdown(
 }
 
 export async function generateSkillOverrides(
-  userName: string,
-  _blockStates: IBlockState[],
-  matchedSkills: IMatchedSkill[],
-  _selectedDomains: string[]
+  slug: string,
+  matchedSkills: IMatchedSkill[]
 ): Promise<GeneratedSkill[]> {
   const activeSkills = matchedSkills.filter((s) => s.status !== 'rejected')
   if (activeSkills.length === 0) return []
 
-  const slug = userName.toLowerCase().replace(/\s+/g, '-')
   return fetchSkillFiles(slug, activeSkills)
 }
 
 export async function generateSkillPackage(
   userName: string,
+  slug: string,
   blockStates: IBlockState[],
   matchedSkills: IMatchedSkill[],
   selectedDomains: string[]
 ): Promise<{ files: GeneratedSkill[]; usage: SkillGenerationUsage | null }> {
-  const slug = userName.toLowerCase().replace(/\s+/g, '-')
-
   const [skillResult, overrides] = await Promise.all([
-    generateSkillMarkdown(userName, blockStates, matchedSkills, selectedDomains),
-    generateSkillOverrides(userName, blockStates, matchedSkills, selectedDomains),
+    generateSkillMarkdown(userName, slug, blockStates, matchedSkills, selectedDomains),
+    generateSkillOverrides(slug, matchedSkills),
   ])
 
   return {
