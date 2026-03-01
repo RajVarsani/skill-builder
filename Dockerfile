@@ -2,13 +2,13 @@ FROM oven/bun:1.2 AS base
 WORKDIR /app
 
 # Copy package files
-COPY package.json bun.lock ./
+COPY package.json ./
 COPY apps/api/package.json apps/api/
 COPY apps/web/package.json apps/web/
 COPY packages/shared/package.json packages/shared/
 
 # Install dependencies
-RUN bun install --frozen-lockfile
+RUN bun install
 
 # Copy source
 COPY packages/shared packages/shared
