@@ -8,6 +8,7 @@
     "dev:api": "bun run --filter api dev",
     "build": "bun run --filter '*' build",
     "typecheck": "bun run --filter '*' typecheck",
-    "lint": "bun run --filter '*' lint"
+    "lint": "bun run --filter '*' lint",
+    "scrape-skills": "bun run scripts/scrape-skills.mjs"
   }
 }
