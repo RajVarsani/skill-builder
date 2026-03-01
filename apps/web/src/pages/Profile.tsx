@@ -99,7 +99,7 @@ export function Profile() {
       {/* Nav */}
       <nav className="flex items-center justify-between px-4 md:px-[60px] py-4 md:py-5 border-b-[3px] border-surface">
         <a href="/" className="font-display text-[14px] md:text-[16px] uppercase tracking-[0.05em] text-surface">
-          actingas
+          acting as
         </a>
         <a
           href="/sign-in"

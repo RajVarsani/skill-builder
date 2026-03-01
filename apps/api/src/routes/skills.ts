@@ -60,11 +60,10 @@ skills.patch('/conversations/:id/skill-markdown', authMiddleware, async (c) => {
 })
 
 skills.get('/skills/check-slug/:slug', authMiddleware, async (c) => {
-  const userId = c.get('userId')
   const slug = c.req.param('slug').toLowerCase()
   const skillName = `acting-as-${slug}`
   const existing = await PublishedSkill.findOne({ skillName })
-  const available = !existing || existing.userId.toString() === userId
+  const available = !existing
   return c.json({ available, skillName })
 })
 
