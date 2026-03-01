@@ -71,7 +71,7 @@ export async function* runConversationTurn(
 
   while (continueLoop) {
     const stream = anthropic.messages.stream({
-      model: 'claude-sonnet-4-6',
+      model: 'claude-haiku-4-5',
       max_tokens: 2048,
       system: systemPrompt,
       messages: apiMessages as Anthropic.MessageParam[],
@@ -166,7 +166,7 @@ export async function* runConversationTurn(
       data: {
         inputTokens: finalMessage.usage.input_tokens,
         outputTokens: finalMessage.usage.output_tokens,
-        model: 'claude-sonnet-4-6',
+        model: 'claude-haiku-4-5',
       },
     }
 

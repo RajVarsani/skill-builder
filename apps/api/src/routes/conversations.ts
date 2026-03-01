@@ -138,7 +138,7 @@ conversations.post('/:id/messages', async (c) => {
   return streamSSE(c, async (stream) => {
     let totalInputTokens = 0
     let totalOutputTokens = 0
-    let model = 'claude-sonnet-4-6'
+    let model = 'claude-haiku-4-5'
 
     try {
       const events = runConversationTurn({

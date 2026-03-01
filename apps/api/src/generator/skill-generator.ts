@@ -28,7 +28,7 @@ export async function generateSkillMarkdown(
 
   try {
     const response = await anthropic.messages.create({
-      model: 'claude-sonnet-4-6',
+      model: 'claude-haiku-4-5',
       max_tokens: 2048,
       system: SKILL_SYSTEM_PROMPT,
       messages: [
@@ -39,7 +39,7 @@ export async function generateSkillMarkdown(
     const usage: SkillGenerationUsage = {
       inputTokens: response.usage.input_tokens,
       outputTokens: response.usage.output_tokens,
-      model: 'claude-sonnet-4-6',
+      model: 'claude-haiku-4-5',
     }
 
     const text = response.content[0]
