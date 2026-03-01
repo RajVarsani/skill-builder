@@ -1,5 +1,5 @@
 import { type RefObject, useState } from 'react'
-import { toPng } from 'html-to-image'
+import { domToPng } from 'modern-screenshot'
 
 interface ShareButtonsProps {
   skillUrl: string
@@ -30,8 +30,8 @@ export function ShareButtons({ skillUrl, skillName, cardRef }: ShareButtonsProps
     if (!cardRef?.current || downloading) return
     setDownloading(true)
     try {
-      const dataUrl = await toPng(cardRef.current, {
-        pixelRatio: 2,
+      const dataUrl = await domToPng(cardRef.current, {
+        scale: 2,
         backgroundColor: '#1a1008',
       })
       const link = document.createElement('a')

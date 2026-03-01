@@ -1,6 +1,7 @@
 {
   "name": "actingas",
   "private": true,
+  "packageManager": "bun@1.2.14",
   "workspaces": ["apps/*", "packages/*"],
   "scripts": {
     "dev": "bun run --filter '*' dev",

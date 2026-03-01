@@ -1,0 +1,16 @@
+{
+  "installCommand": "bun install",
+  "buildCommand": "bun run --filter web build",
+  "outputDirectory": "apps/web/dist",
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://api-production-ef5e.up.railway.app/:path*"
+    },
+    {
+      "source": "/((?!api/).*)",
+      "destination": "/index.html"
+    }
+  ]
+}

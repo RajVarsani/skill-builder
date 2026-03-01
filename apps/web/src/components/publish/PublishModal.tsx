@@ -101,7 +101,7 @@ export function PublishModal({ open, ogProps, publishDone, onComplete }: Publish
               {!isDone && (
                 <motion.span
                   animate={{ opacity: [1, 0] }}
-                  transition={{ duration: 0.8, repeat: Infinity, ease: 'steps(1)' }}
+                  transition={{ duration: 0.8, repeat: Infinity, ease: () => 0 }}
                   className="font-display text-[13px] text-accent"
                 >
                   _
