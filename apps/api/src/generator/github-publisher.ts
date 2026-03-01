@@ -19,14 +19,19 @@ interface PublishOptions {
   githubAccessToken?: string
 }
 
+function decodePrivateKey(raw: string): string {
+  if (raw.startsWith('-----BEGIN')) return raw
+  return Buffer.from(raw, 'base64').toString('utf-8')
+}
+
 async function getInstallationToken(): Promise<string> {
   const appId = process.env.GITHUB_APP_ID
-  const privateKeyBase64 = process.env.GITHUB_APP_PRIVATE_KEY
+  const privateKeyRaw = process.env.GITHUB_APP_PRIVATE_KEY
   const installationId = process.env.GITHUB_APP_INSTALLATION_ID
 
   const missing = [
     !appId && 'GITHUB_APP_ID',
-    !privateKeyBase64 && 'GITHUB_APP_PRIVATE_KEY',
+    !privateKeyRaw && 'GITHUB_APP_PRIVATE_KEY',
     !installationId && 'GITHUB_APP_INSTALLATION_ID',
   ].filter(Boolean)
 
@@ -36,7 +41,7 @@ async function getInstallationToken(): Promise<string> {
 
   console.log(`[github] Requesting installation token — appId=${appId}, installationId=${installationId}`)
 
-  const privateKey = Buffer.from(privateKeyBase64!, 'base64').toString('utf-8')
+  const privateKey = decodePrivateKey(privateKeyRaw!)
 
   try {
     const auth = createAppAuth({
@@ -64,13 +69,14 @@ async function getInstallationToken(): Promise<string> {
 
 export async function listAppInstallations(): Promise<unknown> {
   const appId = process.env.GITHUB_APP_ID
-  const privateKeyBase64 = process.env.GITHUB_APP_PRIVATE_KEY
+  const privateKeyRaw = process.env.GITHUB_APP_PRIVATE_KEY
 
-  if (!appId || !privateKeyBase64) {
+  if (!appId || !privateKeyRaw) {
     return { error: 'Missing GITHUB_APP_ID or GITHUB_APP_PRIVATE_KEY' }
   }
 
-  const privateKey = Buffer.from(privateKeyBase64, 'base64').toString('utf-8')
+  const privateKey = decodePrivateKey(privateKeyRaw)
+  console.log(`[github-debug] key len=${privateKeyRaw.length}, decoded len=${privateKey.length}, starts=${privateKey.substring(0, 27)}`)
 
   const auth = createAppAuth({ appId: Number(appId), privateKey } as StrategyOptions)
   const { token } = await auth({ type: 'app' })

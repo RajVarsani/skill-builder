@@ -210,14 +210,19 @@ skills.get('/users/:username/skill', async (c) => {
 })
 
 skills.get('/debug/github-installations', async (c) => {
+  const pk = process.env.GITHUB_APP_PRIVATE_KEY ?? ''
   try {
     const installations = await listAppInstallations()
     return c.json({
       currentInstallationId: process.env.GITHUB_APP_INSTALLATION_ID ?? '(not set)',
+      keyInfo: { length: pk.length, first10: pk.substring(0, 10), last10: pk.substring(pk.length - 10) },
       installations,
     })
   } catch (error) {
-    return c.json({ error: error instanceof Error ? error.message : String(error) }, 500)
+    return c.json({
+      error: error instanceof Error ? error.message : String(error),
+      keyInfo: { length: pk.length, first10: pk.substring(0, 10), last10: pk.substring(pk.length - 10) },
+    }, 500)
   }
 })
 
