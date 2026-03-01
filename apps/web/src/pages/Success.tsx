@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router'
 import { Nav } from '../components/layout/Nav'
 import { IdentityCard } from '../components/card/IdentityCard'
@@ -38,6 +38,7 @@ export function Success() {
   const { id } = useParams<{ id: string }>()
   const [skillData, setSkillData] = useState<PublishedSkillData | null>(null)
   const [loading, setLoading] = useState(true)
+  const cardRef = useRef<HTMLDivElement>(null)
   const setBlocks = useConversationStore((s) => s.setBlocks)
   const setMatchedSkills = useConversationStore((s) => s.setMatchedSkills)
   const updateCompletion = useConversationStore((s) => s.updateCompletion)
@@ -104,11 +105,11 @@ export function Success() {
           </p>
 
           <InstallCommand command={skill.installCommand} />
-          <ShareButtons skillUrl={profileUrl} skillName={skill.skillName} />
+          <ShareButtons skillUrl={profileUrl} skillName={skill.skillName} cardRef={cardRef} />
         </div>
 
         {/* Right — card */}
-        <div className="w-full max-w-[380px] shrink-0">
+        <div ref={cardRef} className="w-full max-w-[380px] shrink-0">
           <IdentityCard />
         </div>
       </div>
