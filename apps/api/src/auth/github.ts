@@ -25,6 +25,11 @@ async function getGitHubUserInfo(code: string) {
   const tokenData = await tokenRes.json()
   const accessToken = tokenData.access_token as string
 
+  if (!accessToken) {
+    console.error('GitHub token exchange failed:', tokenData)
+    throw new Error('Failed to get GitHub access token')
+  }
+
   const userRes = await fetch('https://api.github.com/user', {
     headers: { Authorization: `Bearer ${accessToken}` },
   })

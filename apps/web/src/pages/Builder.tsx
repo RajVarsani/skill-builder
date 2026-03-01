@@ -87,7 +87,7 @@ export function Builder() {
     }
   }, [sendMessage, cancelStream])
 
-  const handlePublish = async () => {
+  const handlePublish = async (target: 'org' | 'personal' = 'org') => {
     if (!conversationId || isPublishing) return
     setIsPublishing(true)
     try {
@@ -96,7 +96,7 @@ export function Builder() {
         `/conversations/${conversationId}/publish`,
         {
           method: 'POST',
-          body: JSON.stringify({ skillMarkdown: currentMarkdown }),
+          body: JSON.stringify({ skillMarkdown: currentMarkdown, target }),
         }
       )
       navigate(`/success/${result.id}`)
@@ -107,7 +107,7 @@ export function Builder() {
   }
 
   const handlePublishGitHub = async () => {
-    handlePublish()
+    handlePublish('personal')
   }
 
   const handleRemoveSkill = async (skillId: string) => {
@@ -147,7 +147,7 @@ export function Builder() {
               </div>
               <div className="shrink-0 px-10 py-4 border-t border-muted/20 bg-page">
                 <PublishButtons
-                  onPublish={handlePublish}
+                  onPublish={() => handlePublish('org')}
                   onPublishGitHub={handlePublishGitHub}
                   isPublishing={isPublishing}
                   hasGithub={user?.hasGithub ?? false}

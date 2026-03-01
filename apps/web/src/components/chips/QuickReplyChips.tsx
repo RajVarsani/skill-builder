@@ -38,7 +38,11 @@ export function QuickReplyChips({ onSelect }: QuickReplyChipsProps) {
   }
 
   return (
-    <div className="flex flex-wrap gap-2 px-4 py-3">
+    <div className="px-4 py-3 space-y-2">
+      <span className="text-[10px] font-display uppercase tracking-[0.08em] text-muted">
+        {multiSelect ? 'Select multiple' : 'Select one'}
+      </span>
+      <div className="flex flex-wrap gap-2">
       {chips.map((chip) => {
         const isOther = chip.toLowerCase().includes('other')
         const cleanText = stripEmojiFromText(chip)
@@ -74,6 +78,7 @@ export function QuickReplyChips({ onSelect }: QuickReplyChipsProps) {
           Continue
         </button>
       )}
+      </div>
     </div>
   )
 }

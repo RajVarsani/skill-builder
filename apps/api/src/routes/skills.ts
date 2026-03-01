@@ -55,7 +55,7 @@ skills.post('/conversations/:id/publish', authMiddleware, async (c) => {
   if (!user) return c.json({ error: 'User not found' }, 404)
 
   try {
-    const body = await c.req.json<{ skillMarkdown?: string }>().catch(() => ({} as { skillMarkdown?: string }))
+    const body = await c.req.json<{ skillMarkdown?: string; target?: 'org' | 'personal' }>().catch(() => ({} as { skillMarkdown?: string; target?: 'org' | 'personal' }))
     const slug = user.name.toLowerCase().replace(/\s+/g, '-')
 
     let files: { path: string; content: string }[]
@@ -83,10 +83,11 @@ skills.post('/conversations/:id/publish', authMiddleware, async (c) => {
 
     console.log(`Publish: ${files.length} files for ${user.name}`)
 
+    const usePersonalGithub = body.target === 'personal' && user.githubAccessToken
     const publishResult = await publishToGitHub({
       userName: user.name,
       files,
-      githubAccessToken: user.githubAccessToken,
+      githubAccessToken: usePersonalGithub ? user.githubAccessToken : undefined,
     })
 
     const skillName = `acting-as-${user.name.toLowerCase().replace(/\s+/g, '-')}`
@@ -99,7 +100,7 @@ skills.post('/conversations/:id/publish', authMiddleware, async (c) => {
         githubRepoUrl: publishResult.repoUrl,
         githubRepoOwner: publishResult.repoOwner,
         installCommand: publishResult.installCommand,
-        publishMethod: user.githubAccessToken ? 'personal' : 'org',
+        publishMethod: usePersonalGithub ? 'personal' : 'org',
         blockStates: conversation.blockStates,
         matchedSkills: conversation.matchedSkills,
         customSkills: [],
