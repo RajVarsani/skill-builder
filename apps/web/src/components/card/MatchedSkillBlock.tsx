@@ -14,15 +14,12 @@ function formatInstalls(n: number): string {
 export function MatchedSkillBlock({ skill, index }: MatchedSkillBlockProps) {
   return (
     <motion.div
-      layout
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
       transition={{
-        type: 'spring',
-        stiffness: 260,
-        damping: 22,
-        delay: index * 0.1,
+        duration: 0.25,
+        delay: index * 0.08,
       }}
       className="flex items-center justify-between gap-3 bg-surface-secondary border-2 border-surface-secondary px-3.5 py-2"
     >

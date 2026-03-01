@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { AnimatePresence } from 'framer-motion'
 import { useConversationStore } from '../../lib/store'
 import { IdentityBlock } from './IdentityBlock'
 
@@ -28,12 +28,8 @@ export function IdentitySection() {
         ref={scrollRef}
         className={expanded ? 'max-h-[120px] overflow-y-auto scrollbar-thin' : ''}
       >
-        <motion.div
-          layout
-          className="flex flex-wrap gap-2"
-          transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-        >
-          <AnimatePresence mode="popLayout">
+        <div className="flex flex-wrap gap-2">
+          <AnimatePresence mode="sync">
             {visible.map((block, i) => (
               <IdentityBlock key={block.blockId} block={block} index={i} />
             ))}
@@ -48,7 +44,7 @@ export function IdentitySection() {
                 ???
               </span>
             ))}
-        </motion.div>
+        </div>
       </div>
 
       {hasOverflow && (

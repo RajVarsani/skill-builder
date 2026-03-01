@@ -155,7 +155,7 @@ export function OGImageCard(props: OGImageCardProps) {
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <div style={{ width: '8px', height: '8px', backgroundColor: COLORS.coral, flexShrink: 0 }} />
           <span style={{ fontFamily: FONT.display, fontSize: '14px' }}>
-            <span style={{ color: COLORS.cream }}>acting</span>
+            <span style={{ color: COLORS.cream }}>acting </span>
             <span style={{ color: COLORS.coral }}>as</span>
           </span>
         </div>

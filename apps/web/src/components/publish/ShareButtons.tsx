@@ -30,10 +30,35 @@ export function ShareButtons({ skillUrl, skillName, cardRef }: ShareButtonsProps
     if (!cardRef?.current || downloading) return
     setDownloading(true)
     try {
-      const dataUrl = await toPng(cardRef.current, {
-        pixelRatio: 2,
-        backgroundColor: '#1a1008',
+      const card = cardRef.current
+
+      // Temporarily expand scroll containers and hide toggle buttons for a clean capture
+      const scrollContainers = card.querySelectorAll<HTMLElement>('.overflow-y-auto, .scrollbar-thin')
+      const savedStyles: { el: HTMLElement; maxHeight: string; overflow: string }[] = []
+      scrollContainers.forEach((el) => {
+        savedStyles.push({ el, maxHeight: el.style.maxHeight, overflow: el.style.overflow })
+        el.style.maxHeight = 'none'
+        el.style.overflow = 'visible'
       })
+
+      const dataUrl = await toPng(card, {
+        pixelRatio: 4,
+        backgroundColor: '#1a1008',
+        filter: (node) => {
+          // Hide expand/collapse toggle buttons from the capture
+          if (node instanceof HTMLButtonElement && /more|less/i.test(node.textContent || '')) {
+            return false
+          }
+          return true
+        },
+      })
+
+      // Restore scroll containers
+      savedStyles.forEach(({ el, maxHeight, overflow }) => {
+        el.style.maxHeight = maxHeight
+        el.style.overflow = overflow
+      })
+
       const link = document.createElement('a')
       link.download = `${skillName.replace('acting-as-', '')}-skill-card.png`
       link.href = dataUrl
@@ -63,12 +88,6 @@ export function ShareButtons({ skillUrl, skillName, cardRef }: ShareButtonsProps
           className="flex items-center justify-center py-3 px-6 border-2 border-surface font-display text-[10px] uppercase tracking-[0.04em] text-surface hover:bg-surface/5 transition-colors"
         >
           LinkedIn
-        </button>
-        <button
-          onClick={handleCopyLink}
-          className="flex items-center justify-center py-3 px-6 border-2 border-surface font-display text-[10px] uppercase tracking-[0.04em] text-surface hover:bg-surface/5 transition-colors"
-        >
-          Copy Link
         </button>
         {cardRef && (
           <button

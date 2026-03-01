@@ -50,10 +50,13 @@ export function Success() {
       .then((data) => {
         setSkillData(data)
         if (data.skill.blockStates) {
-          setBlocks(data.skill.blockStates as Parameters<typeof setBlocks>[0])
+          // Force all blocks to confirmed since the skill is published
+          const confirmedBlocks = data.skill.blockStates.map((b) => ({ ...b, status: 'confirmed' as const }))
+          setBlocks(confirmedBlocks as Parameters<typeof setBlocks>[0])
         }
         if (data.skill.matchedSkills) {
-          setMatchedSkills(data.skill.matchedSkills as Parameters<typeof setMatchedSkills>[0])
+          const confirmedSkills = data.skill.matchedSkills.map((s) => ({ ...s, status: 'confirmed' as const }))
+          setMatchedSkills(confirmedSkills as Parameters<typeof setMatchedSkills>[0])
         }
         setPhase('published')
         updateCompletion({

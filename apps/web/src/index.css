@@ -43,6 +43,13 @@ a,
   cursor: pointer;
 }
 
+/* Glitch logo animation — subtle */
+@keyframes glitchSubtle {
+  0% { transform: translate(-1px, -1px); opacity: 0.25; }
+  50% { transform: translate(1px, 0); opacity: 0.15; }
+  100% { transform: translate(-1px, -1px); opacity: 0.25; }
+}
+
 @keyframes pixelBounce {
   0%, 100% {
     opacity: 0.3;
@@ -98,16 +105,24 @@ a,
   text-decoration: underline;
 }
 
-.scrollbar-thin::-webkit-scrollbar {
-  width: 4px;
+/* Global thin scrollbars */
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
-.scrollbar-thin::-webkit-scrollbar-track {
+*::-webkit-scrollbar-track {
   background: transparent;
 }
-.scrollbar-thin::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
   background: #A8988040;
-  border-radius: 2px;
+  border-radius: 3px;
 }
-.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+*::-webkit-scrollbar-thumb:hover {
   background: #A8988080;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #A8988040 transparent;
 }

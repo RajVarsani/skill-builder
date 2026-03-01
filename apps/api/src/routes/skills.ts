@@ -59,6 +59,15 @@ skills.patch('/conversations/:id/skill-markdown', authMiddleware, async (c) => {
   return c.json({ ok: true })
 })
 
+skills.get('/skills/check-slug/:slug', authMiddleware, async (c) => {
+  const userId = c.get('userId')
+  const slug = c.req.param('slug').toLowerCase()
+  const skillName = `acting-as-${slug}`
+  const existing = await PublishedSkill.findOne({ skillName })
+  const available = !existing || existing.userId.toString() === userId
+  return c.json({ available, skillName })
+})
+
 skills.post('/conversations/:id/publish', authMiddleware, async (c) => {
   const userId = c.get('userId')
   const conversationId = c.req.param('id')
@@ -74,8 +83,8 @@ skills.post('/conversations/:id/publish', authMiddleware, async (c) => {
   if (!user) return c.json({ error: 'User not found' }, 404)
 
   try {
-    const body = await c.req.json<{ skillMarkdown?: string; target?: 'org' | 'personal'; ogImage?: string }>().catch(() => ({} as { skillMarkdown?: string; target?: 'org' | 'personal'; ogImage?: string }))
-    const slug = user.name.toLowerCase().replace(/\s+/g, '-')
+    const body = await c.req.json<{ skillMarkdown?: string; target?: 'org' | 'personal'; ogImage?: string; customSlug?: string }>().catch(() => ({} as { skillMarkdown?: string; target?: 'org' | 'personal'; ogImage?: string; customSlug?: string }))
+    const slug = body.customSlug?.toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '') || user.name.toLowerCase().replace(/\s+/g, '-')
 
     let files: Array<{ path: string; content: string; encoding?: 'base64' }>
 
@@ -109,6 +118,7 @@ skills.post('/conversations/:id/publish', authMiddleware, async (c) => {
     const usePersonalGithub = body.target === 'personal' && user.githubAccessToken
     const publishResult = await publishToGitHub({
       userName: user.name,
+      slug,
       files,
       githubAccessToken: usePersonalGithub ? user.githubAccessToken : undefined,
     })
@@ -118,7 +128,7 @@ skills.post('/conversations/:id/publish', authMiddleware, async (c) => {
       ? `https://raw.githubusercontent.com/${publishResult.repoOwner}/${repoName}/main/og-image.png`
       : undefined
 
-    const skillName = `acting-as-${user.name.toLowerCase().replace(/\s+/g, '-')}`
+    const skillName = `acting-as-${slug}`
     const publishedSkill = await PublishedSkill.findOneAndUpdate(
       { skillName },
       {

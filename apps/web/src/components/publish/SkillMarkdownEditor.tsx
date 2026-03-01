@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useConversationStore } from '../../lib/store'
 import { apiFetch } from '../../lib/api'
 
@@ -12,7 +12,14 @@ export function SkillMarkdownEditor({ onRegenerate, isLoading }: SkillMarkdownEd
   const setSkillMarkdown = useConversationStore((s) => s.setSkillMarkdown)
   const conversationId = useConversationStore((s) => s.conversationId)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
   const debounceRef = useRef<ReturnType<typeof setTimeout>>(null)
+
+  useEffect(() => {
+    if (isLoading && containerRef.current) {
+      containerRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }
+  }, [isLoading])
 
   const autoResize = useCallback(() => {
     const el = textareaRef.current
@@ -27,7 +34,7 @@ export function SkillMarkdownEditor({ onRegenerate, isLoading }: SkillMarkdownEd
 
   if (isLoading) {
     return (
-      <div className="space-y-3">
+      <div ref={containerRef} className="space-y-3">
         <span className="text-[10px] font-display uppercase tracking-[0.08em] text-muted block">
           Your SKILL.md
         </span>

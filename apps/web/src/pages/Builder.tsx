@@ -7,6 +7,7 @@ import { SkillReviewList } from '../components/publish/SkillReviewList'
 import { PublishButtons } from '../components/publish/PublishButtons'
 import { SkillMarkdownEditor } from '../components/publish/SkillMarkdownEditor'
 import { PublishModal } from '../components/publish/PublishModal'
+import { SlugConflictModal } from '../components/publish/SlugConflictModal'
 import { useConversation } from '../hooks/use-conversation'
 import { useConversationStore } from '../lib/store'
 import { useAuth } from '../lib/auth'
@@ -34,6 +35,11 @@ export function Builder() {
   const [modalOgProps, setModalOgProps] = useState<OGImageCardProps | null>(null)
   const [publishDone, setPublishDone] = useState(false)
   const publishResultRef = useRef<{ id: string } | null>(null)
+
+  // Slug conflict state
+  const [slugModalOpen, setSlugModalOpen] = useState(false)
+  const [defaultSlug, setDefaultSlug] = useState('')
+  const pendingTargetRef = useRef<'org' | 'personal'>('org')
 
   const step = PHASE_STEP[phase]
   const isReviewPhase = phase === 'review' || phase === 'published'
@@ -96,8 +102,26 @@ export function Builder() {
     }
   }, [sendMessage, cancelStream])
 
-  const handlePublish = async (target: 'org' | 'personal' = 'org') => {
+  const handlePublish = async (target: 'org' | 'personal' = 'org', customSlug?: string) => {
     if (!conversationId || isPublishing) return
+
+    const slug = customSlug || (user?.name ?? '').toLowerCase().replace(/\s+/g, '-')
+
+    // Check slug availability before publishing (skip if user already chose a custom slug)
+    if (!customSlug) {
+      try {
+        const { available } = await apiFetch<{ available: boolean }>(`/skills/check-slug/${slug}`)
+        if (!available) {
+          setDefaultSlug(slug)
+          pendingTargetRef.current = target
+          setSlugModalOpen(true)
+          return
+        }
+      } catch (e) {
+        console.error('Slug check failed, proceeding:', e)
+      }
+    }
+
     setPublishTarget(target)
     setIsPublishing(true)
 
@@ -137,7 +161,7 @@ export function Builder() {
         `/conversations/${conversationId}/publish`,
         {
           method: 'POST',
-          body: JSON.stringify({ skillMarkdown: currentMarkdown, target, ogImage }),
+          body: JSON.stringify({ skillMarkdown: currentMarkdown, target, ogImage, customSlug: customSlug || undefined }),
         }
       )
 
@@ -148,6 +172,11 @@ export function Builder() {
       setModalOpen(false)
       setIsPublishing(false)
     }
+  }
+
+  const handleSlugConfirm = (slug: string) => {
+    setSlugModalOpen(false)
+    handlePublish(pendingTargetRef.current, slug)
   }
 
   const handlePublishComplete = useCallback(() => {
@@ -218,6 +247,13 @@ export function Builder() {
           </div>
         </div>
       </div>
+
+      <SlugConflictModal
+        open={slugModalOpen}
+        defaultSlug={defaultSlug}
+        onConfirm={handleSlugConfirm}
+        onCancel={() => setSlugModalOpen(false)}
+      />
 
       <PublishModal
         open={modalOpen}

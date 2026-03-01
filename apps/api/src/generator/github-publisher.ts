@@ -14,6 +14,7 @@ interface PublishFile {
 
 interface PublishOptions {
   userName: string
+  slug: string
   files: PublishFile[]
   githubAccessToken?: string
 }
@@ -176,8 +177,7 @@ async function publishToOrgRepo(
 }
 
 export async function publishToGitHub(options: PublishOptions): Promise<PublishResult> {
-  const { userName, files, githubAccessToken } = options
-  const slug = userName.toLowerCase().replace(/\s+/g, '-')
+  const { slug, files, githubAccessToken } = options
   const repoName = `acting-as-${slug}`
 
   if (githubAccessToken) {

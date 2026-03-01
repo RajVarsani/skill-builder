@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { AnimatePresence } from 'framer-motion'
 import { useConversationStore } from '../../lib/store'
 import { MatchedSkillBlock } from './MatchedSkillBlock'
 
@@ -29,12 +29,8 @@ export function MatchedSkillsSection() {
         ref={scrollRef}
         className={expanded ? 'max-h-[160px] overflow-y-auto scrollbar-thin' : ''}
       >
-        <motion.div
-          layout
-          className="space-y-2"
-          transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-        >
-          <AnimatePresence mode="popLayout">
+        <div className="space-y-2">
+          <AnimatePresence mode="sync">
             {visible.map((skill, i) => (
               <MatchedSkillBlock key={skill.skillId} skill={skill} index={i} />
             ))}
@@ -47,7 +43,7 @@ export function MatchedSkillsSection() {
               </span>
             </div>
           )}
-        </motion.div>
+        </div>
       </div>
 
       {hasOverflow && (

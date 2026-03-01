@@ -1,31 +1,32 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router'
 import { useAuth } from '../lib/auth'
+import { GlitchLogo } from '../components/GlitchLogo'
 
 const STEPS = [
   {
     num: '01',
     label: 'Discover',
-    title: 'Choose Your Class',
-    desc: 'Select your domains. Engineering, design, data, product — every persona starts with a class.',
+    title: 'Pick Your Domains',
+    desc: 'Tell us what you do. Engineering, design, product, data — your persona starts with the areas you know best.',
   },
   {
     num: '02',
     label: 'Interview',
-    title: '3-Minute Interview',
-    desc: 'An AI agent asks rapid-fire questions. It infers your expertise, tools, and decision-making style in real time.',
+    title: 'Quick AI Interview',
+    desc: 'An AI asks focused questions to understand how you think, what tools you reach for, and how you make decisions.',
   },
   {
     num: '03',
     label: 'Match',
-    title: 'Match 75K+ Skills',
-    desc: 'Your answers are matched against the entire skills.sh registry. Confirm, reject, or let it generate custom ones.',
+    title: 'Find Your Skills',
+    desc: 'Your answers get matched against a registry of 75K+ skills. Review the results, keep what fits, generate new ones.',
   },
   {
     num: '04',
     label: 'Publish',
-    title: 'Publish & Install',
-    desc: 'Get a SKILL.md file. Anyone can run npx skills install you. Your persona is now part of every AI workflow.',
+    title: 'Go Live',
+    desc: 'You get an installable SKILL.md file. Share your profile link — anyone can add your persona to their AI workflow.',
   },
 ]
 
@@ -66,9 +67,7 @@ export function Landing() {
     <div className="min-h-screen bg-page flex flex-col">
       {/* Nav */}
       <nav className="flex items-center justify-between px-5 md:px-[60px] py-4 md:py-5 border-b-[3px] border-surface">
-        <span className="font-display text-[14px] md:text-[16px] uppercase tracking-[0.05em] text-surface">
-          actingas
-        </span>
+        <GlitchLogo size="sm" />
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-8">
@@ -119,7 +118,23 @@ export function Landing() {
             As An Agent
           </h1>
 
-          <div className="w-[80px] md:w-[120px] h-1 bg-surface mt-5 md:mt-6 mb-5 md:mb-6" />
+          {/* Katana divider */}
+          <svg width="240" height="16" viewBox="0 0 240 16" fill="none" className="mt-5 md:mt-6 mb-5 md:mb-6">
+  <rect x="0" y="6" width="4" height="4" fill="#E04A2F" />
+  <rect x="8" y="6" width="4" height="4" fill="#A89880" />
+  <rect x="16" y="6" width="4" height="4" fill="#E04A2F" />
+  <rect x="30" y="5" width="50" height="6" fill="#1A1008" />
+  <rect x="35" y="5" width="4" height="6" fill="#E04A2F" opacity={0.5} />
+  <rect x="45" y="5" width="4" height="6" fill="#E04A2F" opacity={0.5} />
+  <rect x="55" y="5" width="4" height="6" fill="#E04A2F" opacity={0.5} />
+  <rect x="65" y="5" width="4" height="6" fill="#E04A2F" opacity={0.5} />
+  <rect x="75" y="5" width="4" height="6" fill="#E04A2F" opacity={0.5} />
+  <rect x="82" y="1" width="6" height="14" rx="1" fill="#E04A2F" />
+  <polygon points="90,6 220,7 224,8 220,9 90,10" fill="#1A1008" />
+  <line x1="92" y1="7" x2="218" y2="8" stroke="#A89880" strokeWidth={0.5} opacity={0.4} />
+  <rect x="228" y="6" width="4" height="4" fill="#E04A2F" />
+  <rect x="236" y="6" width="4" height="4" fill="#A89880" />
+</svg>
 
           <p className="font-body text-[14px] md:text-[18px] leading-[22px] md:leading-[28px] text-center text-surface-secondary max-w-[600px]">
             An AI builds your persona. Block by block.
@@ -175,7 +190,7 @@ export function Landing() {
             <div className="space-y-1.5 mb-3 md:mb-4">
               {['Frontend', 'Backend', 'DevOps'].map((label) => (
                 <div key={label} className="flex items-center gap-3">
-                  <span className="font-display text-[8px] md:text-[9px] text-cream uppercase w-14 md:w-16 shrink-0">{label}</span>
+                  <span className="font-display text-[8px] md:text-[9px] text-cream opacity-80 uppercase w-14 md:w-16 shrink-0">{label}</span>
                   <div className="flex gap-0.5">
                     {Array.from({ length: 10 }).map((_, i) => (
                       <div
@@ -254,11 +269,11 @@ export function Landing() {
           Your Persona
         </h2>
         <h2 className="font-display text-[28px] md:text-[48px] leading-[36px] md:leading-[64px] text-center text-accent uppercase">
-          Is Not a PDF
+          Is Not a Resume
         </h2>
 
         <p className="font-body text-[14px] md:text-[16px] leading-[22px] md:leading-[26px] text-center text-muted max-w-[480px] mt-4 md:mt-5 mb-6 md:mb-8">
-          In the agent era, identity is code. Build yours in 3 minutes.
+          In the agentic era, identity is skills. Build yours in few minutes.
           Make yourself installable.
         </p>
 
@@ -269,22 +284,13 @@ export function Landing() {
           >
             Start Building
           </button>
-          <button
-            onClick={() => {
-              const el = document.getElementById('how-it-works')
-              el?.scrollIntoView({ behavior: 'smooth' })
-            }}
-            className="px-8 py-3 md:py-3.5 border-[3px] border-muted font-display text-[12px] md:text-[14px] uppercase tracking-[0.05em] text-muted hover:border-cream hover:text-cream transition-colors"
-          >
-            See Example Persona
-          </button>
         </div>
       </section>
 
       {/* Footer */}
       <footer className="flex flex-col sm:flex-row items-center justify-between gap-3 px-5 md:px-[60px] py-4 md:py-5 border-t-[3px] border-surface">
         <span className="font-body text-[11px] md:text-[12px] uppercase tracking-[0.08em] text-muted">
-          2026 actingas
+          2026 <GlitchLogo size="xs" />
         </span>
         <div className="flex items-center gap-4 md:gap-6">
           <a href="#" className="font-body text-[11px] md:text-[12px] uppercase tracking-[0.08em] text-muted hover:text-surface transition-colors">
