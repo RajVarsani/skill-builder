@@ -6,26 +6,26 @@ const STEPS = [
   {
     num: '01',
     label: 'Discover',
-    title: 'Pick Your Domains',
-    desc: 'Select the areas you work in. Frontend, backend, design, data — you choose the starting blocks.',
+    title: 'Choose Your Class',
+    desc: 'Select your domains. Engineering, design, data, product — every persona starts with a class.',
   },
   {
     num: '02',
     label: 'Interview',
-    title: 'AI Deep Dive',
-    desc: 'An AI interviewer asks targeted questions about your experience, tools, and problem-solving style.',
+    title: '3-Minute Interview',
+    desc: 'An AI agent asks rapid-fire questions. It infers your expertise, tools, and decision-making style in real time.',
   },
   {
     num: '03',
-    label: 'Review',
-    title: 'Prove Your Skills',
-    desc: 'Review matched skills from 75K+ in the registry. Confirm, remove, or let the AI generate custom ones.',
+    label: 'Match',
+    title: 'Match 75K+ Skills',
+    desc: 'Your answers are matched against the entire skills.sh registry. Confirm, reject, or let it generate custom ones.',
   },
   {
     num: '04',
     label: 'Publish',
-    title: 'Ship Your Identity',
-    desc: 'Get an installable SKILL.md file. Share it, add it to your repo, let Claude know who you are.',
+    title: 'Publish & Install',
+    desc: 'Get a SKILL.md file. Anyone can run skills install you. Your persona is now part of every AI workflow.',
   },
 ]
 
@@ -79,7 +79,7 @@ export function Landing() {
             onClick={handleCTA}
             className="bg-accent border-[3px] border-surface px-6 py-2.5 font-display text-[12px] uppercase tracking-[0.05em] text-cream hover:bg-accent/90 transition-colors"
           >
-            Build Yours
+            Build Your Persona
           </button>
         </div>
 
@@ -104,7 +104,7 @@ export function Landing() {
             onClick={handleCTA}
             className="bg-accent border-[3px] border-surface px-6 py-2.5 font-display text-[11px] uppercase tracking-[0.05em] text-cream"
           >
-            Build Yours
+            Build Your Persona
           </button>
         </div>
       )}
@@ -113,20 +113,17 @@ export function Landing() {
       <section className="flex flex-col items-center pt-10 md:pt-20 pb-10 md:pb-16 px-5 md:px-[60px]">
         <div className="border-4 border-accent px-5 md:px-[60px] py-8 md:py-12 flex flex-col items-center max-w-[900px] w-full">
           <h1 className="font-display text-[32px] md:text-[48px] lg:text-[64px] leading-[40px] md:leading-[60px] lg:leading-[80px] tracking-[0.02em] text-center text-surface uppercase">
-            Build Your
+            Build Your Persona
           </h1>
           <h1 className="font-display text-[32px] md:text-[48px] lg:text-[64px] leading-[40px] md:leading-[60px] lg:leading-[80px] tracking-[0.02em] text-center text-accent uppercase">
-            Expertise
-          </h1>
-          <h1 className="font-display text-[32px] md:text-[48px] lg:text-[64px] leading-[40px] md:leading-[60px] lg:leading-[80px] tracking-[0.02em] text-center text-surface uppercase">
-            Block by Block
+            As An Agent
           </h1>
 
           <div className="w-[80px] md:w-[120px] h-1 bg-surface mt-5 md:mt-6 mb-5 md:mb-6" />
 
           <p className="font-body text-[14px] md:text-[18px] leading-[22px] md:leading-[28px] text-center text-surface-secondary max-w-[600px]">
-            An AI interviews you about what you know. It assembles your skills
-            into an installable identity — pixel by pixel.
+            An AI builds your persona. Block by block.
+            {' '}Make yourself installable.
           </p>
         </div>
       </section>
@@ -254,15 +251,15 @@ export function Landing() {
         </div>
 
         <h2 className="font-display text-[28px] md:text-[48px] leading-[36px] md:leading-[64px] text-center text-cream uppercase">
-          Ready to Build
+          Your Persona
         </h2>
         <h2 className="font-display text-[28px] md:text-[48px] leading-[36px] md:leading-[64px] text-center text-accent uppercase">
-          Your Blocks?
+          Is Not a PDF
         </h2>
 
         <p className="font-body text-[14px] md:text-[16px] leading-[22px] md:leading-[26px] text-center text-muted max-w-[480px] mt-4 md:mt-5 mb-6 md:mb-8">
-          Your expertise deserves to be structured, portable, and
-          installable. Start the interview.
+          In the agent era, identity is code. Build yours in 3 minutes.
+          Make yourself installable.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-3 md:gap-4 w-full sm:w-auto">
@@ -279,7 +276,7 @@ export function Landing() {
             }}
             className="px-8 py-3 md:py-3.5 border-[3px] border-muted font-display text-[12px] md:text-[14px] uppercase tracking-[0.05em] text-muted hover:border-cream hover:text-cream transition-colors"
           >
-            How It Works
+            See Example Persona
           </button>
         </div>
       </section>

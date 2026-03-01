@@ -14,23 +14,24 @@ export function ChatPanel({ onSend }: ChatPanelProps) {
   const messages = useConversationStore((s) => s.messages)
   const phase = useConversationStore((s) => s.phase)
   const isStreaming = useConversationStore((s) => s.isStreaming)
-  const scrollRef = useRef<HTMLDivElement>(null)
+  const streamingText = useConversationStore((s) => s.streamingText)
+  const toolActivity = useConversationStore((s) => s.toolActivity)
+  const bottomRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight
-    }
-  }, [messages, isStreaming])
+    bottomRef.current?.scrollIntoView({ behavior: 'instant', block: 'end' })
+  }, [messages, isStreaming, streamingText, toolActivity])
 
   return (
     <div className="flex flex-col h-full bg-page">
       <PhaseIndicator phase={phase} />
 
-      <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-4 space-y-4">
+      <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4">
         {messages.map((msg, i) => (
           <MessageBubble key={i} role={msg.role} content={msg.content} />
         ))}
         <StreamingMessage />
+        <div ref={bottomRef} />
       </div>
 
       <QuickReplyChips onSelect={onSend} />

@@ -2,6 +2,7 @@ import { Hono } from 'hono'
 import { streamSSE } from 'hono/streaming'
 import { authMiddleware } from '../auth/middleware'
 import { Conversation } from '../db/models/conversation'
+import { PublishedSkill } from '../db/models/published-skill'
 import { runConversationTurn } from '../agent/conversation-agent'
 import { skillEngine } from '../agent/skill-matching-engine'
 import type { AppEnv } from '../types'
@@ -33,27 +34,57 @@ conversations.post('/', async (c) => {
 
 conversations.get('/active', async (c) => {
   const userId = c.get('userId')
-  const conversation = await Conversation.findOne({ userId, status: 'active' })
 
-  if (!conversation) {
-    return c.json({ conversation: null })
+  // First check for an active conversation
+  const active = await Conversation.findOne({ userId, status: 'active' })
+  if (active) {
+    return c.json({
+      conversation: {
+        id: active._id.toString(),
+        phase: active.phase,
+        selectedDomains: active.selectedDomains,
+        blockStates: active.blockStates,
+        matchedSkills: active.matchedSkills,
+        messages: active.messages.map((m) => ({
+          role: m.role,
+          content: m.content,
+          phase: m.phase,
+        })),
+        status: active.status,
+      },
+    })
   }
 
-  return c.json({
-    conversation: {
-      id: conversation._id.toString(),
-      phase: conversation.phase,
-      selectedDomains: conversation.selectedDomains,
-      blockStates: conversation.blockStates,
-      matchedSkills: conversation.matchedSkills,
-      messages: conversation.messages.map((m) => ({
-        role: m.role,
-        content: m.content,
-        phase: m.phase,
-      })),
-      status: conversation.status,
-    },
-  })
+  // Check for a recently completed/published conversation so the frontend
+  // can redirect to the success page instead of starting fresh
+  const completed = await Conversation.findOne({
+    userId,
+    status: 'completed',
+    phase: 'published',
+  }).sort({ updatedAt: -1 })
+
+  if (completed) {
+    const publishedSkill = await PublishedSkill.findOne({
+      conversationId: completed._id,
+    })
+
+    if (publishedSkill) {
+      return c.json({
+        conversation: {
+          id: completed._id.toString(),
+          phase: completed.phase,
+          status: completed.status,
+          publishedSkillId: publishedSkill._id.toString(),
+          selectedDomains: completed.selectedDomains,
+          blockStates: completed.blockStates,
+          matchedSkills: completed.matchedSkills,
+          messages: [],
+        },
+      })
+    }
+  }
+
+  return c.json({ conversation: null })
 })
 
 conversations.post('/:id/messages', async (c) => {

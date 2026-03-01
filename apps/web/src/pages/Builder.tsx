@@ -129,7 +129,7 @@ export function Builder() {
         {/* Left side — chat or review */}
         <div className="w-[55%] border-r border-muted/20 flex flex-col overflow-y-auto">
           {isReviewPhase ? (
-            <div className="flex-1 flex flex-col">
+            <div className="flex-1 flex flex-col min-h-0">
               <div className="px-10 pt-10 pb-4">
                 <h2 className="font-display text-[24px] uppercase tracking-[0.02em] text-surface">
                   Review Your Skills
@@ -138,12 +138,14 @@ export function Builder() {
                   Confirm or remove matched skills before publishing your identity.
                 </p>
               </div>
-              <div className="flex-1 overflow-y-auto px-10 pb-8 space-y-8">
+              <div className="flex-1 overflow-y-auto px-10 pb-6 space-y-8">
                 <SkillReviewList onRemove={handleRemoveSkill} />
                 <SkillMarkdownEditor
                   onRegenerate={fetchPreview}
                   isLoading={isPreviewLoading}
                 />
+              </div>
+              <div className="shrink-0 px-10 py-4 border-t border-muted/20 bg-page">
                 <PublishButtons
                   onPublish={handlePublish}
                   onPublishGitHub={handlePublishGitHub}

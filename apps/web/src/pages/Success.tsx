@@ -4,6 +4,7 @@ import { Nav } from '../components/layout/Nav'
 import { IdentityCard } from '../components/card/IdentityCard'
 import { InstallCommand } from '../components/publish/InstallCommand'
 import { ShareButtons } from '../components/publish/ShareButtons'
+import { Confetti } from '../components/effects/Confetti'
 import { apiFetch } from '../lib/api'
 import { useConversationStore } from '../lib/store'
 
@@ -39,6 +40,8 @@ export function Success() {
   const [loading, setLoading] = useState(true)
   const setBlocks = useConversationStore((s) => s.setBlocks)
   const setMatchedSkills = useConversationStore((s) => s.setMatchedSkills)
+  const updateCompletion = useConversationStore((s) => s.updateCompletion)
+  const setPhase = useConversationStore((s) => s.setPhase)
 
   useEffect(() => {
     if (!id) return
@@ -51,10 +54,16 @@ export function Success() {
         if (data.skill.matchedSkills) {
           setMatchedSkills(data.skill.matchedSkills as Parameters<typeof setMatchedSkills>[0])
         }
+        setPhase('published')
+        updateCompletion({
+          percentage: 100,
+          blocksDiscovered: data.skill.blockStates?.length || 0,
+          skillsMatched: data.skill.matchedSkills?.length || 0,
+        })
       })
       .catch(console.error)
       .finally(() => setLoading(false))
-  }, [id, setBlocks, setMatchedSkills])
+  }, [id, setBlocks, setMatchedSkills, setPhase, updateCompletion])
 
   if (loading) {
     return (
@@ -77,19 +86,21 @@ export function Success() {
 
   return (
     <div className="h-screen flex flex-col bg-page">
+      <Confetti />
       <Nav step={4} />
 
       <div className="flex-1 flex items-center justify-center gap-20 px-16 overflow-hidden">
         {/* Left — content */}
         <div className="w-[440px] space-y-8">
           <h1 className="font-display text-[32px] leading-[42px] tracking-[0.02em] text-surface uppercase">
-            Your Skill is Live
+            You're Installable
           </h1>
 
           <p className="text-[14px] font-body leading-[22px] text-surface-secondary">
-            Your professional identity has been encoded into an installable skill.
+            Your persona is live.
             {' '}{skill.blockStates?.length || 0} blocks discovered,
-            {' '}{skill.matchedSkills?.length || 0} matched from the skills.sh registry.
+            {' '}{skill.matchedSkills?.length || 0} skills matched from the registry.
+            {' '}Anyone with Claude Code can now install you.
           </p>
 
           <InstallCommand command={skill.installCommand} />

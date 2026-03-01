@@ -17,7 +17,7 @@ export function CardHeader() {
   const domains = [...new Set(blocks.map((b) => b.category))]
   const domainLabel =
     domains.length > 0
-      ? domains.slice(0, 3).join(' + ').toUpperCase()
+      ? domains.slice(0, 3).map((d) => d.replace(/_/g, ' ')).join(' + ').toUpperCase()
       : 'AWAITING DOMAINS...'
 
   return (

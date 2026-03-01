@@ -1,5 +1,7 @@
 import Anthropic from '@anthropic-ai/sdk'
 import type { IBlockState, IMatchedSkill } from '../db/models/conversation'
+import { SKILL_SYSTEM_PROMPT, buildUserPrompt } from './skill-prompts'
+import { fetchSkillFiles } from './skill-fetcher'
 
 const anthropic = new Anthropic()
 
@@ -8,178 +10,140 @@ interface GeneratedSkill {
   content: string
 }
 
+export async function generateSkillMarkdown(
+  userName: string,
+  blockStates: IBlockState[],
+  matchedSkills: IMatchedSkill[],
+  selectedDomains: string[]
+): Promise<string> {
+  const activeSkills = matchedSkills.filter((s) => s.status !== 'rejected')
+  const identityBlocks = blockStates.filter((b) => b.status === 'confirmed' || b.confidence !== 'low')
+  const slug = userName.toLowerCase().replace(/\s+/g, '-')
+
+  try {
+    const response = await anthropic.messages.create({
+      model: 'claude-sonnet-4-6',
+      max_tokens: 2048,
+      system: SKILL_SYSTEM_PROMPT,
+      messages: [
+        { role: 'user', content: buildUserPrompt(userName, slug, identityBlocks, activeSkills, selectedDomains) },
+      ],
+    })
+
+    const text = response.content[0]
+    if (text.type === 'text') {
+      const content = text.text.trim()
+      // Strip code fences if Claude wraps the output
+      if (content.startsWith('```')) {
+        const lines = content.split('\n')
+        const start = lines[0].startsWith('```') ? 1 : 0
+        const end = lines[lines.length - 1] === '```' ? lines.length - 1 : lines.length
+        return lines.slice(start, end).join('\n').trim()
+      }
+      return content
+    }
+    throw new Error('Unexpected response type')
+  } catch (error) {
+    console.error('SKILL.md generation failed:', error instanceof Error ? error.message : error)
+    return buildFallback(userName, slug, identityBlocks, activeSkills, selectedDomains)
+  }
+}
+
+export async function generateSkillOverrides(
+  userName: string,
+  _blockStates: IBlockState[],
+  matchedSkills: IMatchedSkill[],
+  _selectedDomains: string[]
+): Promise<GeneratedSkill[]> {
+  const activeSkills = matchedSkills.filter((s) => s.status !== 'rejected')
+  if (activeSkills.length === 0) return []
+
+  const slug = userName.toLowerCase().replace(/\s+/g, '-')
+  return fetchSkillFiles(slug, activeSkills)
+}
+
 export async function generateSkillPackage(
   userName: string,
   blockStates: IBlockState[],
   matchedSkills: IMatchedSkill[],
   selectedDomains: string[]
 ): Promise<GeneratedSkill[]> {
-  const activeSkills = matchedSkills.filter((s) => s.status !== 'rejected')
-  const files: GeneratedSkill[] = []
-
-  const identityBlocks = blockStates.filter((b) => b.status === 'confirmed' || b.confidence !== 'low')
   const slug = userName.toLowerCase().replace(/\s+/g, '-')
 
-  const skillActivationRules = activeSkills.length > 0
-    ? await generateSkillActivationRules(activeSkills, identityBlocks, selectedDomains)
+  const [skillMd, overrides] = await Promise.all([
+    generateSkillMarkdown(userName, blockStates, matchedSkills, selectedDomains),
+    generateSkillOverrides(userName, blockStates, matchedSkills, selectedDomains),
+  ])
+
+  return [
+    { path: `acting-as-${slug}/SKILL.md`, content: skillMd },
+    ...overrides,
+  ]
+}
+
+function buildFallback(
+  userName: string,
+  slug: string,
+  blocks: IBlockState[],
+  skills: IMatchedSkill[],
+  domains: string[]
+): string {
+  const traits = blocks.filter((b) => ['personality_trait', 'working_style', 'domain_expertise'].includes(b.category))
+  const decisions = blocks.filter((b) => ['decision_pattern', 'core_value'].includes(b.category))
+  const comm = blocks.filter((b) => b.category === 'communication_style')
+  const opinions = blocks.filter((b) => ['anti_pattern', 'opinion'].includes(b.category))
+
+  const intro = traits.length > 0
+    ? traits.map((t) => t.detail).join(' ')
+    : `A ${domains.join(' and ')} professional.`
+
+  const decisionStyle = decisions.length > 0
+    ? decisions.map((d) => `${d.label}: ${d.detail}`).join('\n\n')
+    : 'Pragmatic and context-driven.'
+
+  const commStyle = comm.length > 0
+    ? comm.map((c) => c.detail).join(' ')
+    : 'Direct and clear.'
+
+  const strongOpinions = opinions.length > 0
+    ? opinions.map((o) => `- ${o.detail}`).join('\n')
+    : '- Avoid over-engineering and unnecessary complexity.'
+
+  const skillSection = skills.length > 0
+    ? `## Matched Skills\n\n${skills.map((s) => `- **${s.name}** — see \`references/matched/${s.name}.md\``).join('\n')}`
     : ''
 
-  const skillMd = `---
+  return `---
 name: acting-as-${slug}
-description: Use when you want responses reflecting ${userName}'s perspective as a ${selectedDomains.join(' + ')} professional. Activates on ${selectedDomains.join(', ')} tasks, code reviews, architecture decisions, and communication.
+description: Use when you want responses reflecting ${userName}'s perspective as a ${domains.join(' + ')} professional. Activates on ${domains.join(', ')} tasks, code reviews, architecture decisions, and communication.
 ---
 
 # ${userName}
 
-## Who I Am
-${generateWhoIAm(identityBlocks, selectedDomains)}
+${intro}
 
-## How I Think
-${generateHowIThink(identityBlocks)}
+## When to Apply This Perspective
 
-## How I Communicate
-${generateHowICommunicate(identityBlocks)}
+- When working on ${domains.join(' or ')} tasks
+- When reviewing code or making architecture decisions
+- When the user's professional context matches ${domains.join('/')} work
 
-## What I Reject
-${generateWhatIReject(identityBlocks)}
+## Decision-Making Style
 
-## Skills
+${decisionStyle}
 
-### From skills.sh (with my preferences)
+## Communication Preferences
 
-${skillActivationRules || '_No skills matched — add skills during the review phase._'}
+${commStyle}
 
-## Guardrails
-- This skill represents ${userName}'s professional perspective
-- Apply these preferences when the context matches ${selectedDomains.join('/')} work
-- Default to the community skill behavior when my preferences don't apply
+## Strong Opinions
+
+${strongOpinions}
+
+${skillSection}
+
+## Working With This Skill
+
+This skill captures ${userName}'s core professional identity.${skills.length > 0 ? ' For deeper, skill-specific preferences, read the override files in references/matched/.' : ''} When this skill conflicts with a user's explicit instruction, defer to the user.
 `
-
-  files.push({
-    path: `acting-as-${slug}/SKILL.md`,
-    content: skillMd,
-  })
-
-  for (const skill of activeSkills) {
-    const override = await generateOverride(skill, identityBlocks)
-    files.push({
-      path: `acting-as-${slug}/references/matched/${skill.name}.md`,
-      content: override,
-    })
-  }
-
-  return files
-}
-
-async function generateSkillActivationRules(
-  skills: IMatchedSkill[],
-  blocks: IBlockState[],
-  domains: string[]
-): Promise<string> {
-  const skillList = skills
-    .map((s) => `- ${s.name} (source: ${s.source}, installs: ${s.installs})`)
-    .join('\n')
-
-  const identity = blocks
-    .map((b) => `- ${b.label} (${b.category}): ${b.detail}`)
-    .join('\n')
-
-  try {
-    const response = await anthropic.messages.create({
-      model: 'claude-sonnet-4-6',
-      max_tokens: 1024,
-      messages: [
-        {
-          role: 'user',
-          content: `You are generating a Skills section for a SKILL.md file. This file tells an AI assistant when to activate specific skills for a user.
-
-The user works in: ${domains.join(', ')}
-
-User identity:
-${identity}
-
-Matched skills:
-${skillList}
-
-For each skill, write ONE bullet point in this exact format:
-- **skill-name** (source, N installs) — Activate when: <a specific, concise trigger condition>
-
-The trigger condition should describe WHEN this skill should kick in during the user's workflow. Be specific and actionable — not generic. Consider the user's identity and domains to personalize the triggers.
-
-Examples of good triggers:
-- "writing React components with TypeScript, especially when creating reusable UI primitives"
-- "setting up or debugging CI/CD pipelines for Node.js monorepos"
-- "reviewing pull requests for code quality, testing gaps, or architectural concerns"
-
-Output ONLY the bullet points, no headers, no extra text.`,
-        },
-      ],
-    })
-
-    const text = response.content[0]
-    return text.type === 'text' ? text.text.trim() : ''
-  } catch {
-    return skills
-      .map((s) => `- **${s.name}** (${s.source}, ${s.installs} installs) — Activate when: working on ${s.name.replace(/[-_]/g, ' ')} tasks`)
-      .join('\n')
-  }
-}
-
-function generateWhoIAm(blocks: IBlockState[], domains: string[]): string {
-  const traits = blocks.filter((b) =>
-    ['personality_trait', 'working_style', 'domain_expertise'].includes(b.category)
-  )
-  if (traits.length === 0) return `A ${domains.join(' and ')} professional.`
-
-  const topTraits = traits.slice(0, 3).map((t) => t.label.toLowerCase())
-  return `A ${topTraits.join(', ')} ${domains.join(' and ')} professional. ${traits.map((t) => t.detail).join(' ')}`
-}
-
-function generateHowIThink(blocks: IBlockState[]): string {
-  const decisions = blocks.filter((b) =>
-    ['decision_pattern', 'core_value'].includes(b.category)
-  )
-  if (decisions.length === 0) return 'Pragmatic and context-driven.'
-  return decisions.map((d) => `- ${d.label}: ${d.detail}`).join('\n')
-}
-
-function generateHowICommunicate(blocks: IBlockState[]): string {
-  const comm = blocks.filter((b) => b.category === 'communication_style')
-  if (comm.length === 0) return 'Direct and clear.'
-  return comm.map((c) => `- ${c.label}: ${c.detail}`).join('\n')
-}
-
-function generateWhatIReject(blocks: IBlockState[]): string {
-  const anti = blocks.filter((b) =>
-    ['anti_pattern', 'opinion'].includes(b.category)
-  )
-  if (anti.length === 0) return 'Over-engineering and unnecessary complexity.'
-  return anti.map((a) => `- ${a.label}: ${a.detail}`).join('\n')
-}
-
-async function generateOverride(
-  skill: IMatchedSkill,
-  blocks: IBlockState[]
-): Promise<string> {
-  try {
-    const response = await anthropic.messages.create({
-      model: 'claude-sonnet-4-6',
-      max_tokens: 512,
-      messages: [
-        {
-          role: 'user',
-          content: `Generate a short preference override (max 20 lines) for the skills.sh skill "${skill.name}" based on this user's identity:
-
-${blocks.map((b) => `- ${b.label}: ${b.detail}`).join('\n')}
-
-The override should layer the user's personality on top of the community skill without replacing it. Format as markdown.`,
-        },
-      ],
-    })
-
-    const text = response.content[0]
-    return text.type === 'text' ? text.text : `# ${skill.name}\n\nDefault preferences apply.`
-  } catch {
-    return `# ${skill.name}\n\nDefault preferences apply.`
-  }
 }

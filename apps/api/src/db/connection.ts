@@ -8,11 +8,12 @@ export async function connectDB() {
   if (isConnected) return
 
   try {
-    await mongoose.connect(MONGODB_URI)
+    console.log('MongoDB connecting to:', MONGODB_URI.replace(/:([^@]+)@/, ':***@'))
+    await mongoose.connect(MONGODB_URI, { serverSelectionTimeoutMS: 15000 })
     isConnected = true
     console.log('MongoDB connected')
   } catch (error) {
-    console.error('MongoDB connection error:', error)
+    console.error('MongoDB connection error:', error instanceof Error ? error.message : error)
     process.exit(1)
   }
 }

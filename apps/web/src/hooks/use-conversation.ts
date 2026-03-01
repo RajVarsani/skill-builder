@@ -1,4 +1,5 @@
 import { useCallback, useRef } from 'react'
+import { useNavigate } from 'react-router'
 import { connectSSE } from '../lib/sse'
 import { useConversationStore } from '../lib/store'
 import { apiFetch } from '../lib/api'
@@ -6,6 +7,7 @@ import type { ConversationPhase } from '@skill-builder/shared/src/types'
 
 export function useConversation() {
   const abortRef = useRef<AbortController | null>(null)
+  const navigate = useNavigate()
 
   const initConversation = useCallback(async () => {
     const store = useConversationStore.getState()
@@ -13,6 +15,8 @@ export function useConversation() {
       conversation: {
         id: string
         phase: ConversationPhase
+        status?: string
+        publishedSkillId?: string
         selectedDomains: string[]
         blockStates: Array<{
           blockId: string
@@ -40,6 +44,16 @@ export function useConversation() {
     }>('/conversations/active')
 
     if (existing.conversation) {
+      // If the conversation is completed and published, redirect to success page
+      if (
+        existing.conversation.status === 'completed' &&
+        existing.conversation.phase === 'published' &&
+        existing.conversation.publishedSkillId
+      ) {
+        navigate(`/success/${existing.conversation.publishedSkillId}`, { replace: true })
+        return existing.conversation.id
+      }
+
       store.setConversationId(existing.conversation.id)
       store.loadState({
         phase: existing.conversation.phase,
@@ -58,7 +72,7 @@ export function useConversation() {
     })
     store.setConversationId(id)
     return id
-  }, [])
+  }, [navigate])
 
   const sendMessage = useCallback(
     async (content: string) => {

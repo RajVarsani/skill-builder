@@ -5,7 +5,8 @@ interface ShareButtonsProps {
 
 export function ShareButtons({ skillUrl, skillName }: ShareButtonsProps) {
   const handleShareX = () => {
-    const text = encodeURIComponent(`I just built my professional identity skill: ${skillName}`)
+    const username = skillName.replace('acting-as-', '')
+    const text = encodeURIComponent(`I just made myself installable.\n\nskills install ${username}\n\nBuild yours:`)
     const url = encodeURIComponent(skillUrl)
     window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank')
   }

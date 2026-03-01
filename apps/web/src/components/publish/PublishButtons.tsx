@@ -7,6 +7,20 @@ interface PublishButtonsProps {
   hasGithub: boolean
 }
 
+function PixelDots({ className = '' }: { className?: string }) {
+  return (
+    <span className={`inline-flex items-center gap-0.5 ${className}`}>
+      {[0, 1, 2, 3].map((i) => (
+        <span
+          key={i}
+          className="inline-block w-1.5 h-1.5 bg-current"
+          style={{ animation: `pixelBounce 0.8s ease-in-out ${i * 0.1}s infinite` }}
+        />
+      ))}
+    </span>
+  )
+}
+
 export function PublishButtons({ onPublish, onPublishGitHub, isPublishing, hasGithub }: PublishButtonsProps) {
   const handleGitHubClick = () => {
     if (!hasGithub) {
@@ -26,17 +40,35 @@ export function PublishButtons({ onPublish, onPublishGitHub, isPublishing, hasGi
         <button
           onClick={onPublish}
           disabled={isPublishing}
-          className="flex-1 flex items-center justify-center py-3.5 px-7 bg-accent text-cream font-display text-[11px] uppercase tracking-[0.04em] disabled:opacity-50 hover:bg-accent/90 transition-colors"
+          className="flex-1 flex items-center justify-center gap-2 py-3.5 px-7 bg-accent text-cream font-display text-[11px] uppercase tracking-[0.04em] disabled:opacity-80 hover:bg-accent/90 transition-colors"
         >
-          {isPublishing ? 'Publishing...' : 'Publish to Skill Builder'}
+          {isPublishing ? (
+            <>
+              <PixelDots />
+              <span>Publishing</span>
+              <PixelDots />
+            </>
+          ) : (
+            'Publish to Skill Builder'
+          )}
         </button>
 
         <button
           onClick={handleGitHubClick}
           disabled={isPublishing}
-          className="flex-1 flex items-center justify-center py-3.5 px-7 border-2 border-surface text-surface font-display text-[11px] uppercase tracking-[0.04em] disabled:opacity-50 hover:bg-surface/5 transition-colors"
+          className="flex-1 flex items-center justify-center gap-2 py-3.5 px-7 border-2 border-surface text-surface font-display text-[11px] uppercase tracking-[0.04em] disabled:opacity-80 hover:bg-surface/5 transition-colors"
         >
-          {hasGithub ? 'Publish to GitHub' : 'Connect GitHub'}
+          {isPublishing ? (
+            <>
+              <PixelDots />
+              <span>Publishing</span>
+              <PixelDots />
+            </>
+          ) : hasGithub ? (
+            'Publish to GitHub'
+          ) : (
+            'Connect GitHub'
+          )}
         </button>
       </div>
     </div>

@@ -102,9 +102,9 @@ export function SignIn() {
 
         {/* Subtitle */}
         <p className="text-center text-muted text-[13px] font-body leading-[20px] mb-8">
-          Build your professional identity. Let AI
+          Build your AI persona. 3 minutes.
           <br />
-          discover who you are — block by block.
+          75K+ skills matched. One install command.
         </p>
 
         {/* Buttons */}
@@ -128,7 +128,7 @@ export function SignIn() {
 
         {/* Footer text */}
         <p className="text-center text-muted/60 text-[10px] font-body mt-6">
-          No credit card. No setup. Just a 3-minute conversation.
+          No credit card. No setup. Just a conversation with an agent.
         </p>
       </div>
     </div>
