@@ -24,10 +24,10 @@ export function MatchedSkillBlock({ skill, index }: MatchedSkillBlockProps) {
         damping: 22,
         delay: index * 0.1,
       }}
-      className="flex items-center justify-between bg-surface-secondary border-2 border-surface-secondary px-3.5 py-2"
+      className="flex items-center justify-between gap-3 bg-surface-secondary border-2 border-surface-secondary px-3.5 py-2"
     >
       <div className="flex items-center gap-2.5 min-w-0">
-        <span className="font-display text-[10px] uppercase text-cream truncate">
+        <span className="font-display text-[10px] uppercase text-cream opacity-80 truncate">
           {skill.name}
         </span>
         <span className="text-[9px] font-body text-muted shrink-0">

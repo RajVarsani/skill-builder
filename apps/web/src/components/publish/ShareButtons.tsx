@@ -1,9 +1,15 @@
+import { type RefObject, useState } from 'react'
+import { toPng } from 'html-to-image'
+
 interface ShareButtonsProps {
   skillUrl: string
   skillName: string
+  cardRef?: RefObject<HTMLDivElement | null>
 }
 
-export function ShareButtons({ skillUrl, skillName }: ShareButtonsProps) {
+export function ShareButtons({ skillUrl, skillName, cardRef }: ShareButtonsProps) {
+  const [downloading, setDownloading] = useState(false)
+
   const handleShareX = () => {
     const username = skillName.replace('acting-as-', '')
     const text = encodeURIComponent(`I just made myself installable.\n\nnpx skills install ${username}\n\nBuild yours:`)
@@ -18,6 +24,25 @@ export function ShareButtons({ skillUrl, skillName }: ShareButtonsProps) {
 
   const handleCopyLink = async () => {
     await navigator.clipboard.writeText(skillUrl)
+  }
+
+  const handleDownloadImage = async () => {
+    if (!cardRef?.current || downloading) return
+    setDownloading(true)
+    try {
+      const dataUrl = await toPng(cardRef.current, {
+        pixelRatio: 2,
+        backgroundColor: '#1a1008',
+      })
+      const link = document.createElement('a')
+      link.download = `${skillName.replace('acting-as-', '')}-skill-card.png`
+      link.href = dataUrl
+      link.click()
+    } catch (err) {
+      console.error('Failed to download card image:', err)
+    } finally {
+      setDownloading(false)
+    }
   }
 
   return (
@@ -45,6 +70,15 @@ export function ShareButtons({ skillUrl, skillName }: ShareButtonsProps) {
         >
           Copy Link
         </button>
+        {cardRef && (
+          <button
+            onClick={handleDownloadImage}
+            disabled={downloading}
+            className="flex items-center justify-center py-3 px-6 border-2 border-accent bg-accent/10 font-display text-[10px] uppercase tracking-[0.04em] text-accent hover:bg-accent/20 transition-colors disabled:opacity-50"
+          >
+            {downloading ? 'Saving...' : 'Download Card'}
+          </button>
+        )}
       </div>
     </div>
   )
