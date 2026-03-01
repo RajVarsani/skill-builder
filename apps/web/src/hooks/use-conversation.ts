@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router'
 import { connectSSE } from '../lib/sse'
 import { useConversationStore } from '../lib/store'
 import { apiFetch } from '../lib/api'
-import type { ConversationPhase } from '@skill-builder/shared/src/types'
+import type { ConversationPhase } from '@actingas/shared/src/types'
 
 export function useConversation() {
   const abortRef = useRef<AbortController | null>(null)

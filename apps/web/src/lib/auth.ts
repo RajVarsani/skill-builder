@@ -7,7 +7,7 @@ import {
   type ReactNode,
 } from 'react'
 import { createElement } from 'react'
-import type { UserPublic } from '@skill-builder/shared/src/types'
+import type { UserPublic } from '@actingas/shared/src/types'
 import { apiFetch } from './api'
 
 interface AuthState {

@@ -3,7 +3,7 @@ import type {
   ConversationPhase,
   MatchedSkill,
   IdentityBlock,
-} from '@skill-builder/shared/src/types'
+} from '@actingas/shared/src/types'
 import { buildSystemPrompt } from './system-prompts'
 import { identityTools } from './tools'
 import { BlockStateMachine } from './block-state-machine'

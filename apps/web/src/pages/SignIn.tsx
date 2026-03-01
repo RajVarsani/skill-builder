@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { useAuth } from '../lib/auth'
 import { apiFetch } from '../lib/api'
-import type { AuthResponse } from '@skill-builder/shared/src/types'
+import type { AuthResponse } from '@actingas/shared/src/types'
 
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID
 const GITHUB_CLIENT_ID = import.meta.env.VITE_GITHUB_CLIENT_ID
@@ -94,7 +94,7 @@ export function SignIn() {
 
         {/* Title */}
         <h1 className="font-display text-3xl text-center uppercase tracking-[0.05em] text-surface">
-          Skill Builder
+          actingas
         </h1>
 
         {/* Red divider */}

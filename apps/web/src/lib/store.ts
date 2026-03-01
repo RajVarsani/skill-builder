@@ -4,7 +4,7 @@ import type {
   IdentityBlock,
   MatchedSkill,
   ConversationMessage,
-} from '@skill-builder/shared/src/types'
+} from '@actingas/shared/src/types'
 
 interface ConversationStore {
   conversationId: string | null

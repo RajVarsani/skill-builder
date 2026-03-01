@@ -55,7 +55,7 @@ export function PublishButtons({ onPublish, onPublishGitHub, isPublishing, isGen
               <PixelDots />
             </>
           ) : (
-            'Publish to Skill Builder'
+            'Publish to actingas'
           )}
         </button>
 

@@ -5,7 +5,7 @@ import type {
   BlockSourceType,
   BlockStatus,
   SkillStatus,
-} from '@skill-builder/shared/src/types'
+} from '@actingas/shared/src/types'
 
 export interface IBlockState {
   blockId: string

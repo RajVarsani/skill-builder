@@ -34,7 +34,7 @@ export function Nav({ step, onStartFresh }: NavProps) {
         onClick={() => navigate('/')}
         className="font-display text-[14px] md:text-[16px] uppercase tracking-[0.05em] text-surface hover:text-accent transition-colors"
       >
-        Skill Builder
+        actingas
       </button>
 
       <div className="flex items-center gap-2 md:gap-4">
