@@ -12,6 +12,7 @@ export interface IPublishedSkill extends Document {
   matchedSkills: unknown[]
   customSkills: unknown[]
   skillFiles: Array<{ path: string; content: string }>
+  ogImageUrl?: string
   createdAt: Date
   updatedAt: Date
 }
@@ -35,6 +36,7 @@ const publishedSkillSchema = new Schema<IPublishedSkill>(
         _id: false,
       },
     ],
+    ogImageUrl: { type: String },
   },
   { timestamps: true }
 )

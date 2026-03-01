@@ -6,10 +6,12 @@ import { IdentityCard } from '../components/card/IdentityCard'
 import { SkillReviewList } from '../components/publish/SkillReviewList'
 import { PublishButtons } from '../components/publish/PublishButtons'
 import { SkillMarkdownEditor } from '../components/publish/SkillMarkdownEditor'
+import { PublishModal } from '../components/publish/PublishModal'
 import { useConversation } from '../hooks/use-conversation'
 import { useConversationStore } from '../lib/store'
 import { useAuth } from '../lib/auth'
 import { apiFetch } from '../lib/api'
+import { captureOGImage, type OGImageCardProps } from '../lib/og-capture'
 import { PHASE_STEP } from '@actingas/shared/src/types'
 
 export function Builder() {
@@ -26,6 +28,12 @@ export function Builder() {
   const navigate = useNavigate()
   const helloSentRef = useRef(false)
   const previewFetchedRef = useRef(false)
+
+  // Publish modal state
+  const [modalOpen, setModalOpen] = useState(false)
+  const [modalOgProps, setModalOgProps] = useState<OGImageCardProps | null>(null)
+  const [publishDone, setPublishDone] = useState(false)
+  const publishResultRef = useRef<{ id: string } | null>(null)
 
   const step = PHASE_STEP[phase]
   const isReviewPhase = phase === 'review' || phase === 'published'
@@ -92,21 +100,61 @@ export function Builder() {
     if (!conversationId || isPublishing) return
     setPublishTarget(target)
     setIsPublishing(true)
+
+    const store = useConversationStore.getState()
+    const confirmed = store.blocks.filter((b) => b.status === 'confirmed')
+    const active = store.matchedSkills.filter((s) => s.status !== 'rejected')
+    const formatCategory = (cat: string) =>
+      cat.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())
+    const domains = [...new Set(confirmed.map((b) => b.category))].map(formatCategory)
+
+    const ogProps: OGImageCardProps = {
+      name: user?.name ?? '',
+      title: domains.join(' + ') || 'Professional',
+      blocksDiscovered: confirmed.length,
+      skillsMatched: active.length,
+      completionPercent: store.completion.percentage,
+      traits: confirmed.map((b) => b.label).slice(0, 8),
+      skills: active.slice(0, 3).map((s) => ({ name: s.name, installs: s.installs })),
+    }
+
+    // Open modal with card preview
+    publishResultRef.current = null
+    setPublishDone(false)
+    setModalOgProps(ogProps)
+    setModalOpen(true)
+
     try {
-      const currentMarkdown = useConversationStore.getState().skillMarkdown
+      let ogImage: string | undefined
+      try {
+        ogImage = await captureOGImage(ogProps)
+      } catch (e) {
+        console.error('OG image capture failed, publishing without:', e)
+      }
+
+      const currentMarkdown = store.skillMarkdown
       const result = await apiFetch<{ id: string; installCommand: string; repoUrl: string }>(
         `/conversations/${conversationId}/publish`,
         {
           method: 'POST',
-          body: JSON.stringify({ skillMarkdown: currentMarkdown, target }),
+          body: JSON.stringify({ skillMarkdown: currentMarkdown, target, ogImage }),
         }
       )
-      navigate(`/success/${result.id}`)
+
+      publishResultRef.current = result
+      setPublishDone(true)
     } catch (error) {
       console.error('Publish error:', error)
+      setModalOpen(false)
       setIsPublishing(false)
     }
   }
+
+  const handlePublishComplete = useCallback(() => {
+    if (publishResultRef.current) {
+      navigate(`/success/${publishResultRef.current.id}`)
+    }
+  }, [navigate])
 
   const handlePublishGitHub = async () => {
     handlePublish('personal')
@@ -170,6 +218,13 @@ export function Builder() {
           </div>
         </div>
       </div>
+
+      <PublishModal
+        open={modalOpen}
+        ogProps={modalOgProps}
+        publishDone={publishDone}
+        onComplete={handlePublishComplete}
+      />
     </div>
   )
 }

@@ -6,9 +6,15 @@ interface PublishResult {
   installCommand: string
 }
 
+interface PublishFile {
+  path: string
+  content: string
+  encoding?: 'base64'
+}
+
 interface PublishOptions {
   userName: string
-  files: Array<{ path: string; content: string }>
+  files: PublishFile[]
   githubAccessToken?: string
 }
 
@@ -91,7 +97,7 @@ export async function listAppInstallations(): Promise<unknown> {
 
 async function publishToOrgRepo(
   repoName: string,
-  files: Array<{ path: string; content: string }>
+  files: PublishFile[]
 ): Promise<PublishResult> {
   const token = await getInstallationToken()
   const orgName = process.env.GITHUB_ORG_NAME || 'skill-builder-agent'
@@ -146,7 +152,9 @@ async function publishToOrgRepo(
         },
         body: JSON.stringify({
           message: `Update ${file.path}`,
-          content: Buffer.from(file.content, 'utf-8').toString('base64'),
+          content: file.encoding === 'base64'
+            ? file.content
+            : Buffer.from(file.content, 'utf-8').toString('base64'),
           sha: existing?.sha,
         }),
       }
@@ -181,7 +189,7 @@ export async function publishToGitHub(options: PublishOptions): Promise<PublishR
 
 async function publishToPersonalRepo(
   repoName: string,
-  files: Array<{ path: string; content: string }>,
+  files: PublishFile[],
   token: string
 ): Promise<PublishResult> {
   const userRes = await fetch('https://api.github.com/user', {
@@ -236,7 +244,9 @@ async function publishToPersonalRepo(
         },
         body: JSON.stringify({
           message: `Update ${file.path}`,
-          content: Buffer.from(file.content, 'utf-8').toString('base64'),
+          content: file.encoding === 'base64'
+            ? file.content
+            : Buffer.from(file.content, 'utf-8').toString('base64'),
           sha: existing?.sha,
         }),
       }

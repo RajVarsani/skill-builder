@@ -74,10 +74,10 @@ skills.post('/conversations/:id/publish', authMiddleware, async (c) => {
   if (!user) return c.json({ error: 'User not found' }, 404)
 
   try {
-    const body = await c.req.json<{ skillMarkdown?: string; target?: 'org' | 'personal' }>().catch(() => ({} as { skillMarkdown?: string; target?: 'org' | 'personal' }))
+    const body = await c.req.json<{ skillMarkdown?: string; target?: 'org' | 'personal'; ogImage?: string }>().catch(() => ({} as { skillMarkdown?: string; target?: 'org' | 'personal'; ogImage?: string }))
     const slug = user.name.toLowerCase().replace(/\s+/g, '-')
 
-    let files: { path: string; content: string }[]
+    let files: Array<{ path: string; content: string; encoding?: 'base64' }>
 
     if (body.skillMarkdown) {
       // User's edited SKILL.md + generate override files for references/matched/
@@ -100,6 +100,10 @@ skills.post('/conversations/:id/publish', authMiddleware, async (c) => {
       )
     }
 
+    if (body.ogImage) {
+      files.push({ path: 'og-image.png', content: body.ogImage, encoding: 'base64' })
+    }
+
     console.log(`Publish: ${files.length} files for ${user.name}`)
 
     const usePersonalGithub = body.target === 'personal' && user.githubAccessToken
@@ -108,6 +112,11 @@ skills.post('/conversations/:id/publish', authMiddleware, async (c) => {
       files,
       githubAccessToken: usePersonalGithub ? user.githubAccessToken : undefined,
     })
+
+    const repoName = `acting-as-${slug}`
+    const ogImageUrl = body.ogImage
+      ? `https://raw.githubusercontent.com/${publishResult.repoOwner}/${repoName}/main/og-image.png`
+      : undefined
 
     const skillName = `acting-as-${user.name.toLowerCase().replace(/\s+/g, '-')}`
     const publishedSkill = await PublishedSkill.findOneAndUpdate(
@@ -124,6 +133,7 @@ skills.post('/conversations/:id/publish', authMiddleware, async (c) => {
         matchedSkills: conversation.matchedSkills,
         customSkills: [],
         skillFiles: files,
+        ...(ogImageUrl ? { ogImageUrl } : {}),
       },
       { upsert: true, new: true }
     )
@@ -160,6 +170,7 @@ skills.get('/skills/:id', async (c) => {
       repoUrl: skill.githubRepoUrl,
       blockStates: skill.blockStates,
       matchedSkills: skill.matchedSkills,
+      ogImageUrl: skill.ogImageUrl,
     },
   })
 })
@@ -180,6 +191,7 @@ skills.get('/users/:username/skill', async (c) => {
       repoUrl: skill.githubRepoUrl,
       blockStates: skill.blockStates,
       matchedSkills: skill.matchedSkills,
+      ogImageUrl: skill.ogImageUrl,
     },
     user: user
       ? { name: user.name, avatarUrl: user.avatarUrl }
