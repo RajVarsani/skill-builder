@@ -97,24 +97,24 @@ export function Profile() {
   return (
     <div className="min-h-screen bg-page">
       {/* Nav */}
-      <nav className="flex items-center justify-between px-[60px] py-5 border-b-[3px] border-surface">
-        <a href="/" className="font-display text-[16px] uppercase tracking-[0.05em] text-surface">
+      <nav className="flex items-center justify-between px-4 md:px-[60px] py-4 md:py-5 border-b-[3px] border-surface">
+        <a href="/" className="font-display text-[14px] md:text-[16px] uppercase tracking-[0.05em] text-surface">
           Skill Builder
         </a>
         <a
           href="/sign-in"
-          className="bg-accent border-[3px] border-surface px-6 py-2.5 font-display text-[12px] uppercase tracking-[0.05em] text-cream hover:bg-accent/90 transition-colors"
+          className="bg-accent border-[3px] border-surface px-4 md:px-6 py-2 md:py-2.5 font-display text-[11px] md:text-[12px] uppercase tracking-[0.05em] text-cream hover:bg-accent/90 transition-colors"
         >
           Build Yours
         </a>
       </nav>
 
       {/* Content */}
-      <div className="flex items-start justify-center gap-16 px-[60px] py-16">
+      <div className="flex flex-col md:flex-row items-start justify-center gap-10 md:gap-16 px-5 md:px-[60px] py-8 md:py-16">
         {/* Left — info */}
-        <div className="w-[440px] space-y-8">
+        <div className="w-full max-w-[440px] space-y-8">
           <div>
-            <h1 className="font-display text-[32px] leading-[42px] tracking-[0.02em] text-surface uppercase">
+            <h1 className="font-display text-[24px] md:text-[32px] leading-[32px] md:leading-[42px] tracking-[0.02em] text-surface uppercase">
               {name}
             </h1>
             <p className="font-body text-[14px] text-muted uppercase tracking-[0.1em] mt-1">
@@ -133,7 +133,7 @@ export function Profile() {
         </div>
 
         {/* Right — card */}
-        <div className="w-[400px] shrink-0">
+        <div className="w-full max-w-[400px] shrink-0">
           <div className="border-[3px] border-accent">
             <div className="bg-surface overflow-hidden">
               {/* Pixel bar */}

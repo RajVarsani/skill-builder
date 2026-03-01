@@ -19,8 +19,8 @@ export function InstallCommand({ command }: InstallCommandProps) {
         Install Command
       </span>
 
-      <div className="flex items-center gap-3 bg-surface border-[3px] border-accent px-[18px] py-[14px]">
-        <span className="text-[13px] font-body tracking-[0.02em] text-accent flex-1">
+      <div className="flex items-center gap-3 bg-surface border-[3px] border-accent px-3 md:px-[18px] py-[14px]">
+        <span className="text-[12px] md:text-[13px] font-body tracking-[0.02em] text-accent flex-1 break-all">
           {command}
         </span>
         <button

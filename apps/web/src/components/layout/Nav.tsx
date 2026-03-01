@@ -29,25 +29,25 @@ export function Nav({ step, onStartFresh }: NavProps) {
   }
 
   return (
-    <nav className="flex items-center justify-between px-[60px] py-5 border-b-[3px] border-surface">
+    <nav className="flex items-center justify-between px-4 md:px-[60px] py-4 md:py-5 border-b-[3px] border-surface">
       <button
         onClick={() => navigate('/')}
-        className="font-display text-[16px] uppercase tracking-[0.05em] text-surface hover:text-accent transition-colors"
+        className="font-display text-[14px] md:text-[16px] uppercase tracking-[0.05em] text-surface hover:text-accent transition-colors"
       >
         Skill Builder
       </button>
 
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2 md:gap-4">
         {step && (
-          <div className="flex items-center gap-3">
-            <span className="font-body text-[14px] uppercase tracking-[0.08em] text-surface">
+          <div className="flex items-center gap-2 md:gap-3">
+            <span className="hidden sm:inline font-body text-[14px] uppercase tracking-[0.08em] text-surface">
               Step {step} of 4
             </span>
-            <div className="flex gap-1.5">
+            <div className="flex gap-1 md:gap-1.5">
               {[1, 2, 3, 4].map((s) => (
                 <div
                   key={s}
-                  className={`w-8 h-1.5 ${
+                  className={`w-5 md:w-8 h-1.5 ${
                     s <= step ? 'bg-accent' : 'bg-muted/30'
                   }`}
                 />
@@ -59,7 +59,7 @@ export function Nav({ step, onStartFresh }: NavProps) {
         {onStartFresh && (
           <button
             onClick={onStartFresh}
-            className="px-4 py-2 border-2 border-muted font-display text-[10px] uppercase tracking-[0.04em] text-muted hover:border-surface hover:text-surface transition-colors"
+            className="px-3 md:px-4 py-2 border-2 border-muted font-display text-[10px] uppercase tracking-[0.04em] text-muted hover:border-surface hover:text-surface transition-colors"
           >
             Start Fresh
           </button>
