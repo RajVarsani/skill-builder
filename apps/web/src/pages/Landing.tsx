@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router'
 import { useAuth } from '../lib/auth'
 import { GlitchLogo } from '../components/GlitchLogo'
@@ -58,6 +58,11 @@ export function Landing() {
   const navigate = useNavigate()
   const { isAuthenticated } = useAuth()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  // Wake up backend on Render free tier (cold start)
+  useEffect(() => {
+    fetch('/api/health').catch(() => {})
+  }, [])
 
   const handleCTA = () => {
     navigate(isAuthenticated ? '/builder' : '/sign-in')
