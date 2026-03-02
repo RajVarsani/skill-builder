@@ -13,11 +13,11 @@
           "value": ".*(Twitterbot|facebookexternalhit|LinkedInBot|Slackbot|WhatsApp|Discordbot|TelegramBot).*"
         }
       ],
-      "destination": "https://actingas-api-903689713267.asia-south1.run.app/profile/:path*"
+      "destination": "https://api.actingas.me/profile/:path*"
     },
     {
       "source": "/api/:path*",
-      "destination": "https://actingas-api-903689713267.asia-south1.run.app/:path*"
+      "destination": "https://api.actingas.me/:path*"
     },
     {
       "source": "/((?!api/).*)",
