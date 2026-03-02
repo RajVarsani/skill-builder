@@ -12,7 +12,5 @@
     "scrape-skills": "bun run scripts/scrape-skills.mjs"
   },
   "workspaces": ["apps/*", "packages/*"],
-  "devDependencies": {
-    "@vercel/functions": "^3.4.3"
-  }
+  "devDependencies": {}
 }
