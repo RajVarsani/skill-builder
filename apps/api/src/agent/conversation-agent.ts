@@ -1,4 +1,5 @@
-import Anthropic from '@anthropic-ai/sdk'
+import type { MessageParam } from '@anthropic-ai/sdk/resources/messages/messages'
+import { ai, AI_MODEL } from '../lib/ai-client'
 import type {
   ConversationPhase,
   MatchedSkill,
@@ -8,8 +9,6 @@ import { buildSystemPrompt } from './system-prompts'
 import { identityTools } from './tools'
 import { BlockStateMachine } from './block-state-machine'
 import type { IBlockState, IMatchedSkill } from '../db/models/conversation'
-
-const anthropic = new Anthropic()
 
 export type ConversationEvent =
   | { type: 'text_chunk'; data: { text: string } }
@@ -70,11 +69,11 @@ export async function* runConversationTurn(
   let fullAssistantText = ''
 
   while (continueLoop) {
-    const stream = anthropic.messages.stream({
-      model: 'claude-haiku-4-5',
+    const stream = ai.messages.stream({
+      model: AI_MODEL,
       max_tokens: 2048,
       system: systemPrompt,
-      messages: apiMessages as Anthropic.MessageParam[],
+      messages: apiMessages as MessageParam[],
       tools: identityTools,
     })
 
@@ -166,7 +165,7 @@ export async function* runConversationTurn(
       data: {
         inputTokens: finalMessage.usage.input_tokens,
         outputTokens: finalMessage.usage.output_tokens,
-        model: 'claude-haiku-4-5',
+        model: AI_MODEL,
       },
     }
 
