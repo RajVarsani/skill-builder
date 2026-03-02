@@ -25,34 +25,34 @@ export async function generateSkillMarkdown(
   const identityBlocks = blockStates.filter((b) => b.status === 'confirmed' || b.confidence !== 'low')
 
   try {
-    const response = await ai.messages.create({
+    const response = await ai.models.generateContent({
       model: AI_MODEL,
-      max_tokens: 2048,
-      system: SKILL_SYSTEM_PROMPT,
-      messages: [
-        { role: 'user', content: buildUserPrompt(userName, slug, identityBlocks, activeSkills, selectedDomains) },
+      contents: [
+        { role: 'user', parts: [{ text: buildUserPrompt(userName, slug, identityBlocks, activeSkills, selectedDomains) }] },
       ],
+      config: {
+        systemInstruction: SKILL_SYSTEM_PROMPT,
+        maxOutputTokens: 2048,
+      },
     })
 
     const usage: SkillGenerationUsage = {
-      inputTokens: response.usage.input_tokens,
-      outputTokens: response.usage.output_tokens,
+      inputTokens: response.usageMetadata?.promptTokenCount ?? 0,
+      outputTokens: response.usageMetadata?.candidatesTokenCount ?? 0,
       model: AI_MODEL,
     }
 
-    const text = response.content[0]
-    if (text.type === 'text') {
-      const content = text.text.trim()
-      // Strip code fences if Claude wraps the output
-      if (content.startsWith('```')) {
-        const lines = content.split('\n')
-        const start = lines[0].startsWith('```') ? 1 : 0
-        const end = lines[lines.length - 1] === '```' ? lines.length - 1 : lines.length
-        return { markdown: lines.slice(start, end).join('\n').trim(), usage }
-      }
-      return { markdown: content, usage }
+    const content = (response.text ?? '').trim()
+    if (!content) throw new Error('Empty response from model')
+
+    // Strip code fences if the model wraps the output
+    if (content.startsWith('```')) {
+      const lines = content.split('\n')
+      const start = lines[0].startsWith('```') ? 1 : 0
+      const end = lines[lines.length - 1] === '```' ? lines.length - 1 : lines.length
+      return { markdown: lines.slice(start, end).join('\n').trim(), usage }
     }
-    throw new Error('Unexpected response type')
+    return { markdown: content, usage }
   } catch (error) {
     console.error('SKILL.md generation failed:', error instanceof Error ? error.message : error)
     return { markdown: buildFallback(userName, slug, identityBlocks, activeSkills, selectedDomains), usage: null }
