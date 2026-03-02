@@ -1,4 +1,3 @@
-import axios from "axios";
 import { writeFile, mkdir } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -10,21 +9,21 @@ const CHUNK_SIZE = 1000; // skills per JSON chunk file
 const CONCURRENCY = 5; // parallel requests
 const DELAY_MS = 200; // delay between batches to be polite
 
-const client = axios.create({
-  baseURL: BASE_URL,
-  headers: {
-    accept: "*/*",
-    "ngrok-skip-browser-warning": "69420",
-    referer: "https://skills.sh/",
-    "user-agent":
-      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36",
-  },
-  timeout: 30000,
-});
+const HEADERS = {
+  accept: "*/*",
+  "ngrok-skip-browser-warning": "69420",
+  referer: "https://skills.sh/",
+  "user-agent":
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36",
+};
 
 async function fetchPage(page) {
-  const { data } = await client.get(`/${page}`);
-  return data;
+  const res = await fetch(`${BASE_URL}/${page}`, {
+    headers: HEADERS,
+    signal: AbortSignal.timeout(30000),
+  });
+  if (!res.ok) throw new Error(`HTTP ${res.status} for page ${page}`);
+  return res.json();
 }
 
 function sleep(ms) {
