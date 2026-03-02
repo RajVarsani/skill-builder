@@ -66,6 +66,16 @@ export class SkillMatchingEngine {
       .filter((t) => t.length > 1)
   }
 
+  private findPrefixMatches(prefix: string): SkillEntry[] {
+    const results: Set<SkillEntry> = new Set()
+    for (const [token, skills] of this.nameTokenIndex) {
+      if (token.startsWith(prefix)) {
+        for (const skill of skills) results.add(skill)
+      }
+    }
+    return Array.from(results)
+  }
+
   search(query: string, domain?: string, limit: number = 5): SearchResult[] {
     if (!this.loaded || this.skills.length === 0) {
       return []
@@ -74,25 +84,47 @@ export class SkillMatchingEngine {
     const queryTokens = new Set(this.tokenize(query))
     const scored = new Map<string, { skill: SkillEntry; score: number }>()
 
-    for (const token of queryTokens) {
-      const matches = this.nameTokenIndex.get(token) || []
-      for (const skill of matches) {
-        const key = `${skill.source}/${skill.name}`
-        const existing = scored.get(key)
+    const addCandidate = (skill: SkillEntry, isPrefix: boolean) => {
+      const key = `${skill.source}/${skill.name}`
+      const skillTokens = new Set(this.tokenize(skill.name))
 
-        const skillTokens = new Set(this.tokenize(skill.name))
-        const intersection = [...queryTokens].filter((t) => skillTokens.has(t)).length
-        const union = new Set([...queryTokens, ...skillTokens]).size
-        const jaccard = union > 0 ? intersection / union : 0
-
-        const isExact = skill.name.toLowerCase() === query.toLowerCase()
-        const baseScore = isExact ? 1.0 : jaccard
-        const installBoost = skill.installs > 0 ? Math.log10(skill.installs) / 10 : 0
-        const score = baseScore + installBoost
-
-        if (!existing || score > existing.score) {
-          scored.set(key, { skill, score })
+      // Count how many query tokens match (exact or prefix)
+      let matchCount = 0
+      for (const qt of queryTokens) {
+        for (const st of skillTokens) {
+          if (st === qt || st.startsWith(qt) || qt.startsWith(st)) {
+            matchCount++
+            break
+          }
         }
+      }
+      if (matchCount === 0) return
+
+      const intersection = [...queryTokens].filter((t) => skillTokens.has(t)).length
+      const union = new Set([...queryTokens, ...skillTokens]).size
+      const jaccard = union > 0 ? intersection / union : 0
+
+      const isExact = skill.name.toLowerCase() === query.toLowerCase()
+      const prefixRatio = matchCount / queryTokens.size
+      const baseScore = isExact ? 1.0 : Math.max(jaccard, prefixRatio * 0.7)
+      const installBoost = skill.installs > 0 ? Math.log10(skill.installs) / 10 : 0
+      const score = baseScore + installBoost
+
+      const existing = scored.get(key)
+      if (!existing || score > existing.score) {
+        scored.set(key, { skill, score })
+      }
+    }
+
+    for (const token of queryTokens) {
+      // Exact token matches
+      const exactMatches = this.nameTokenIndex.get(token) || []
+      for (const skill of exactMatches) addCandidate(skill, false)
+
+      // Prefix matches (only for tokens >= 2 chars)
+      if (token.length >= 2) {
+        const prefixMatches = this.findPrefixMatches(token)
+        for (const skill of prefixMatches) addCandidate(skill, true)
       }
     }
 

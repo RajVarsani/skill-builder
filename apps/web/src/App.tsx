@@ -11,8 +11,40 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-page flex items-center justify-center">
-        <p className="font-mono text-sm text-muted animate-pulse">Loading...</p>
+      <div className="min-h-screen bg-page flex flex-col items-center justify-center gap-8">
+        <div className="flex gap-1.5">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <div
+              key={i}
+              className="w-3 h-8 bg-accent"
+              style={{
+                animation: 'pixelBounce 0.6s ease-in-out infinite',
+                animationDelay: `${i * 0.1}s`,
+              }}
+            />
+          ))}
+        </div>
+        <p className="font-display text-[11px] uppercase tracking-[0.08em] text-muted">
+          Loading
+          <span className="inline-flex w-6">
+            {Array.from({ length: 3 }).map((_, i) => (
+              <span
+                key={i}
+                className="inline-block w-1 h-1 bg-muted mx-[1px]"
+                style={{
+                  animation: 'pixelBounce 0.8s ease-in-out infinite',
+                  animationDelay: `${i * 0.2}s`,
+                }}
+              />
+            ))}
+          </span>
+        </p>
+        <style>{`
+          @keyframes pixelBounce {
+            0%, 100% { transform: scaleY(0.4); opacity: 0.3; }
+            50% { transform: scaleY(1); opacity: 1; }
+          }
+        `}</style>
       </div>
     )
   }

@@ -233,10 +233,17 @@ conversations.post('/:id/messages', async (c) => {
         })
       }
     } catch (error) {
-      console.error('Conversation stream error:', error)
+      const errMsg = error instanceof Error ? error.message : String(error)
+      console.error('Conversation stream error:', errMsg)
       await stream.writeSSE({
         event: 'error',
-        data: JSON.stringify({ message: 'An error occurred during the conversation' }),
+        data: JSON.stringify({
+          message: errMsg.includes('authentication_error')
+            ? 'AI service authentication failed — check ANTHROPIC_API_KEY'
+            : errMsg.includes('rate_limit')
+              ? 'Rate limited — please try again in a moment'
+              : 'An error occurred during the conversation',
+        }),
       })
     }
   })
@@ -288,6 +295,38 @@ conversations.get('/:id/skills', async (c) => {
   if (!conversation) return c.json({ error: 'Not found' }, 404)
 
   return c.json({ skills: conversation.matchedSkills })
+})
+
+conversations.get('/:id/skills/search', async (c) => {
+  const query = c.req.query('q')
+  if (!query || query.length < 2) return c.json({ results: [] })
+  const results = skillEngine.search(query, undefined, 10)
+  return c.json({ results })
+})
+
+conversations.post('/:id/skills/add', async (c) => {
+  const userId = c.get('userId')
+  const conversationId = c.req.param('id')
+  const { skill } = await c.req.json<{
+    skill: { skillId: string; name: string; source: string; installs: number; relevanceScore: number }
+  }>()
+
+  const conversation = await Conversation.findOne({ _id: conversationId, userId })
+  if (!conversation) return c.json({ error: 'Not found' }, 404)
+
+  const existing = conversation.matchedSkills.find((s) => s.skillId === skill.skillId)
+  if (existing) {
+    if (existing.status === 'rejected') {
+      existing.status = 'proposed'
+      await conversation.save()
+    }
+    return c.json({ skill: existing })
+  }
+
+  const newSkill = { ...skill, status: 'proposed' as const }
+  conversation.matchedSkills.push(newSkill)
+  await conversation.save()
+  return c.json({ skill: newSkill })
 })
 
 conversations.post('/:id/skills/:skillId/confirm', async (c) => {

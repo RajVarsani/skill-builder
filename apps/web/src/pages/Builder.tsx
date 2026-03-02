@@ -14,6 +14,7 @@ import { useAuth } from '../lib/auth'
 import { apiFetch } from '../lib/api'
 import { captureOGImage, type OGImageCardProps } from '../lib/og-capture'
 import { PHASE_STEP } from '@actingas/shared/src/types'
+import type { MatchedSkill } from '@actingas/shared/src/types'
 
 export function Builder() {
   const { initConversation, sendMessage, cancelStream } = useConversation()
@@ -196,9 +197,18 @@ export function Builder() {
       const skill = useConversationStore.getState().matchedSkills.find((s) => s.skillId === skillId)
       const endpoint = skill?.status === 'rejected' ? 'reject' : 'confirm'
       await apiFetch(`/conversations/${conversationId}/skills/${skillId}/${endpoint}`, { method: 'POST' })
+      // Regenerate SKILL.md to reflect the change
+      fetchPreview()
     } catch (error) {
       console.error('Skill status update error:', error)
     }
+  }
+
+  const handleAddSkill = (skill: MatchedSkill) => {
+    const { addMatchedSkill } = useConversationStore.getState()
+    addMatchedSkill(skill)
+    // Regenerate SKILL.md to include the new skill
+    fetchPreview()
   }
 
   return (
@@ -218,7 +228,7 @@ export function Builder() {
                 </p>
               </div>
               <div className="flex-1 overflow-y-auto px-5 md:px-10 pb-6 space-y-8">
-                <SkillReviewList onRemove={handleRemoveSkill} />
+                <SkillReviewList onRemove={handleRemoveSkill} onAdd={handleAddSkill} />
                 <SkillMarkdownEditor
                   onRegenerate={fetchPreview}
                   isLoading={isPreviewLoading}
