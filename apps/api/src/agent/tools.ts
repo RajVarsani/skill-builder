@@ -76,7 +76,7 @@ export const identityTools: FunctionDeclaration[] = [
   {
     name: 'offer_quick_replies',
     description:
-      'Present tappable chip options alongside your question. Call this with EVERY question that can be answered by tapping.',
+      'MANDATORY: Present tappable chip options alongside your question. You MUST call this tool every time you ask the user a question. Every question needs chips — even open-ended ones should have 3-4 suggested answers. Failing to call this tool when asking a question breaks the UI.',
     parametersJsonSchema: {
       type: 'object',
       properties: {
