@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { InstallCommand } from '../components/publish/InstallCommand'
 import { ShareButtons } from '../components/publish/ShareButtons'
+import { SparkleButton } from '../components/effects/SparkleButton'
 
 interface ProfileData {
   skill: {
@@ -101,12 +102,12 @@ export function Profile() {
         <a href="/" className="font-display text-[14px] md:text-[16px] uppercase tracking-[0.05em] text-surface">
           acting as
         </a>
-        <a
-          href="/sign-in"
-          className="bg-accent border-[3px] border-surface px-4 md:px-6 py-2 md:py-2.5 font-display text-[11px] md:text-[12px] uppercase tracking-[0.05em] text-cream hover:bg-accent/90 transition-colors"
+        <SparkleButton
+          onClick={() => window.location.href = '/sign-in'}
+          className="bg-accent border-[3px] border-surface px-4 md:px-6 py-2 md:py-2.5 font-display text-[11px] md:text-[12px] uppercase tracking-[0.05em] text-cream hover:bg-accent/90 transition-colors cursor-pointer"
         >
           Build Yours
-        </a>
+        </SparkleButton>
       </nav>
 
       {/* Content */}

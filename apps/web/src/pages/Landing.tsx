@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router'
 import { useAuth } from '../lib/auth'
 import { GlitchLogo } from '../components/GlitchLogo'
+import { SparkleField } from '../components/effects/SparkleField'
+import { SparkleButton } from '../components/effects/SparkleButton'
 
 const STEPS = [
   {
@@ -80,12 +82,12 @@ export function Landing() {
           <a href="#how-it-works" className="font-body text-[14px] uppercase tracking-[0.08em] text-surface hover:text-accent transition-colors">
             How It Works
           </a>
-          <button
+          <SparkleButton
             onClick={handleCTA}
-            className="bg-accent border-[3px] border-surface px-6 py-2.5 font-display text-[12px] uppercase tracking-[0.05em] text-cream hover:bg-accent/90 transition-colors"
+            className="bg-accent border-[3px] border-surface px-6 py-2.5 font-display text-[12px] uppercase tracking-[0.05em] text-cream hover:bg-accent/90 transition-colors cursor-pointer"
           >
             Build Your Persona
-          </button>
+          </SparkleButton>
         </div>
 
         {/* Mobile menu button */}
@@ -105,12 +107,12 @@ export function Landing() {
           <a href="#how-it-works" className="font-body text-[13px] uppercase tracking-[0.08em] text-surface">
             How It Works
           </a>
-          <button
+          <SparkleButton
             onClick={handleCTA}
-            className="bg-accent border-[3px] border-surface px-6 py-2.5 font-display text-[11px] uppercase tracking-[0.05em] text-cream"
+            className="bg-accent border-[3px] border-surface px-6 py-2.5 font-display text-[11px] uppercase tracking-[0.05em] text-cream cursor-pointer"
           >
             Build Your Persona
-          </button>
+          </SparkleButton>
         </div>
       )}
 
@@ -264,7 +266,8 @@ export function Landing() {
       </section>
 
       {/* CTA section — dark bg */}
-      <section className="bg-surface flex flex-col items-center py-12 md:py-20 px-5 md:px-[60px]">
+      <section className="bg-surface flex flex-col items-center py-12 md:py-20 px-5 md:px-[60px] relative overflow-hidden">
+        <SparkleField />
         <div className="flex gap-2 mb-5 md:mb-6">
           {[0, 1, 2, 3].map((i) => (
             <div key={i} className={`w-2 h-2 ${i < 2 ? 'bg-accent' : 'bg-muted'}`} />
@@ -283,13 +286,13 @@ export function Landing() {
           Make yourself installable.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-3 md:gap-4 w-full sm:w-auto">
-          <button
+        <div className="flex flex-col sm:flex-row gap-3 md:gap-4 w-full sm:w-auto relative z-10">
+          <SparkleButton
             onClick={handleCTA}
-            className="px-8 py-3 md:py-3.5 bg-accent border-[3px] border-cream font-display text-[12px] md:text-[14px] uppercase tracking-[0.05em] text-cream hover:bg-accent/90 transition-colors"
+            className="px-8 py-3 md:py-3.5 bg-accent border-[3px] border-cream font-display text-[12px] md:text-[14px] uppercase tracking-[0.05em] text-cream hover:bg-accent/90 transition-colors cursor-pointer"
           >
             Start Building
-          </button>
+          </SparkleButton>
         </div>
       </section>
 

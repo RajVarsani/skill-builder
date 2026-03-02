@@ -1,4 +1,5 @@
 import { getGitHubConnectUrl } from '../../pages/SignIn'
+import { SparkleButton } from '../effects/SparkleButton'
 
 interface PublishButtonsProps {
   onPublish: () => void
@@ -43,10 +44,10 @@ export function PublishButtons({ onPublish, onPublishGitHub, isPublishing, isGen
       </span>
 
       <div className="flex flex-col sm:flex-row gap-2">
-        <button
+        <SparkleButton
           onClick={onPublish}
           disabled={isDisabled}
-          className="flex-1 flex items-center justify-center gap-2 py-3.5 px-5 md:px-7 bg-accent text-cream font-display text-[11px] uppercase tracking-[0.04em] disabled:opacity-40 disabled:cursor-not-allowed hover:bg-accent/90 transition-colors"
+          className="flex-1 flex items-center justify-center gap-2 py-3.5 px-5 md:px-7 bg-accent text-cream font-display text-[11px] uppercase tracking-[0.04em] disabled:opacity-40 disabled:cursor-not-allowed hover:bg-accent/90 transition-colors cursor-pointer"
         >
           {isPublishingOrg ? (
             <>
@@ -57,12 +58,12 @@ export function PublishButtons({ onPublish, onPublishGitHub, isPublishing, isGen
           ) : (
             'Publish to actingas'
           )}
-        </button>
+        </SparkleButton>
 
-        <button
+        <SparkleButton
           onClick={handleGitHubClick}
           disabled={isDisabled}
-          className="flex-1 flex items-center justify-center gap-2 py-3.5 px-5 md:px-7 border-2 border-surface text-surface font-display text-[11px] uppercase tracking-[0.04em] disabled:opacity-40 disabled:cursor-not-allowed hover:bg-surface/5 transition-colors"
+          className="flex-1 flex items-center justify-center gap-2 py-3.5 px-5 md:px-7 border-2 border-surface text-surface font-display text-[11px] uppercase tracking-[0.04em] disabled:opacity-40 disabled:cursor-not-allowed hover:bg-surface/5 transition-colors cursor-pointer"
         >
           {isPublishingPersonal ? (
             <>
@@ -75,7 +76,7 @@ export function PublishButtons({ onPublish, onPublishGitHub, isPublishing, isGen
           ) : (
             'Connect GitHub'
           )}
-        </button>
+        </SparkleButton>
       </div>
     </div>
   )
