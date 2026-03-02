@@ -138,7 +138,7 @@ conversations.post('/:id/messages', async (c) => {
   return streamSSE(c, async (stream) => {
     let totalInputTokens = 0
     let totalOutputTokens = 0
-    let model = 'claude-haiku-4-5'
+    let model = 'gemini-2.0-flash'
 
     try {
       const events = runConversationTurn({
@@ -238,11 +238,13 @@ conversations.post('/:id/messages', async (c) => {
       await stream.writeSSE({
         event: 'error',
         data: JSON.stringify({
-          message: errMsg.includes('authentication_error')
-            ? 'AI service authentication failed — check Vertex AI credentials (run gcloud auth application-default login)'
-            : errMsg.includes('rate_limit')
-              ? 'Rate limited — please try again in a moment'
-              : 'An error occurred during the conversation',
+          message: errMsg.includes('RESOURCE_EXHAUSTED')
+            ? 'Gemini API quota exhausted — please try again later'
+            : errMsg.includes('authentication_error') || errMsg.includes('UNAUTHENTICATED')
+              ? 'AI service authentication failed — check Vertex AI credentials (run gcloud auth application-default login)'
+              : errMsg.includes('rate_limit') || errMsg.includes('RATE_LIMIT')
+                ? 'Rate limited — please try again in a moment'
+                : 'An error occurred during the conversation',
         }),
       })
     }
