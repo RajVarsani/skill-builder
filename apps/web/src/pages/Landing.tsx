@@ -297,21 +297,17 @@ export function Landing() {
       </section>
 
       {/* Footer */}
-      <footer className="flex flex-col sm:flex-row items-center justify-between gap-3 px-5 md:px-[60px] py-4 md:py-5 border-t-[3px] border-surface">
+      <footer className="grid grid-cols-3 items-center px-5 md:px-[60px] py-4 md:py-5 border-t-[3px] border-surface">
         <span className="font-body text-[11px] md:text-[12px] uppercase tracking-[0.08em] text-muted">
           2026 <GlitchLogo size="xs" />
         </span>
-        <div className="flex items-center gap-4 md:gap-6">
-          <a href="#" className="font-body text-[11px] md:text-[12px] uppercase tracking-[0.08em] text-muted hover:text-surface transition-colors">
-            GitHub
-          </a>
-          <a href="#" className="font-body text-[11px] md:text-[12px] uppercase tracking-[0.08em] text-muted hover:text-surface transition-colors">
-            Docs
-          </a>
-          <a href="#" className="font-body text-[11px] md:text-[12px] uppercase tracking-[0.08em] text-muted hover:text-surface transition-colors">
-            Privacy
-          </a>
-        </div>
+        <span className="font-body text-[10px] md:text-[11px] tracking-[0.06em] text-muted text-center">
+          Built by{' '}
+          <a href="https://x.com/abhisheknaiidu" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent/80 transition-colors">Abhishek Naidu</a>
+          {' '}&{' '}
+          <a href="https://x.com/RajVarsani404" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent/80 transition-colors">Raj Varsani</a>
+        </span>
+        <div />
       </footer>
     </div>
   )
