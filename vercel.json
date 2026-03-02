@@ -5,6 +5,17 @@
   "framework": "vite",
   "rewrites": [
     {
+      "source": "/profile/:path*",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(Twitterbot|facebookexternalhit|LinkedInBot|Slackbot|WhatsApp|Discordbot|TelegramBot).*"
+        }
+      ],
+      "destination": "https://actingas-api.onrender.com/profile/:path*"
+    },
+    {
       "source": "/api/:path*",
       "destination": "https://api.actingas.me/:path*"
     },
