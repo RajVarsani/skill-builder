@@ -9,6 +9,9 @@ interface GoogleUserInfo {
 }
 
 async function getGoogleUserInfo(code: string): Promise<GoogleUserInfo> {
+  const redirectUri = `${process.env.FRONTEND_URL}/auth/google/callback`
+  console.log('Google OAuth token exchange with redirect_uri:', redirectUri)
+
   const tokenRes = await fetch('https://oauth2.googleapis.com/token', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -16,16 +19,28 @@ async function getGoogleUserInfo(code: string): Promise<GoogleUserInfo> {
       code,
       client_id: process.env.GOOGLE_CLIENT_ID,
       client_secret: process.env.GOOGLE_CLIENT_SECRET,
-      redirect_uri: `${process.env.FRONTEND_URL}/auth/google/callback`,
+      redirect_uri: redirectUri,
       grant_type: 'authorization_code',
     }),
   })
   const tokenData = await tokenRes.json()
 
+  if (tokenData.error) {
+    console.error('Google token exchange failed:', tokenData.error, tokenData.error_description)
+    throw new Error(`Google token exchange failed: ${tokenData.error_description || tokenData.error}`)
+  }
+
   const userRes = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
     headers: { Authorization: `Bearer ${tokenData.access_token}` },
   })
-  return userRes.json()
+  const userInfo = await userRes.json()
+
+  if (!userInfo.sub) {
+    console.error('Google userinfo failed:', userInfo)
+    throw new Error('Failed to get user info from Google')
+  }
+
+  return userInfo
 }
 
 export async function handleGoogleAuth(code: string) {

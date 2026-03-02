@@ -1,6 +1,8 @@
-// Load .env with override so file values take precedence over shell env
+// Load .env only in development — in production, env vars come from the platform
 import dotenv from 'dotenv'
-dotenv.config({ path: new URL('../.env', import.meta.url).pathname, override: true })
+if (!process.env.K_SERVICE) {
+  dotenv.config({ path: new URL('../.env', import.meta.url).pathname, override: true })
+}
 
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
@@ -23,7 +25,15 @@ skillEngine.loadDataset(datasetDir)
 app.use(
   '*',
   cors({
-    origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+    origin: (origin) => {
+      const allowed = [
+        process.env.FRONTEND_URL || 'http://localhost:5173',
+        'http://localhost:5173',
+        'https://actingas.me',
+        'https://www.actingas.me',
+      ]
+      return allowed.includes(origin) ? origin : allowed[0]
+    },
     credentials: true,
   })
 )
