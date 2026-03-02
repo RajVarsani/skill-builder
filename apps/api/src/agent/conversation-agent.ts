@@ -67,8 +67,9 @@ export async function* runConversationTurn(
 
   let continueLoop = true
   let fullAssistantText = ''
+  const MAX_TOOL_ITERATIONS = 5
 
-  while (continueLoop) {
+  for (let iteration = 0; continueLoop && iteration < MAX_TOOL_ITERATIONS; iteration++) {
     const stream = await ai.models.generateContentStream({
       model: AI_MODEL,
       contents,
@@ -86,7 +87,8 @@ export async function* runConversationTurn(
 
     let turnText = ''
     const functionCalls: Array<{ name: string; args: Record<string, unknown> }> = []
-    const modelParts: Part[] = []
+    // Collect ALL original parts from the response to preserve thought signatures
+    const originalModelParts: Part[] = []
     let totalInputTokens = 0
     let totalOutputTokens = 0
 
@@ -101,6 +103,9 @@ export async function* runConversationTurn(
       if (!parts) continue
 
       for (const part of parts) {
+        // Preserve the ORIGINAL part (includes thoughtSignature for Gemini 3)
+        originalModelParts.push(part)
+
         if (part.text) {
           yield { type: 'text_chunk', data: { text: part.text } }
           turnText += part.text
@@ -113,17 +118,11 @@ export async function* runConversationTurn(
           yield { type: 'tool_activity', data: { tool: fnName, label } }
 
           functionCalls.push({ name: fnName, args: fnArgs })
-          modelParts.push({ functionCall: { name: fnName, args: fnArgs } })
         }
       }
     }
 
     fullAssistantText += turnText
-
-    // Add any text to model parts
-    if (turnText) {
-      modelParts.unshift({ text: turnText })
-    }
 
     yield {
       type: 'usage' as const,
@@ -174,8 +173,8 @@ export async function* runConversationTurn(
         })
       }
 
-      // Add model turn + function response turn to conversation
-      contents.push({ role: 'model', parts: modelParts })
+      // Use ORIGINAL model parts to preserve thought signatures (required by Gemini 3)
+      contents.push({ role: 'model', parts: originalModelParts })
       contents.push({ role: 'user', parts: functionResponseParts })
     } else {
       continueLoop = false
