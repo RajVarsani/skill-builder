@@ -1,12 +1,12 @@
-import type { Tool } from '@anthropic-ai/sdk/resources/messages'
+import type { FunctionDeclaration } from '@google/genai'
 
-export const identityTools: Tool[] = [
+export const identityTools: FunctionDeclaration[] = [
   {
     name: 'add_identity_block',
     description:
       'Record a discovered aspect of the user\'s professional identity. Call this 1-3 times per turn whenever you learn something concrete. Fire-and-forget — no response needed.',
-    input_schema: {
-      type: 'object' as const,
+    parametersJsonSchema: {
+      type: 'object',
       properties: {
         category: {
           type: 'string',
@@ -57,8 +57,8 @@ export const identityTools: Tool[] = [
     name: 'confirm_identity_block',
     description:
       'Lock in a tentative block after the user confirms it. Triggers visual solidification animation.',
-    input_schema: {
-      type: 'object' as const,
+    parametersJsonSchema: {
+      type: 'object',
       properties: {
         label: {
           type: 'string',
@@ -77,8 +77,8 @@ export const identityTools: Tool[] = [
     name: 'offer_quick_replies',
     description:
       'Present tappable chip options alongside your question. Call this with EVERY question that can be answered by tapping.',
-    input_schema: {
-      type: 'object' as const,
+    parametersJsonSchema: {
+      type: 'object',
       properties: {
         chips: {
           type: 'array',
@@ -109,8 +109,8 @@ export const identityTools: Tool[] = [
     name: 'signal_phase_transition',
     description:
       'Move the conversation to the next phase. Call this when the current phase objectives are met.',
-    input_schema: {
-      type: 'object' as const,
+    parametersJsonSchema: {
+      type: 'object',
       properties: {
         completed_phase: {
           type: 'string',
@@ -134,8 +134,8 @@ export const identityTools: Tool[] = [
     name: 'match_skills',
     description:
       'Search the 75k+ skills.sh dataset for matching community skills. Call after domain selection, after learning specific tools/frameworks, and during the final review sweep. This is a REAL tool that returns actual search results.',
-    input_schema: {
-      type: 'object' as const,
+    parametersJsonSchema: {
+      type: 'object',
       properties: {
         query: {
           type: 'string',
