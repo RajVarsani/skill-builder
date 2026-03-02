@@ -1,9 +1,7 @@
-import Anthropic from '@anthropic-ai/sdk'
+import { ai, AI_MODEL } from '../lib/ai-client'
 import type { IBlockState, IMatchedSkill } from '../db/models/conversation'
 import { SKILL_SYSTEM_PROMPT, buildUserPrompt } from './skill-prompts'
 import { fetchSkillFiles } from './skill-fetcher'
-
-const anthropic = new Anthropic()
 
 interface GeneratedSkill {
   path: string
@@ -27,8 +25,8 @@ export async function generateSkillMarkdown(
   const identityBlocks = blockStates.filter((b) => b.status === 'confirmed' || b.confidence !== 'low')
 
   try {
-    const response = await anthropic.messages.create({
-      model: 'claude-haiku-4-5',
+    const response = await ai.messages.create({
+      model: AI_MODEL,
       max_tokens: 2048,
       system: SKILL_SYSTEM_PROMPT,
       messages: [
@@ -39,7 +37,7 @@ export async function generateSkillMarkdown(
     const usage: SkillGenerationUsage = {
       inputTokens: response.usage.input_tokens,
       outputTokens: response.usage.output_tokens,
-      model: 'claude-haiku-4-5',
+      model: AI_MODEL,
     }
 
     const text = response.content[0]
