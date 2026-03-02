@@ -147,8 +147,8 @@ export async function* runConversationTurn(
           yield evt
         }
 
-        // Build function response
-        const result =
+        // Build function response — Gemini requires response to be a plain object, not an array
+        const rawResult =
           fc.name === 'match_skills'
             ? skillSearchFn(
                 input.query as string,
@@ -156,6 +156,9 @@ export async function* runConversationTurn(
                 input.limit as number | undefined
               )
             : { success: true }
+
+        // Wrap arrays in an object since Gemini functionResponse.response must be an object
+        const result = Array.isArray(rawResult) ? { results: rawResult } : rawResult
 
         functionResponseParts.push({
           functionResponse: {
