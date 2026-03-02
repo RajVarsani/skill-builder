@@ -239,7 +239,7 @@ conversations.post('/:id/messages', async (c) => {
         event: 'error',
         data: JSON.stringify({
           message: errMsg.includes('authentication_error')
-            ? 'AI service authentication failed — check ANTHROPIC_API_KEY'
+            ? 'AI service authentication failed — check Vertex AI credentials (run gcloud auth application-default login)'
             : errMsg.includes('rate_limit')
               ? 'Rate limited — please try again in a moment'
               : 'An error occurred during the conversation',
