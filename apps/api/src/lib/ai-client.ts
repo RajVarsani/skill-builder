@@ -1,10 +1,14 @@
-import { AnthropicVertex } from '@anthropic-ai/vertex-sdk'
+import { GoogleGenAI } from '@google/genai'
 
-const projectId = process.env.GOOGLE_CLOUD_PROJECT
-if (!projectId) throw new Error('GOOGLE_CLOUD_PROJECT env var is required')
+const project = process.env.GOOGLE_CLOUD_PROJECT
+if (!project) throw new Error('GOOGLE_CLOUD_PROJECT env var is required')
 
-const region = process.env.GOOGLE_CLOUD_REGION || 'global'
+const location = process.env.GOOGLE_CLOUD_REGION || 'global'
 
-export const ai = new AnthropicVertex({ projectId, region })
+export const ai = new GoogleGenAI({
+  vertexai: true,
+  project,
+  location,
+})
 
-export const AI_MODEL = 'claude-haiku-4-5'
+export const AI_MODEL = 'gemini-2.0-flash'
