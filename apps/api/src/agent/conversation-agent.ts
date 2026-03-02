@@ -75,6 +75,11 @@ export async function* runConversationTurn(
         systemInstruction: systemPrompt,
         maxOutputTokens: 2048,
         tools: [{ functionDeclarations: identityTools }],
+        toolConfig: {
+          functionCallingConfig: {
+            mode: 'AUTO',
+          },
+        },
       },
     })
 
