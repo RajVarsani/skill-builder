@@ -1,3 +1,18 @@
+// Load .env with override so file values take precedence over shell env
+import { readFileSync } from 'fs'
+import { resolve } from 'path'
+try {
+  const envPath = resolve(import.meta.dir, '../.env')
+  const envContent = readFileSync(envPath, 'utf-8')
+  for (const line of envContent.split('\n')) {
+    const trimmed = line.trim()
+    if (!trimmed || trimmed.startsWith('#')) continue
+    const eqIdx = trimmed.indexOf('=')
+    if (eqIdx === -1) continue
+    process.env[trimmed.slice(0, eqIdx)] = trimmed.slice(eqIdx + 1)
+  }
+} catch {}
+
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 import { serveStatic } from 'hono/bun'
