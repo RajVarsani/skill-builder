@@ -1,4 +1,4 @@
-import type { MessageParam } from '@anthropic-ai/sdk/resources/messages/messages'
+import type { Content, Part } from '@google/genai'
 import { ai, AI_MODEL } from '../lib/ai-client'
 import type {
   ConversationPhase,
@@ -26,8 +26,6 @@ interface ToolInput {
   [key: string]: unknown
 }
 
-type MessageContent = string | Array<Record<string, unknown>>
-
 interface RunTurnParams {
   messages: Array<{ role: 'user' | 'assistant'; content: string }>
   phase: ConversationPhase
@@ -52,9 +50,10 @@ export async function* runConversationTurn(
     selectedDomains
   )
 
-  const apiMessages: Array<{ role: 'user' | 'assistant'; content: MessageContent }> = messages.map((m) => ({
-    role: m.role as 'user' | 'assistant',
-    content: m.content as MessageContent,
+  // Convert messages to Gemini Content format
+  const contents: Content[] = messages.map((m) => ({
+    role: m.role === 'assistant' ? 'model' : 'user',
+    parts: [{ text: m.content }],
   }))
 
   const TOOL_LABELS: Record<string, string> = {
@@ -69,118 +68,106 @@ export async function* runConversationTurn(
   let fullAssistantText = ''
 
   while (continueLoop) {
-    const stream = ai.messages.stream({
+    const stream = await ai.models.generateContentStream({
       model: AI_MODEL,
-      max_tokens: 2048,
-      system: systemPrompt,
-      messages: apiMessages as MessageParam[],
-      tools: identityTools,
+      contents,
+      config: {
+        systemInstruction: systemPrompt,
+        maxOutputTokens: 2048,
+        tools: [{ functionDeclarations: identityTools }],
+      },
     })
 
-    let currentToolName = ''
-    let currentToolInput = ''
-    let currentToolId = ''
-    const pendingToolResults: Array<{
-      type: 'tool_result'
-      tool_use_id: string
-      content: string
-    }> = []
-    const assistantContent: Array<{ type: string; [key: string]: unknown }> = []
     let turnText = ''
+    const functionCalls: Array<{ name: string; args: Record<string, unknown> }> = []
+    const modelParts: Part[] = []
+    let totalInputTokens = 0
+    let totalOutputTokens = 0
 
-    for await (const event of stream) {
-      if (event.type === 'content_block_start') {
-        if (event.content_block.type === 'tool_use') {
-          currentToolName = event.content_block.name
-          currentToolId = event.content_block.id
-          currentToolInput = ''
-          const label = TOOL_LABELS[currentToolName] || currentToolName
-          yield { type: 'tool_activity', data: { tool: currentToolName, label } }
-        }
+    for await (const chunk of stream) {
+      // Extract usage metadata
+      if (chunk.usageMetadata) {
+        totalInputTokens = chunk.usageMetadata.promptTokenCount || 0
+        totalOutputTokens = chunk.usageMetadata.candidatesTokenCount || 0
       }
 
-      if (event.type === 'content_block_delta') {
-        if (event.delta.type === 'text_delta') {
-          yield { type: 'text_chunk', data: { text: event.delta.text } }
-          turnText += event.delta.text
-        } else if (event.delta.type === 'input_json_delta') {
-          currentToolInput += event.delta.partial_json
+      const parts = chunk.candidates?.[0]?.content?.parts
+      if (!parts) continue
+
+      for (const part of parts) {
+        if (part.text) {
+          yield { type: 'text_chunk', data: { text: part.text } }
+          turnText += part.text
         }
-      }
 
-      if (event.type === 'content_block_stop') {
-        if (currentToolName) {
-          const input: ToolInput = currentToolInput
-            ? JSON.parse(currentToolInput)
-            : {}
+        if (part.functionCall) {
+          const fnName = part.functionCall.name!
+          const fnArgs = (part.functionCall.args || {}) as Record<string, unknown>
+          const label = TOOL_LABELS[fnName] || fnName
+          yield { type: 'tool_activity', data: { tool: fnName, label } }
 
-          const events = processToolCall(
-            currentToolName,
-            input,
-            blockMachine,
-            currentPhase,
-            skillSearchFn
-          )
-          for (const evt of events) {
-            yield evt
-          }
-
-          const toolResult =
-            currentToolName === 'match_skills'
-              ? JSON.stringify(skillSearchFn(
-                  input.query as string,
-                  input.domain as string | undefined,
-                  input.limit as number | undefined
-                ))
-              : JSON.stringify({ success: true })
-
-          pendingToolResults.push({
-            type: 'tool_result',
-            tool_use_id: currentToolId,
-            content: toolResult,
-          })
-
-          assistantContent.push({
-            type: 'tool_use',
-            id: currentToolId,
-            name: currentToolName,
-            input,
-          })
-
-          currentToolName = ''
-          currentToolInput = ''
-          currentToolId = ''
-        } else if (turnText) {
-          assistantContent.push({ type: 'text', text: turnText })
+          functionCalls.push({ name: fnName, args: fnArgs })
+          modelParts.push({ functionCall: { name: fnName, args: fnArgs } })
         }
       }
     }
 
     fullAssistantText += turnText
 
-    const finalMessage = await stream.finalMessage()
+    // Add any text to model parts
+    if (turnText) {
+      modelParts.unshift({ text: turnText })
+    }
 
     yield {
       type: 'usage' as const,
       data: {
-        inputTokens: finalMessage.usage.input_tokens,
-        outputTokens: finalMessage.usage.output_tokens,
+        inputTokens: totalInputTokens,
+        outputTokens: totalOutputTokens,
         model: AI_MODEL,
       },
     }
 
-    if (
-      finalMessage.stop_reason === 'tool_use' &&
-      pendingToolResults.length > 0
-    ) {
-      apiMessages.push({
-        role: 'assistant',
-        content: assistantContent as unknown as MessageContent,
-      })
-      apiMessages.push({
-        role: 'user',
-        content: pendingToolResults as unknown as MessageContent,
-      })
+    if (functionCalls.length > 0) {
+      // Process tool calls and build function responses
+      const functionResponseParts: Part[] = []
+
+      for (const fc of functionCalls) {
+        const input: ToolInput = fc.args
+
+        // Process side effects (blocks, skills, phases)
+        const events = processToolCall(
+          fc.name,
+          input,
+          blockMachine,
+          currentPhase,
+          skillSearchFn
+        )
+        for (const evt of events) {
+          yield evt
+        }
+
+        // Build function response
+        const result =
+          fc.name === 'match_skills'
+            ? skillSearchFn(
+                input.query as string,
+                input.domain as string | undefined,
+                input.limit as number | undefined
+              )
+            : { success: true }
+
+        functionResponseParts.push({
+          functionResponse: {
+            name: fc.name,
+            response: result as Record<string, unknown>,
+          },
+        })
+      }
+
+      // Add model turn + function response turn to conversation
+      contents.push({ role: 'model', parts: modelParts })
+      contents.push({ role: 'user', parts: functionResponseParts })
     } else {
       continueLoop = false
     }
