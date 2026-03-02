@@ -11,7 +11,11 @@ services:
         value: "3000"
       - key: FRONTEND_URL
         value: "https://actingas.me"
-      - key: ANTHROPIC_API_KEY
+      - key: GOOGLE_CLOUD_PROJECT
+        sync: false
+      - key: GOOGLE_CLOUD_REGION
+        sync: false
+      - key: GOOGLE_SERVICE_ACCOUNT_KEY
         sync: false
       - key: GOOGLE_CLIENT_ID
         sync: false
