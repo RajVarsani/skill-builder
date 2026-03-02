@@ -1,3 +1,4 @@
+import { FunctionCallingConfigMode } from '@google/genai'
 import type { Content, Part } from '@google/genai'
 import { ai, AI_MODEL } from '../lib/ai-client'
 import type {
@@ -77,7 +78,7 @@ export async function* runConversationTurn(
         tools: [{ functionDeclarations: identityTools }],
         toolConfig: {
           functionCallingConfig: {
-            mode: 'AUTO',
+            mode: FunctionCallingConfigMode.AUTO,
           },
         },
       },

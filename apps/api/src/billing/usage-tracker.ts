@@ -2,11 +2,12 @@ import { UsageLog } from '../db/models/usage-log'
 import type { Types } from 'mongoose'
 
 const PRICING: Record<string, { input: number; output: number }> = {
-  'claude-haiku-4-5': { input: 0.8 / 1_000_000, output: 4 / 1_000_000 },
-  'claude-sonnet-4-6': { input: 3 / 1_000_000, output: 15 / 1_000_000 },
+  'gemini-3-flash-preview': { input: 0.15 / 1_000_000, output: 0.60 / 1_000_000 },
+  'gemini-2.5-flash': { input: 0.15 / 1_000_000, output: 0.60 / 1_000_000 },
+  'gemini-2.0-flash': { input: 0.10 / 1_000_000, output: 0.40 / 1_000_000 },
 }
 
-const DEFAULT_PRICING = { input: 0.8 / 1_000_000, output: 4 / 1_000_000 }
+const DEFAULT_PRICING = { input: 0.15 / 1_000_000, output: 0.60 / 1_000_000 }
 
 export function calculateCost(model: string, inputTokens: number, outputTokens: number): number {
   const pricing = PRICING[model] ?? DEFAULT_PRICING
