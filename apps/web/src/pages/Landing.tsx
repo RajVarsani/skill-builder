@@ -227,6 +227,83 @@ export function Landing() {
       {/* Full-width decorative pixel dots */}
       <PixelDotRow />
 
+      {/* The Output */}
+      <section className="bg-surface flex flex-col items-center pt-12 md:pt-20 pb-12 md:pb-20 px-5 md:px-[60px]">
+        <div className="flex items-center gap-3 mb-3 md:mb-4">
+          <div className="w-6 md:w-10 h-[2px] bg-accent" />
+          <span className="font-display text-[11px] md:text-[12px] uppercase tracking-[0.15em] text-accent">
+            The Result
+          </span>
+          <div className="w-6 md:w-10 h-[2px] bg-accent" />
+        </div>
+
+        <h2 className="font-display text-[24px] md:text-[42px] leading-[32px] md:leading-[52px] text-center text-cream uppercase mb-1">
+          Your Skill, Published
+        </h2>
+        <p className="font-body text-[13px] md:text-[15px] leading-[20px] md:leading-[24px] text-center text-muted max-w-[500px] mb-8 md:mb-12">
+          A GitHub repo and a single install command. That's it — your persona, ready to share.
+        </p>
+
+        <div className="flex flex-col md:flex-row gap-4 md:gap-6 w-full max-w-[1100px]">
+          {/* Terminal mockup */}
+          <div className="flex-1 min-w-0 border-2 border-surface-secondary flex flex-col bg-[#2A2318]">
+            <div className="flex items-center justify-between px-4 md:px-5 py-3 border-b-2 border-surface-secondary">
+              <div className="flex gap-2">
+                <div className="w-3 h-3 bg-accent" />
+                <div className="w-3 h-3 bg-muted" />
+                <div className="w-3 h-3 bg-surface-secondary" />
+              </div>
+              <span className="font-display text-[9px] md:text-[10px] text-muted tracking-[0.1em] uppercase">Terminal</span>
+            </div>
+            <div className="flex flex-col gap-4 md:gap-5 p-5 md:p-7 flex-1">
+              <div className="flex items-start gap-3">
+                <span className="font-code text-[13px] md:text-[14px] text-accent shrink-0">$</span>
+                <span className="font-code text-[11px] md:text-[13px] text-cream leading-[22px]">
+                  npx skills install<br />skill-builder-agent/acting-as-abhishek-naidu
+                </span>
+              </div>
+              <div className="flex flex-col gap-1.5 pl-6">
+                <span className="font-code text-[10px] md:text-[12px] text-muted leading-[20px]">Fetching acting-as-abhishek-naidu...</span>
+                <span className="font-code text-[10px] md:text-[12px] text-muted leading-[20px]">Installing SKILL.md + 3 references</span>
+              </div>
+              <div className="flex items-center gap-2.5 pl-6">
+                <div className="w-2 h-2 bg-[#4CAF50] shrink-0" />
+                <span className="font-code text-[11px] md:text-[13px] text-cream leading-[20px]">Done! Persona installed successfully.</span>
+              </div>
+            </div>
+          </div>
+
+          {/* GitHub repo mockup */}
+          <div className="flex-1 min-w-0 border-2 border-[#D0D7DE] flex flex-col bg-white">
+            <div className="flex items-center gap-2.5 px-4 md:px-5 py-3 md:py-4 border-b border-[#D0D7DE]">
+              <svg width="20" height="20" viewBox="0 0 16 16" fill="#24292f" className="shrink-0"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+              <span className="font-body text-[14px] md:text-[16px] font-semibold text-[#24292f] truncate">acting-as-abhishek-naidu</span>
+              <span className="px-2 py-0.5 border border-[#D0D7DE] font-body text-[10px] md:text-[11px] text-[#656D76] shrink-0">Public</span>
+            </div>
+            <div className="flex items-center gap-3 px-4 md:px-5 py-2.5 border-b border-[#D0D7DE]">
+              <span className="px-2.5 py-1 border border-[#D0D7DE] bg-[#F6F8FA] font-body text-[12px] text-[#24292f]">main</span>
+              <span className="font-body text-[12px] text-[#656D76]">1 Branch</span>
+              <span className="font-body text-[12px] text-[#656D76]">0 Tags</span>
+            </div>
+            <div className="flex items-center gap-2.5 px-4 md:px-5 py-2.5 border-b border-[#D0D7DE] bg-[#F6F8FA]">
+              <span className="font-body text-[12px] font-semibold text-[#24292f] shrink-0">abhishek</span>
+              <span className="font-body text-[12px] text-[#656D76] truncate">Update references/matched/...</span>
+              <span className="font-code text-[11px] text-[#656D76] shrink-0">32b218d</span>
+            </div>
+            <div className="flex items-center gap-2.5 px-4 md:px-5 py-2.5 border-b border-[#D0D7DE]">
+              <div className="w-4 h-4 bg-[#54AEFF] shrink-0" />
+              <span className="font-body text-[13px] text-[#24292f] truncate">acting-as-abhishek-naidu</span>
+              <span className="font-body text-[12px] text-[#656D76] hidden md:block truncate ml-auto">Update references/matched...</span>
+            </div>
+            <div className="flex items-center gap-2.5 px-4 md:px-5 py-2.5">
+              <div className="w-4 h-4 border border-[#D0D7DE] shrink-0" />
+              <span className="font-body text-[13px] text-[#24292f]">README.md</span>
+              <span className="font-body text-[12px] text-[#656D76] ml-auto">Initial commit</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* How it works */}
       <section id="how-it-works" className="flex flex-col items-center pt-10 md:pt-16 pb-6 md:pb-10 px-5 md:px-[60px] gap-3 md:gap-4">
         <div className="flex items-center gap-3">
@@ -286,7 +363,7 @@ export function Landing() {
           Make yourself installable.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-3 md:gap-4 w-full sm:w-auto relative z-10">
+        <div className="flex flex-col text-center sm:flex-row gap-3 md:gap-4 w-full sm:w-auto relative z-10">
           <SparkleButton
             onClick={handleCTA}
             className="px-8 py-3 md:py-3.5 bg-accent border-[3px] border-cream font-display text-[12px] md:text-[14px] uppercase tracking-[0.05em] text-cream hover:bg-accent/90 transition-colors cursor-pointer"
@@ -297,11 +374,11 @@ export function Landing() {
       </section>
 
       {/* Footer */}
-      <footer className="grid grid-cols-3 items-center px-5 md:px-[60px] py-4 md:py-5 border-t-[3px] border-surface">
+      <footer className="flex flex-col items-center gap-2 md:grid md:grid-cols-3 md:items-center px-5 md:px-[60px] py-4 md:py-5 border-t-[3px] border-surface">
         <span className="font-body text-[11px] md:text-[12px] uppercase tracking-[0.08em] text-muted">
           2026 <GlitchLogo size="xs" />
         </span>
-        <span className="font-body text-[10px] md:text-[11px] tracking-[0.06em] text-muted text-center">
+        <span className="font-body text-[10px] md:text-[11px] tracking-[0.06em] text-muted text-center whitespace-nowrap">
           Built by{' '}
           <a href="https://x.com/abhisheknaiidu" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent/80 transition-colors">Abhishek Naidu</a>
           {' '}&{' '}
