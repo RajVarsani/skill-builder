@@ -13,6 +13,7 @@ import type { IBlockState, IMatchedSkill } from '../db/models/conversation'
 
 export type ConversationEvent =
   | { type: 'text_chunk'; data: { text: string } }
+  | { type: 'text_done'; data: { text: string } }
   | { type: 'tool_activity'; data: { tool: string; label: string } }
   | { type: 'block_added'; data: { block: IdentityBlock } }
   | { type: 'block_confirmed'; data: { blockId: string } }
@@ -159,6 +160,11 @@ export async function* runConversationTurn(
   yield {
     type: 'usage' as const,
     data: { inputTokens: totalInputTokens, outputTokens: totalOutputTokens, model: AI_MODEL },
+  }
+
+  // Signal that text is ready — frontend can show the message immediately
+  if (turnText.trim()) {
+    yield { type: 'text_done', data: { text: turnText } }
   }
 
   // --- Process tool calls (if any) ---

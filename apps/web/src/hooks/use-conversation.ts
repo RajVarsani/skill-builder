@@ -105,17 +105,37 @@ export function useConversation() {
             case 'text_chunk':
               s.appendStreamingText(data.text)
               break
+            case 'text_done':
+              // Text is complete — finalize the message and unblock UI immediately
+              if (data.text?.trim()) {
+                s.addMessage({
+                  role: 'assistant',
+                  content: data.text,
+                  phase: s.phase,
+                  createdAt: new Date().toISOString(),
+                })
+              }
+              s.clearStreamingText()
+              s.setStreaming(false)
+              break
             case 'tool_activity':
-              s.setToolActivity(data.label)
+              // If streaming is done, show as background activity instead
+              if (!s.isStreaming) {
+                s.setBackgroundActivity(data.label)
+              } else {
+                s.setToolActivity(data.label)
+              }
               break
             case 'block_added':
               s.addBlock(data.block)
+              if (!s.isStreaming) s.setBackgroundActivity('Updating profile')
               break
             case 'block_confirmed':
               s.confirmBlock(data.blockId)
               break
             case 'skill_matched':
               s.addMatchedSkill(data.skill)
+              if (!s.isStreaming) s.setBackgroundActivity('Matching skills')
               break
             case 'quick_replies':
               s.setChips(data.chips, data.multiSelect)
@@ -127,22 +147,26 @@ export function useConversation() {
               s.updateCompletion(data)
               break
             case 'done':
-              if (data.assistantMessage?.trim()) {
+              // If text_done wasn't sent (e.g. text came from Pass 2), finalize here
+              if (s.isStreaming && data.assistantMessage?.trim()) {
                 s.addMessage({
                   role: 'assistant',
                   content: data.assistantMessage,
                   phase: s.phase,
                   createdAt: new Date().toISOString(),
                 })
+                s.clearStreamingText()
+                s.setStreaming(false)
               }
-              s.clearStreamingText()
-              s.setStreaming(false)
+              s.setBackgroundActivity(null)
+              s.setToolActivity(null)
               break
             case 'error':
               console.error('SSE error:', data.message)
               s.setError(data.message || 'Something went wrong. Please try again.')
               s.clearStreamingText()
               s.setStreaming(false)
+              s.setBackgroundActivity(null)
               break
           }
         },

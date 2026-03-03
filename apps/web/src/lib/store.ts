@@ -17,6 +17,7 @@ interface ConversationStore {
   isStreaming: boolean
   streamingText: string
   toolActivity: string | null
+  backgroundActivity: string | null
   errorMessage: string | null
   completion: { percentage: number; blocksDiscovered: number; skillsMatched: number }
   skillMarkdown: string | null
@@ -33,6 +34,7 @@ interface ConversationStore {
   appendStreamingText: (text: string) => void
   clearStreamingText: () => void
   setToolActivity: (label: string | null) => void
+  setBackgroundActivity: (label: string | null) => void
   setError: (message: string | null) => void
   updateCompletion: (data: { percentage: number; blocksDiscovered: number; skillsMatched: number }) => void
   setBlocks: (blocks: IdentityBlock[]) => void
@@ -61,6 +63,7 @@ export const useConversationStore = create<ConversationStore>((set) => ({
   isStreaming: false,
   streamingText: '',
   toolActivity: null,
+  backgroundActivity: null,
   errorMessage: null,
   completion: { percentage: 15, blocksDiscovered: 0, skillsMatched: 0 },
   skillMarkdown: null,
@@ -86,6 +89,7 @@ export const useConversationStore = create<ConversationStore>((set) => ({
   appendStreamingText: (text) => set((s) => ({ streamingText: s.streamingText + text })),
   clearStreamingText: () => set({ streamingText: '' }),
   setToolActivity: (label) => set({ toolActivity: label }),
+  setBackgroundActivity: (label) => set({ backgroundActivity: label }),
   setError: (message) => set({ errorMessage: message }),
   updateCompletion: (data) => set({ completion: data }),
   setBlocks: (blocks) => set({ blocks }),
@@ -111,6 +115,7 @@ export const useConversationStore = create<ConversationStore>((set) => ({
       isStreaming: false,
       streamingText: '',
       toolActivity: null,
+      backgroundActivity: null,
       errorMessage: null,
       completion: { percentage: 15, blocksDiscovered: 0, skillsMatched: 0 },
       skillMarkdown: null,

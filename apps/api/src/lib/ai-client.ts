@@ -19,4 +19,4 @@ export const ai = new GoogleGenAI({
   googleAuthOptions,
 })
 
-export const AI_MODEL = 'gemini-2.5-flash'
+export const AI_MODEL = 'gemini-2.0-flash'
