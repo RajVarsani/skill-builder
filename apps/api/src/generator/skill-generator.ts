@@ -33,7 +33,7 @@ export async function generateSkillMarkdown(
       config: {
         systemInstruction: SKILL_SYSTEM_PROMPT,
         maxOutputTokens: 2048,
-        thinkingConfig: { thinkingLevel: 'low' },
+        thinkingConfig: { thinkingBudget: 0 },
       },
     })
 

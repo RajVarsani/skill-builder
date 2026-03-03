@@ -77,7 +77,7 @@ export async function* runConversationTurn(
       config: {
         systemInstruction: systemPrompt,
         maxOutputTokens: 2048,
-        thinkingConfig: { thinkingLevel: 'low' },
+        thinkingConfig: { thinkingBudget: 0 },
         tools: [{ functionDeclarations: identityTools }],
         toolConfig: {
           functionCallingConfig: {
