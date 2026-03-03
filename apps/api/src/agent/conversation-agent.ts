@@ -61,8 +61,8 @@ async function callGeminiWithRetry(
     try {
       const config: Record<string, unknown> = {
         systemInstruction: systemPrompt,
-        maxOutputTokens: 1024,
-        thinkingConfig: { thinkingBudget: 0 },
+        maxOutputTokens: 4096,
+        thinkingConfig: { thinkingLevel: 'minimal' },
       }
 
       if (enableTools) {
@@ -139,9 +139,16 @@ export async function* runConversationTurn(
     if (!parts) continue
 
     for (const part of parts) {
+      // Always preserve all parts (including thoughtSignature) for multi-turn
       originalModelParts.push(part)
 
+      // Skip thought-only parts (Gemini 3 thinking chunks)
+      const p = part as Record<string, unknown>
+      if (p.thought === true && !part.text && !part.functionCall) continue
+
       if (part.text && part.text.length > 0) {
+        // Skip thought text (internal reasoning), only emit visible text
+        if (p.thought === true) continue
         yield { type: 'text_chunk', data: { text: part.text } }
         turnText += part.text
       }
@@ -208,6 +215,8 @@ export async function* runConversationTurn(
         if (!parts) continue
 
         for (const part of parts) {
+          const p = part as Record<string, unknown>
+          if (p.thought === true) continue
           if (part.text && part.text.length > 0) {
             yield { type: 'text_chunk', data: { text: part.text } }
             fullAssistantText += part.text
