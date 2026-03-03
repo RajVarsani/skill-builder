@@ -105,7 +105,7 @@ export function SignIn() {
         <p className="text-center text-muted text-[13px] font-body leading-[20px] mb-8">
           Build your AI persona. 3 minutes.
           <br />
-          75K+ skills matched. One install command.
+          Skills matched. One install command.
         </p>
 
         {/* Buttons */}

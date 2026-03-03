@@ -133,7 +133,7 @@ export const identityTools: FunctionDeclaration[] = [
   {
     name: 'match_skills',
     description:
-      'Search the 75k+ skills.sh dataset for matching community skills. Call after domain selection, after learning specific tools/frameworks, and during the final review sweep. This is a REAL tool that returns actual search results.',
+      'Search the skills dataset for matching community skills. Call after domain selection, after learning specific tools/frameworks, and during the final review sweep. This is a REAL tool that returns actual search results.',
     parametersJsonSchema: {
       type: 'object',
       properties: {

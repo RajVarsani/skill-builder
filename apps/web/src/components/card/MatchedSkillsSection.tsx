@@ -39,7 +39,7 @@ export function MatchedSkillsSection() {
           {activeSkills.length === 0 && (
             <div className="flex items-center justify-center py-2 px-3.5 border-2 border-dashed border-[#A898804D]">
               <span className="text-[10px] font-body uppercase text-[#A8988066]">
-                Select domains to start scanning 75K+ skills...
+                Select domains to start scanning skills...
               </span>
             </div>
           )}

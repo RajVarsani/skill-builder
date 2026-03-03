@@ -104,7 +104,7 @@ export function SkillReviewList({ onRemove, onAdd }: SkillReviewListProps) {
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search 75K+ skills to add..."
+            placeholder="Search skills to add..."
             className="w-full px-3.5 py-2.5 bg-transparent border-2 border-dashed border-surface text-[12px] font-body text-surface placeholder:text-surface/50 focus:outline-none focus:border-accent transition-colors"
           />
           {isSearching && (

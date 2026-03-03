@@ -22,7 +22,7 @@ const STEPS = [
     num: '03',
     label: 'Match',
     title: 'Find Your Skills',
-    desc: 'Your answers get matched against a registry of 75K+ skills. Review the results, keep what fits, generate new ones.',
+    desc: 'Your answers get matched against the skills registry. Review the results, keep what fits, generate new ones.',
   },
   {
     num: '04',

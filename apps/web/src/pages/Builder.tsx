@@ -216,7 +216,7 @@ export function Builder() {
       <Nav step={step} onStartFresh={handleStartFresh} />
       <div className="flex-1 flex flex-col md:flex-row min-h-0 overflow-hidden">
         {/* Left side — chat or review */}
-        <div className={`w-full md:w-[55%] md:border-r border-muted/20 flex flex-col ${isReviewPhase ? 'min-h-0 h-full' : 'h-[65vh] md:h-auto'} overflow-hidden`}>
+        <div className={`w-full md:w-[55%] md:border-r border-muted/20 flex flex-col ${isReviewPhase ? 'flex-1 min-h-0' : 'h-[65vh] md:h-auto'} overflow-hidden`}>
           {isReviewPhase ? (
             <>
               <div className="shrink-0 px-5 md:px-10 pt-6 md:pt-10 pb-4">
@@ -227,21 +227,11 @@ export function Builder() {
                   Confirm or remove matched skills before publishing your identity.
                 </p>
               </div>
-              <div className="flex-1 overflow-y-auto min-h-0 px-5 md:px-10 pb-6 space-y-8">
+              <div className="flex-1 overflow-y-auto min-h-0 px-5 md:px-10 pb-24 space-y-8">
                 <SkillReviewList onRemove={handleRemoveSkill} onAdd={handleAddSkill} />
                 <SkillMarkdownEditor
                   onRegenerate={fetchPreview}
                   isLoading={isPreviewLoading}
-                />
-              </div>
-              <div className="shrink-0 px-5 md:px-10 py-4 border-t border-muted/20 bg-page">
-                <PublishButtons
-                  onPublish={() => handlePublish('org')}
-                  onPublishGitHub={handlePublishGitHub}
-                  isPublishing={isPublishing}
-                  isGenerating={isPreviewLoading || !skillMarkdown}
-                  publishTarget={publishTarget}
-                  hasGithub={user?.hasGithub ?? false}
                 />
               </div>
             </>
@@ -257,6 +247,20 @@ export function Builder() {
           </div>
         </div>
       </div>
+
+      {/* Publish buttons — fixed to viewport bottom, always visible */}
+      {isReviewPhase && (
+        <div className="fixed bottom-0 left-0 w-full md:w-[55%] px-5 md:px-10 py-4 border-t border-muted/20 bg-page z-20">
+          <PublishButtons
+            onPublish={() => handlePublish('org')}
+            onPublishGitHub={handlePublishGitHub}
+            isPublishing={isPublishing}
+            isGenerating={isPreviewLoading || !skillMarkdown}
+            publishTarget={publishTarget}
+            hasGithub={user?.hasGithub ?? false}
+          />
+        </div>
+      )}
 
       <SlugConflictModal
         open={slugModalOpen}
