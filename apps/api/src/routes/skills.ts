@@ -245,17 +245,35 @@ skills.get('/users/:username/skill', async (c) => {
 
 skills.get('/debug/github-installations', async (c) => {
   const pk = process.env.GITHUB_APP_PRIVATE_KEY ?? ''
+  const appId = process.env.GITHUB_APP_ID ?? '(not set)'
+  const installId = process.env.GITHUB_APP_INSTALLATION_ID ?? '(not set)'
+
+  // Decode to check validity
+  let decoded = ''
+  let keyValid = false
+  try {
+    decoded = pk.startsWith('-----BEGIN') ? pk : Buffer.from(pk, 'base64').toString('utf-8')
+    keyValid = decoded.startsWith('-----BEGIN') && decoded.includes('-----END')
+  } catch { /* ignore */ }
+
+  const envInfo = {
+    appId,
+    installationId: installId,
+    keyRawLength: pk.length,
+    keyDecodedLength: decoded.length,
+    keyFirst20: pk.substring(0, 20),
+    keyLast20: pk.substring(pk.length - 20),
+    keyValid,
+    decodedStart: decoded.substring(0, 35),
+  }
+
   try {
     const installations = await listAppInstallations()
-    return c.json({
-      currentInstallationId: process.env.GITHUB_APP_INSTALLATION_ID ?? '(not set)',
-      keyInfo: { length: pk.length, first10: pk.substring(0, 10), last10: pk.substring(pk.length - 10) },
-      installations,
-    })
+    return c.json({ envInfo, installations })
   } catch (error) {
     return c.json({
       error: error instanceof Error ? error.message : String(error),
-      keyInfo: { length: pk.length, first10: pk.substring(0, 10), last10: pk.substring(pk.length - 10) },
+      envInfo,
     }, 500)
   }
 })

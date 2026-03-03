@@ -39,9 +39,16 @@ async function getInstallationToken(): Promise<string> {
     throw new Error(`GitHub App env vars missing: ${missing.join(', ')}`)
   }
 
-  console.log(`[github] Requesting installation token — appId=${appId}, installationId=${installationId}`)
-
   const privateKey = decodePrivateKey(privateKeyRaw!)
+  const keyValid = privateKey.startsWith('-----BEGIN') && privateKey.includes('-----END')
+
+  console.log(`[github] Auth config — appId=${appId}, installationId=${installationId}, keyLen=${privateKeyRaw!.length}, decodedLen=${privateKey.length}, keyValid=${keyValid}, keyStart=${privateKey.substring(0, 30)}`)
+
+  if (!keyValid) {
+    throw new Error(
+      `GitHub App private key is malformed after decoding (len=${privateKey.length}, starts="${privateKey.substring(0, 20)}")`
+    )
+  }
 
   try {
     const auth = createAppAuth({
@@ -55,14 +62,15 @@ async function getInstallationToken(): Promise<string> {
     return token
   } catch (err: unknown) {
     const e = err as { status?: number; response?: { data?: unknown; url?: string } }
+    const msg = err instanceof Error ? err.message : String(err)
     console.error('[github] Token request failed:', {
       status: e.status,
       url: e.response?.url,
       data: e.response?.data,
-      message: err instanceof Error ? err.message : String(err),
+      message: msg,
     })
     throw new Error(
-      `GitHub App auth failed (HTTP ${e.status ?? '?'}): installation ${installationId} — check GITHUB_APP_INSTALLATION_ID and that the app is installed on the org`
+      `GitHub App auth failed (HTTP ${e.status ?? '?'}): ${msg}`
     )
   }
 }
