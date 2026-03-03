@@ -4,22 +4,22 @@ import { domToPng } from 'modern-screenshot'
 interface ShareButtonsProps {
   skillUrl: string
   skillName: string
+  installCommand: string
+  repoUrl?: string
   cardRef?: RefObject<HTMLDivElement | null>
 }
 
-export function ShareButtons({ skillUrl, skillName, cardRef }: ShareButtonsProps) {
+export function ShareButtons({ skillUrl, skillName, installCommand, repoUrl, cardRef }: ShareButtonsProps) {
   const [downloading, setDownloading] = useState(false)
 
   const handleShareX = () => {
-    const username = skillName.replace('acting-as-', '')
-    const text = encodeURIComponent(`npx skills install ${username}\n\nthat's me. installable. an AI interviewed me and matched my skills against 75K+ in the registry.\n\nyour move:`)
+    const text = encodeURIComponent(`so I just made myself installable?\n\n${installCommand}\n\nan AI had a mass vibe coding conversation with me, pulled out what I actually know, and matched it against a massive skills registry.\n\ntry it:`)
     const url = encodeURIComponent(skillUrl)
     window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank')
   }
 
   const handleShareLinkedIn = () => {
-    const username = skillName.replace('acting-as-', '')
-    const text = encodeURIComponent(`npx skills install ${username}\n\nAn AI interviewed me, discovered my expertise across engineering, design, and product, matched it against 75K+ skills, and made me installable.\n\nYour persona is not a resume anymore. Build yours: ${skillUrl}`)
+    const text = encodeURIComponent(`I just turned my professional identity into something installable.\n\n${installCommand}\n\nAn AI conducted a deep conversation with me - not a form or a quiz, an actual back-and-forth - extracted my skills and expertise, and matched them against a registry of thousands.\n\nThe output is a skill file that anyone can plug into their AI tools. Resumes describe you. This lets people install you.\n\nBuild yours: ${skillUrl}`)
     window.open(`https://www.linkedin.com/feed/?shareActive=true&text=${text}`, '_blank')
   }
 
@@ -90,6 +90,16 @@ export function ShareButtons({ skillUrl, skillName, cardRef }: ShareButtonsProps
         >
           LinkedIn
         </button>
+        {repoUrl && (
+          <a
+            href={repoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center py-3 px-6 border-2 border-surface font-display text-[10px] uppercase tracking-[0.04em] text-surface hover:bg-surface/5 transition-colors"
+          >
+            View on GitHub
+          </a>
+        )}
         {cardRef && (
           <button
             onClick={handleDownloadImage}

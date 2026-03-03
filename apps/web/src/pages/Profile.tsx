@@ -124,7 +124,7 @@ export function Profile() {
           </div>
 
           <InstallCommand command={skill.installCommand} />
-          <ShareButtons skillUrl={profileUrl} skillName={skill.skillName} />
+          <ShareButtons skillUrl={profileUrl} skillName={skill.skillName} installCommand={skill.installCommand} repoUrl={skill.repoUrl} />
 
           <div className="pt-4">
             <span className="font-body text-[12px] text-muted uppercase tracking-[0.08em]">

@@ -108,7 +108,7 @@ export function Success() {
           </p>
 
           <InstallCommand command={skill.installCommand} />
-          <ShareButtons skillUrl={profileUrl} skillName={skill.skillName} cardRef={cardRef} />
+          <ShareButtons skillUrl={profileUrl} skillName={skill.skillName} installCommand={skill.installCommand} repoUrl={skill.repoUrl} cardRef={cardRef} />
         </div>
 
         {/* Right — card */}
