@@ -83,7 +83,7 @@ export const useConversationStore = create<ConversationStore>((set) => ({
   setChips: (chips, multiSelect) => set({ chips, chipsMultiSelect: multiSelect }),
   clearChips: () => set({ chips: [], chipsMultiSelect: false }),
   setStreaming: (isStreaming) => set({ isStreaming, ...(isStreaming ? {} : { toolActivity: null }) }),
-  appendStreamingText: (text) => set((s) => ({ streamingText: s.streamingText + text, toolActivity: null })),
+  appendStreamingText: (text) => set((s) => ({ streamingText: s.streamingText + text })),
   clearStreamingText: () => set({ streamingText: '' }),
   setToolActivity: (label) => set({ toolActivity: label }),
   setError: (message) => set({ errorMessage: message }),
