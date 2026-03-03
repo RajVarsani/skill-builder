@@ -36,14 +36,6 @@ export function SlugConflictModal({ open, defaultSlug, onConfirm, onCancel }: Sl
   const debounceRef = useRef<ReturnType<typeof setTimeout>>(undefined)
   const inputRef = useRef<HTMLInputElement>(null)
 
-  useEffect(() => {
-    if (open) {
-      setSlug(defaultSlug)
-      setAvailable(null)
-      setTimeout(() => inputRef.current?.focus(), 100)
-    }
-  }, [open, defaultSlug])
-
   const checkSlug = useCallback(async (value: string) => {
     if (!value.trim()) {
       setAvailable(null)
@@ -59,6 +51,15 @@ export function SlugConflictModal({ open, defaultSlug, onConfirm, onCancel }: Sl
       setChecking(false)
     }
   }, [])
+
+  useEffect(() => {
+    if (open) {
+      setSlug(defaultSlug)
+      setAvailable(null)
+      checkSlug(defaultSlug)
+      setTimeout(() => inputRef.current?.focus(), 100)
+    }
+  }, [open, defaultSlug, checkSlug])
 
   const handleChange = (value: string) => {
     const sanitized = value.toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/-+/g, '-')
