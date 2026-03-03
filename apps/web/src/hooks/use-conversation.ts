@@ -126,7 +126,7 @@ export function useConversation() {
               s.updateCompletion(data)
               break
             case 'done':
-              if (data.assistantMessage) {
+              if (data.assistantMessage?.trim()) {
                 s.addMessage({
                   role: 'assistant',
                   content: data.assistantMessage,

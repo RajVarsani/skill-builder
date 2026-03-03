@@ -77,7 +77,6 @@ export async function* runConversationTurn(
       config: {
         systemInstruction: systemPrompt,
         maxOutputTokens: 2048,
-        thinkingConfig: { thinkingBudget: 0 },
         tools: [{ functionDeclarations: identityTools }],
         toolConfig: {
           functionCallingConfig: {
@@ -89,7 +88,6 @@ export async function* runConversationTurn(
 
     let turnText = ''
     const functionCalls: Array<{ name: string; args: Record<string, unknown> }> = []
-    // Collect ALL original parts from the response to preserve thought signatures
     const originalModelParts: Part[] = []
     let totalInputTokens = 0
     let totalOutputTokens = 0
@@ -105,10 +103,9 @@ export async function* runConversationTurn(
       if (!parts) continue
 
       for (const part of parts) {
-        // Preserve the ORIGINAL part (includes thoughtSignature for Gemini 3)
         originalModelParts.push(part)
 
-        if (part.text) {
+        if (part.text && part.text.length > 0) {
           yield { type: 'text_chunk', data: { text: part.text } }
           turnText += part.text
         }
@@ -176,7 +173,6 @@ export async function* runConversationTurn(
         })
       }
 
-      // Use ORIGINAL model parts to preserve thought signatures (required by Gemini 3)
       contents.push({ role: 'model', parts: originalModelParts })
       contents.push({ role: 'user', parts: functionResponseParts })
     } else {
@@ -192,6 +188,14 @@ export async function* runConversationTurn(
         skillsMatched: matchedSkills.filter((s) => s.status !== 'rejected').length,
       },
     }
+  }
+
+  // If model produced no text at all (only tool calls or empty response),
+  // generate a fallback so the user never sees an empty bubble
+  if (!fullAssistantText.trim()) {
+    const fallback = getFallbackMessage(currentPhase.value)
+    yield { type: 'text_chunk', data: { text: fallback } }
+    fullAssistantText = fallback
   }
 
   // Fallback: if the model asked a question but forgot to call offer_quick_replies,
@@ -211,6 +215,19 @@ export async function* runConversationTurn(
  * Extract chip labels from the assistant's text when the model forgets to call offer_quick_replies.
  * Tries to parse comma/or-separated lists from the text, falls back to phase-appropriate defaults.
  */
+function getFallbackMessage(phase: ConversationPhase): string {
+  switch (phase) {
+    case 'domain_discovery':
+      return "What areas of expertise are you interested in? I'd love to help you find the right skills."
+    case 'rapid_profiling':
+      return "Tell me more about your experience — what tools and technologies do you work with day to day?"
+    case 'review':
+      return "Let's review what we've discovered so far. Does everything look accurate?"
+    default:
+      return "I'm here to help — could you tell me a bit more about what you're looking for?"
+  }
+}
+
 function extractFallbackChips(text: string, phase: ConversationPhase): string[] {
   // Domain discovery phase — always offer domain chips
   if (phase === 'domain_discovery') {
