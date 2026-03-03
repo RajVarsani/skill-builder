@@ -67,6 +67,7 @@ export async function* runConversationTurn(
 
   let continueLoop = true
   let fullAssistantText = ''
+  let quickRepliesEmitted = false
   const MAX_TOOL_ITERATIONS = 5
 
   for (let iteration = 0; continueLoop && iteration < MAX_TOOL_ITERATIONS; iteration++) {
@@ -76,6 +77,7 @@ export async function* runConversationTurn(
       config: {
         systemInstruction: systemPrompt,
         maxOutputTokens: 2048,
+        thinkingConfig: { thinkingLevel: 'low' },
         tools: [{ functionDeclarations: identityTools }],
         toolConfig: {
           functionCallingConfig: {
@@ -118,6 +120,7 @@ export async function* runConversationTurn(
           yield { type: 'tool_activity', data: { tool: fnName, label } }
 
           functionCalls.push({ name: fnName, args: fnArgs })
+          if (fnName === 'offer_quick_replies') quickRepliesEmitted = true
         }
       }
     }
@@ -191,7 +194,63 @@ export async function* runConversationTurn(
     }
   }
 
+  // Fallback: if the model asked a question but forgot to call offer_quick_replies,
+  // auto-generate chips so the UI always shows tappable options
+  if (!quickRepliesEmitted && fullAssistantText.includes('?')) {
+    const chips = extractFallbackChips(fullAssistantText, currentPhase.value)
+    if (chips.length > 0) {
+      yield { type: 'tool_activity', data: { tool: 'offer_quick_replies', label: 'Preparing options' } }
+      yield { type: 'quick_replies', data: { chips, multiSelect: currentPhase.value === 'domain_discovery' } }
+    }
+  }
+
   yield { type: 'done', data: { assistantMessage: fullAssistantText } }
+}
+
+/**
+ * Extract chip labels from the assistant's text when the model forgets to call offer_quick_replies.
+ * Tries to parse comma/or-separated lists from the text, falls back to phase-appropriate defaults.
+ */
+function extractFallbackChips(text: string, phase: ConversationPhase): string[] {
+  // Domain discovery phase — always offer domain chips
+  if (phase === 'domain_discovery') {
+    return ['Engineering', 'Design', 'Product', 'Data & Analytics', 'Marketing', 'Operations']
+  }
+
+  // Try to extract options from patterns like "A, B, C, or D" or "A / B / C"
+  // Look for the last question in the text
+  const sentences = text.split(/[.!]\s+/)
+  const questionSentence = [...sentences].reverse().find((s) => s.includes('?'))
+  if (questionSentence) {
+    // Pattern: "X, Y, Z, or W" or "X, Y, Z, and W"
+    const commaOrMatch = questionSentence.match(
+      /(?:^|:\s*)([\w\s&-]+(?:,\s*[\w\s&-]+)+(?:,?\s*(?:or|and)\s+[\w\s&-]+))/i
+    )
+    if (commaOrMatch) {
+      const options = commaOrMatch[1]
+        .split(/,\s*(?:or|and)?\s*|\s+(?:or|and)\s+/)
+        .map((s) => s.trim())
+        .filter((s) => s.length > 0 && s.length < 40)
+      if (options.length >= 2 && options.length <= 8) return options
+    }
+
+    // Pattern: "X / Y / Z"
+    const slashMatch = questionSentence.match(/([\w\s&-]+(?:\s*\/\s*[\w\s&-]+){1,7})/)
+    if (slashMatch) {
+      const options = slashMatch[1].split(/\s*\/\s*/).map((s) => s.trim()).filter((s) => s.length > 0 && s.length < 40)
+      if (options.length >= 2 && options.length <= 8) return options
+    }
+  }
+
+  // Phase-appropriate generic fallback chips
+  if (phase === 'rapid_profiling') {
+    return ['Absolutely', 'Not quite', 'Tell me more']
+  }
+  if (phase === 'review') {
+    return ['Looks good!', 'Needs adjustments', 'Add more skills']
+  }
+
+  return ['Yes', 'No', 'Tell me more']
 }
 
 function processToolCall(

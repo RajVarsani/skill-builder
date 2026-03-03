@@ -101,6 +101,8 @@ export function SparkleButton({ children, className = '', onClick, disabled }: S
   const wrapRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const particlesRef = useRef<BurstParticle[]>([])
+  const disabledRef = useRef(disabled)
+  disabledRef.current = disabled
   const hoveringRef = useRef(false)
   const animIdRef = useRef<number>(0)
   const spawnTimerRef = useRef<ReturnType<typeof setInterval> | null>(null)
@@ -176,6 +178,7 @@ export function SparkleButton({ children, className = '', onClick, disabled }: S
     }
 
     function handleEnter(e: MouseEvent) {
+      if (disabledRef.current) return
       hoveringRef.current = true
       mouseRef.current = toCanvas(e)
 

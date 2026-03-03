@@ -2,6 +2,7 @@ import { UsageLog } from '../db/models/usage-log'
 import type { Types } from 'mongoose'
 
 const PRICING: Record<string, { input: number; output: number }> = {
+  'gemini-3.1-pro-preview': { input: 2.00 / 1_000_000, output: 12.00 / 1_000_000 },
   'gemini-3-flash-preview': { input: 0.15 / 1_000_000, output: 0.60 / 1_000_000 },
   'gemini-2.5-flash': { input: 0.15 / 1_000_000, output: 0.60 / 1_000_000 },
   'gemini-2.0-flash': { input: 0.10 / 1_000_000, output: 0.40 / 1_000_000 },

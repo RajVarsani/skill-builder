@@ -138,7 +138,7 @@ conversations.post('/:id/messages', async (c) => {
   return streamSSE(c, async (stream) => {
     let totalInputTokens = 0
     let totalOutputTokens = 0
-    let model = 'gemini-2.0-flash'
+    let model = 'gemini-3-flash-preview'
 
     try {
       const events = runConversationTurn({
@@ -213,6 +213,10 @@ conversations.post('/:id/messages', async (c) => {
             phase: conversation.phase,
             createdAt: new Date(),
           })
+          // Mark arrays as modified — Mongoose may lose dirty tracking
+          // after the earlier save() that persisted the user message
+          conversation.markModified('blockStates')
+          conversation.markModified('matchedSkills')
           await conversation.save()
         }
 
@@ -239,7 +243,7 @@ conversations.post('/:id/messages', async (c) => {
         event: 'error',
         data: JSON.stringify({
           message: errMsg.includes('RESOURCE_EXHAUSTED')
-            ? 'Gemini API quota exhausted — please try again later'
+            ? 'AI quota exhausted — please try again later'
             : errMsg.includes('authentication_error') || errMsg.includes('UNAUTHENTICATED')
               ? 'AI service authentication failed — check Vertex AI credentials (run gcloud auth application-default login)'
               : errMsg.includes('rate_limit') || errMsg.includes('RATE_LIMIT')

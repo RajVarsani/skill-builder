@@ -216,7 +216,7 @@ export function Builder() {
       <Nav step={step} onStartFresh={handleStartFresh} />
       <div className="flex-1 flex flex-col md:flex-row overflow-y-auto md:overflow-hidden">
         {/* Left side — chat or review */}
-        <div className="w-full md:w-[55%] md:border-r border-muted/20 flex flex-col shrink-0 h-[65vh] md:h-auto md:overflow-y-auto">
+        <div className="w-full md:w-[55%] md:border-r border-muted/20 flex flex-col shrink-0 h-[65vh] md:h-auto overflow-hidden">
           {isReviewPhase ? (
             <div className="flex-1 flex flex-col min-h-0">
               <div className="px-5 md:px-10 pt-6 md:pt-10 pb-4">

@@ -12,14 +12,15 @@ export function ShareButtons({ skillUrl, skillName, cardRef }: ShareButtonsProps
 
   const handleShareX = () => {
     const username = skillName.replace('acting-as-', '')
-    const text = encodeURIComponent(`I just made myself installable.\n\nnpx skills install ${username}\n\nBuild yours:`)
+    const text = encodeURIComponent(`npx skills install ${username}\n\nthat's me. installable. an AI interviewed me and matched my skills against 75K+ in the registry.\n\nyour move:`)
     const url = encodeURIComponent(skillUrl)
     window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank')
   }
 
   const handleShareLinkedIn = () => {
-    const url = encodeURIComponent(skillUrl)
-    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank')
+    const username = skillName.replace('acting-as-', '')
+    const text = encodeURIComponent(`npx skills install ${username}\n\nAn AI interviewed me, discovered my expertise across engineering, design, and product, matched it against 75K+ skills, and made me installable.\n\nYour persona is not a resume anymore. Build yours: ${skillUrl}`)
+    window.open(`https://www.linkedin.com/feed/?shareActive=true&text=${text}`, '_blank')
   }
 
   const handleCopyLink = async () => {
