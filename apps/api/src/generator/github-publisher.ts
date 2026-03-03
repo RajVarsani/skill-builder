@@ -244,6 +244,12 @@ async function publishToPersonalRepo(
   const userRes = await fetch('https://api.github.com/user', {
     headers: { Authorization: `Bearer ${token}` },
   })
+  if (!userRes.ok) {
+    console.error('GitHub user lookup failed:', userRes.status)
+    throw new Error(
+      `GitHub token is invalid or expired. Please reconnect your GitHub account.`
+    )
+  }
   const user = await userRes.json()
   const owner = user.login
 
@@ -266,7 +272,12 @@ async function publishToPersonalRepo(
   if (!createRes.ok) {
     const err = await createRes.json().catch(() => ({}))
     console.error('GitHub repo creation failed:', createRes.status, err)
-    throw new Error(`Failed to create repo: ${createRes.status}`)
+    if (createRes.status === 403 || createRes.status === 401) {
+      throw new Error(
+        `GitHub token lacks permission to create repos. Please reconnect your GitHub account.`
+      )
+    }
+    throw new Error(`Failed to create repo: ${createRes.status} — ${JSON.stringify(err)}`)
   }
   await new Promise((r) => setTimeout(r, 2000))
 

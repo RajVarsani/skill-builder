@@ -37,6 +37,9 @@ export function Builder() {
   const [publishDone, setPublishDone] = useState(false)
   const publishResultRef = useRef<{ id: string } | null>(null)
 
+  // Publish error state
+  const [publishError, setPublishError] = useState<string | null>(null)
+
   // Slug conflict state
   const [slugModalOpen, setSlugModalOpen] = useState(false)
   const [defaultSlug, setDefaultSlug] = useState('')
@@ -170,6 +173,11 @@ export function Builder() {
       setPublishDone(true)
     } catch (error) {
       console.error('Publish error:', error)
+      const msg = error instanceof Error ? error.message : 'Something went wrong'
+      setPublishError(msg.includes('reconnect')
+        ? 'Your GitHub connection needs to be refreshed. Please reconnect your GitHub account and try again.'
+        : msg
+      )
       setModalOpen(false)
       setIsPublishing(false)
     }
@@ -186,7 +194,24 @@ export function Builder() {
     }
   }, [navigate])
 
+  const [checkingInstall, setCheckingInstall] = useState(false)
+
   const handlePublishGitHub = async () => {
+    if (!user?.hasGithub) return
+    setCheckingInstall(true)
+    try {
+      const { installed, installUrl } = await apiFetch<{ installed: boolean; installUrl?: string }>(
+        '/github/install-check'
+      )
+      if (!installed) {
+        // Redirect to GitHub App installation page — they'll come back to /builder after
+        window.location.href = installUrl || 'https://github.com/apps/skill-builder-publisher/installations/new'
+        return
+      }
+    } catch (e) {
+      console.error('Install check failed, proceeding:', e)
+    }
+    setCheckingInstall(false)
     handlePublish('personal')
   }
 
@@ -251,12 +276,23 @@ export function Builder() {
       {/* Publish buttons — fixed to viewport bottom, always visible */}
       {isReviewPhase && (
         <div className="fixed bottom-0 left-0 w-full md:w-[55%] px-5 md:px-10 py-4 border-t border-muted/20 bg-page z-20">
+          {publishError && (
+            <div className="mb-3 rounded-lg bg-red-900/30 border border-red-500/40 px-4 py-3 text-sm text-red-300">
+              <p>{publishError}</p>
+              <button
+                onClick={() => setPublishError(null)}
+                className="mt-1 text-xs text-red-400 underline hover:text-red-300"
+              >
+                Dismiss
+              </button>
+            </div>
+          )}
           <PublishButtons
-            onPublish={() => handlePublish('org')}
-            onPublishGitHub={handlePublishGitHub}
-            isPublishing={isPublishing}
+            onPublish={() => { setPublishError(null); handlePublish('org') }}
+            onPublishGitHub={() => { setPublishError(null); handlePublishGitHub() }}
+            isPublishing={isPublishing || checkingInstall}
             isGenerating={isPreviewLoading || !skillMarkdown}
-            publishTarget={publishTarget}
+            publishTarget={checkingInstall ? 'personal' : publishTarget}
             hasGithub={user?.hasGithub ?? false}
           />
         </div>

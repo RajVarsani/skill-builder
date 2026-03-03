@@ -197,7 +197,11 @@ skills.post('/conversations/:id/publish', authMiddleware, async (c) => {
     if (error instanceof Error && error.stack) {
       console.error('[publish] Stack:', error.stack)
     }
-    return c.json({ error: `Failed to publish skill: ${msg}` }, 500)
+    const needsReconnect = msg.includes('reconnect') || msg.includes('lacks permission')
+    return c.json(
+      { error: `Failed to publish skill: ${msg}`, code: needsReconnect ? 'GITHUB_RECONNECT' : undefined },
+      needsReconnect ? 403 : 500
+    )
   }
 })
 
@@ -241,6 +245,52 @@ skills.get('/users/:username/skill', async (c) => {
       ? { name: user.name, avatarUrl: user.avatarUrl }
       : null,
   })
+})
+
+skills.get('/github/install-check', authMiddleware, async (c) => {
+  const userId = c.get('userId')
+  const user = await User.findById(userId)
+  if (!user?.githubAccessToken) {
+    return c.json({ installed: false, reason: 'no_github' })
+  }
+
+  // Get the user's GitHub login
+  const userRes = await fetch('https://api.github.com/user', {
+    headers: { Authorization: `Bearer ${user.githubAccessToken}` },
+  })
+  if (!userRes.ok) {
+    return c.json({ installed: false, reason: 'token_invalid' })
+  }
+  const ghUser = await userRes.json() as { login: string }
+
+  // Check if the app is installed on the user's PERSONAL account (not just any account)
+  const res = await fetch('https://api.github.com/user/installations', {
+    headers: {
+      Authorization: `Bearer ${user.githubAccessToken}`,
+      Accept: 'application/vnd.github+json',
+    },
+  })
+
+  if (!res.ok) {
+    return c.json({ installed: false, reason: 'token_invalid' })
+  }
+
+  const data = await res.json() as { installations: Array<{ app_id: number; account: { login: string } }> }
+  const appId = Number(process.env.GITHUB_APP_ID)
+  const installed = data.installations?.some(
+    (i) => i.app_id === appId && i.account.login === ghUser.login
+  ) ?? false
+
+  // Get the app slug for the install URL
+  let installUrl = 'https://github.com/apps/skill-builder-publisher/installations/new'
+  try {
+    const info = await listAppInstallations() as { app?: { slug?: string } }
+    if (info.app?.slug) {
+      installUrl = `https://github.com/apps/${info.app.slug}/installations/new`
+    }
+  } catch { /* use default */ }
+
+  return c.json({ installed, installUrl })
 })
 
 skills.get('/debug/github-installations', async (c) => {
