@@ -7,6 +7,7 @@ import type { ConversationPhase } from '@actingas/shared/src/types'
 
 export function useConversation() {
   const abortRef = useRef<AbortController | null>(null)
+  const bgTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const navigate = useNavigate()
 
   const initConversation = useCallback(async () => {
@@ -158,8 +159,12 @@ export function useConversation() {
                 s.clearStreamingText()
                 s.setStreaming(false)
               }
-              s.setBackgroundActivity(null)
               s.setToolActivity(null)
+              // Keep background activity visible for at least 1.5s so user sees it
+              if (bgTimerRef.current) clearTimeout(bgTimerRef.current)
+              bgTimerRef.current = setTimeout(() => {
+                useConversationStore.getState().setBackgroundActivity(null)
+              }, s.backgroundActivity ? 1500 : 0)
               break
             case 'error':
               console.error('SSE error:', data.message)

@@ -138,7 +138,7 @@ conversations.post('/:id/messages', async (c) => {
   return streamSSE(c, async (stream) => {
     let totalInputTokens = 0
     let totalOutputTokens = 0
-    let model = 'gemini-2.0-flash'
+    let model = 'gemini-2.5-flash'
 
     try {
       const events = runConversationTurn({

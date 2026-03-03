@@ -62,6 +62,7 @@ async function callGeminiWithRetry(
       const config: Record<string, unknown> = {
         systemInstruction: systemPrompt,
         maxOutputTokens: 1024,
+        thinkingConfig: { thinkingBudget: 0 },
       }
 
       if (enableTools) {
