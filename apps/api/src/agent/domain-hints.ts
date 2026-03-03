@@ -172,14 +172,11 @@ export function getDomainHintsText(domains: string[]): string {
 
   if (hints.length === 0) return ''
 
+  // Compact format: only explore topics and matching hints (skip verbose signals/inference)
   return hints
     .map(
       (h) =>
-        `## ${h.name} Domain Guidance\n` +
-        `**Explore:** ${h.explore.join('; ')}\n` +
-        `**Signals:** ${h.signals.join('; ')}\n` +
-        `**Inference Points:** ${h.inferencePoints.join('; ')}\n` +
-        `**Skill Matching:** ${h.matchingHints.join('; ')}`
+        `**${h.name}:** Explore: ${h.explore.slice(0, 3).join('; ')}. Match on: ${h.matchingHints.join('; ')}.`
     )
-    .join('\n\n')
+    .join('\n')
 }

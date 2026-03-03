@@ -65,24 +65,25 @@ export async function* runConversationTurn(
     signal_phase_transition: 'Moving to next phase',
   }
 
-  let continueLoop = true
   let fullAssistantText = ''
   let quickRepliesEmitted = false
-  const MAX_TOOL_ITERATIONS = 5
+  const MAX_ITERATIONS = 2
 
-  for (let iteration = 0; continueLoop && iteration < MAX_TOOL_ITERATIONS; iteration++) {
+  for (let iteration = 0; iteration < MAX_ITERATIONS; iteration++) {
+    // On iteration 2: disable tools to force a text-only response (no 3rd call)
+    const isLastIteration = iteration === MAX_ITERATIONS - 1
+    const toolConfig = isLastIteration
+      ? { functionCallingConfig: { mode: FunctionCallingConfigMode.NONE } }
+      : { functionCallingConfig: { mode: FunctionCallingConfigMode.AUTO } }
+
     const stream = await ai.models.generateContentStream({
       model: AI_MODEL,
       contents,
       config: {
         systemInstruction: systemPrompt,
-        maxOutputTokens: 2048,
-        tools: [{ functionDeclarations: identityTools }],
-        toolConfig: {
-          functionCallingConfig: {
-            mode: FunctionCallingConfigMode.AUTO,
-          },
-        },
+        maxOutputTokens: 1024,
+        tools: isLastIteration ? undefined : [{ functionDeclarations: identityTools }],
+        toolConfig,
       },
     })
 
@@ -93,7 +94,6 @@ export async function* runConversationTurn(
     let totalOutputTokens = 0
 
     for await (const chunk of stream) {
-      // Extract usage metadata
       if (chunk.usageMetadata) {
         totalInputTokens = chunk.usageMetadata.promptTokenCount || 0
         totalOutputTokens = chunk.usageMetadata.candidatesTokenCount || 0
@@ -134,13 +134,11 @@ export async function* runConversationTurn(
     }
 
     if (functionCalls.length > 0) {
-      // Process tool calls and build function responses
       const functionResponseParts: Part[] = []
 
       for (const fc of functionCalls) {
         const input: ToolInput = fc.args
 
-        // Process side effects (blocks, skills, phases)
         const events = processToolCall(
           fc.name,
           input,
@@ -152,7 +150,6 @@ export async function* runConversationTurn(
           yield evt
         }
 
-        // Build function response — Gemini requires response to be a plain object, not an array
         const rawResult =
           fc.name === 'match_skills'
             ? skillSearchFn(
@@ -162,7 +159,6 @@ export async function* runConversationTurn(
               )
             : { success: true }
 
-        // Wrap arrays in an object since Gemini functionResponse.response must be an object
         const result = Array.isArray(rawResult) ? { results: rawResult } : rawResult
 
         functionResponseParts.push({
@@ -175,8 +171,14 @@ export async function* runConversationTurn(
 
       contents.push({ role: 'model', parts: originalModelParts })
       contents.push({ role: 'user', parts: functionResponseParts })
+
+      // If iteration 1 already produced text alongside tools, skip the 2nd call
+      if (turnText.trim()) {
+        break
+      }
     } else {
-      continueLoop = false
+      // No tool calls — we're done
+      break
     }
 
     const completion = blockMachine.getCompletion()
@@ -188,6 +190,17 @@ export async function* runConversationTurn(
         skillsMatched: matchedSkills.filter((s) => s.status !== 'rejected').length,
       },
     }
+  }
+
+  // Final completion update
+  const completion = blockMachine.getCompletion()
+  yield {
+    type: 'completion_update',
+    data: {
+      percentage: completion.percentage,
+      blocksDiscovered: completion.filled,
+      skillsMatched: matchedSkills.filter((s) => s.status !== 'rejected').length,
+    },
   }
 
   // If model produced no text at all (only tool calls or empty response),
