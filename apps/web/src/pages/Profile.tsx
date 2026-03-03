@@ -85,7 +85,9 @@ export function Profile() {
   const { skill, user } = data
   const name = user?.name || username || 'Unknown'
   const initials = name.split(' ').map((w) => w[0]).join('').slice(0, 2).toUpperCase()
-  const domains = [...new Set(skill.blockStates.map((b) => b.category))]
+  const formatCategory = (cat: string) =>
+    cat.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())
+  const domains = [...new Set(skill.blockStates.map((b) => b.category))].map(formatCategory)
   const confirmedBlocks = skill.blockStates.filter((b) => b.status === 'confirmed')
   const activeSkills = skill.matchedSkills.filter((s) => s.status !== 'rejected')
   const profileUrl = `${window.location.origin}/profile/${username}`
