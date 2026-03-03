@@ -30,10 +30,10 @@ services:
       - key: MONGODB_URI
         sync: false
       - key: GITHUB_APP_ID
-        sync: false
+        value: "2976626"
       - key: GITHUB_APP_PRIVATE_KEY
         sync: false
       - key: GITHUB_APP_INSTALLATION_ID
-        sync: false
+        value: "113296665"
       - key: GITHUB_ORG_NAME
-        sync: false
+        value: "skill-builder-agent"
