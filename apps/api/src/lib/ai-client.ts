@@ -3,7 +3,7 @@ import { GoogleGenAI } from '@google/genai'
 const project = process.env.GOOGLE_CLOUD_PROJECT
 if (!project) throw new Error('GOOGLE_CLOUD_PROJECT env var is required')
 
-const location = process.env.GOOGLE_CLOUD_REGION || 'global'
+const location = process.env.GOOGLE_CLOUD_REGION || 'us-central1'
 
 // In production, use a service account key JSON string via GOOGLE_SERVICE_ACCOUNT_KEY.
 // Locally, ADC from `gcloud auth application-default login` is used automatically.

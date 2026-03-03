@@ -44,8 +44,8 @@ const TOOL_LABELS: Record<string, string> = {
   signal_phase_transition: 'Moving to next phase',
 }
 
-const MAX_RETRIES = 2
-const RETRY_DELAY_MS = 2000
+const MAX_RETRIES = 3
+const RETRY_DELAY_MS = 3000
 
 /**
  * Call Gemini with automatic retry on transient errors (429, 503).
