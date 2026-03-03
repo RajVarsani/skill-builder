@@ -16,11 +16,12 @@ export function ChatPanel({ onSend }: ChatPanelProps) {
   const isStreaming = useConversationStore((s) => s.isStreaming)
   const streamingText = useConversationStore((s) => s.streamingText)
   const toolActivity = useConversationStore((s) => s.toolActivity)
+  const errorMessage = useConversationStore((s) => s.errorMessage)
   const bottomRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'instant', block: 'end' })
-  }, [messages, isStreaming, streamingText, toolActivity])
+  }, [messages, isStreaming, streamingText, toolActivity, errorMessage])
 
   return (
     <div className="flex flex-col h-full bg-page">
@@ -31,6 +32,11 @@ export function ChatPanel({ onSend }: ChatPanelProps) {
           <MessageBubble key={i} role={msg.role} content={msg.content} />
         ))}
         <StreamingMessage />
+        {errorMessage && !isStreaming && (
+          <div className="mx-2 px-4 py-3 bg-red-950/30 border-2 border-red-500/40 text-red-300 text-sm font-mono">
+            {errorMessage}
+          </div>
+        )}
         <div ref={bottomRef} />
       </div>
 

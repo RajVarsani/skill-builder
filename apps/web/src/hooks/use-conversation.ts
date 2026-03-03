@@ -84,6 +84,7 @@ export function useConversation() {
       if (!store.conversationId || store.isStreaming) return
 
       store.clearChips()
+      store.setError(null)
       store.addMessage({
         role: 'user',
         content,
@@ -139,6 +140,8 @@ export function useConversation() {
               break
             case 'error':
               console.error('SSE error:', data.message)
+              s.setError(data.message || 'Something went wrong. Please try again.')
+              s.clearStreamingText()
               s.setStreaming(false)
               break
           }
@@ -148,7 +151,10 @@ export function useConversation() {
         },
         (error) => {
           console.error('SSE connection error:', error)
-          useConversationStore.getState().setStreaming(false)
+          const s = useConversationStore.getState()
+          s.setError('Connection lost. Please try again.')
+          s.clearStreamingText()
+          s.setStreaming(false)
         }
       )
     },

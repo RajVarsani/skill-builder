@@ -36,6 +36,65 @@ interface RunTurnParams {
   skillSearchFn: (query: string, domain?: string, limit?: number) => unknown[]
 }
 
+const TOOL_LABELS: Record<string, string> = {
+  add_identity_block: 'Discovering identity trait',
+  confirm_identity_block: 'Confirming trait',
+  match_skills: 'Searching skills registry',
+  offer_quick_replies: 'Preparing options',
+  signal_phase_transition: 'Moving to next phase',
+}
+
+const MAX_RETRIES = 2
+const RETRY_DELAY_MS = 2000
+
+/**
+ * Call Gemini with automatic retry on transient errors (429, 503).
+ * Returns the stream on success, throws on permanent failure.
+ */
+async function callGeminiWithRetry(
+  contents: Content[],
+  systemPrompt: string,
+  enableTools: boolean
+) {
+  for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
+    try {
+      const config: Record<string, unknown> = {
+        systemInstruction: systemPrompt,
+        maxOutputTokens: 1024,
+      }
+
+      if (enableTools) {
+        config.tools = [{ functionDeclarations: identityTools }]
+        config.toolConfig = {
+          functionCallingConfig: { mode: FunctionCallingConfigMode.AUTO },
+        }
+      }
+
+      return await ai.models.generateContentStream({
+        model: AI_MODEL,
+        contents,
+        config,
+      })
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err)
+      const isTransient = msg.includes('RESOURCE_EXHAUSTED') ||
+        msg.includes('429') ||
+        msg.includes('503') ||
+        msg.includes('UNAVAILABLE')
+
+      if (isTransient && attempt < MAX_RETRIES) {
+        const delay = RETRY_DELAY_MS * (attempt + 1)
+        console.warn(`Gemini transient error (attempt ${attempt + 1}), retrying in ${delay}ms:`, msg)
+        await new Promise((r) => setTimeout(r, delay))
+        continue
+      }
+      throw err
+    }
+  }
+
+  throw new Error('Gemini call failed after retries')
+}
+
 export async function* runConversationTurn(
   params: RunTurnParams
 ): AsyncGenerator<ConversationEvent> {
@@ -51,144 +110,103 @@ export async function* runConversationTurn(
     selectedDomains
   )
 
-  // Convert messages to Gemini Content format
   const contents: Content[] = messages.map((m) => ({
     role: m.role === 'assistant' ? 'model' : 'user',
     parts: [{ text: m.content }],
   }))
 
-  const TOOL_LABELS: Record<string, string> = {
-    add_identity_block: 'Discovering identity trait',
-    confirm_identity_block: 'Confirming trait',
-    match_skills: 'Searching skills registry',
-    offer_quick_replies: 'Preparing options',
-    signal_phase_transition: 'Moving to next phase',
-  }
-
   let fullAssistantText = ''
   let quickRepliesEmitted = false
-  const MAX_ITERATIONS = 2
 
-  for (let iteration = 0; iteration < MAX_ITERATIONS; iteration++) {
-    // On iteration 2: disable tools to force a text-only response (no 3rd call)
-    const isLastIteration = iteration === MAX_ITERATIONS - 1
-    const toolConfig = isLastIteration
-      ? { functionCallingConfig: { mode: FunctionCallingConfigMode.NONE } }
-      : { functionCallingConfig: { mode: FunctionCallingConfigMode.AUTO } }
+  // --- Iteration 1: Generate text + tool calls ---
+  const stream1 = await callGeminiWithRetry(contents, systemPrompt, true)
 
-    const stream = await ai.models.generateContentStream({
-      model: AI_MODEL,
-      contents,
-      config: {
-        systemInstruction: systemPrompt,
-        maxOutputTokens: 1024,
-        tools: isLastIteration ? undefined : [{ functionDeclarations: identityTools }],
-        toolConfig,
-      },
-    })
+  let turnText = ''
+  const functionCalls: Array<{ name: string; args: Record<string, unknown> }> = []
+  const originalModelParts: Part[] = []
+  let totalInputTokens = 0
+  let totalOutputTokens = 0
 
-    let turnText = ''
-    const functionCalls: Array<{ name: string; args: Record<string, unknown> }> = []
-    const originalModelParts: Part[] = []
-    let totalInputTokens = 0
-    let totalOutputTokens = 0
-
-    for await (const chunk of stream) {
-      if (chunk.usageMetadata) {
-        totalInputTokens = chunk.usageMetadata.promptTokenCount || 0
-        totalOutputTokens = chunk.usageMetadata.candidatesTokenCount || 0
-      }
-
-      const parts = chunk.candidates?.[0]?.content?.parts
-      if (!parts) continue
-
-      for (const part of parts) {
-        originalModelParts.push(part)
-
-        if (part.text && part.text.length > 0) {
-          yield { type: 'text_chunk', data: { text: part.text } }
-          turnText += part.text
-        }
-
-        if (part.functionCall) {
-          const fnName = part.functionCall.name!
-          const fnArgs = (part.functionCall.args || {}) as Record<string, unknown>
-          const label = TOOL_LABELS[fnName] || fnName
-          yield { type: 'tool_activity', data: { tool: fnName, label } }
-
-          functionCalls.push({ name: fnName, args: fnArgs })
-          if (fnName === 'offer_quick_replies') quickRepliesEmitted = true
-        }
-      }
+  for await (const chunk of stream1) {
+    if (chunk.usageMetadata) {
+      totalInputTokens = chunk.usageMetadata.promptTokenCount || 0
+      totalOutputTokens = chunk.usageMetadata.candidatesTokenCount || 0
     }
 
-    fullAssistantText += turnText
+    const parts = chunk.candidates?.[0]?.content?.parts
+    if (!parts) continue
 
-    yield {
-      type: 'usage' as const,
-      data: {
-        inputTokens: totalInputTokens,
-        outputTokens: totalOutputTokens,
-        model: AI_MODEL,
-      },
-    }
+    for (const part of parts) {
+      originalModelParts.push(part)
 
-    if (functionCalls.length > 0) {
-      const functionResponseParts: Part[] = []
-
-      for (const fc of functionCalls) {
-        const input: ToolInput = fc.args
-
-        const events = processToolCall(
-          fc.name,
-          input,
-          blockMachine,
-          currentPhase,
-          skillSearchFn
-        )
-        for (const evt of events) {
-          yield evt
-        }
-
-        const rawResult =
-          fc.name === 'match_skills'
-            ? skillSearchFn(
-                input.query as string,
-                input.domain as string | undefined,
-                input.limit as number | undefined
-              )
-            : { success: true }
-
-        const result = Array.isArray(rawResult) ? { results: rawResult } : rawResult
-
-        functionResponseParts.push({
-          functionResponse: {
-            name: fc.name,
-            response: result as Record<string, unknown>,
-          },
-        })
+      if (part.text && part.text.length > 0) {
+        yield { type: 'text_chunk', data: { text: part.text } }
+        turnText += part.text
       }
 
+      if (part.functionCall) {
+        const fnName = part.functionCall.name!
+        const fnArgs = (part.functionCall.args || {}) as Record<string, unknown>
+        yield { type: 'tool_activity', data: { tool: fnName, label: TOOL_LABELS[fnName] || fnName } }
+        functionCalls.push({ name: fnName, args: fnArgs })
+        if (fnName === 'offer_quick_replies') quickRepliesEmitted = true
+      }
+    }
+  }
+
+  fullAssistantText += turnText
+
+  yield {
+    type: 'usage' as const,
+    data: { inputTokens: totalInputTokens, outputTokens: totalOutputTokens, model: AI_MODEL },
+  }
+
+  // --- Process tool calls (if any) ---
+  if (functionCalls.length > 0) {
+    const functionResponseParts: Part[] = []
+
+    for (const fc of functionCalls) {
+      const input: ToolInput = fc.args
+
+      const events = processToolCall(fc.name, input, blockMachine, currentPhase, skillSearchFn)
+      for (const evt of events) {
+        yield evt
+      }
+
+      const rawResult = fc.name === 'match_skills'
+        ? skillSearchFn(input.query as string, input.domain as string | undefined, input.limit as number | undefined)
+        : { success: true }
+
+      const result = Array.isArray(rawResult) ? { results: rawResult } : rawResult
+
+      functionResponseParts.push({
+        functionResponse: { name: fc.name, response: result as Record<string, unknown> },
+      })
+    }
+
+    // --- Iteration 2: Only if no text was produced alongside tool calls ---
+    if (!turnText.trim()) {
       contents.push({ role: 'model', parts: originalModelParts })
       contents.push({ role: 'user', parts: functionResponseParts })
 
-      // If iteration 1 already produced text alongside tools, skip the 2nd call
-      if (turnText.trim()) {
-        break
-      }
-    } else {
-      // No tool calls — we're done
-      break
-    }
+      const stream2 = await callGeminiWithRetry(contents, systemPrompt, false)
 
-    const completion = blockMachine.getCompletion()
-    yield {
-      type: 'completion_update',
-      data: {
-        percentage: completion.percentage,
-        blocksDiscovered: completion.filled,
-        skillsMatched: matchedSkills.filter((s) => s.status !== 'rejected').length,
-      },
+      for await (const chunk of stream2) {
+        if (chunk.usageMetadata) {
+          totalInputTokens += chunk.usageMetadata.promptTokenCount || 0
+          totalOutputTokens += chunk.usageMetadata.candidatesTokenCount || 0
+        }
+
+        const parts = chunk.candidates?.[0]?.content?.parts
+        if (!parts) continue
+
+        for (const part of parts) {
+          if (part.text && part.text.length > 0) {
+            yield { type: 'text_chunk', data: { text: part.text } }
+            fullAssistantText += part.text
+          }
+        }
+      }
     }
   }
 
@@ -203,16 +221,14 @@ export async function* runConversationTurn(
     },
   }
 
-  // If model produced no text at all (only tool calls or empty response),
-  // generate a fallback so the user never sees an empty bubble
+  // Fallback: empty response safety net
   if (!fullAssistantText.trim()) {
     const fallback = getFallbackMessage(currentPhase.value)
     yield { type: 'text_chunk', data: { text: fallback } }
     fullAssistantText = fallback
   }
 
-  // Fallback: if the model asked a question but forgot to call offer_quick_replies,
-  // auto-generate chips so the UI always shows tappable options
+  // Fallback: auto-generate chips if model forgot
   if (!quickRepliesEmitted && fullAssistantText.includes('?')) {
     const chips = extractFallbackChips(fullAssistantText, currentPhase.value)
     if (chips.length > 0) {
@@ -224,10 +240,6 @@ export async function* runConversationTurn(
   yield { type: 'done', data: { assistantMessage: fullAssistantText } }
 }
 
-/**
- * Extract chip labels from the assistant's text when the model forgets to call offer_quick_replies.
- * Tries to parse comma/or-separated lists from the text, falls back to phase-appropriate defaults.
- */
 function getFallbackMessage(phase: ConversationPhase): string {
   switch (phase) {
     case 'domain_discovery':
@@ -242,17 +254,13 @@ function getFallbackMessage(phase: ConversationPhase): string {
 }
 
 function extractFallbackChips(text: string, phase: ConversationPhase): string[] {
-  // Domain discovery phase — always offer domain chips
   if (phase === 'domain_discovery') {
     return ['Engineering', 'Design', 'Product', 'Data & Analytics', 'Marketing', 'Operations']
   }
 
-  // Try to extract options from patterns like "A, B, C, or D" or "A / B / C"
-  // Look for the last question in the text
   const sentences = text.split(/[.!]\s+/)
   const questionSentence = [...sentences].reverse().find((s) => s.includes('?'))
   if (questionSentence) {
-    // Pattern: "X, Y, Z, or W" or "X, Y, Z, and W"
     const commaOrMatch = questionSentence.match(
       /(?:^|:\s*)([\w\s&-]+(?:,\s*[\w\s&-]+)+(?:,?\s*(?:or|and)\s+[\w\s&-]+))/i
     )
@@ -264,7 +272,6 @@ function extractFallbackChips(text: string, phase: ConversationPhase): string[] 
       if (options.length >= 2 && options.length <= 8) return options
     }
 
-    // Pattern: "X / Y / Z"
     const slashMatch = questionSentence.match(/([\w\s&-]+(?:\s*\/\s*[\w\s&-]+){1,7})/)
     if (slashMatch) {
       const options = slashMatch[1].split(/\s*\/\s*/).map((s) => s.trim()).filter((s) => s.length > 0 && s.length < 40)
@@ -272,14 +279,8 @@ function extractFallbackChips(text: string, phase: ConversationPhase): string[] 
     }
   }
 
-  // Phase-appropriate generic fallback chips
-  if (phase === 'rapid_profiling') {
-    return ['Absolutely', 'Not quite', 'Tell me more']
-  }
-  if (phase === 'review') {
-    return ['Looks good!', 'Needs adjustments', 'Add more skills']
-  }
-
+  if (phase === 'rapid_profiling') return ['Absolutely', 'Not quite', 'Tell me more']
+  if (phase === 'review') return ['Looks good!', 'Needs adjustments', 'Add more skills']
   return ['Yes', 'No', 'Tell me more']
 }
 
@@ -329,25 +330,17 @@ function processToolCall(
     }
 
     case 'offer_quick_replies': {
-      const chips = (input.chips as Array<{ label: string; value: string }>).map(
-        (c) => c.label
-      )
+      const chips = (input.chips as Array<{ label: string; value: string }>).map((c) => c.label)
       events.push({
         type: 'quick_replies',
-        data: {
-          chips,
-          multiSelect: (input.multi_select as boolean) || false,
-        },
+        data: { chips, multiSelect: (input.multi_select as boolean) || false },
       })
       break
     }
 
     case 'signal_phase_transition': {
       currentPhase.value = input.next_phase as ConversationPhase
-      events.push({
-        type: 'phase_change',
-        data: { phase: input.next_phase as ConversationPhase },
-      })
+      events.push({ type: 'phase_change', data: { phase: input.next_phase as ConversationPhase } })
       break
     }
 
@@ -356,21 +349,10 @@ function processToolCall(
         input.query as string,
         input.domain as string | undefined,
         input.limit as number | undefined
-      ) as Array<{
-        skillId: string
-        name: string
-        source: string
-        installs: number
-        relevanceScore: number
-      }>
+      ) as Array<{ skillId: string; name: string; source: string; installs: number; relevanceScore: number }>
 
       for (const result of results) {
-        events.push({
-          type: 'skill_matched',
-          data: {
-            skill: { ...result, status: 'proposed' },
-          },
-        })
+        events.push({ type: 'skill_matched', data: { skill: { ...result, status: 'proposed' } } })
       }
       break
     }
