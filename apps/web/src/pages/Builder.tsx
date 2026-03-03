@@ -131,7 +131,7 @@ export function Builder() {
     const active = store.matchedSkills.filter((s) => s.status !== 'rejected')
     const formatCategory = (cat: string) =>
       cat.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())
-    const domains = [...new Set(confirmed.map((b) => b.category))].map(formatCategory)
+    const domains = [...new Set(confirmed.map((b) => b.category))].slice(0, 4).map(formatCategory)
 
     const ogProps: OGImageCardProps = {
       name: user?.name ?? '',
