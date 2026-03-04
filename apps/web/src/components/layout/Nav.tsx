@@ -6,9 +6,11 @@ import { GlitchLogo } from '../GlitchLogo'
 interface NavProps {
   step?: number
   onStartFresh?: () => void
+  onPublish?: () => void
+  publishEnabled?: boolean
 }
 
-export function Nav({ step, onStartFresh }: NavProps) {
+export function Nav({ step, onStartFresh, onPublish, publishEnabled }: NavProps) {
   const { user, isAuthenticated, signOut } = useAuth()
   const [menuOpen, setMenuOpen] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
@@ -57,9 +59,19 @@ export function Nav({ step, onStartFresh }: NavProps) {
         {onStartFresh && (
           <button
             onClick={onStartFresh}
-            className="px-3 md:px-4 py-2 border-2 border-muted font-display text-[10px] uppercase tracking-[0.04em] text-muted hover:border-surface hover:text-surface transition-colors"
+            className="px-3 md:px-4 py-2 border border-muted/40 font-display text-[9px] uppercase tracking-[0.04em] text-muted/60 hover:border-surface hover:text-surface transition-colors"
           >
             Start Fresh
+          </button>
+        )}
+
+        {onPublish && (
+          <button
+            onClick={onPublish}
+            disabled={!publishEnabled}
+            className="px-4 py-2 bg-accent font-display text-[10px] uppercase tracking-[0.04em] text-cream hover:bg-accent/90 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+          >
+            Publish
           </button>
         )}
 

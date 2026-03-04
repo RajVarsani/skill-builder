@@ -45,8 +45,17 @@ export function Builder() {
   const [defaultSlug, setDefaultSlug] = useState('')
   const pendingTargetRef = useRef<'org' | 'personal'>('org')
 
+  const messages = useConversationStore((s) => s.messages)
+  const isStreaming = useConversationStore((s) => s.isStreaming)
+
   const step = PHASE_STEP[phase]
   const isReviewPhase = phase === 'review' || phase === 'published'
+
+  const userMessageCount = messages.filter((m) => m.role === 'user').length
+  const publishEnabled = userMessageCount >= 4 && !isStreaming
+  const handlePublishCTA = useCallback(() => {
+    sendMessage('lets publish now')
+  }, [sendMessage])
 
   useEffect(() => {
     let cancelled = false
@@ -238,7 +247,12 @@ export function Builder() {
 
   return (
     <div className="h-screen flex flex-col bg-page overflow-hidden">
-      <Nav step={step} onStartFresh={handleStartFresh} />
+      <Nav
+        step={step}
+        onStartFresh={handleStartFresh}
+        onPublish={!isReviewPhase ? handlePublishCTA : undefined}
+        publishEnabled={publishEnabled}
+      />
       <div className="flex-1 flex flex-col md:flex-row min-h-0 overflow-hidden">
         {/* Left side — chat or review */}
         <div className={`w-full md:w-[55%] md:border-r border-muted/20 flex flex-col ${isReviewPhase ? 'flex-1 min-h-0' : 'h-[65vh] md:h-auto'} overflow-hidden`}>

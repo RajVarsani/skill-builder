@@ -72,7 +72,7 @@ export function Landing() {
   }
 
   return (
-    <div className="min-h-screen bg-page flex flex-col">
+    <div className="min-h-screen bg-page flex flex-col overflow-x-hidden">
       {/* Nav */}
       <nav className="flex items-center justify-between px-5 md:px-[60px] py-4 md:py-5 border-b-[3px] border-surface">
         <GlitchLogo size="sm" />
