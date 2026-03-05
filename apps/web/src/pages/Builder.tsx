@@ -139,19 +139,20 @@ export function Builder() {
     setIsPublishing(true)
 
     const store = useConversationStore.getState()
-    const confirmed = store.blocks.filter((b) => b.status === 'confirmed')
+    // Use all blocks for OG image — server confirms them all on publish
+    const allBlocks = store.blocks
     const active = store.matchedSkills.filter((s) => s.status !== 'rejected')
     const formatCategory = (cat: string) =>
       cat.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())
-    const domains = [...new Set(confirmed.map((b) => b.category))].slice(0, 4).map(formatCategory)
+    const domains = [...new Set(allBlocks.map((b) => b.category))].slice(0, 4).map(formatCategory)
 
     const ogProps: OGImageCardProps = {
       name: user?.name ?? '',
       title: domains.join(' + ') || 'Professional',
-      blocksDiscovered: confirmed.length,
+      blocksDiscovered: allBlocks.length,
       skillsMatched: active.length,
       completionPercent: store.completion.percentage,
-      traits: confirmed.map((b) => b.label).slice(0, 8),
+      traits: allBlocks.map((b) => b.label).slice(0, 8),
       skills: active.slice(0, 3).map((s) => ({ name: s.name, installs: s.installs })),
     }
 
